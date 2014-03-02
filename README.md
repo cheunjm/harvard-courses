@@ -192,7 +192,7 @@ To allow brushing and linking we create area and line chart visualizations, show
 
 #### Tasks 
 1. Create a `.csv` file containing the "Analysis Date" and  "Women's Health" columns from the UN website, such that you can later parse them using D3.
-- Read about how you can [parse times and dates in D3](https://github.com/mbostock/d3/wiki/Time-Formatting). Use the time parser and the `parseToInt()` function to fill the `dataSet` array in the `unHealth.js` file. 
+- Read about how you can [parse times and dates in D3](https://github.com/mbostock/d3/wiki/Time-Formatting). Use the time parser (and if you want: `convertToInt()`) to fill the `dataSet` array in the `unHealth.js` file. 
 - Create a line chart of the data within the dimensions of `bbOverview`. Make sure to use D3 scales and axes.
 - Create an area chart of the same data within the dimensions of `bbDetail`.
 - Create a dots for each data point in both visualizations.
