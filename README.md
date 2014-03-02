@@ -40,7 +40,7 @@ This repository contains the following directories:
 
 *The files related to this problem are in the folder Problem2.*
 
-"Who Am I? And If So, How Many?" is the title of a book by philosopher Richard David Precht. The title mixes essential questions about human existence into an amusing confusion. It leads us to the data and the related questions for Problem 1. We want to visualize the size of the world's population. How many of us are there?  How many have there been in the past? How many will we be? How consistent or different are the numbers across population estimates?
+"Who Am I? And If So, How Many?" is the title of a book by philosopher Richard David Precht. The title mixes essential questions about human existence into an amusing confusion. It leads us to the data and the related questions for Problem 2. We want to visualize the size of the world's population. How many of us are there?  How many have there been in the past? How many will we be? How consistent or different are the numbers across population estimates?
 
 Estimating the size of the world's population is addressed by different researchers and agencies. Wikipedia offers one summary of this data for estimated historic, recent, and projected future population [here](http://en.wikipedia.org/wiki/World_population_estimates). Put yourself in the role of a Wikipedia contributor and think of how you would visualize the tabular data. The goals for our visualization are:
 
