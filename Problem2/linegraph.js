@@ -42,6 +42,17 @@
         var xAxis, xScale, yAxis,  yScale;
 
           xScale = d3.scale.linear().domain([0,100]).range([0, bbVis.w]);  // define the right domain generically
+
+		  // example that translates to the bottom left of our vis space:
+		  var visFrame = svg.append("g").attr({
+		      "transform": "translate(" + bbVis.x + "," + (bbVis.y + bbVis.h) + ")",
+		  	  //....
+			  
+		  });
+		  
+		  visFrame.append("rect");
+		  //....
+		  
 //        yScale = .. // define the right y domain and range -- use bbVis
 
 //        xAxis = ..
