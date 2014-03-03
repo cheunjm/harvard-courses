@@ -53,7 +53,7 @@ The following sections describe different parts of handling the data and creatin
 ### Acquiring the Data 
 *In this section we will perform web scraping with JavaScript, as introduced in Lab 5. If you prefer, you can also scrape the data in another language, like Python. If you decide to do so, make sure to include all necessary code and libraries in your submission. You still have to answer questions 1 and 2.*
 
-In the last homework you used data that was available through an API. Not all data is provided through a machine readable interface, which makes it is necessary to occasionally scrape data directly from HTML pages meant for human reading. In this exercise, we use a modified [jQuery Ajax call](https://api.jquery.com/jQuery.ajax/) to grab data from a Wikipedia page. 
+In the last homework you used data that was available through an API. Not all data is provided through a machine readable interface, which makes it necessary to occasionally scrape data directly from HTML pages meant for human reading. In this exercise, we use a modified [jQuery Ajax call](https://api.jquery.com/jQuery.ajax/) to grab data from a Wikipedia page. 
 
 When scraping data, you should be aware of the site's terms of service and the [robots.txt](http://en.wikipedia.org/wiki/Robots.txt) included with many web pages, and adhere to the rules outlined therein.
 
