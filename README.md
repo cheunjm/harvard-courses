@@ -107,7 +107,7 @@ Here is some guidance on how to do that:
 The output should look like the following :
 
 ```
-year,est1,est2,est3,est4,est5 
+year,USCensus,PopulationBureau,UN,HYDE,Maddison 
 0,,300000000,300000000,,230820000
 1000,,,310000000,267573000
 1200,,450000000,,,
