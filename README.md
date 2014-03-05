@@ -78,7 +78,7 @@ After converting the HTML string into [jQuery DOM elements](http://api.jquery.co
 	var content = root.find("#content"); // find the node that has ID "content"
 	var spans = content.find(".mw-headline"); // search in the "#content" node for nodes of class "mw-headline"
 
-The variable `h2s` should now contain an array of ".mw-headline" elements. You can iterate over this array and output the text enclosed by the `<span class = ".mw-headline">text</span>` tags:
+The variable `spans` should now contain an array of ".mw-headline" elements. You can iterate over this array and output the text enclosed by the `<span class = ".mw-headline">text</span>` tags:
 
 	$.each(spans, function(index, value) {
 	     console.log($(value).text()); // print plain text of all children!!!	});
