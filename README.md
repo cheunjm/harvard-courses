@@ -146,7 +146,8 @@ For more information, refer to Mike Bostock's D3 [Margin Convention](http://bl.o
   - Draw the x and y axes.
 
 <img src="img/Screenshot_P2.png" width="600" style="display: block; margin-left:auto; margin-right:auto;"/>
-The screenshot shows the visualization for tweo different estimates !!
+
+The screenshot shows the visualization for two different estimates !!
 
 Now it's time for two minutes of procrastination and inspiration -- see this [time series video](http://www.youtube.com/watch?v=4S8GOQeSlTs).
 
