@@ -145,7 +145,8 @@ For more information, refer to Mike Bostock's D3 [Margin Convention](http://bl.o
   - Define the appropriate scales (use `bbVis` as limits for the visualization space).
   - Draw the x and y axes.
 
-**[? sample screenshot will follow soon]**
+<img src="img/Screenshot_P2.png" width="600" style="display: block; margin-left:auto; margin-right:auto;"/>
+The screenshot shows the visualization for tweo different estimates !!
 
 Now it's time for two minutes of procrastination and inspiration -- see this [time series video](http://www.youtube.com/watch?v=4S8GOQeSlTs).
 
