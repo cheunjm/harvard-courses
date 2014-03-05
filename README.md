@@ -156,11 +156,19 @@ Now it's time for two minutes of procrastination and inspiration -- see this [ti
 
 To address Goal 2 - show the difference between estimates - we want to compare the estimates at every time step in the data. To do that, we need to fill in the missing cells so that our sparse data matrix is completely filled. However, we also want to distinguish between the original values and our newly created "artificial" values, so we need a way to "mark" the artificial values. 
 
+D3 gives us a powerful function to interpolations in a very easy way. We already know the `scale` function for interpolating between two values (one range). Recap [Lab 3](https://github.com/CS171/Lab3) for a step by step introduction. But  D3 scales can operate on more than one range. One example is given in the [D3 API](http://). This code interpolates for the range -1 to 0 from "red" to "white" and for the range 0 to 1 from "white" to "green". This sounds like something we might need for our problem:
+
+```
+var color = d3.scale.linear()
+    .domain([-1, 0, 1])
+    .range(["red", "white", "green"]);
+```
+
 #### Tasks
 
 1. Use [linear interpolation](http://en.wikipedia.org/wiki/Linear_interpolation) to fill in the missing values within the columns. For example, in the Population Reference Bureau column, use linear interpolation from the 1995 and 2002 values for the intermediate years. 
 Leave the values blank before the first entry of a column and after the last entry. For example, the US Census Bureau value for year 0 is undefined and should not be considered for comparison.
-2. Render your line graph with these datasets. Visually distinguish your estimated data points from the original data points. 
+2. Render your line graph with these datasets. Visually distinguish your estimated data points from the original data points. This is a good exercise for the Design Studio.
 
 
 
