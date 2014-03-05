@@ -210,7 +210,7 @@ To allow brushing and linking we create area and line chart visualizations, show
 
 Your final product should look similar to this:
 
-<img src="img/P2_init.png" width="600" style="display: block; margin-left:auto; margin-right:auto;"/>
+<img src="img/P2_init2.png" width="600" style="display: block; margin-left:auto; margin-right:auto;"/>
 
 ### Interaction - Brushing in D3
 
@@ -251,7 +251,7 @@ We want to use the brush to filter our detail visualization. As mentioned before
 
 1. If you have not done so yet, implement a brush that covers the overview visualization. Allow brush selection in the line graph and over the area of the axis, but show the brush selection only as an overlay covering the line graph:
 
-	<img src="img/brush2.png" width="600" style="display: block; margin-left:auto; margin-right:auto;"/>
+	<img src="img/brush_selected.png" width="600" style="display: block; margin-left:auto; margin-right:auto;"/>
 
 2. Implement the `brushed` function so, that it updates the detail visualization to show only data in the selected brush region. Remember that D3 scales are very useful here! If the brush selection is deleted, the whole data set should be shown in the detail visualization.
 
