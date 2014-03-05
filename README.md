@@ -75,8 +75,8 @@ File `Problem2/dataExportWiki.html` includes the necessary libraries and a templ
 After converting the HTML string into [jQuery DOM elements](http://api.jquery.com/jQuery/#jQuery2), we make use of the [`.find(x)`](http://api.jquery.com/find/) method, which acts like the `.selectAll(x)` that we know from D3. The method takes a CSS selector to find/select the respective nodes in a DOM subtree. Now is the perfect time to take a look at [selectors in jQuery](http://www.w3schools.com/jquery/trysel.asp), as they might be handy for solving the tasks at hand. 
 
 
-	var content = root.find("#content"); // find all the nodes that have ID "content"
-	var spans = content.find(".mw-headline"); // search in all "#content" nodes for nodes of class "mw-headline"
+	var content = root.find("#content"); // find the node that has ID "content"
+	var spans = content.find(".mw-headline"); // search in the "#content" node for nodes of class "mw-headline"
 
 The variable `h2s` should now contain an array of ".mw-headline" elements. You can iterate over this array and output the text enclosed by the `<span class = ".mw-headline">text</span>` tags:
 
