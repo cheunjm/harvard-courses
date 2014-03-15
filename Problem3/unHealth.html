@@ -4,6 +4,14 @@
     <title></title>
     <script src="../libs/d3.v3.min.js"></script>
     <style>
+         body {
+          font: 10px sans-serif;
+          fill: black;
+        }
+        .textbox {
+            fill:none;
+            stroke:black;
+        }
         .axis path,
         .axis line {
             fill: none;
@@ -22,9 +30,15 @@
             fill: steelblue;
 				}
 
-        .path {
+        .line {
             stroke: steelblue;
             fill: none;
+            clip-path: url(#clip);
+
+        }
+        .node {
+            fill:steelblue;
+            clip-path: url(#clip);
 
         }
 
@@ -35,6 +49,7 @@
 
         .detailPath {
             stroke-width:2;
+            clip-path: url(#clip);
         }
 
 
@@ -43,6 +58,7 @@
             stroke: none;
             fill:steelblue;
             fill-opacity:0.5;
+            clip-path: url(#clip);
         }
 
     </style>
@@ -50,6 +66,9 @@
 </head>
 <body>
 <div id="visUN"></div>
+<button class="fpeak">Feb 2012: The Obama Administration's announcement of new rules requiring private health plans to cover preventive services for women without charging co-pay.</button>
+<button class="speak">Aug 2012: The Obama Administration's new rules went into effect.</button>
+
 
 
 	<script src="unHealth.js"></script>

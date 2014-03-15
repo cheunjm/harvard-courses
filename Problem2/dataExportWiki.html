@@ -12,7 +12,7 @@
 
 <script>
     var convertToInt;
-
+    var output = new Array();
     $.ajax({
         url: "http://en.wikipedia.org/wiki/World_population_estimates",
         type: 'GET',
@@ -24,12 +24,42 @@
 
             var content = root.find("#content"); // find all the nodes that have ID "content"
             var h2s = content.find(".mw-headline"); // search in all "content" nodes for nodes of class ".mw-headline"
+            var wikitable = content.find(".wikitable");
+            var rows = wikitable.find("tbody tr");
+            $.each(rows,function(index, value) {
+              if(index == 0)// for the header case
+              {
+                var string = "year,USCensus,PopulationBureau,UN,HYDE,Maddison"
+                output.push(string);
+              } 
+              else if(index > 10){
+                var string = "";
+                var td = $(value).find("td") 
+                $.each(td, function(index, value){
+                  if(index < 6){
+                    number = $(value).find("p").text();
+                    console.log(number);
+                    if(number != ""){
+                      string = string+convertToInt(number);                     
+                    }
+                    if (index != 5){
+                      string = string + ",";
+                    }
+                  }
+                  
+                })
+                output.push(string);
 
-            $.each(h2s, function(index, value) {
-                console.log($(value).text()); // print text
-            });
-			
-			saveToFile(["Hello World"],"test.txt")
+              }
+
+            })
+            // $.each(h2s, function(index, value) {
+            //     console.log($(value).text()); // print text
+            // });
+			saveToFile(output,"timeline.csv")
+        ,
+        
+			saveToFile(["Hello World", "hello"],"test.txt")
         },
         error: function() {
             return console.log("error");
