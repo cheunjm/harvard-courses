@@ -13,54 +13,42 @@
 <script>
     var convertToInt;
     var output = new Array();
+
     $.ajax({
         url: "http://www.forbes.com/top-colleges/list/#page:1_sort:0_direction:asc_search:_filter:All%20states",
         type: 'GET',
         cache: false,
         success: function(data) {
-          console.log(data)
-   //          var root,allData, body, table;
-   //          root = $("<div></div>")
-   //          root.html(data.responseText)
-
-   //          var content = root.find("#content"); // find all the nodes that have ID "content"
-   //          var h2s = content.find(".mw-headline"); // search in all "content" nodes for nodes of class ".mw-headline"
-   //          var wikitable = content.find(".wikitable");
-   //          var rows = wikitable.find("tbody tr");
-   //          $.each(rows,function(index, value) {
-   //            if(index == 0)// for the header case
-   //            {
-   //              var string = "year,USCensus,PopulationBureau,UN,HYDE,Maddison"
-   //              output.push(string);
-   //            } 
-   //            else if(index > 10){
-   //              var string = "";
-   //              var td = $(value).find("td") 
-   //              $.each(td, function(index, value){
-   //                if(index < 6){
-   //                  number = $(value).find("p").text();
-   //                  console.log(number);
-   //                  if(number != ""){
-   //                    string = string+convertToInt(number);                     
-   //                  }
-   //                  if (index != 5){
-   //                    string = string + ",";
-   //                  }
-   //                }
-                  
-   //              })
-   //              output.push(string);
-
-   //            }
-
-   //          })
-   //          // $.each(h2s, function(index, value) {
-   //          //     console.log($(value).text()); // print text
-   //          // });
-			// saveToFile(output,"timeline.csv")
-   //      ,
-        
-			// saveToFile(["Hello World", "hello"],"test.txt")
+            var DataSet = new Object;
+            var root,allData, body, table;
+            root = $("<div></div>")
+            root.html(data.responseText)
+            var list = root.find("#thelist")
+            var rows = list.find("table tbody tr")
+            $.each(rows, function(index,value) {
+              var name;
+              var rank;
+              var cost;
+              var sie;
+              var tds = $(value).find("td")
+              $.each(tds, function(index, td){
+                if (index == 0){
+                  rank = $(td).find("p").text();
+                }
+                if (index == 1){
+                  name = $(td).find("h3 a").text();
+                }
+                if (index == 3){
+                  tuition = convertToInt($(td).find("p").text().substring(1));
+                }
+                if (index == 4){
+                  size = convertToInt($(td).find("p").text());
+                }
+              })
+              DataSet[name] = {"rank": rank, "name": name,"tuition": tuition, "size": size}
+              
+            })
+            saveToFile(DataSet,"college.json")
         },
         error: function() {
             return console.log("error");
@@ -74,26 +62,14 @@
     /* takes an array of strings
        and writes them line by line into a file given by filename
      */
-    var saveToFile = function(arrayOfLines, fileName) {
-       /* adds linebreaks at the end*/
-       var blob, blobText;
-       blobText = arrayOfLines.map(function(d) {
-         if (d.endsWith("\n")) {
-           return d;
-         } else {
-           return d + "\n";
-         }
-       });
-       blob = new Blob(blobText, {
-         type: "text/plain;charset=utf-8"
-       });
-       return saveAs(blob, fileName);
-     };
-
-     String.prototype.endsWith = function(suffix) {
-       return this.indexOf(suffix, this.length - suffix.length) !== -1;
-     };
-	
+    var saveToFile = function(object, filename){
+        var blob, blobText;
+        blobText = [JSON.stringify(object)];
+        blob = new Blob(blobText, {
+            type: "text/plain;charset=utf-8"
+        });
+        saveAs(blob, filename);
+    }
 
 
 
