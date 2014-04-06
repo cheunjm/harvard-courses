@@ -25,18 +25,20 @@
             root.html(data.responseText)
             var list = root.find("#thelist")
             var rows = list.find("table tbody tr")
+            var count = 99;
             $.each(rows, function(index,value) {
-              var name;
+              var name ="";
               var rank;
               var cost;
-              var sie;
+              var size;
+              var location = new Array();
               var tds = $(value).find("td")
               $.each(tds, function(index, td){
                 if (index == 0){
                   rank = $(td).find("p").text();
                 }
                 if (index == 1){
-                  name = $(td).find("h3 a").text();
+                  name = $(td).find("h3 a").text().replace("—"," ");
                 }
                 if (index == 3){
                   tuition = convertToInt($(td).find("p").text().substring(1));
@@ -45,10 +47,23 @@
                   size = convertToInt($(td).find("p").text());
                 }
               })
-              DataSet[name] = {"rank": rank, "name": name,"tuition": tuition, "size": size}
-              
+
+              $.ajax({
+                url:"https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&sensor=false&key=AIzaSyDtnTEh_vBIIgNkCb9Lu4UHQ_1gT0Y4QZs",
+                type: "POST",
+                success:function(res){
+                    console.log(name);
+                    console.log(res);
+                    location[0] = res.results[0].geometry.location.lat;
+                    location[1] = res.results[0].geometry.location.lng;
+                    console.log(location);
+                    DataSet[name] = {"rank": rank,"tuition": tuition, "size": size, "location": location}
+                    console.log(count);
+                    if (!--count) {saveToFile(DataSet,"college.json")}
+                }
+            });              
             })
-            saveToFile(DataSet,"college.json")
+
         },
         error: function() {
             return console.log("error");
