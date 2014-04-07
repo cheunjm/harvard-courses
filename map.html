@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map</title>
+<style type="text/css">
+    * {
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+    svg {
+        background-color: white;
+    }
+
+    rect {
+        background-color: white;
+    }
+
+    g {
+        fill: white;
+    }
+
+    .tick text {
+        fill: black;
+    }
+
+    .country{
+        /*fill: #dffaff;*/
+        stroke:  steelblue;
+    }
+
+    text{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        /*font-weight: lighter;*/
+    }
+
+    .axis text {
+        font: 10px sans-serif;
+    }
+
+    .axis line,
+    .axis path {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .brush .extent{
+        fill:gray;
+        opacity: .3;
+    }
+    #states {
+      fill: #aaa;
+    }
+    #states .active {
+      fill: orange;
+    }
+    #state-borders {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 1.5px;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      pointer-events: none;
+    }
+</style>
+</head>
+
+
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script>
+var margin = {
+    top: 50,
+    right: 50,
+    bottom: 50,
+    left: 50
+};
+
+var width = 1060 - margin.left - margin.right;
+var height = 800 - margin.bottom - margin.top;
+var centered;
+
+var bbVis = {
+    x: 100,
+    y: 10,
+    w: width - 100,
+    h: 300
+};
+
+var projection = d3.geo.albersUsa()
+    .scale(1070)
+    .translate([width / 2, height / 2]);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.append("rect")
+    .attr("class", "background")
+    .attr("width", width)
+    .attr("height", height)
+    .on("click", clicked);
+
+var g = svg.append("g");
+
+var dataSet = {};
+var completeDataSet;
+
+
+d3.json("../data/us-named.json", function(error, data) {
+    var usMap = topojson.feature(data,data.objects.states).features;
+
+    g.append("g")
+            .attr("id", "states")
+        .selectAll(".country")
+            .data(usMap)
+        .enter().append("path")
+            .attr("d", path)
+            .on("click", clicked);
+
+    g.append("path")
+        .datum(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; }))
+        .attr("id", "state-borders")
+        .attr("d", path);
+
+        console.log("map loaded");
+    //loadMapData();
+});
+
+function loadMapData() {
+d3.json("../data/college.json", function(error, data) {
+
+    completeDataSet= data;
+
+
+         var tooltip = d3.select("body").append("div")
+          .attr("class", "tooltip")
+          .style("opacity", 0);
+
+        var domainarray = [];
+        for (i in USAFidsums) {
+            domainarray.push(USAFidsums[i].sum);
+        }
+
+        var scale = d3.scale.linear()
+            .domain(d3.extent(domainarray))
+            .range([0, 10]);
+
+        // create station circles
+        g.selectAll("circles.points")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("r", function(d) { // radius depends on sum at current station
+            if (USAFidsums[d["USAF"]] !== undefined) {
+                return scale(USAFidsums[d["USAF"]].sum);
+            }
+            else { // null value
+                return 2;
+            }
+        })
+        .attr("transform", function(d) {
+            if (projection([d["NSRDB_LON(dd)"], d["NSRDB_LAT (dd)"]]) !== null) {
+                return "translate(" + projection([d["NSRDB_LON(dd)"], d["NSRDB_LAT (dd)"]]) + ")";
+            }
+            else { // don't display null values
+                return "translate(-100,-100)";
+            }
+        })
+        .style("fill", function(d) { // blue if sum isn't NaN
+            if (USAFidsums[d["USAF"]] == undefined) {
+                return "#666666";
+            }
+            else { // gray if null value
+                return "#336699";
+            }})
+        .on("mouseover", function(d) {
+              tooltip.transition()
+                .duration(100)
+                .style("opacity", .9)
+                .style("position", "absolute")
+                .style("border", "1px solid gray")
+                .style("background-color", "#ffffca")
+                .style("overflow", "hidden")
+                .style("z-index", "5");
+
+              tooltip.html(
+                "station: "+d["STATION"] + "<br />" +
+                "sum: "+USAFidsums[d["USAF"]].sum
+                )
+              .style("left", (d3.event.pageX +4) + "px")
+              .style("top", (d3.event.pageY - 35) + "px")
+              .style("font-size", "12px")
+              .style("padding", "2px");
+            })
+            .on("mouseout", function(d) {
+              tooltip.transition()
+                .duration(100)
+                .style("opacity", 0);
+            });
+
+
+});
+}
+
+function clicked(d) {
+  var x, y, k;
+
+  if (d && centered !== d) {
+    var centroid = path.centroid(d);
+    x = centroid[0];
+    y = centroid[1];
+    k = 4;
+    centered = d;
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
+    centered = null;
+  }
+
+  g.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+  g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
+}
+</script>
+
+
+<table>
+    <tr><td><div id="vis"></div></td></tr>
+</table>
+
+</body>
+</html>
