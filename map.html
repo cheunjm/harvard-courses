@@ -89,7 +89,7 @@ var bbVis = {
 };
 
 var projection = d3.geo.albersUsa()
-    .scale(1070)
+    .scale(1000)
     .translate([width / 2, height / 2]);
 
 var path = d3.geo.path()
@@ -135,39 +135,33 @@ d3.json("../data/college.json", function(error, data) {
 
         completeDataSet= d3.entries(data);
 
-        console.log(completeDataSet);
          var tooltip = d3.select("body").append("div")
           .attr("class", "tooltip")
           .style("opacity", 0);
 
         var domainarray = [];
         for (i in completeDataSet) {
-            if (completeDataSet[i].cost == null) {
+            if (completeDataSet[i].value.cost == null) {
                 domainarray.push(0);
             }
             else {
-                domainarray.push(completeDataSet[i].cost);
+                domainarray.push(completeDataSet[i].value.cost);
             }
         }
 
         var scale = d3.scale.linear()
             .domain(d3.extent(domainarray))
-            .range([0, 10]);
+            .range([0, 8]);
 
         // create station circles
         g.selectAll("circles.points")
         .data(completeDataSet)
         .enter()
         .append("circle")
-        .attr("r", function(d) { console.log(d); return scale(d.cost); })
-        .attr("transform", function(d) {
-            if (projection([d.location[0], d.location[1]]) !== null) {
-                return "translate(" + projection([d.location[0], d.location[1]]) + ")";
-            }
-            else { // don't display null values
-                return "translate(-100,-100)";
-            }
-        })
+        .attr("r", function(d) { return scale(d.value.cost); })
+        .attr("transform", function(d) { console.log(projection([d.value.location[0], d.value.location[1]]));
+                return "translate(" + projection([d.value.location[1], d.value.location[0]]) + ")";
+            })
         .style("fill", "blue");
 
         // .on("mouseover", function(d) {
