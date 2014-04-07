@@ -127,23 +127,27 @@ d3.json("../data/us-named.json", function(error, data) {
         .attr("id", "state-borders")
         .attr("d", path);
 
-        console.log("map loaded");
-    //loadMapData();
+    loadMapData();
 });
 
 function loadMapData() {
 d3.json("../data/college.json", function(error, data) {
 
-    completeDataSet= data;
+        completeDataSet= d3.entries(data);
 
-
+        console.log(completeDataSet);
          var tooltip = d3.select("body").append("div")
           .attr("class", "tooltip")
           .style("opacity", 0);
 
         var domainarray = [];
-        for (i in USAFidsums) {
-            domainarray.push(USAFidsums[i].sum);
+        for (i in completeDataSet) {
+            if (completeDataSet[i].cost == null) {
+                domainarray.push(0);
+            }
+            else {
+                domainarray.push(completeDataSet[i].cost);
+            }
         }
 
         var scale = d3.scale.linear()
@@ -152,56 +156,44 @@ d3.json("../data/college.json", function(error, data) {
 
         // create station circles
         g.selectAll("circles.points")
-        .data(data)
+        .data(completeDataSet)
         .enter()
         .append("circle")
-        .attr("r", function(d) { // radius depends on sum at current station
-            if (USAFidsums[d["USAF"]] !== undefined) {
-                return scale(USAFidsums[d["USAF"]].sum);
-            }
-            else { // null value
-                return 2;
-            }
-        })
+        .attr("r", function(d) { console.log(d); return scale(d.cost); })
         .attr("transform", function(d) {
-            if (projection([d["NSRDB_LON(dd)"], d["NSRDB_LAT (dd)"]]) !== null) {
-                return "translate(" + projection([d["NSRDB_LON(dd)"], d["NSRDB_LAT (dd)"]]) + ")";
+            if (projection([d.location[0], d.location[1]]) !== null) {
+                return "translate(" + projection([d.location[0], d.location[1]]) + ")";
             }
             else { // don't display null values
                 return "translate(-100,-100)";
             }
         })
-        .style("fill", function(d) { // blue if sum isn't NaN
-            if (USAFidsums[d["USAF"]] == undefined) {
-                return "#666666";
-            }
-            else { // gray if null value
-                return "#336699";
-            }})
-        .on("mouseover", function(d) {
-              tooltip.transition()
-                .duration(100)
-                .style("opacity", .9)
-                .style("position", "absolute")
-                .style("border", "1px solid gray")
-                .style("background-color", "#ffffca")
-                .style("overflow", "hidden")
-                .style("z-index", "5");
+        .style("fill", "blue");
 
-              tooltip.html(
-                "station: "+d["STATION"] + "<br />" +
-                "sum: "+USAFidsums[d["USAF"]].sum
-                )
-              .style("left", (d3.event.pageX +4) + "px")
-              .style("top", (d3.event.pageY - 35) + "px")
-              .style("font-size", "12px")
-              .style("padding", "2px");
-            })
-            .on("mouseout", function(d) {
-              tooltip.transition()
-                .duration(100)
-                .style("opacity", 0);
-            });
+        // .on("mouseover", function(d) {
+        //       tooltip.transition()
+        //         .duration(100)
+        //         .style("opacity", .9)
+        //         .style("position", "absolute")
+        //         .style("border", "1px solid gray")
+        //         .style("background-color", "#ffffca")
+        //         .style("overflow", "hidden")
+        //         .style("z-index", "5");
+
+        //       tooltip.html(
+        //         "college: "+d.key + "<br />" +
+        //         "cost: "+USAFidsums[d["USAF"]].sum
+        //         )
+        //       .style("left", (d3.event.pageX +4) + "px")
+        //       .style("top", (d3.event.pageY - 35) + "px")
+        //       .style("font-size", "12px")
+        //       .style("padding", "2px");
+        //     })
+        //     .on("mouseout", function(d) {
+        //       tooltip.transition()
+        //         .duration(100)
+        //         .style("opacity", 0);
+        //     });
 
 
 });
