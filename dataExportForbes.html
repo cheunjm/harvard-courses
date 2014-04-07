@@ -41,7 +41,7 @@
                   name = $(td).find("h3 a").text().replace("—"," ");
                 }
                 if (index == 3){
-                  tuition = convertToInt($(td).find("p").text().substring(1));
+                  cost = convertToInt($(td).find("p").text().substring(1));
                 }
                 if (index == 4){
                   size = convertToInt($(td).find("p").text());
@@ -57,7 +57,7 @@
                     location[0] = res.results[0].geometry.location.lat;
                     location[1] = res.results[0].geometry.location.lng;
                     console.log(location);
-                    DataSet[name] = {"rank": rank,"tuition": tuition, "size": size, "location": location}
+                    DataSet[name] = {"rank": rank,"cost": cost, "size": size, "location": location}
                     console.log(count);
                     if (!--count) {saveToFile(DataSet,"college.json")}
                 }
