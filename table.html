@@ -54,7 +54,8 @@
   <script>
 
 
-  d3.json("../data/college.json", function(error,data){
+  d3.csv("../data/college.csv", function(error,data){
+    console.log(data);
 
 
       // d3.select("body")
@@ -66,7 +67,7 @@
 
     // table.append("caption")
     //   .html("Unemployment Rates for States<br>Monthly Rankings<br>Seasonally Adjusted<br>Dec. 2013<sup>p</sup>");
-    var table_header = ["Rank", "College", "Cost", "Size"]
+    var table_header = ["Name", "Rank", "Cost", "Size"]
     thead.append("tr").selectAll("th")
       .data(table_header)
       .enter()
@@ -74,16 +75,9 @@
       .text(function(d) { return d; });
 
     var rows = tbody.selectAll("tr")
-      .data(data.slice(1))
+      .data(data)
       .enter()
       .append("tr");
-
-    var paint_zebra_rows = function(rows) {
-      rows
-        .classed("odd", function(_,i) { return (i % 2) == 0; });
-    }
-
-    paint_zebra_rows(rows)
 
     var cells = rows.selectAll("td")
       .data(function(row) {
@@ -95,15 +89,6 @@
       .append("td")
       .text(function(d) { return d; })
 
-    rows.insert("td").append("svg")
-     .attr("width", 75)
-     .attr("height", 10)
-     .append("rect")
-     .attr("height", 10)
-     .attr("width", function(d) { return parseFloat(d[0]); });
-
-    thead.select("tr").append("th")
-      .text("Chart");
 
     thead.selectAll("tr > th")
       .on("click", function(_,i) {
@@ -126,7 +111,6 @@
           });
         }
 
-        paint_zebra_rows(tbody.selectAll("tr"));
       });
 
     rows.selectAll("td")

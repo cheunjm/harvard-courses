@@ -13,6 +13,7 @@
 <script>
     var convertToInt;
     var output = new Array();
+    var csv = new Array();
 
     $.ajax({
         url: "http://www.forbes.com/top-colleges/list/#page:1_sort:0_direction:asc_search:_filter:All%20states",
@@ -26,8 +27,11 @@
             var list = root.find("#thelist")
             var rows = list.find("table tbody tr")
             var count = 99;
+            csv.push("name,rank,cost,size")
+
             $.each(rows, function(index,value) {
-              var name ="";
+              var string = "";
+              var name = "";
               var rank;
               var cost;
               var size;
@@ -35,18 +39,22 @@
               var tds = $(value).find("td")
               $.each(tds, function(index, td){
                 if (index == 0){
-                  rank = $(td).find("p").text();
+                  rank = convertToInt($(td).find("p").text());
                 }
                 if (index == 1){
-                  name = $(td).find("h3 a").text().replace("—"," ");
+                  name = $(td).find("h3 a").text();
                 }
                 if (index == 3){
                   cost = convertToInt($(td).find("p").text().substring(1));
+                  if(isNaN(cost))
+                    {cost = 0;}
                 }
                 if (index == 4){
                   size = convertToInt($(td).find("p").text());
                 }
               })
+              string = "" + name + "," + rank + "," + cost + "," + size;
+              csv.push(string);
 
               $.ajax({
                 url:"https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&sensor=false&key=AIzaSyDtnTEh_vBIIgNkCb9Lu4UHQ_1gT0Y4QZs",
@@ -59,7 +67,9 @@
                     console.log(location);
                     DataSet[name] = {"rank": rank,"cost": cost, "size": size, "location": location}
                     console.log(count);
-                    if (!--count) {saveToFile(DataSet,"college.json")}
+                    if (!--count) {
+                      csv_saveToFile(csv,"college.csv")
+                      saveToFile(DataSet,"college.json")}
                 }
             });              
             })
@@ -85,6 +95,27 @@
         });
         saveAs(blob, filename);
     }
+
+    var csv_saveToFile = function(arrayOfLines, fileName) {
+       /* adds linebreaks at the end*/
+       var blob, blobText;
+       blobText = arrayOfLines.map(function(d) {
+         if (d.endsWith("\n")) {
+           return d;
+         } else {
+           return d + "\n";
+         }
+       });
+       blob = new Blob(blobText, {
+         type: "text/plain;charset=utf-8"
+       });
+       return saveAs(blob, fileName);
+     };
+
+     String.prototype.endsWith = function(suffix) {
+       return this.indexOf(suffix, this.length - suffix.length) !== -1;
+     };
+  
 
 
 
