@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CS171 Homework 1</title>
+
+  <style type="text/css">
+  h1 {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    color: #183061;
+    font-size: 23px;
+    font-weight: normal;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  thead {
+    font-weight: bold;
+  }
+
+  table td, table th, caption {
+    padding: 3px;
+    border: 1px solid gray;;
+  }
+
+  table th:not(:first-child) {
+    cursor: s-resize;
+  }
+
+  table th:not(:first-child)#sorted {
+    cursor: n-resize;
+  }
+
+  table td:first-child, table td:last-child {
+    text-align: center;
+  }
+
+  table tr.odd {
+    background-color: #EEE;
+  }
+  table .highlight {
+    background-color: #F3ED86 !important;
+  }
+
+  rect {
+    fill: steelblue;
+  }
+  </style>
+</head>
+<body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script>
+
+
+  d3.json("../data/college.json", function(error,data){
+
+
+      // d3.select("body")
+      // .append("h1")
+      // .text("Unemployment Rates for States");
+    var table = d3.select("body").append("table"),
+      thead = table.append("thead");
+      tbody = table.append("tbody");
+
+    // table.append("caption")
+    //   .html("Unemployment Rates for States<br>Monthly Rankings<br>Seasonally Adjusted<br>Dec. 2013<sup>p</sup>");
+    var table_header = ["Rank", "College", "Cost", "Size"]
+    thead.append("tr").selectAll("th")
+      .data(table_header)
+      .enter()
+      .append("th")
+      .text(function(d) { return d; });
+
+    var rows = tbody.selectAll("tr")
+      .data(data.slice(1))
+      .enter()
+      .append("tr");
+
+    var paint_zebra_rows = function(rows) {
+      rows
+        .classed("odd", function(_,i) { return (i % 2) == 0; });
+    }
+
+    paint_zebra_rows(rows)
+
+    var cells = rows.selectAll("td")
+      .data(function(row) {
+        return d3.range(Object.keys(row).length).map(function(column, i) {
+          return row[Object.keys(row)[i]];
+          });
+        })
+      .enter()
+      .append("td")
+      .text(function(d) { return d; })
+
+    rows.insert("td").append("svg")
+     .attr("width", 75)
+     .attr("height", 10)
+     .append("rect")
+     .attr("height", 10)
+     .attr("width", function(d) { return parseFloat(d[0]); });
+
+    thead.select("tr").append("th")
+      .text("Chart");
+
+    thead.selectAll("tr > th")
+      .on("click", function(_,i) {
+        var is_sorted = (d3.select(this).attr("id") == "sorted");
+
+        // toggle sorted state
+        thead.selectAll("th").attr("id", null);
+        if (!is_sorted)
+          d3.select(this).attr("id", "sorted");
+
+        if (i == 1) {
+          tbody.selectAll("tr").sort(function(a, b) {
+            var ascending = d3.ascending(a[1], b[1]);
+            return is_sorted ? ascending : - ascending;
+          });
+        } else if (i == 2 || i == 3) {
+          tbody.selectAll("tr").sort(function(a, b) {
+            var ascending = d3.ascending(parseFloat(a[2]), parseFloat(b[2])) || d3.ascending(a[1], b[1]);
+            return is_sorted ? ascending : - ascending;
+          });
+        }
+
+        paint_zebra_rows(tbody.selectAll("tr"));
+      });
+
+    rows.selectAll("td")
+      .on("mouseover", function(_,i) {
+        d3.select(this.parentNode)
+          .classed("highlight", true);
+        tbody.selectAll("tr").selectAll("td")
+          .classed("highlight", function(_,j) { if (i == j) return true; });
+      }).on("mouseout", function() {
+        tbody.selectAll("tr")
+          .classed("highlight", false)
+          .selectAll("td")
+          .classed("highlight", false);
+      });
+
+    var color = d3.scale.linear()
+      .domain(d3.extent(data.slice(1), function(d) { return parseFloat(d[2]); }))
+      .interpolate(d3.interpolateRgb)
+      .range(["orangered", "silver"])
+
+    tbody.selectAll("tr td:nth-child(3)")
+      .style("background", function(d) { return color(parseFloat(d)); });
+
+
+    })
+
+
+  </script>
+</body>
+</html>
