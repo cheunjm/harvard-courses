@@ -430,11 +430,19 @@ function createPlot(data) {
           .style("fill", "black")
           .text("Cost")
 
+    // color scale for points
+        var color = d3.scale.linear()
+        .domain(d3.extent(data, function(d) { return d.cost; }))
+        .interpolate(d3.interpolateRgb)
+        .range(['white', 'blue'])
+
+    // create points for scatterplot
       svg.selectAll(".dot")
           .data(data)
         .enter().append("circle")
           .attr("class", "dot")
           .attr("r", 3.5)
+          .attr("fill", function(d) { return color(d.cost); })
           .attr("cx", function(d) { return x(d.size); })
           .attr("cy", function(d) { return y(d.cost); })
           .on("mouseover", function(d) {
