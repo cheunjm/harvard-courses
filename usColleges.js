@@ -74,125 +74,7 @@ var svg = canvas.append("g").attr({
 
 var completeDataSet;
 
-function createMap() {
-d3.json("../data/us-named.json", function(error, data) {
-        var projection = d3.geo.albersUsa()
-        .scale(1000)
-        .translate([width / 2, height / 2]);
-
-        var path = d3.geo.path()
-            .projection(projection);
-
-        svg.append("rect")
-            .attr("class", "background")
-            .attr("width", width)
-            .attr("height", height)
-            .on("click", clicked);
-
-        var g = svg.append("g");
-        
-        var usMap = topojson.feature(data,data.objects.states).features;
-
-        g.append("g")
-                .attr("id", "states")
-            .selectAll(".country")
-                .data(usMap)
-            .enter().append("path")
-                .attr("d", path)
-                .on("click", clicked);
-
-        g.append("path")
-            .datum(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; }))
-            .attr("id", "state-borders")
-            .attr("d", path);
-
-            var mapData= d3.entries(completeDataSet);
-
-             var tooltip = d3.select("body").append("div")
-              .attr("class", "tooltip")
-              .style("opacity", 0);
-
-            var domainarray = [];
-            for (i in mapData) {
-                if (mapData[i].value.size == null) {
-                    domainarray.push(0);
-                }
-                else {
-                    domainarray.push(mapData[i].value.size);
-                }
-            }
-
-            var scale = d3.scale.linear()
-                .domain(d3.extent(domainarray))
-                .range([2, 10]);
-
-            // create color scale for circles based on cost
-
-            // create station circles
-            g.selectAll("circles.points")
-            .data(mapData)
-            .enter()
-            .append("circle")
-            .attr("r", function(d) { return scale(d.value.size); })
-            .attr("transform", function(d) {
-                    return "translate(" + projection([d.value.location[1], d.value.location[0]]) + ")";
-                })
-            .style("stroke", "#000")
-                .on("mouseover", function(d) {
-                  tooltip.transition()
-                    .duration(100)
-                    .style("opacity", .9)
-                    .style("position", "absolute")
-                    .style("border", "1px solid gray")
-                    .style("background-color", "#ffffca")
-                    .style("overflow", "hidden")
-                    .style("z-index", "5");
-
-                  tooltip.html(
-                    d.key + "<br />" +
-                    "Enrollment: "+ d.value.size
-                    )
-                  .style("left", (d3.event.pageX +4) + "px")
-                  .style("top", (d3.event.pageY - 35) + "px")
-                  .style("font-size", "12px")
-                  .style("padding", "2px");
-                })
-                .on("mouseout", function(d) {
-                  tooltip.transition()
-                    .duration(100)
-                    .style("opacity", 0);
-                });
-
-    function clicked(d) {
-      var x, y, k;
-
-      if (d && centered !== d) {
-        var centroid = path.centroid(d);
-        x = centroid[0];
-        y = centroid[1];
-        k = 4;
-        centered = d;
-      } else {
-        x = width / 2;
-        y = height / 2;
-        k = 1;
-        centered = null;
-      }
-
-      g.selectAll("path")
-          .classed("active", centered && function(d) { return d === centered; });
-
-      g.transition()
-          .duration(750)
-          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-          .style("stroke-width", 1.5 / k + "px");
-    }
-    });
-
-}
-
 function loadColleges() {
-
     d3.json("../data/college.json", function(error,data){
         completeDataSet = data;
         d3.csv("../data/college.csv", function(error,data) {
@@ -201,6 +83,124 @@ function loadColleges() {
             createPlot(data);
         });
     });
+}
+
+function createMap() {
+    // initialize basic map
+    d3.json("../data/us-named.json", function(error, data) {
+            var projection = d3.geo.albersUsa()
+            .scale(1000)
+            .translate([width / 2, height / 2]);
+
+            var path = d3.geo.path()
+                .projection(projection);
+
+            svg.append("rect")
+                .attr("class", "background")
+                .attr("width", width)
+                .attr("height", height)
+                .on("click", clicked);
+
+            var g = svg.append("g");
+            
+            var usMap = topojson.feature(data,data.objects.states).features;
+
+            g.append("g")
+                    .attr("id", "states")
+                .selectAll(".country")
+                    .data(usMap)
+                .enter().append("path")
+                    .attr("d", path)
+                    .on("click", clicked);
+
+            g.append("path")
+                .datum(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; }))
+                .attr("id", "state-borders")
+                .attr("d", path);
+
+                var mapData= d3.entries(completeDataSet);
+
+                // tooltip
+                 var tooltip = d3.select("body").append("div")
+                  .attr("class", "tooltip")
+                  .style("opacity", 0);
+
+                var domainarray = [];
+                for (i in mapData) {
+                    if (mapData[i].value.size == null) {
+                        domainarray.push(0);
+                    }
+                    else {
+                        domainarray.push(mapData[i].value.size);
+                    }
+                }
+
+                var scale = d3.scale.linear()
+                    .domain(d3.extent(domainarray))
+                    .range([2, 10]);
+
+                // create color scale for circles based on cost
+
+                // create station circles
+                g.selectAll("circles.points")
+                .data(mapData)
+                .enter()
+                .append("circle")
+                .attr("r", function(d) { return scale(d.value.size); })
+                .attr("transform", function(d) {
+                        return "translate(" + projection([d.value.location[1], d.value.location[0]]) + ")";
+                    })
+                .style("stroke", "#000")
+                    .on("mouseover", function(d) {
+                      tooltip.transition()
+                        .duration(100)
+                        .style("opacity", .9)
+                        .style("position", "absolute")
+                        .style("border", "1px solid gray")
+                        .style("background-color", "#ffffca")
+                        .style("overflow", "hidden")
+                        .style("z-index", "5");
+
+                      tooltip.html(
+                        d.key + "<br />" +
+                        "Enrollment: "+ d.value.size
+                        )
+                      .style("left", (d3.event.pageX +4) + "px")
+                      .style("top", (d3.event.pageY - 35) + "px")
+                      .style("font-size", "12px")
+                      .style("padding", "2px");
+                    })
+                    .on("mouseout", function(d) {
+                      tooltip.transition()
+                        .duration(100)
+                        .style("opacity", 0);
+                    });
+
+        function clicked(d) {
+          var x, y, k;
+
+          if (d && centered !== d) {
+            var centroid = path.centroid(d);
+            x = centroid[0];
+            y = centroid[1];
+            k = 4;
+            centered = d;
+          } else {
+            x = width / 2;
+            y = height / 2;
+            k = 1;
+            centered = null;
+          }
+
+          g.selectAll("path")
+              .classed("active", centered && function(d) { return d === centered; });
+
+          g.transition()
+              .duration(750)
+              .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+              .style("stroke-width", 1.5 / k + "px");
+        }
+        });
 
 }
 
@@ -393,9 +393,10 @@ function createPlot(data) {
           .call(xAxis)
         .append("text")
           .attr("class", "label")
-          .attr("x", 330)
+          .attr("x", 280)
           .attr("y", -6)
           .style("text-anchor", "end")
+          .style("fill", "black")
           .text("Enrollment");
 
       svg.append("g")
@@ -407,6 +408,7 @@ function createPlot(data) {
           .attr("y", 6)
           .attr("dy", ".71em")
           .style("text-anchor", "end")
+          .style("fill", "black")
           .text("Cost")
 
       svg.selectAll(".dot")
