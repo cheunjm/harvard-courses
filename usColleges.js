@@ -135,11 +135,26 @@ function createMap() {
                     }
                 }
 
+                console.log(domainarray);
+
+                var colordomainarray = [];
+                for (i in mapData) {
+                    if (mapData[i].value.cost > 0) {
+                        colordomainarray.push(mapData[i].value.cost);
+                    }
+                }  
+
+                console.log(colordomainarray);
+
                 var scale = d3.scale.linear()
                     .domain(d3.extent(domainarray))
                     .range([2, 10]);
 
                 // create color scale for circles based on cost
+                var color = d3.scale.linear()
+                .domain(d3.extent(colordomainarray))
+                .interpolate(d3.interpolateRgb)
+                .range(['white', 'blue'])
 
                 // create station circles
                 g.selectAll("circles.points")
@@ -151,6 +166,7 @@ function createMap() {
                         return "translate(" + projection([d.value.location[1], d.value.location[0]]) + ")";
                     })
                 .style("stroke", "#000")
+                .style("fill", function(d) { return color(d.value.cost); })
                     .on("mouseover", function(d) {
                       tooltip.transition()
                         .duration(100)
@@ -163,11 +179,13 @@ function createMap() {
 
                       tooltip.html(
                         d.key + "<br />" +
-                        "Enrollment: "+ d.value.size
+                        "Enrollment: "+ d.value.size + "<br />" +
+                        "Cost: $" + d.value.cost
                         )
                       .style("left", (d3.event.pageX +4) + "px")
-                      .style("top", (d3.event.pageY - 35) + "px")
-                      .style("font-size", "12px")
+                      .style("top", (d3.event.pageY - 40) + "px")
+                      .style("font-size", "10px")
+                      .style("font-weight", "bold")
                       .style("padding", "2px");
                     })
                     .on("mouseout", function(d) {
@@ -198,7 +216,7 @@ function createMap() {
           g.transition()
               .duration(750)
               .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-              .style("stroke-width", 1.5 / k + "px");
+              .style("stroke-width", 1 / k + "px");
         }
         });
 
@@ -362,6 +380,7 @@ function createPlot(data) {
 
     var xAxis = d3.svg.axis()
         .scale(x)
+        .ticks(8)
         .orient("bottom");
 
     var yAxis = d3.svg.axis()
@@ -435,6 +454,7 @@ function createPlot(data) {
               .style("left", (d3.event.pageX +4) + "px")
               .style("top", (d3.event.pageY - 40) + "px")
               .style("font-size", "10px")
+              .style("font-weight", "bold")
               .style("padding", "2px");
             })
           .on("mouseout", function(d) {
