@@ -59,14 +59,14 @@ var svg = canvas.append("g").attr({
 //     transform: "translate(" + margin.left + "," + margin.top + ")"
 // });
 
-var plotVis = d3.select("#plotVis").append("svg").attr({ 
-    width: plotVisDimensions.width + margin.left + margin.right,
-    height: plotVisDimensions.height
-});
+// var plotVis = d3.select("#plotVis").append("svg").attr({ 
+//     width: plotVisDimensions.width + margin.left + margin.right,
+//     height: plotVisDimensions.height
+// });
 
-var plotVisg = plotVis.append("g").attr({
-    transform: "translate(" + margin.left + "," + margin.top + ")"
-});
+// var plotVisg = plotVis.append("g").attr({
+//     transform: "translate(" + margin.left + "," + margin.top + ")"
+// });
 
 // var focus = detailVis.append("g").attr({
 //         transform: "translate(" + margin.left + "," + margin.top + ")"
@@ -137,7 +137,7 @@ d3.json("../data/us-named.json", function(error, data) {
             .attr("transform", function(d) {
                     return "translate(" + projection([d.value.location[1], d.value.location[0]]) + ")";
                 })
-            .style("fill", "blue")
+            .style("stroke", "#000")
                 .on("mouseover", function(d) {
                   tooltip.transition()
                     .duration(100)
@@ -150,7 +150,7 @@ d3.json("../data/us-named.json", function(error, data) {
 
                   tooltip.html(
                     d.key + "<br />" +
-                    "SIze: "+ d.value.size
+                    "Enrollment: "+ d.value.size
                     )
                   .style("left", (d3.event.pageX +4) + "px")
                   .style("top", (d3.event.pageY - 35) + "px")
@@ -195,13 +195,16 @@ function loadColleges() {
 
     d3.json("../data/college.json", function(error,data){
         completeDataSet = data;
-        createMap();
-        createTable();
-    })
+        d3.csv("../data/college.csv", function(error,data) {
+            createMap();
+            createTable(data);
+            createPlot(data);
+        });
+    });
 
 }
-function createTable() {
-      d3.csv("../data/college.csv", function(error,data) {
+
+function createTable(data) {
         var name_sorted = false;
         var rank_sorted = true;
         var cost_sorted = false;
@@ -341,14 +344,102 @@ function createTable() {
             size_sorted = !size_sorted; 
             size_cursor();
         });
-
-        createPlot();
-    });
 }
 
-function createPlot() {
+function createPlot(data) {
     // insert scatterplot.html data here
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    var x = d3.scale.linear()
+        .range([0, 280]);
+
+    var y = d3.scale.linear()
+        .range([160, 0]);
+
+    var color = d3.scale.category10();
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+    var svg = d3.select("#plotVis").append("svg")
+        .attr("width", 330)
+        .attr("height", 200)
+      .append("g")
+        .attr("transform", "translate(50, 20)");
+
+      data.forEach(function(d) {
+        d.cost = +d.cost;
+        d.size = +d.size;
+      });
+
+      // tooltip
+    var tooltip = d3.select("#plotVis").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+      x.domain(d3.extent(data, function(d) { return d.size; })).nice();
+      y.domain(d3.extent(data, function(d) { return d.cost; })).nice();
+
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0, 160)")
+          .call(xAxis)
+        .append("text")
+          .attr("class", "label")
+          .attr("x", 330)
+          .attr("y", -6)
+          .style("text-anchor", "end")
+          .text("Enrollment");
+
+      svg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+        .append("text")
+          .attr("class", "label")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Cost")
+
+      svg.selectAll(".dot")
+          .data(data)
+        .enter().append("circle")
+          .attr("class", "dot")
+          .attr("r", 3.5)
+          .attr("cx", function(d) { return x(d.size); })
+          .attr("cy", function(d) { return y(d.cost); })
+          .on("mouseover", function(d) {
+            tooltip.transition()
+                .duration(100)
+                .style("opacity", .9)
+                .style("position", "absolute")
+                .style("border", "1px solid gray")
+                .style("background-color", "#ffffca")
+                .style("overflow", "hidden")
+                .style("z-index", "5");
+
+            tooltip.html(
+                    d.name + "<br />" +
+                    "Enrollment: "+ d.size + "<br />" +
+                    "Cost: $" + d.cost)
+              .style("left", (d3.event.pageX +4) + "px")
+              .style("top", (d3.event.pageY - 40) + "px")
+              .style("font-size", "10px")
+              .style("padding", "2px");
+            })
+          .on("mouseout", function(d) {
+                tooltip.transition()
+                .duration(100)
+                .style("opacity", 0);
+            });
 }
     
-  
 loadColleges();
