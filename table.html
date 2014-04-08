@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>CS171 Homework 1</title>
+  <title></title>
 
   <style type="text/css">
   h1 {
@@ -52,92 +52,149 @@
 <body>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script>
-
-
   d3.csv("../data/college.csv", function(error,data){
-    console.log(data);
+      if (error) {console.log(error);} 
+      else {
+        var name_sorted = false;
+        var rank_sorted = true;
+        var cost_sorted = false;
+        var size_sorted = false;    
 
+        var table = d3.select("body").append("table"),
+        thead = table.append("thead");
+        tbody = table.append("tbody");
 
-      // d3.select("body")
-      // .append("h1")
-      // .text("Unemployment Rates for States");
-    var table = d3.select("body").append("table"),
-      thead = table.append("thead");
-      tbody = table.append("tbody");
+        var table_header = ["Name", "Rank", "Cost", "Size"]
+        
+        thead.append("tr").selectAll("th")
+        .data(table_header)
+         .enter()
+        .append("th")
+        .text(function(d) { return d; })
+        .attr("id", function (d,i) {
+          if (i == 0){
+            return "Name";
+          }
+          else if (i == 1){
+            return "Rank";
+          }
+          else if (i == 2){
+            return "Cost";
+          }
+          else {
+            return "Size";
+          }
+        });
 
-    // table.append("caption")
-    //   .html("Unemployment Rates for States<br>Monthly Rankings<br>Seasonally Adjusted<br>Dec. 2013<sup>p</sup>");
-    var table_header = ["Name", "Rank", "Cost", "Size"]
-    thead.append("tr").selectAll("th")
-      .data(table_header)
-      .enter()
-      .append("th")
-      .text(function(d) { return d; });
+        var rows = tbody.selectAll("tr")
+        .data(data)
+        .enter()
+        .append("tr");
 
-    var rows = tbody.selectAll("tr")
-      .data(data)
-      .enter()
-      .append("tr");
-
-    var cells = rows.selectAll("td")
-      .data(function(row) {
-        return d3.range(Object.keys(row).length).map(function(column, i) {
-          return row[Object.keys(row)[i]];
+        var cells = rows.selectAll("td")
+        .data(function(row) {
+          return d3.range(Object.keys(row).length).map(function(column, i) {
+            return row[Object.keys(row)[i]];
           });
         })
-      .enter()
-      .append("td")
-      .text(function(d) { return d; })
+        .enter()
+        .append("td")
+        .text(function(d) { return d; });
 
 
-    thead.selectAll("tr > th")
-      .on("click", function(_,i) {
-        var is_sorted = (d3.select(this).attr("id") == "sorted");
+        var column_class = rows.selectAll("td").attr("class", function(d,i){return "col_" + i; }); 
 
-        // toggle sorted state
-        thead.selectAll("th").attr("id", null);
-        if (!is_sorted)
-          d3.select(this).attr("id", "sorted");
+        var name_cursor = function(){ // changes in cursor for the state header
+          d3.select("#Name").style("cursor", function(){
+          if (name_sorted)
+          {
+            return "s-resize";
+          }
+          else{return "n-resize";}
+        })};
 
-        if (i == 1) {
-          tbody.selectAll("tr").sort(function(a, b) {
-            var ascending = d3.ascending(a[1], b[1]);
-            return is_sorted ? ascending : - ascending;
-          });
-        } else if (i == 2 || i == 3) {
-          tbody.selectAll("tr").sort(function(a, b) {
-            var ascending = d3.ascending(parseFloat(a[2]), parseFloat(b[2])) || d3.ascending(a[1], b[1]);
-            return is_sorted ? ascending : - ascending;
-          });
+        var rank_cursor = function(){  // changes in cursor for the rate header
+        d3.select("#Rank").style("cursor", function(){
+        if (rank_sorted)
+        {
+          return "s-resize";
         }
+        else{return "n-resize";}
+        })};
 
-      });
-
-    rows.selectAll("td")
-      .on("mouseover", function(_,i) {
-        d3.select(this.parentNode)
-          .classed("highlight", true);
-        tbody.selectAll("tr").selectAll("td")
-          .classed("highlight", function(_,j) { if (i == j) return true; });
-      }).on("mouseout", function() {
-        tbody.selectAll("tr")
-          .classed("highlight", false)
-          .selectAll("td")
-          .classed("highlight", false);
-      });
-
-    var color = d3.scale.linear()
-      .domain(d3.extent(data.slice(1), function(d) { return parseFloat(d[2]); }))
-      .interpolate(d3.interpolateRgb)
-      .range(["orangered", "silver"])
-
-    tbody.selectAll("tr td:nth-child(3)")
-      .style("background", function(d) { return color(parseFloat(d)); });
+        var cost_cursor = function(){  // changes in cursor for the rate header
+        d3.select("#Cost").style("cursor", function(){
+        if (cost_sorted)
+        {
+          return "s-resize";
+        }
+        else{return "n-resize";}
+        })};
 
 
-    })
+        var size_cursor = function(){  // changes in cursor for the rate header
+        d3.select("#Size").style("cursor", function(){
+        if (rank_sorted)
+        {
+          return "s-resize";
+        }
+        else{return "n-resize";}
+        })};
 
+        // initializing all the functions so that they are functioning when the data is loaded
+        name_cursor();
+        rank_cursor();
+        cost_cursor();
+        size_cursor();
 
+        // sorting columns when state clicked
+        var name_sort = thead.select("#Name").on("click", function (d,i) {
+          rows.sort(function(a,b) {
+            if(name_sorted) {
+              b = [a, a = b][0];
+            }
+            return d3.ascending(a.name,b.name);           
+          })
+            name_sorted = !name_sorted; 
+            name_cursor();
+        });
+
+        // sorting columns when rate clicked
+        var rank_sort = thead.select("#Rank").on("click", function (d,i) {
+          rows.sort(function(a,b) {
+            if (rank_sorted){
+                b = [a, a = b][0];
+            }
+            return d3.ascending(parseFloat(a.rank),parseFloat(b.rank));
+            })
+            rank_sorted = !rank_sorted; 
+            rank_cursor();
+        });
+
+        var cost_sort = thead.select("#Cost").on("click", function (d,i) {
+          rows.sort(function(a,b) {
+            if (cost_sorted){
+                b = [a, a = b][0];
+            }
+            return d3.ascending(parseFloat(a.cost),parseFloat(b.cost));
+            })
+            cost_sorted = !cost_sorted; 
+            cost_cursor();
+        });
+
+        var size_sort = thead.select("#Size").on("click", function (d,i) {
+          rows.sort(function(a,b) {
+            if (size_sorted){
+                b = [a, a = b][0];
+            }
+            return d3.ascending(parseFloat(a.size),parseFloat(b.size));
+            })
+            size_sorted = !size_sorted; 
+            size_cursor();
+        });
+
+      }
+    });
   </script>
 </body>
 </html>

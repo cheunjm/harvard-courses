@@ -10,85 +10,85 @@
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <style type="text/css">
-    svg{
-        /*background: #eeeeee;*/
+    * {
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+    svg {
+        background-color: white;
+    }
+
+    rect {
+        background-color: white;
+    }
+
+    g {
+        fill: white;
+    }
+
+    td {
+      padding: 0px;
+    }
+
+    .tick text {
+        fill: black;
     }
 
     .country{
-        fill: #dffaff;
+        /*fill: #dffaff;*/
         stroke:  steelblue;
     }
 
-    text{
+    text {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 9pt;
         /*font-weight: lighter;*/
     }
 
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: #000;
-
+    .axis text {
+        font: 10px sans-serif;
     }
 
-    .x.axis path {
-      display: none;
+    .axis line,
+    .axis path {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
     }
-    .station{
-        fill:lightgrey;
-        opacity: .7;
-    }
-    .station.hasData{
-        fill:blue;
-        opacity: 1;
-    }
-    .hourLine{
-        fill:none;
-        stroke:steelblue;
 
-    }
     .brush .extent{
         fill:gray;
         opacity: .3;
     }
-
-    .d3-tip {
-      line-height: 1;
-      font-weight: bold;
-      padding: 12px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      border-radius: 2px;
+    #states {
+      fill: #aaa;
+    }
+    #states .active {
+      fill: orange;
+    }
+    #state-borders {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 1.5px;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      pointer-events: none;
     }
 
-    /* Creates a small triangle extender for the tooltip */
-    .d3-tip:after {
-      box-sizing: border-box;
-      display: inline;
-      font-size: 10px;
-      width: 100%;
-      line-height: 1;
-      color: rgba(0, 0, 0, 0.8);
-      content: "\25BC";
-      position: absolute;
-      text-align: center;
+    #mapVis, #tableVis, #plotVis, #detailVis {
+      border: 2px solid black;
     }
 
-    /* Style northward tooltips differently */
-    .d3-tip.n:after {
-      margin: -1px 0 0 0;
-      top: 100%;
-      left: 0;
-    }
-    .axis text {
-      font: 8px sans-serif;
-    }
-    .name {
-      font: 8px sans-serif;
+    #tableVis {
+      width: 334px;
+      height: 445px;
+      overflow: scroll;
     }
 
-
+    #tableVis table {
+      width: 98%;
+      height: 98%;
+      padding-left: 5px;
+    }
 
 </style>
 
@@ -98,7 +98,19 @@
 
 
 <table>
-    <tr><td><div id="vis"></div></td><td><div id="detailVis"></div></td></tr>
+    <tr>
+      <td><div id="mapVis"></div></td>
+      <td>
+          <table>
+            <tr>
+              <td><div id="tableVis"></div></td>
+            </tr>
+            <tr>
+              <td><div id="plotVis"></div></td>
+            </tr>
+          </table>
+      </td>
+    </tr>
 </table>
 
 

@@ -10,54 +10,344 @@ var margin = {
 };
 
 var width = 1060 - margin.left - margin.right;
-var height = 800 - margin.bottom - margin.top;
+var height = 650 - margin.bottom - margin.top;
 
 var centered;
-var bbVis = {
+var mapVis = {
     x: 100,
     y: 10,
     w: width - 100,
     h: 300
 };
 
-var bbDetail = {
-  width :350,
-  height: 200
+// var bbDetail = {
+//   width : 230,
+//   height: 536
+// }
+
+var tableVisDimensions = {
+    width: 230,
+    height: 441
 }
 
-var detailVis = d3.select("#detailVis").append("svg").attr({
-    width:bbDetail.width+margin.left + margin.right,
-    height:bbDetail.height + margin.top + margin.bottom
-})
+var plotVisDimensions = {
+    width: 230,
+    height: 200
+}
 
-var canvas = d3.select("#vis").append("svg").attr({
-    width: width + margin.left + margin.right,
+// var detailVis = d3.select("#detailVis").append("svg").attr({
+//     width: bbDetail.width + margin.left + margin.right,
+//     height: bbDetail.height + margin.top + margin.bottom
+// })
+
+
+var canvas = d3.select("#mapVis").append("svg").attr({
+    width: width + margin.left + margin.right - 150,
     height: height + margin.top + margin.bottom
-    })
+    });
 
 var svg = canvas.append("g").attr({
-        transform: "translate(" + margin.left + "," + margin.top + ")"
+        transform: "translate(" + (margin.left-80) + "," + margin.top + ")"
     });
 
-var focus = detailVis.append("g").attr({
-        transform: "translate(" + margin.left + "," + margin.top + ")"
+// var tableVis = d3.select("#tableVis").append("svg").attr({
+//     width: tableVisDimensions.width + margin.left + margin.right,
+//     height: tableVisDimensions.height
+// });
+
+// var tableVisg = tableVis.append("g").attr({
+//     transform: "translate(" + margin.left + "," + margin.top + ")"
+// });
+
+var plotVis = d3.select("#plotVis").append("svg").attr({ 
+    width: plotVisDimensions.width + margin.left + margin.right,
+    height: plotVisDimensions.height
+});
+
+var plotVisg = plotVis.append("g").attr({
+    transform: "translate(" + margin.left + "," + margin.top + ")"
+});
+
+// var focus = detailVis.append("g").attr({
+//         transform: "translate(" + margin.left + "," + margin.top + ")"
+//     });
+
+var completeDataSet;
+
+function createMap() {
+d3.json("../data/us-named.json", function(error, data) {
+        var projection = d3.geo.albersUsa()
+        .scale(1000)
+        .translate([width / 2, height / 2]);
+
+        var path = d3.geo.path()
+            .projection(projection);
+
+        svg.append("rect")
+            .attr("class", "background")
+            .attr("width", width)
+            .attr("height", height)
+            .on("click", clicked);
+
+        var g = svg.append("g");
+        
+        var usMap = topojson.feature(data,data.objects.states).features;
+
+        g.append("g")
+                .attr("id", "states")
+            .selectAll(".country")
+                .data(usMap)
+            .enter().append("path")
+                .attr("d", path)
+                .on("click", clicked);
+
+        g.append("path")
+            .datum(topojson.mesh(data, data.objects.states, function(a, b) { return a !== b; }))
+            .attr("id", "state-borders")
+            .attr("d", path);
+
+            var mapData= d3.entries(completeDataSet);
+
+             var tooltip = d3.select("body").append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0);
+
+            var domainarray = [];
+            for (i in mapData) {
+                if (mapData[i].value.size == null) {
+                    domainarray.push(0);
+                }
+                else {
+                    domainarray.push(mapData[i].value.size);
+                }
+            }
+
+            var scale = d3.scale.linear()
+                .domain(d3.extent(domainarray))
+                .range([2, 10]);
+
+            // create color scale for circles based on cost
+
+            // create station circles
+            g.selectAll("circles.points")
+            .data(mapData)
+            .enter()
+            .append("circle")
+            .attr("r", function(d) { return scale(d.value.size); })
+            .attr("transform", function(d) {
+                    return "translate(" + projection([d.value.location[1], d.value.location[0]]) + ")";
+                })
+            .style("fill", "blue")
+                .on("mouseover", function(d) {
+                  tooltip.transition()
+                    .duration(100)
+                    .style("opacity", .9)
+                    .style("position", "absolute")
+                    .style("border", "1px solid gray")
+                    .style("background-color", "#ffffca")
+                    .style("overflow", "hidden")
+                    .style("z-index", "5");
+
+                  tooltip.html(
+                    d.key + "<br />" +
+                    "SIze: "+ d.value.size
+                    )
+                  .style("left", (d3.event.pageX +4) + "px")
+                  .style("top", (d3.event.pageY - 35) + "px")
+                  .style("font-size", "12px")
+                  .style("padding", "2px");
+                })
+                .on("mouseout", function(d) {
+                  tooltip.transition()
+                    .duration(100)
+                    .style("opacity", 0);
+                });
+
+    function clicked(d) {
+      var x, y, k;
+
+      if (d && centered !== d) {
+        var centroid = path.centroid(d);
+        x = centroid[0];
+        y = centroid[1];
+        k = 4;
+        centered = d;
+      } else {
+        x = width / 2;
+        y = height / 2;
+        k = 1;
+        centered = null;
+      }
+
+      g.selectAll("path")
+          .classed("active", centered && function(d) { return d === centered; });
+
+      g.transition()
+          .duration(750)
+          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+          .style("stroke-width", 1.5 / k + "px");
+    }
     });
 
-var projection = d3.geo.albersUsa().translate([width / 2, height / 2]);//.precision(.1);
-var path = d3.geo.path().projection(projection);
-
-var completeDataSet = {};
+}
 
 function loadColleges() {
 
     d3.json("../data/college.json", function(error,data){
-        completeDataSet= data;
-        console.log(data);
+        completeDataSet = data;
+        createMap();
         createTable();
     })
 
 }
 function createTable() {
+      d3.csv("../data/college.csv", function(error,data) {
+        var name_sorted = false;
+        var rank_sorted = true;
+        var cost_sorted = false;
+        var size_sorted = false;    
+
+        var table = d3.select("#tableVis").append("table"),
+        thead = table.append("thead");
+        tbody = table.append("tbody");
+
+        var table_header = ["Name", "Rank", "Cost", "Size"]
+        
+        thead.append("tr").selectAll("th")
+        .data(table_header)
+         .enter()
+        .append("th")
+        .text(function(d) { return d; })
+        .attr("id", function (d,i) {
+          if (i == 0){
+            return "Name";
+          }
+          else if (i == 1){
+            return "Rank";
+          }
+          else if (i == 2){
+            return "Cost";
+          }
+          else {
+            return "Size";
+          }
+        })
+        .style("font-size", "12px");
+
+        var rows = tbody.selectAll("tr")
+        .data(data)
+        .enter()
+        .append("tr");
+
+        var cells = rows.selectAll("td")
+        .data(function(row) {
+          return d3.range(Object.keys(row).length).map(function(column, i) {
+            return row[Object.keys(row)[i]];
+          });
+        })
+        .enter()
+        .append("td")
+        .text(function(d) { return d; })
+        .style("font-size", "13px");
+
+
+        var column_class = rows.selectAll("td").attr("class", function(d,i){return "col_" + i; }); 
+
+        var name_cursor = function(){ // changes in cursor for the state header
+          d3.select("#Name").style("cursor", function(){
+          if (name_sorted)
+          {
+            return "s-resize";
+          }
+          else{return "n-resize";}
+        })};
+
+        var rank_cursor = function(){  // changes in cursor for the rate header
+        d3.select("#Rank").style("cursor", function(){
+        if (rank_sorted)
+        {
+          return "s-resize";
+        }
+        else{return "n-resize";}
+        })};
+
+        var cost_cursor = function(){  // changes in cursor for the rate header
+        d3.select("#Cost").style("cursor", function(){
+        if (cost_sorted)
+        {
+          return "s-resize";
+        }
+        else{return "n-resize";}
+        })};
+
+
+        var size_cursor = function(){  // changes in cursor for the rate header
+        d3.select("#Size").style("cursor", function(){
+        if (size_sorted)
+        {
+          return "s-resize";
+        }
+        else{return "n-resize";}
+        })};
+
+        // initializing all the functions so that they are functioning when the data is loaded
+        name_cursor();
+        rank_cursor();
+        cost_cursor();
+        size_cursor();
+
+        // sorting columns when state clicked
+        var name_sort = thead.select("#Name").on("click", function (d,i) {
+          rows.sort(function(a,b) {
+            if(name_sorted) {
+              b = [a, a = b][0];
+            }
+            return d3.ascending(a.name,b.name);           
+          })
+            name_sorted = !name_sorted; 
+            name_cursor();
+        });
+
+        // sorting columns when rate clicked
+        var rank_sort = thead.select("#Rank").on("click", function (d,i) {
+          rows.sort(function(a,b) {
+            if (rank_sorted){
+                b = [a, a = b][0];
+            }
+            return d3.ascending(parseFloat(a.rank),parseFloat(b.rank));
+            })
+            rank_sorted = !rank_sorted; 
+            rank_cursor();
+        });
+
+        var cost_sort = thead.select("#Cost").on("click", function (d,i) {
+          rows.sort(function(a,b) {
+            if (cost_sorted){
+                b = [a, a = b][0];
+            }
+            return d3.ascending(parseFloat(a.cost),parseFloat(b.cost));
+            })
+            cost_sorted = !cost_sorted; 
+            cost_cursor();
+        });
+
+        var size_sort = thead.select("#Size").on("click", function (d,i) {
+          rows.sort(function(a,b) {
+            if (size_sorted){
+                b = [a, a = b][0];
+            }
+            return d3.ascending(parseFloat(a.size),parseFloat(b.size));
+            })
+            size_sorted = !size_sorted; 
+            size_cursor();
+        });
+
+        createPlot();
+    });
+}
+
+function createPlot() {
+    // insert scatterplot.html data here
 }
     
   
