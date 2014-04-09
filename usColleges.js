@@ -255,10 +255,17 @@ function createTable(data) {
         })
         .style("font-size", "12px");
 
+        // helper function that returns alternating colored rows
+        function zebraRows(d, i) {
+          if (i % 2 == 0) { return 'lightgray'; }
+          else { return 'white'; }
+        }
+
         var rows = tbody.selectAll("tr")
         .data(data)
         .enter()
-        .append("tr");
+        .append("tr")
+        .style("background-color", function(d, i) { return zebraRows(d, i); });
 
         var cells = rows.selectAll("td")
         .data(function(row) {
@@ -325,6 +332,8 @@ function createTable(data) {
             }
             return d3.ascending(a.name,b.name);           
           })
+        .style("background-color", function(d, i) { return zebraRows(d, i); })
+
             name_sorted = !name_sorted; 
             name_cursor();
         });
@@ -337,6 +346,8 @@ function createTable(data) {
             }
             return d3.ascending(parseFloat(a.rank),parseFloat(b.rank));
             })
+            .style("background-color", function(d, i) { return zebraRows(d, i); })
+
             rank_sorted = !rank_sorted; 
             rank_cursor();
         });
@@ -348,6 +359,7 @@ function createTable(data) {
             }
             return d3.ascending(parseFloat(a.cost),parseFloat(b.cost));
             })
+            .style("background-color", function(d, i) { return zebraRows(d, i); })
             cost_sorted = !cost_sorted; 
             cost_cursor();
         });
@@ -359,6 +371,7 @@ function createTable(data) {
             }
             return d3.ascending(parseFloat(a.size),parseFloat(b.size));
             })
+            .style("background-color", function(d, i) { return zebraRows(d, i); })
             size_sorted = !size_sorted; 
             size_cursor();
         });
@@ -370,8 +383,10 @@ function createPlot(data) {
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
-    var x = d3.scale.linear()
-        .range([0, 280]);
+    // var x = d3.scale.linear()
+    //     .range([0, 280]);
+
+    var x = d3.scale.pow().exponent(0.6).range([0, 280]); 
 
     var y = d3.scale.linear()
         .range([160, 0]);
@@ -445,6 +460,7 @@ function createPlot(data) {
           .attr("fill", function(d) { return color(d.cost); })
           .attr("cx", function(d) { return x(d.size); })
           .attr("cy", function(d) { return y(d.cost); })
+          .style("stroke", "#000")
           .on("mouseover", function(d) {
             tooltip.transition()
                 .duration(100)
