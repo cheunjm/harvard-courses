@@ -135,16 +135,12 @@ function createMap() {
                     }
                 }
 
-                console.log(domainarray);
-
                 var colordomainarray = [];
                 for (i in mapData) {
                     if (mapData[i].value.cost > 0) {
                         colordomainarray.push(mapData[i].value.cost);
                     }
                 }  
-
-                console.log(colordomainarray);
 
                 var scale = d3.scale.linear()
                     .domain(d3.extent(domainarray))
@@ -257,16 +253,53 @@ function createTable(data) {
 
         // helper function that returns alternating colored rows
         function zebraRows(d, i) {
-          if (i % 2 == 0) { return 'lightgray'; }
-          else { return 'white'; }
+          if (i % 2 == 0) { return "lightgray"; }
+          else { return "white"; }
         }
 
+        var clicked = false;
+        var clickedRow;
+
+        // manipulate rows
         var rows = tbody.selectAll("tr")
         .data(data)
         .enter()
         .append("tr")
-        .style("background-color", function(d, i) { return zebraRows(d, i); });
+        .style("background-color", function(d, i) { return zebraRows(d, i); })
+        .on("mouseover", function(d, i) {
+            d3.select(this)
+            .style("cursor", "pointer");
+        })
+        .on("mouseout", function(d, i) {
+            d3.select(this)
+            .style("cursor", "normal");
+        })
+        .on("click", function(d, i) {
+            if (clicked) {
+                if (i !== clickedRow) {
+                    clickedRow = i;
+                    d3.selectAll("#tableVis table tr")
+                    .style("font-weight", "normal");
 
+                    d3.select(this)
+                    .style("font-weight", "bold");
+                }
+                else {
+                    clicked = false;
+                    d3.select(this)
+                    .style("font-weight", "normal");
+                }
+
+            }
+            else {
+                clicked = true;
+                clickedRow = i;
+                d3.select(this)
+                .style("font-weight", "bold");
+            }
+        });
+
+        // create cells for each row
         var cells = rows.selectAll("td")
         .data(function(row) {
           return d3.range(Object.keys(row).length).map(function(column, i) {
@@ -279,10 +312,10 @@ function createTable(data) {
         .style("font-size", "13px");
 
 
-        var column_class = rows.selectAll("td").attr("class", function(d,i){return "col_" + i; }); 
+        var column_class = rows.selectAll("td").attr("class", function(d,i) {return "col_" + i; }); 
 
-        var name_cursor = function(){ // changes in cursor for the state header
-          d3.select("#Name").style("cursor", function(){
+        var name_cursor = function() { // changes in cursor for the state header
+          d3.select("#Name").style("cursor", function() {
           if (name_sorted)
           {
             return "s-resize";
@@ -290,8 +323,8 @@ function createTable(data) {
           else{return "n-resize";}
         })};
 
-        var rank_cursor = function(){  // changes in cursor for the rate header
-        d3.select("#Rank").style("cursor", function(){
+        var rank_cursor = function() {  // changes in cursor for the rate header
+        d3.select("#Rank").style("cursor", function() {
         if (rank_sorted)
         {
           return "s-resize";
@@ -299,8 +332,8 @@ function createTable(data) {
         else{return "n-resize";}
         })};
 
-        var cost_cursor = function(){  // changes in cursor for the rate header
-        d3.select("#Cost").style("cursor", function(){
+        var cost_cursor = function() {  // changes in cursor for the rate header
+        d3.select("#Cost").style("cursor", function() {
         if (cost_sorted)
         {
           return "s-resize";
@@ -309,7 +342,7 @@ function createTable(data) {
         })};
 
 
-        var size_cursor = function(){  // changes in cursor for the rate header
+        var size_cursor = function() {  // changes in cursor for the rate header
         d3.select("#Size").style("cursor", function(){
         if (size_sorted)
         {
