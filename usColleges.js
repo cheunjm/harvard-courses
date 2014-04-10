@@ -183,11 +183,19 @@ function createMap() {
                       .style("font-size", "10px")
                       .style("font-weight", "bold")
                       .style("padding", "2px");
+
+                      d3.select(this)
+                      .style("cursor", "pointer");
+
                     })
                     .on("mouseout", function(d) {
                       tooltip.transition()
                         .duration(100)
                         .style("opacity", 0);
+
+                        d3.select(this)
+                        .style("cursor", "normal");
+
                     });
 
         function clicked(d) {
@@ -513,11 +521,18 @@ function createPlot(data) {
               .style("font-size", "10px")
               .style("font-weight", "bold")
               .style("padding", "2px");
+
+              d3.select(this)
+              .style("cursor", "pointer");
+
             })
           .on("mouseout", function(d) {
                 tooltip.transition()
                 .duration(100)
                 .style("opacity", 0);
+
+                d3.select(this)
+                .style("cursor", "normal");
             });
 }
     
