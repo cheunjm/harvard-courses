@@ -230,13 +230,14 @@ function createTable(data) {
         var name_sorted = false;
         var rank_sorted = true;
         var cost_sorted = false;
-        var size_sorted = false;    
+        var size_sorted = false; 
+        var rate_sorted = false;     
 
         var table = d3.select("#tableVis").append("table"),
         thead = table.append("thead");
         tbody = table.append("tbody");
 
-        var table_header = ["Name", "Rank", "Cost", "Size"]
+        var table_header = ["Name", "Rank", "Cost", "Size", "Rate"]
         
         thead.append("tr").selectAll("th")
         .data(table_header)
@@ -253,8 +254,11 @@ function createTable(data) {
           else if (i == 2){
             return "Cost";
           }
-          else {
+          else if (i == 3){
             return "Size";
+          }
+          else {
+            return "Rate";
           }
         })
         .style("font-size", "12px");
@@ -317,7 +321,8 @@ function createTable(data) {
         .enter()
         .append("td")
         .text(function(d) { return d; })
-        .style("font-size", "13px");
+        .style("font-size", "10px")
+        .style("text-align", "center");
 
 
         var column_class = rows.selectAll("td").attr("class", function(d,i) {return "col_" + i; }); 
@@ -349,6 +354,14 @@ function createTable(data) {
         else{return "n-resize";}
         })};
 
+        var rate_cursor = function() {  // changes in cursor for the rate header
+        d3.select("#Rate").style("cursor", function() {
+        if (rate_sorted)
+        {
+          return "s-resize";
+        }
+        else{return "n-resize";}
+        })};
 
         var size_cursor = function() {  // changes in cursor for the rate header
         d3.select("#Size").style("cursor", function(){
@@ -364,6 +377,7 @@ function createTable(data) {
         rank_cursor();
         cost_cursor();
         size_cursor();
+        rate_cursor();
 
         // sorting columns when state clicked
         var name_sort = thead.select("#Name").on("click", function (d,i) {
@@ -415,6 +429,18 @@ function createTable(data) {
             .style("background-color", function(d, i) { return zebraRows(d, i); })
             size_sorted = !size_sorted; 
             size_cursor();
+        });
+
+        var rate_sort = thead.select("#Rate").on("click", function (d,i) {
+          rows.sort(function(a,b) {
+            if (rate_sorted){
+                b = [a, a = b][0];
+            }
+            return d3.ascending(parseFloat(a.rate),parseFloat(b.rate));
+            })
+            .style("background-color", function(d, i) { return zebraRows(d, i); })
+            rate_sorted = !rate_sorted; 
+            rate_cursor();
         });
 }
 
