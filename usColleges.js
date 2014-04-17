@@ -75,9 +75,9 @@ var svg = canvas.append("g").attr({
 var completeDataSet;
 
 function loadColleges() {
-    d3.json("../data/college.json", function(error,data){
+    d3.json("../data/nu.json", function(error,data){
         completeDataSet = data;
-        d3.csv("../data/college.csv", function(error,data) {
+        d3.csv("../data/nu.csv", function(error,data) {
             createMap();
             createTable(data);
             createPlot(data);
