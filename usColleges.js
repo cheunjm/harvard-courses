@@ -636,6 +636,12 @@ $("#reset").click(function() {
   reset();
 })
 
+// search functionality
+$(function() {
+  var colleges = ["Harvard University", "Yale University", "Cornell University", "Dartmouth College"];
+  $("#search").autocomplete({source: colleges});
+})
+
 // function highlightSP (data) {
 //   d3.select(#Yale)
 // }
