@@ -2,6 +2,8 @@
  * plugin for slider
  * Created by hen on 3/8/14.
  */
+
+// slider for enrollment
 $(function() {
     $( "#slider-range1" ).slider({
       range: true,
@@ -16,6 +18,8 @@ $(function() {
     $( "#amount1" ).val($( "#slider-range1" ).slider( "values", 0 ) +
       " -" + $( "#slider-range1" ).slider( "values", 1 ) );
   });
+
+// slider for tuition
 $(function() {
     $( "#slider-range2" ).slider({
       range: true,
@@ -100,14 +104,21 @@ var svg = canvas.append("g").attr({
 //         transform: "translate(" + margin.left + "," + margin.top + ")"
 //     });
 
-var original_jsonData, original_csvData;
+var initial_nu_json, initial_nu_csv;
+var initial_nlac_json, initial_nlac_csv;
 
 function loadColleges() {
     d3.json("../data/nu.json", function(error,data1){
-        original_jsonData = data1;
+        initial_nu_json = data1;
         d3.csv("../data/nu.csv", function(error,data2) {
-          original_csvData = data2
-            createVis(original_jsonData,original_csvData);
+            initial_nu_csv = data2
+            d3.json("../data/nu.json", function(error,data3){
+              initial_nlac_json = data3;
+                d3.csv("../data/nu.csv", function(error,data4) {
+                initial_nlac_csv = data4;
+                createVis(initial_nu_json,initial_nu_csv);
+              });
+           });
         });
     });
 }
@@ -652,5 +663,6 @@ $(function() {
 // }
 
 function updateData() {
+
   
 }
