@@ -662,7 +662,15 @@ $(function() {
 //   d3.select(#Yale)
 // }
 
-function updateData() {
+var nuClicked = true;
 
-  
+$("#nu").click(function() {
+  nuClicked = true;
+})
+$("#nlac").click(function() {
+  nuClicked = false;
+})
+
+function updateData() {
+  console.log(nuClicked)
 }
