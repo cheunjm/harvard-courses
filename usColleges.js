@@ -290,28 +290,42 @@ function createTable(data) {
             .style("cursor", "normal");
         })
         .on("click", function(d, i) {
-            if (clicked) {
-                if (i !== clickedRow) {
-                    clickedRow = i;
-                    d3.selectAll("#tableVis table tr")
-                    .style("font-weight", "normal");
+          highlightVis(d);
 
-                    d3.select(this)
-                    .style("font-weight", "bold");
-                }
-                else {
-                    clicked = false;
-                    d3.select(this)
-                    .style("font-weight", "normal");
-                }
+            // // a row has been clicked
+            // if (clicked) {
+            //     // clicked row that hasn't been already clicked
+            //     if (i !== clickedRow) {
+            //         // unhighlight prev row that had been clicked
+            //         clickedRow = i;
+            //         d3.selectAll("#tableVis table tr")
+            //         .style("font-weight", "normal");
+            //         // unhighlight corresponding point in mapVis and plotVis
 
-            }
-            else {
-                clicked = true;
-                clickedRow = i;
-                d3.select(this)
-                .style("font-weight", "bold");
-            }
+            //         // highlight new row that has been clicked
+            //         d3.select(this)
+            //         .style("font-weight", "bold");
+            //         // highlight corresponding point in mapVis and plotVis
+            //     }
+            //     // clicked row that has already been clicked
+            //     else {
+            //         clicked = false;
+            //         d3.select(this)
+            //         .style("font-weight", "normal");
+
+            //         // unhighlight corresponding point in mapVis and plotVis
+            //     }
+
+            // }
+            // // no row has been clicked yet
+            // else {
+            //     clicked = true;
+            //     clickedRow = i;
+            //     d3.select(this)
+            //     .style("font-weight", "bold");
+
+            //     // highlight corresponding point in mapVis and plotVis
+            // }
         });
 
         // create cells for each row
