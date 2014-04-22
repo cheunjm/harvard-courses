@@ -608,6 +608,10 @@ function createPlot(data) {
     
 loadColleges();
 
+function highlightVis(data){
+  
+}
+
 function updateData() {
   
 }
