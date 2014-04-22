@@ -307,6 +307,7 @@ function createTable(data) {
         .data(data)
         .enter()
         .append("tr")
+        .attr("id", function(d){return d.name.toString().replace(/ /g,"").replace(".","")})
         .style("background-color", function(d, i) { return zebraRows(d, i); })
         .on("mouseover", function(d, i) {
             d3.select(this)
@@ -609,8 +610,15 @@ function createPlot(data) {
 loadColleges();
 
 function highlightVis(data){
-  
+
+  console.log("#"+data.name.toString().replace(/ /g,"").replace(".",""));
+  var heehee =d3.select("#"+data.name.toString().replace(/ /g,"").replace(".","")).style("font-weight", "bold");
+  // highlightSP(data);
 }
+
+// function highlightSP (data) {
+//   d3.select(#Yale)
+// }
 
 function updateData() {
   
