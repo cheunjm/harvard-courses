@@ -33,6 +33,10 @@
       padding: 0px;
     }
 
+    form {
+      display: inline;
+    }
+
     .tick text {
         fill: black;
     }
@@ -104,7 +108,17 @@
 <h2>U.S. Colleges by Enrollment and Tuition</h2>
 <table>
     <tr>
-      <td><div id="mapVis"></div></td>
+      <td>
+        <div id="mapVis">
+          <form>
+            <input type="text" name="search" placeholder="Search">
+          </form>
+          <form>
+            <input type="radio" name="nu" value="nu" checked>National Universities
+            <input type="radio" name="nu" value="nlac">National Liberal Arts Colleges
+          </form>
+        </div>
+      </td>
       <td>
           <table>
             <tr>

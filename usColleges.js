@@ -453,7 +453,7 @@ function createPlot(data) {
     // var x = d3.scale.linear()
     //     .range([0, 280]);
 
-    var x = d3.scale.pow().exponent(0.6).range([0, 280]); 
+    var x = d3.scale.pow().exponent(0.8).range([0, 280]); 
 
     var y = d3.scale.linear()
         .range([160, 0]);
@@ -462,7 +462,7 @@ function createPlot(data) {
 
     var xAxis = d3.svg.axis()
         .scale(x)
-        .ticks(8)
+        .ticks(4)
         .orient("bottom");
 
     var yAxis = d3.svg.axis()

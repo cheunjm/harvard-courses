@@ -1,1 +1,1992 @@
-{"University of Hawaii—Manoa":{"rank":158,"cost":27472,"size":20426,"rate":81.2,"location":[21.2998136,-157.8176117]},"University of Nebraska—Lincoln":{"rank":101,"cost":20968,"size":24207,"rate":64.4,"location":[40.8201966,-96.70047629999999]},"University of Minnesota—Twin Cities":{"rank":69,"cost":19805,"size":51853,"rate":49.5,"location":[44.97399,-93.2277285]},"University of California—Davis":{"rank":39,"cost":36774,"size":32354,"rate":45.7,"location":[38.536855,-121.748977]},"Princeton University":{"rank":1,"cost":40170,"size":8010,"rate":7.9,"location":[40.3439888,-74.6514481]},"Harvard University":{"rank":2,"cost":42292,"size":19726,"rate":6.1,"location":[42.3770029,-71.11666009999999]},"Yale University":{"rank":3,"cost":44000,"size":11906,"rate":7.1,"location":[41.3163244,-72.92234309999999]},"Stanford University":{"rank":5,"cost":43245,"size":18217,"rate":6.6,"location":[37.4274745,-122.169719]},"Columbia University":{"rank":4,"cost":49138,"size":23168,"rate":7.4,"location":[40.8075355,-73.9625727]},"University of Chicago":{"rank":5,"cost":46386,"size":12508,"rate":13.2,"location":[41.879185,-87.6311769]},"Massachusetts Institute of Technology":{"rank":7,"cost":43498,"size":11189,"rate":9,"location":[42.360091,-71.09416]},"University of Pennsylvania":{"rank":7,"cost":45890,"size":21339,"rate":12.6,"location":[39.9522188,-75.1932137]},"California Institute of Technology":{"rank":10,"cost":41538,"size":2243,"rate":11.8,"location":[34.1376576,-118.125269]},"Duke University":{"rank":7,"cost":45476,"size":15386,"rate":13.4,"location":[36.0014258,-78.9382286]},"Dartmouth College":{"rank":10,"cost":46752,"size":6277,"rate":9.8,"location":[43.7044406,-72.2886934]},"Northwestern University":{"rank":12,"cost":45527,"size":20439,"rate":15.3,"location":[42.0539102,-87.6748758]},"Brown University":{"rank":14,"cost":45612,"size":8885,"rate":9.6,"location":[41.8267175,-71.4025625]},"Johns Hopkins University":{"rank":12,"cost":45470,"size":21001,"rate":17.7,"location":[39.3249281,-76.62335379999999]},"Washington University in St. Louis":{"rank":14,"cost":44841,"size":13952,"rate":17.9,"location":[38.6487895,-90.31079620000001]},"Vanderbilt University":{"rank":17,"cost":42978,"size":12710,"rate":14.2,"location":[36.1443747,-86.8027437]},"Cornell University":{"rank":16,"cost":45359,"size":21424,"rate":16.6,"location":[42.4534492,-76.4735027]},"Emory University":{"rank":20,"cost":44008,"size":14236,"rate":26.3,"location":[33.7920794,-84.3239795]},"Rice University":{"rank":18,"cost":38941,"size":6484,"rate":16.7,"location":[29.7173941,-95.40183119999999]},"Georgetown University":{"rank":20,"cost":44805,"size":17357,"rate":17,"location":[38.9076089,-77.07225849999999]},"University of Notre Dame":{"rank":18,"cost":44605,"size":12126,"rate":23.3,"location":[41.7052193,-86.2353067]},"Carnegie Mellon University":{"rank":23,"cost":46962,"size":12569,"rate":27.8,"location":[40.4424925,-79.9425528]},"University of California—​Berkeley":{"rank":20,"cost":35742,"size":35899,"rate":18,"location":[37.8715926,-122.272747]},"University of California—​Los Angeles":{"rank":23,"cost":35574,"size":41341,"rate":22,"location":[34.0522342,-118.2436849]},"University of Southern California":{"rank":23,"cost":46298,"size":39958,"rate":19.9,"location":[34.0223519,-118.285117]},"University of Virginia":{"rank":23,"cost":39844,"size":23907,"rate":29.6,"location":[38.0335529,-78.5079772]},"Wake Forest University":{"rank":23,"cost":44742,"size":7432,"rate":34,"location":[36.1298424,-80.2814496]},"Tufts University":{"rank":28,"cost":46598,"size":10837,"rate":21.4,"location":[42.4074843,-71.1190229]},"Brandeis University":{"rank":32,"cost":46106,"size":5808,"rate":39.1,"location":[42.3654347,-71.258595]},"Boston College":{"rank":31,"cost":45622,"size":13783,"rate":28.8,"location":[42.3355488,-71.16849450000001]},"College of William and Mary":{"rank":32,"cost":37852,"size":8258,"rate":32.2,"location":[37.2723284,-76.71690319999999]},"University of Michigan—​Ann Arbor":{"rank":28,"cost":40496,"size":43426,"rate":36.6,"location":[42.2808256,-83.7430378]},"University of Rochester":{"rank":32,"cost":45372,"size":10510,"rate":35.3,"location":[43.1305531,-77.6260033]},"New York University":{"rank":32,"cost":44848,"size":44516,"rate":35,"location":[40.72951339999999,-73.9964609]},"Georgia Institute of Technology":{"rank":36,"cost":29954,"size":21557,"rate":54.9,"location":[33.7756178,-84.39628499999999]},"University of North Carolina—​Chapel Hill":{"rank":30,"cost":30122,"size":29278,"rate":27.6,"location":[35.9131996,-79.0558445]},"Lehigh University":{"rank":41,"cost":43520,"size":7080,"rate":32.6,"location":[40.6069087,-75.37828320000001]},"Case Western Reserve University":{"rank":37,"cost":41800,"size":10026,"rate":54.3,"location":[41.5043413,-81.6083838]},"Boston University":{"rank":41,"cost":44910,"size":32603,"rate":45.6,"location":[42.3507543,-71.1073183]},"Rensselaer Polytechnic Institute":{"rank":41,"cost":46269,"size":6999,"rate":43.6,"location":[42.730172,-73.6788026]},"University of California—​San Diego":{"rank":39,"cost":36112,"size":28294,"rate":37.8,"location":[32.7153292,-117.1572551]},"University of California—​Santa Barbara":{"rank":41,"cost":36624,"size":21927,"rate":44,"location":[34.4208305,-119.6981901]},"University of Illinois—​Urbana-​Champaign":{"rank":41,"cost":29640,"size":44520,"rate":63.3,"location":[40.1164204,-88.2433829]},"Pennsylvania State University—​University Park":{"rank":37,"cost":29566,"size":45783,"rate":54.2,"location":[32.850084,-96.79310799999999]},"Yeshiva University":{"rank":47,"cost":37600,"size":6753,"rate":84,"location":[40.8504757,-73.92927399999999]},"Northeastern University":{"rank":49,"cost":41686,"size":20447,"rate":31.9,"location":[42.3398067,-71.0891717]},"University of Miami":{"rank":47,"cost":42852,"size":16172,"rate":39.7,"location":[25.7216374,-80.2792843]},"University of Wisconsin—​Madison":{"rank":41,"cost":26653,"size":42820,"rate":54.6,"location":[43.0730517,-89.4012302]},"University of Florida":{"rank":49,"cost":28541,"size":49913,"rate":44.1,"location":[29.64526399999999,-82.34639399999999]},"George Washington University":{"rank":52,"cost":47343,"size":25653,"rate":33.1,"location":[38.9007683,-77.0474734]},"University of California—​Irvine":{"rank":49,"cost":37566,"size":27479,"rate":42.4,"location":[33.6839473,-117.7946942]},"Fordham University":{"rank":57,"cost":43577,"size":15170,"rate":42.9,"location":[40.8616045,-73.885758]},"Tulane University":{"rank":52,"cost":46930,"size":13486,"rate":27.3,"location":[29.9403477,-90.12072789999999]},"Pepperdine University":{"rank":57,"cost":44902,"size":7319,"rate":38.5,"location":[34.0414202,-118.7095019]},"University of Washington":{"rank":52,"cost":29938,"size":42568,"rate":59.2,"location":[47.65533509999999,-122.3035199]},"Ohio State University—​Columbus":{"rank":52,"cost":25757,"size":56387,"rate":64,"location":[39.9611755,-82.99879419999999]},"University of Texas—​Austin":{"rank":52,"cost":33824,"size":52186,"rate":46.8,"location":[30.267153,-97.7430608]},"University of Connecticut":{"rank":57,"cost":30970,"size":25483,"rate":44.7,"location":[41.8077414,-72.2539805]},"Southern Methodist University":{"rank":60,"cost":43800,"size":10893,"rate":53.8,"location":[32.8412178,-96.78451749999999]},"Clemson University":{"rank":62,"cost":30816,"size":20768,"rate":57.9,"location":[34.6384102,-82.81163389999999]},"Syracuse University":{"rank":62,"cost":40458,"size":21029,"rate":51.3,"location":[43.0391534,-76.1351158]},"Baylor University":{"rank":75,"cost":35972,"size":15364,"rate":60.7,"location":[31.5482204,-97.1184377]},"Worcester Polytechnic Institute":{"rank":62,"cost":42778,"size":5957,"rate":52.6,"location":[42.2738556,-71.8059756]},"Marquette University":{"rank":75,"cost":34640,"size":11749,"rate":55.2,"location":[43.0388508,-87.9304238]},"Virginia Tech":{"rank":69,"cost":25320,"size":31087,"rate":70.4,"location":[37.22838429999999,-80.42341669999999]},"University of Georgia":{"rank":60,"cost":28472,"size":34519,"rate":56.1,"location":[33.9480053,-83.3773221]},"Clark University":{"rank":75,"cost":39550,"size":3503,"rate":70.1,"location":[42.250386,-71.82223119999999]},"University of Iowa":{"rank":73,"cost":26931,"size":30119,"rate":78.4,"location":[41.6626963,-91.5548998]},"Brigham Young University—​Provo":{"rank":62,"cost":4850,"size":34409,"rate":54.9,"location":[40.2338438,-111.6585337]},"Texas A&M University—​College Station":{"rank":69,"cost":25126,"size":50227,"rate":67.1,"location":[36.8301318,-101.4339148]},"University of Vermont":{"rank":82,"cost":36646,"size":13097,"rate":76.7,"location":[44.4778528,-73.1964637]},"University of Delaware":{"rank":75,"cost":29932,"size":21081,"rate":56.6,"location":[39.6779505,-75.7506113]},"University of Pittsburgh":{"rank":62,"cost":27106,"size":28769,"rate":56.1,"location":[40.4443533,-79.960835]},"Stevens Institute of Technology":{"rank":82,"cost":43561,"size":5649,"rate":42.7,"location":[40.7443226,-74.02586819999999]},"Texas Christian University":{"rank":82,"cost":36590,"size":9727,"rate":40.9,"location":[32.7078079,-97.3637066]},"Michigan State University":{"rank":73,"cost":33750,"size":48906,"rate":70.6,"location":[42.7041949,-84.4791506]},"University of Alabama":{"rank":86,"cost":22950,"size":33503,"rate":53.1,"location":[33.2144445,-87.5474349]},"University of Maryland—​College Park":{"rank":62,"cost":28348,"size":37197,"rate":46.8,"location":[38.9896967,-76.93776]},"University of Tulsa":{"rank":86,"cost":33702,"size":4326,"rate":40.7,"location":[36.150944,-95.9436367]},"Miami University—​Oxford":{"rank":75,"cost":29589,"size":17683,"rate":72.8,"location":[51.7520209,-1.2577263]},"SUNY College of Environmental Science and Forestry":{"rank":86,"cost":16445,"size":2401,"rate":50.7,"location":[43.0344612,-76.1369148]},"Stony Brook University—​SUNY":{"rank":82,"cost":19924,"size":24149,"rate":40.1,"location":[40.9256538,-73.1409429]},"Rutgers, the State University of New Jersey—​New Brunswick":{"rank":69,"cost":27523,"size":40434,"rate":60.9,"location":[40.4862157,-74.4518188]},"Purdue University—​West Lafayette":{"rank":68,"cost":28794,"size":39256,"rate":61.3,"location":[40.4258686,-86.90806549999999]},"Drexel University":{"rank":97,"cost":37505,"size":18067,"rate":74.9,"location":[39.9566127,-75.18994409999999]},"University of Colorado—​Boulder":{"rank":86,"cost":32008,"size":31725,"rate":83.6,"location":[40.0149856,-105.2705456]},"University of California—​Santa Cruz":{"rank":86,"cost":36294,"size":17404,"rate":60.9,"location":[36.9741171,-122.0307963]},"Indiana University—​Bloomington":{"rank":75,"cost":32350,"size":42133,"rate":74.4,"location":[39.165325,-86.52638569999999]},"Auburn University":{"rank":91,"cost":26364,"size":25134,"rate":77.2,"location":[32.5933574,-85.4951663]},"Binghamton University—​SUNY":{"rank":97,"cost":18464,"size":15308,"rate":42.9,"location":[42.09868669999999,-75.91797380000001]},"Colorado School of Mines":{"rank":91,"cost":32415,"size":5632,"rate":37.4,"location":[39.7512306,-105.2226523]},"University of Oklahoma":{"rank":101,"cost":19530,"size":31086,"rate":79.1,"location":[35.2058936,-97.4457137]},"University of New Hampshire":{"rank":97,"cost":29216,"size":15301,"rate":77.9,"location":[43.138948,-70.9370252]},"Florida State University":{"rank":91,"cost":21703,"size":40695,"rate":53.7,"location":[30.4418778,-84.2984889]},"University of Missouri":{"rank":97,"cost":23764,"size":34748,"rate":81.5,"location":[38.9403808,-92.32773750000001]},"University of San Diego":{"rank":91,"cost":41392,"size":8105,"rate":42.6,"location":[32.7715337,-117.1900103]},"University of Denver":{"rank":91,"cost":40707,"size":11656,"rate":67.6,"location":[39.6766174,-104.9618965]},"University of Oregon":{"rank":109,"cost":29788,"size":24518,"rate":74.2,"location":[44.0448303,-123.0726062]},"Iowa State University":{"rank":101,"cost":20278,"size":30748,"rate":82.5,"location":[42.0266187,-93.6464654]},"University of Tennessee":{"rank":101,"cost":27874,"size":29833,"rate":67.3,"location":[35.9544013,-83.92945639999999]},"American University":{"rank":75,"cost":40649,"size":12904,"rate":44.2,"location":[38.9368448,-77.0908767]},"Duquesne University":{"rank":121,"cost":31385,"size":9956,"rate":74.7,"location":[40.4372706,-79.9914615]},"Michigan Technological University":{"rank":117,"cost":28608,"size":6947,"rate":76.6,"location":[47.1170514,-88.54453149999999]},"University of Kansas":{"rank":101,"cost":24873,"size":27135,"rate":92.3,"location":[38.95442380000001,-95.251663]},"Clarkson University":{"rank":121,"cost":40610,"size":3604,"rate":76.1,"location":[44.6627128,-74.999495]},"University of Dayton":{"rank":112,"cost":35800,"size":11159,"rate":55.2,"location":[39.7406624,-84.1792421]},"Illinois Institute of Technology":{"rank":109,"cost":39842,"size":7683,"rate":55,"location":[41.8344196,-87.62846499999999]},"University of Utah":{"rank":121,"cost":24018,"size":32388,"rate":82.6,"location":[40.7649368,-111.8421021]},"University of Kentucky":{"rank":119,"cost":21192,"size":28034,"rate":67.3,"location":[38.0306511,-84.5039697]},"St. Louis University":{"rank":101,"cost":36726,"size":13981,"rate":63.7,"location":[38.6270025,-90.19940419999999]},"DePaul University":{"rank":121,"cost":33990,"size":24966,"rate":62.3,"location":[41.8776314,-87.6272206]},"University of St. Thomas":{"rank":112,"cost":34013,"size":10316,"rate":86.7,"location":[44.9419215,-93.18974899999999]},"Colorado State University":{"rank":121,"cost":25166,"size":30647,"rate":74.7,"location":[40.573436,-105.0865473]},"University of the Pacific":{"rank":112,"cost":39810,"size":6652,"rate":37.8,"location":[37.9806605,-121.3076096]},"Seton Hall University":{"rank":128,"cost":35820,"size":9830,"rate":84.4,"location":[40.7426312,-74.2461738]},"Temple University":{"rank":121,"cost":24710,"size":36744,"rate":67.2,"location":[39.9820942,-75.1546786]},"University of South Carolina":{"rank":112,"cost":28528,"size":31288,"rate":60.6,"location":[33.996112,-81.0274276]},"University of Massachusetts—​Amherst":{"rank":91,"cost":27974,"size":28236,"rate":62.6,"location":[42.366667,-72.516667]},"University of San Francisco":{"rank":117,"cost":40294,"size":10017,"rate":69.2,"location":[37.7757492,-122.4503856]},"Loyola University Chicago":{"rank":101,"cost":35503,"size":15720,"rate":81.2,"location":[41.9985666,-87.6566204]},"University at Buffalo—​SUNY":{"rank":109,"cost":18609,"size":28952,"rate":56.9,"location":[42.88644679999999,-78.8783689]},"University of Arkansas":{"rank":128,"cost":19074,"size":24537,"rate":63.5,"location":[36.0678324,-94.17365509999999]},"University of California—​Riverside":{"rank":112,"cost":35838,"size":21005,"rate":62.7,"location":[33.9533487,-117.3961564]},"University of Arizona":{"rank":119,"cost":27073,"size":40223,"rate":76.9,"location":[33.4522217,-112.0662126]},"Missouri University of Science & Technology":{"rank":128,"cost":24675,"size":7647,"rate":89.6,"location":[37.9542535,-91.7740231]},"The Catholic University of America":{"rank":121,"cost":38526,"size":6838,"rate":63.2,"location":[38.9368811,-76.99869199999999]},"North Carolina State University—​Raleigh":{"rank":101,"cost":21661,"size":34340,"rate":49.6,"location":[35.7795897,-78.6381787]},"Polytechnic Institute of New York University":{"rank":128,"cost":41328,"size":4652,"rate":62.1,"location":[40.6940741,-73.9869325]},"University at Albany—​SUNY":{"rank":128,"cost":18460,"size":17316,"rate":55.5,"location":[42.6525793,-73.7562317]},"Hofstra University":{"rank":135,"cost":37400,"size":11023,"rate":58.7,"location":[40.7164008,-73.6000657]},"New School":{"rank":135,"cost":40928,"size":10575,"rate":65,"location":[40.73556689999999,-73.9970591]},"Ohio University":{"rank":135,"cost":19344,"size":27402,"rate":77.7,"location":[39.3243417,-82.1014242]},"Kansas State University":{"rank":135,"cost":21530,"size":24378,"rate":99,"location":[39.1974437,-96.5847249]},"Washington State University":{"rank":128,"cost":25889,"size":27679,"rate":76,"location":[46.7319374,-117.1544219]},"Louisiana State University—​Baton Rouge":{"rank":135,"cost":25790,"size":30225,"rate":76.2,"location":[30.4582829,-91.1403196]},"University of Illinois—​Chicago":{"rank":128,"cost":25796,"size":27875,"rate":63.9,"location":[41.8781136,-87.6297982]},"Mississippi State University":{"rank":142,"cost":16960,"size":20365,"rate":69.3,"location":[33.4555279,-88.7903868]},"Arizona State University":{"rank":142,"cost":23654,"size":73378,"rate":87.9,"location":[33.4535269,-112.0730317]},"George Mason University":{"rank":141,"cost":28592,"size":32961,"rate":65.8,"location":[38.8321941,-77.308037]},"Oklahoma State University":{"rank":142,"cost":20026,"size":25544,"rate":77.6,"location":[36.1270236,-97.07372219999999]},"University of Cincinnati":{"rank":135,"cost":25816,"size":31798,"rate":67.1,"location":[39.1329219,-84.51495039999999]},"Howard University":{"rank":142,"cost":22683,"size":10002,"rate":53.9,"location":[38.9226843,-77.0194377]},"Oregon State University":{"rank":142,"cost":23469,"size":26393,"rate":78.8,"location":[44.5637355,-123.2794752]},"Illinois State University":{"rank":152,"cost":20013,"size":20706,"rate":74,"location":[40.5115787,-88.99331409999999]},"New Jersey Institute of Technology":{"rank":150,"cost":27840,"size":9944,"rate":63.7,"location":[40.742491,-74.178078]},"Adelphi University":{"rank":152,"cost":30800,"size":7859,"rate":66.5,"location":[40.7220719,-73.6506244]},"Virginia Commonwealth University":{"rank":167,"cost":28861,"size":31752,"rate":60.2,"location":[37.5489872,-77.4534286]},"University of Maine":{"rank":167,"cost":27454,"size":10901,"rate":81.1,"location":[44.897732,-68.66870759999999]},"University of Idaho":{"rank":161,"cost":19600,"size":12420,"rate":65.7,"location":[46.7288124,-117.0126084]},"Biola University":{"rank":177,"cost":32142,"size":6302,"rate":74.7,"location":[33.9056131,-118.0180414]},"Florida Institute of Technology":{"rank":167,"cost":36020,"size":5384,"rate":59.1,"location":[28.064459,-80.622979]},"University of Rhode Island":{"rank":152,"cost":28016,"size":16451,"rate":76.9,"location":[41.4863755,-71.5317118]},"University of Wyoming":{"rank":161,"cost":14124,"size":12903,"rate":95.7,"location":[41.3130972,-105.5796706]},"University of Mississippi":{"rank":150,"cost":17728,"size":18794,"rate":61.1,"location":[34.3647324,-89.538443]},"Texas Tech University":{"rank":161,"cost":19562,"size":32467,"rate":64.3,"location":[33.5842591,-101.8782822]},"Azusa Pacific University":{"rank":173,"cost":32256,"size":10184,"rate":52.3,"location":[34.1290057,-117.8898359]},"Northern Illinois University":{"rank":177,"cost":22024,"size":21869,"rate":51.8,"location":[41.934299,-88.773718]},"San Diego State University":{"rank":152,"cost":17738,"size":31597,"rate":31.3,"location":[32.7747703,-117.071665]},"University of La Verne":{"rank":161,"cost":35000,"size":4973,"rate":39,"location":[34.1001263,-117.7701794]},"St. John Fisher College":{"rank":142,"cost":28430,"size":4008,"rate":64.2,"location":[43.115332,-77.510476]},"University of Maryland—​Baltimore County":{"rank":158,"cost":21642,"size":13637,"rate":60.4,"location":[39.4647665,-76.7336521]},"Indiana University of Pennsylvania":{"rank":177,"cost":19014,"size":15379,"rate":61,"location":[40.6169,-79.158242]},"University of Massachusetts—​Lowell":{"rank":158,"cost":19210,"size":16294,"rate":65.8,"location":[42.6334247,-71.31617179999999]},"West Virginia University":{"rank":170,"cost":19632,"size":29707,"rate":85.1,"location":[39.6361396,-79.95593579999999]},"St. John's University":{"rank":152,"cost":37260,"size":21087,"rate":53.2,"location":[40.7154084,-74.0126713]},"University of North Dakota":{"rank":173,"cost":17170,"size":15250,"rate":73.7,"location":[47.922891,-97.0768014]},"Pace University":{"rank":173,"cost":38069,"size":12772,"rate":76.8,"location":[40.7113646,-74.0051318]},"University of South Florida":{"rank":170,"cost":17325,"size":40111,"rate":43.2,"location":[28.0587031,-82.41385389999999]},"University of Alabama—​Birmingham":{"rank":152,"cost":20394,"size":17999,"rate":73.4,"location":[33.5206608,-86.80248999999999]},"St. Mary's University of Minnesota":{"rank":173,"cost":29315,"size":5574,"rate":79,"location":[44.045493,-91.6964]},"Maryville University of St. Louis":{"rank":161,"cost":25002,"size":4203,"rate":71.3,"location":[38.645269,-90.5058153]},"Southern Illinois University—​Carbondale":{"rank":177,"cost":24970,"size":18847,"rate":51.4,"location":[37.778332,-89.25222]},"University of Texas—​Dallas":{"rank":142,"cost":30378,"size":19727,"rate":52,"location":[32.7801399,-96.80045109999999]},"University of Louisville":{"rank":161,"cost":23638,"size":21242,"rate":76.3,"location":[38.2101032,-85.7590443]},"University of Central Florida":{"rank":170,"cost":22415,"size":59767,"rate":46.2,"location":[28.6024276,-81.2000599]},"Immaculata University":{"rank":190,"cost":30740,"size":4117,"rate":79.6,"location":[40.0294054,-75.5689967]},"Andrews University":{"rank":181,"cost":25470,"size":3551,"rate":37.5,"location":[41.9642053,-86.35930379999999]},"East Carolina University":{"rank":181,"cost":19683,"size":26947,"rate":62.2,"location":[35.607482,-77.366959]},"Louisiana Tech University":{"rank":190,"cost":18483,"size":11304,"rate":70.8,"location":[32.5283255,-92.64995809999999]},"Ball State University":{"rank":181,"cost":23660,"size":21053,"rate":61.2,"location":[40.1972366,-85.4088412]},"Bowling Green State University":{"rank":181,"cost":18029,"size":17286,"rate":73.6,"location":[41.3797788,-83.6300826]},"North Dakota State University":{"rank":190,"cost":17478,"size":14443,"rate":83.6,"location":[46.8923865,-96.79966879999999]},"Utah State University":{"rank":190,"cost":17886,"size":28786,"rate":96.7,"location":[41.745161,-111.8097425]},"Edgewood College":{"rank":190,"cost":24666,"size":3064,"rate":73.2,"location":[-29.8274999,30.83861]},"Western Michigan University":{"rank":181,"cost":24109,"size":24598,"rate":83.3,"location":[42.2831778,-85.61521859999999]},"Central Michigan University":{"rank":190,"cost":23670,"size":27626,"rate":63.8,"location":[43.5912088,-84.7751384]},"University of South Dakota":{"rank":190,"cost":10104,"size":10284,"rate":88.6,"location":[42.7851754,-96.9253068]},"University of Houston":{"rank":190,"cost":20892,"size":40747,"rate":56.2,"location":[29.7199489,-95.3422334]},"New Mexico State University":{"rank":190,"cost":19644,"size":17651,"rate":80.1,"location":[32.2822923,-106.7541649]},"Widener University":{"rank":181,"cost":38028,"size":6238,"rate":65.5,"location":[39.86156890000001,-75.3552631]},"University of Nevada—​Reno":{"rank":181,"cost":20064,"size":18227,"rate":83,"location":[39.5296329,-119.8138027]},"University of New Mexico":{"rank":181,"cost":11568,"size":29033,"rate":64.6,"location":[35.0843441,-106.6197553]},"Rutgers, the State University of New Jersey—​Newark":{"rank":142,"cost":27022,"size":12011,"rate":57.5,"location":[40.735657,-74.1723667]},"University of Colorado—​Denver":{"rank":190,"cost":21006,"size":22396,"rate":75.9,"location":[39.737567,-104.9847179]},"University of Alabama—​Huntsville":{"rank":181,"cost":21506,"size":7636,"rate":77.7,"location":[34.7303688,-86.5861037]}}
+{
+    "Adelphi University": {
+        "cost": 30800, 
+        "location": [
+            40.722071900000003, 
+            -73.650624399999998
+        ], 
+        "rank": 152, 
+        "rate": 66.5, 
+        "size": 7859
+    }, 
+    "American University": {
+        "cost": 40649, 
+        "location": [
+            38.936844800000003, 
+            -77.090876699999995
+        ], 
+        "rank": 75, 
+        "rate": 44.200000000000003, 
+        "size": 12904
+    }, 
+    "Andrews University": {
+        "cost": 25470, 
+        "location": [
+            41.964205300000003, 
+            -86.359303799999992
+        ], 
+        "rank": 181, 
+        "rate": 37.5, 
+        "size": 3551
+    }, 
+    "Arizona State University": {
+        "cost": 23654, 
+        "location": [
+            33.4535269, 
+            -112.0730317
+        ], 
+        "rank": 142, 
+        "rate": 87.900000000000006, 
+        "size": 73378
+    }, 
+    "Auburn University": {
+        "cost": 26364, 
+        "location": [
+            32.593357400000002, 
+            -85.495166299999994
+        ], 
+        "rank": 91, 
+        "rate": 77.200000000000003, 
+        "size": 25134
+    }, 
+    "Azusa Pacific University": {
+        "cost": 32256, 
+        "location": [
+            34.1290057, 
+            -117.88983589999999
+        ], 
+        "rank": 173, 
+        "rate": 52.299999999999997, 
+        "size": 10184
+    }, 
+    "Ball State University": {
+        "cost": 23660, 
+        "location": [
+            40.197236599999997, 
+            -85.408841199999998
+        ], 
+        "rank": 181, 
+        "rate": 61.200000000000003, 
+        "size": 21053
+    }, 
+    "Baylor University": {
+        "cost": 35972, 
+        "location": [
+            31.548220400000002, 
+            -97.118437700000001
+        ], 
+        "rank": 75, 
+        "rate": 60.700000000000003, 
+        "size": 15364
+    }, 
+    "Binghamton University\u2014\u200bSUNY": {
+        "cost": 18464, 
+        "location": [
+            42.098686699999988, 
+            -75.917973800000013
+        ], 
+        "rank": 97, 
+        "rate": 42.899999999999999, 
+        "size": 15308
+    }, 
+    "Biola University": {
+        "cost": 32142, 
+        "location": [
+            33.905613099999997, 
+            -118.0180414
+        ], 
+        "rank": 177, 
+        "rate": 74.700000000000003, 
+        "size": 6302
+    }, 
+    "Boston College": {
+        "cost": 45622, 
+        "location": [
+            42.335548799999998, 
+            -71.168494500000008
+        ], 
+        "rank": 31, 
+        "rate": 28.800000000000001, 
+        "size": 13783
+    }, 
+    "Boston University": {
+        "cost": 44910, 
+        "location": [
+            42.350754299999998, 
+            -71.107318300000003
+        ], 
+        "rank": 41, 
+        "rate": 45.600000000000001, 
+        "size": 32603
+    }, 
+    "Bowling Green State University": {
+        "cost": 18029, 
+        "location": [
+            41.379778799999997, 
+            -83.630082599999994
+        ], 
+        "rank": 181, 
+        "rate": 73.599999999999994, 
+        "size": 17286
+    }, 
+    "Brandeis University": {
+        "cost": 46106, 
+        "location": [
+            42.365434700000002, 
+            -71.258595
+        ], 
+        "rank": 32, 
+        "rate": 39.100000000000001, 
+        "size": 5808
+    }, 
+    "Brigham Young University\u2014\u200bProvo": {
+        "cost": 4850, 
+        "location": [
+            40.233843800000002, 
+            -111.65853370000001
+        ], 
+        "rank": 62, 
+        "rate": 54.899999999999999, 
+        "size": 34409
+    }, 
+    "Brown University": {
+        "cost": 45612, 
+        "location": [
+            41.826717500000001, 
+            -71.402562500000002
+        ], 
+        "rank": 14, 
+        "rate": 9.5999999999999996, 
+        "size": 8885
+    }, 
+    "California Institute of Technology": {
+        "cost": 41538, 
+        "location": [
+            34.137657599999997, 
+            -118.125269
+        ], 
+        "rank": 10, 
+        "rate": 11.800000000000001, 
+        "size": 2243
+    }, 
+    "Carnegie Mellon University": {
+        "cost": 46962, 
+        "location": [
+            40.4424925, 
+            -79.942552800000001
+        ], 
+        "rank": 23, 
+        "rate": 27.800000000000001, 
+        "size": 12569
+    }, 
+    "Case Western Reserve University": {
+        "cost": 41800, 
+        "location": [
+            41.5043413, 
+            -81.608383799999999
+        ], 
+        "rank": 37, 
+        "rate": 54.299999999999997, 
+        "size": 10026
+    }, 
+    "Central Michigan University": {
+        "cost": 23670, 
+        "location": [
+            43.591208799999997, 
+            -84.775138400000003
+        ], 
+        "rank": 190, 
+        "rate": 63.799999999999997, 
+        "size": 27626
+    }, 
+    "Clark University": {
+        "cost": 39550, 
+        "location": [
+            42.250385999999999, 
+            -71.82223119999999
+        ], 
+        "rank": 75, 
+        "rate": 70.099999999999994, 
+        "size": 3503
+    }, 
+    "Clarkson University": {
+        "cost": 40610, 
+        "location": [
+            44.662712800000001, 
+            -74.999494999999996
+        ], 
+        "rank": 121, 
+        "rate": 76.099999999999994, 
+        "size": 3604
+    }, 
+    "Clemson University": {
+        "cost": 30816, 
+        "location": [
+            34.638410200000003, 
+            -82.81163389999999
+        ], 
+        "rank": 62, 
+        "rate": 57.899999999999999, 
+        "size": 20768
+    }, 
+    "College of William and Mary": {
+        "cost": 37852, 
+        "location": [
+            37.272328399999999, 
+            -76.71690319999999
+        ], 
+        "rank": 32, 
+        "rate": 32.200000000000003, 
+        "size": 8258
+    }, 
+    "Colorado School of Mines": {
+        "cost": 32415, 
+        "location": [
+            39.7512306, 
+            -105.22265229999999
+        ], 
+        "rank": 91, 
+        "rate": 37.399999999999999, 
+        "size": 5632
+    }, 
+    "Colorado State University": {
+        "cost": 25166, 
+        "location": [
+            40.573436000000001, 
+            -105.08654730000001
+        ], 
+        "rank": 121, 
+        "rate": 74.700000000000003, 
+        "size": 30647
+    }, 
+    "Columbia University": {
+        "cost": 49138, 
+        "location": [
+            40.8075355, 
+            -73.962572699999996
+        ], 
+        "rank": 4, 
+        "rate": 7.4000000000000004, 
+        "size": 23168
+    }, 
+    "Cornell University": {
+        "cost": 45359, 
+        "location": [
+            42.453449200000001, 
+            -76.473502699999997
+        ], 
+        "rank": 16, 
+        "rate": 16.600000000000001, 
+        "size": 21424
+    }, 
+    "Dartmouth College": {
+        "cost": 46752, 
+        "location": [
+            43.704440599999998, 
+            -72.2886934
+        ], 
+        "rank": 10, 
+        "rate": 9.8000000000000007, 
+        "size": 6277
+    }, 
+    "DePaul University": {
+        "cost": 33990, 
+        "location": [
+            41.877631399999999, 
+            -87.627220600000001
+        ], 
+        "rank": 121, 
+        "rate": 62.299999999999997, 
+        "size": 24966
+    }, 
+    "Drexel University": {
+        "cost": 37505, 
+        "location": [
+            39.956612700000001, 
+            -75.189944099999991
+        ], 
+        "rank": 97, 
+        "rate": 74.900000000000006, 
+        "size": 18067
+    }, 
+    "Duke University": {
+        "cost": 45476, 
+        "location": [
+            36.0014258, 
+            -78.938228600000002
+        ], 
+        "rank": 7, 
+        "rate": 13.4, 
+        "size": 15386
+    }, 
+    "Duquesne University": {
+        "cost": 31385, 
+        "location": [
+            40.437270599999998, 
+            -79.9914615
+        ], 
+        "rank": 121, 
+        "rate": 74.700000000000003, 
+        "size": 9956
+    }, 
+    "East Carolina University": {
+        "cost": 19683, 
+        "location": [
+            35.607481999999997, 
+            -77.366958999999994
+        ], 
+        "rank": 181, 
+        "rate": 62.200000000000003, 
+        "size": 26947
+    }, 
+    "Edgewood College": {
+        "cost": 24666, 
+        "location": [
+            -29.827499899999999, 
+            30.838609999999999
+        ], 
+        "rank": 190, 
+        "rate": 73.200000000000003, 
+        "size": 3064
+    }, 
+    "Emory University": {
+        "cost": 44008, 
+        "location": [
+            33.792079399999999, 
+            -84.323979499999993
+        ], 
+        "rank": 20, 
+        "rate": 26.300000000000001, 
+        "size": 14236
+    }, 
+    "Florida Institute of Technology": {
+        "cost": 36020, 
+        "location": [
+            28.064458999999999, 
+            -80.622979000000001
+        ], 
+        "rank": 167, 
+        "rate": 59.100000000000001, 
+        "size": 5384
+    }, 
+    "Florida State University": {
+        "cost": 21703, 
+        "location": [
+            30.4418778, 
+            -84.298488899999995
+        ], 
+        "rank": 91, 
+        "rate": 53.700000000000003, 
+        "size": 40695
+    }, 
+    "Fordham University": {
+        "cost": 43577, 
+        "location": [
+            40.861604499999999, 
+            -73.885757999999996
+        ], 
+        "rank": 57, 
+        "rate": 42.899999999999999, 
+        "size": 15170
+    }, 
+    "George Mason University": {
+        "cost": 28592, 
+        "location": [
+            38.832194100000002, 
+            -77.308036999999999
+        ], 
+        "rank": 141, 
+        "rate": 65.799999999999997, 
+        "size": 32961
+    }, 
+    "George Washington University": {
+        "cost": 47343, 
+        "location": [
+            38.900768300000003, 
+            -77.047473400000001
+        ], 
+        "rank": 52, 
+        "rate": 33.100000000000001, 
+        "size": 25653
+    }, 
+    "Georgetown University": {
+        "cost": 44805, 
+        "location": [
+            38.9076089, 
+            -77.07225849999999
+        ], 
+        "rank": 20, 
+        "rate": 17, 
+        "size": 17357
+    }, 
+    "Georgia Institute of Technology": {
+        "cost": 29954, 
+        "location": [
+            33.775617799999999, 
+            -84.396284999999992
+        ], 
+        "rank": 36, 
+        "rate": 54.899999999999999, 
+        "size": 21557
+    }, 
+    "Harvard University": {
+        "cost": 42292, 
+        "location": [
+            42.377002900000001, 
+            -71.11666009999999
+        ], 
+        "rank": 2, 
+        "rate": 6.0999999999999996, 
+        "size": 19726
+    }, 
+    "Hofstra University": {
+        "cost": 37400, 
+        "location": [
+            40.716400800000002, 
+            -73.600065700000002
+        ], 
+        "rank": 135, 
+        "rate": 58.700000000000003, 
+        "size": 11023
+    }, 
+    "Howard University": {
+        "cost": 22683, 
+        "location": [
+            38.9226843, 
+            -77.019437699999997
+        ], 
+        "rank": 142, 
+        "rate": 53.899999999999999, 
+        "size": 10002
+    }, 
+    "Illinois Institute of Technology": {
+        "cost": 39842, 
+        "location": [
+            41.834419599999997, 
+            -87.628464999999991
+        ], 
+        "rank": 109, 
+        "rate": 55, 
+        "size": 7683
+    }, 
+    "Illinois State University": {
+        "cost": 20013, 
+        "location": [
+            40.511578700000001, 
+            -88.993314099999992
+        ], 
+        "rank": 152, 
+        "rate": 74, 
+        "size": 20706
+    }, 
+    "Immaculata University": {
+        "cost": 30740, 
+        "location": [
+            40.029405400000002, 
+            -75.5689967
+        ], 
+        "rank": 190, 
+        "rate": 79.599999999999994, 
+        "size": 4117
+    }, 
+    "Indiana University of Pennsylvania": {
+        "cost": 19014, 
+        "location": [
+            40.616900000000001, 
+            -79.158242000000001
+        ], 
+        "rank": 177, 
+        "rate": 61, 
+        "size": 15379
+    }, 
+    "Indiana University\u2014\u200bBloomington": {
+        "cost": 32350, 
+        "location": [
+            39.165325000000003, 
+            -86.526385699999992
+        ], 
+        "rank": 75, 
+        "rate": 74.400000000000006, 
+        "size": 42133
+    }, 
+    "Iowa State University": {
+        "cost": 20278, 
+        "location": [
+            42.0266187, 
+            -93.646465399999997
+        ], 
+        "rank": 101, 
+        "rate": 82.5, 
+        "size": 30748
+    }, 
+    "Johns Hopkins University": {
+        "cost": 45470, 
+        "location": [
+            39.324928100000001, 
+            -76.62335379999999
+        ], 
+        "rank": 12, 
+        "rate": 17.699999999999999, 
+        "size": 21001
+    }, 
+    "Kansas State University": {
+        "cost": 21530, 
+        "location": [
+            39.197443700000001, 
+            -96.584724899999998
+        ], 
+        "rank": 135, 
+        "rate": 99, 
+        "size": 24378
+    }, 
+    "Lehigh University": {
+        "cost": 43520, 
+        "location": [
+            40.606908699999998, 
+            -75.378283200000013
+        ], 
+        "rank": 41, 
+        "rate": 32.600000000000001, 
+        "size": 7080
+    }, 
+    "Louisiana State University\u2014\u200bBaton Rouge": {
+        "cost": 25790, 
+        "location": [
+            30.4582829, 
+            -91.140319599999998
+        ], 
+        "rank": 135, 
+        "rate": 76.200000000000003, 
+        "size": 30225
+    }, 
+    "Louisiana Tech University": {
+        "cost": 18483, 
+        "location": [
+            32.528325500000001, 
+            -92.649958099999992
+        ], 
+        "rank": 190, 
+        "rate": 70.799999999999997, 
+        "size": 11304
+    }, 
+    "Loyola University Chicago": {
+        "cost": 35503, 
+        "location": [
+            41.998566599999997, 
+            -87.656620399999994
+        ], 
+        "rank": 101, 
+        "rate": 81.200000000000003, 
+        "size": 15720
+    }, 
+    "Marquette University": {
+        "cost": 34640, 
+        "location": [
+            43.038850799999999, 
+            -87.9304238
+        ], 
+        "rank": 75, 
+        "rate": 55.200000000000003, 
+        "size": 11749
+    }, 
+    "Maryville University of St. Louis": {
+        "cost": 25002, 
+        "location": [
+            38.645268999999999, 
+            -90.505815299999995
+        ], 
+        "rank": 161, 
+        "rate": 71.299999999999997, 
+        "size": 4203
+    }, 
+    "Massachusetts Institute of Technology": {
+        "cost": 43498, 
+        "location": [
+            42.360090999999997, 
+            -71.094160000000002
+        ], 
+        "rank": 7, 
+        "rate": 9, 
+        "size": 11189
+    }, 
+    "Miami University\u2014\u200bOxford": {
+        "cost": 29589, 
+        "location": [
+            51.752020899999998, 
+            -1.2577263000000001
+        ], 
+        "rank": 75, 
+        "rate": 72.799999999999997, 
+        "size": 17683
+    }, 
+    "Michigan State University": {
+        "cost": 33750, 
+        "location": [
+            42.704194899999997, 
+            -84.479150599999997
+        ], 
+        "rank": 73, 
+        "rate": 70.599999999999994, 
+        "size": 48906
+    }, 
+    "Michigan Technological University": {
+        "cost": 28608, 
+        "location": [
+            47.117051400000001, 
+            -88.544531499999991
+        ], 
+        "rank": 117, 
+        "rate": 76.599999999999994, 
+        "size": 6947
+    }, 
+    "Mississippi State University": {
+        "cost": 16960, 
+        "location": [
+            33.4555279, 
+            -88.790386799999993
+        ], 
+        "rank": 142, 
+        "rate": 69.299999999999997, 
+        "size": 20365
+    }, 
+    "Missouri University of Science & Technology": {
+        "cost": 24675, 
+        "location": [
+            37.9542535, 
+            -91.774023099999994
+        ], 
+        "rank": 128, 
+        "rate": 89.599999999999994, 
+        "size": 7647
+    }, 
+    "New Jersey Institute of Technology": {
+        "cost": 27840, 
+        "location": [
+            40.742491000000001, 
+            -74.178077999999999
+        ], 
+        "rank": 150, 
+        "rate": 63.700000000000003, 
+        "size": 9944
+    }, 
+    "New Mexico State University": {
+        "cost": 19644, 
+        "location": [
+            32.282292300000002, 
+            -106.75416490000001
+        ], 
+        "rank": 190, 
+        "rate": 80.099999999999994, 
+        "size": 17651
+    }, 
+    "New School": {
+        "cost": 40928, 
+        "location": [
+            40.735566899999988, 
+            -73.997059100000001
+        ], 
+        "rank": 135, 
+        "rate": 65, 
+        "size": 10575
+    }, 
+    "New York University": {
+        "cost": 44848, 
+        "location": [
+            40.729513399999988, 
+            -73.996460900000002
+        ], 
+        "rank": 32, 
+        "rate": 35, 
+        "size": 44516
+    }, 
+    "North Carolina State University\u2014\u200bRaleigh": {
+        "cost": 21661, 
+        "location": [
+            35.779589700000002, 
+            -78.638178699999997
+        ], 
+        "rank": 101, 
+        "rate": 49.600000000000001, 
+        "size": 34340
+    }, 
+    "North Dakota State University": {
+        "cost": 17478, 
+        "location": [
+            46.892386500000001, 
+            -96.799668799999992
+        ], 
+        "rank": 190, 
+        "rate": 83.599999999999994, 
+        "size": 14443
+    }, 
+    "Northeastern University": {
+        "cost": 41686, 
+        "location": [
+            42.339806699999997, 
+            -71.089171699999994
+        ], 
+        "rank": 49, 
+        "rate": 31.899999999999999, 
+        "size": 20447
+    }, 
+    "Northern Illinois University": {
+        "cost": 22024, 
+        "location": [
+            41.934299000000003, 
+            -88.773718000000002
+        ], 
+        "rank": 177, 
+        "rate": 51.799999999999997, 
+        "size": 21869
+    }, 
+    "Northwestern University": {
+        "cost": 45527, 
+        "location": [
+            42.053910199999997, 
+            -87.674875799999995
+        ], 
+        "rank": 12, 
+        "rate": 15.300000000000001, 
+        "size": 20439
+    }, 
+    "Ohio State University\u2014\u200bColumbus": {
+        "cost": 25757, 
+        "location": [
+            39.961175500000003, 
+            -82.998794199999992
+        ], 
+        "rank": 52, 
+        "rate": 64, 
+        "size": 56387
+    }, 
+    "Ohio University": {
+        "cost": 19344, 
+        "location": [
+            39.324341699999998, 
+            -82.101424199999997
+        ], 
+        "rank": 135, 
+        "rate": 77.700000000000003, 
+        "size": 27402
+    }, 
+    "Oklahoma State University": {
+        "cost": 20026, 
+        "location": [
+            36.127023600000001, 
+            -97.073722199999992
+        ], 
+        "rank": 142, 
+        "rate": 77.599999999999994, 
+        "size": 25544
+    }, 
+    "Oregon State University": {
+        "cost": 23469, 
+        "location": [
+            44.5637355, 
+            -123.27947519999999
+        ], 
+        "rank": 142, 
+        "rate": 78.799999999999997, 
+        "size": 26393
+    }, 
+    "Pace University": {
+        "cost": 38069, 
+        "location": [
+            40.711364600000003, 
+            -74.005131800000001
+        ], 
+        "rank": 173, 
+        "rate": 76.799999999999997, 
+        "size": 12772
+    }, 
+    "Pennsylvania State University\u2014\u200bUniversity Park": {
+        "cost": 29566, 
+        "location": [
+            32.850084000000003, 
+            -96.793107999999989
+        ], 
+        "rank": 37, 
+        "rate": 54.200000000000003, 
+        "size": 45783
+    }, 
+    "Pepperdine University": {
+        "cost": 44902, 
+        "location": [
+            34.041420199999997, 
+            -118.70950190000001
+        ], 
+        "rank": 57, 
+        "rate": 38.5, 
+        "size": 7319
+    }, 
+    "Polytechnic Institute of New York University": {
+        "cost": 41328, 
+        "location": [
+            40.694074100000002, 
+            -73.986932499999995
+        ], 
+        "rank": 128, 
+        "rate": 62.100000000000001, 
+        "size": 4652
+    }, 
+    "Princeton University": {
+        "cost": 40170, 
+        "location": [
+            40.343988799999998, 
+            -74.651448099999996
+        ], 
+        "rank": 1, 
+        "rate": 7.9000000000000004, 
+        "size": 8010
+    }, 
+    "Purdue University\u2014\u200bWest Lafayette": {
+        "cost": 28794, 
+        "location": [
+            40.425868600000001, 
+            -86.908065499999992
+        ], 
+        "rank": 68, 
+        "rate": 61.299999999999997, 
+        "size": 39256
+    }, 
+    "Rensselaer Polytechnic Institute": {
+        "cost": 46269, 
+        "location": [
+            42.730172000000003, 
+            -73.678802599999997
+        ], 
+        "rank": 41, 
+        "rate": 43.600000000000001, 
+        "size": 6999
+    }, 
+    "Rice University": {
+        "cost": 38941, 
+        "location": [
+            29.7173941, 
+            -95.40183119999999
+        ], 
+        "rank": 18, 
+        "rate": 16.699999999999999, 
+        "size": 6484
+    }, 
+    "Rutgers, the State University of New Jersey\u2014\u200bNew Brunswick": {
+        "cost": 27523, 
+        "location": [
+            40.486215700000002, 
+            -74.451818799999998
+        ], 
+        "rank": 69, 
+        "rate": 60.899999999999999, 
+        "size": 40434
+    }, 
+    "Rutgers, the State University of New Jersey\u2014\u200bNewark": {
+        "cost": 27022, 
+        "location": [
+            40.735657000000003, 
+            -74.172366699999998
+        ], 
+        "rank": 142, 
+        "rate": 57.5, 
+        "size": 12011
+    }, 
+    "SUNY College of Environmental Science and Forestry": {
+        "cost": 16445, 
+        "location": [
+            43.034461200000003, 
+            -76.1369148
+        ], 
+        "rank": 86, 
+        "rate": 50.700000000000003, 
+        "size": 2401
+    }, 
+    "San Diego State University": {
+        "cost": 17738, 
+        "location": [
+            32.7747703, 
+            -117.071665
+        ], 
+        "rank": 152, 
+        "rate": 31.300000000000001, 
+        "size": 31597
+    }, 
+    "Seton Hall University": {
+        "cost": 35820, 
+        "location": [
+            40.742631199999998, 
+            -74.246173799999994
+        ], 
+        "rank": 128, 
+        "rate": 84.400000000000006, 
+        "size": 9830
+    }, 
+    "Southern Illinois University\u2014\u200bCarbondale": {
+        "cost": 24970, 
+        "location": [
+            37.778331999999999, 
+            -89.252219999999994
+        ], 
+        "rank": 177, 
+        "rate": 51.399999999999999, 
+        "size": 18847
+    }, 
+    "Southern Methodist University": {
+        "cost": 43800, 
+        "location": [
+            32.841217800000003, 
+            -96.784517499999993
+        ], 
+        "rank": 60, 
+        "rate": 53.799999999999997, 
+        "size": 10893
+    }, 
+    "St. John Fisher College": {
+        "cost": 28430, 
+        "location": [
+            43.115332000000002, 
+            -77.510475999999997
+        ], 
+        "rank": 142, 
+        "rate": 64.200000000000003, 
+        "size": 4008
+    }, 
+    "St. John's University": {
+        "cost": 37260, 
+        "location": [
+            40.715408400000001, 
+            -74.012671299999994
+        ], 
+        "rank": 152, 
+        "rate": 53.200000000000003, 
+        "size": 21087
+    }, 
+    "St. Louis University": {
+        "cost": 36726, 
+        "location": [
+            38.627002500000003, 
+            -90.199404199999989
+        ], 
+        "rank": 101, 
+        "rate": 63.700000000000003, 
+        "size": 13981
+    }, 
+    "St. Mary's University of Minnesota": {
+        "cost": 29315, 
+        "location": [
+            44.045493, 
+            -91.696399999999997
+        ], 
+        "rank": 173, 
+        "rate": 79, 
+        "size": 5574
+    }, 
+    "Stanford University": {
+        "cost": 43245, 
+        "location": [
+            37.427474500000002, 
+            -122.169719
+        ], 
+        "rank": 5, 
+        "rate": 6.5999999999999996, 
+        "size": 18217
+    }, 
+    "Stevens Institute of Technology": {
+        "cost": 43561, 
+        "location": [
+            40.744322599999997, 
+            -74.025868199999991
+        ], 
+        "rank": 82, 
+        "rate": 42.700000000000003, 
+        "size": 5649
+    }, 
+    "Stony Brook University\u2014\u200bSUNY": {
+        "cost": 19924, 
+        "location": [
+            40.925653799999999, 
+            -73.140942899999999
+        ], 
+        "rank": 82, 
+        "rate": 40.100000000000001, 
+        "size": 24149
+    }, 
+    "Syracuse University": {
+        "cost": 40458, 
+        "location": [
+            43.039153399999996, 
+            -76.135115799999994
+        ], 
+        "rank": 62, 
+        "rate": 51.299999999999997, 
+        "size": 21029
+    }, 
+    "Temple University": {
+        "cost": 24710, 
+        "location": [
+            39.982094199999999, 
+            -75.154678599999997
+        ], 
+        "rank": 121, 
+        "rate": 67.200000000000003, 
+        "size": 36744
+    }, 
+    "Texas A&M University\u2014\u200bCollege Station": {
+        "cost": 25126, 
+        "location": [
+            36.830131799999997, 
+            -101.4339148
+        ], 
+        "rank": 69, 
+        "rate": 67.099999999999994, 
+        "size": 50227
+    }, 
+    "Texas Christian University": {
+        "cost": 36590, 
+        "location": [
+            32.707807899999999, 
+            -97.3637066
+        ], 
+        "rank": 82, 
+        "rate": 40.899999999999999, 
+        "size": 9727
+    }, 
+    "Texas Tech University": {
+        "cost": 19562, 
+        "location": [
+            33.584259099999997, 
+            -101.8782822
+        ], 
+        "rank": 161, 
+        "rate": 64.299999999999997, 
+        "size": 32467
+    }, 
+    "The Catholic University of America": {
+        "cost": 38526, 
+        "location": [
+            38.936881100000001, 
+            -76.998691999999991
+        ], 
+        "rank": 121, 
+        "rate": 63.200000000000003, 
+        "size": 6838
+    }, 
+    "Tufts University": {
+        "cost": 46598, 
+        "location": [
+            42.4074843, 
+            -71.119022900000004
+        ], 
+        "rank": 28, 
+        "rate": 21.399999999999999, 
+        "size": 10837
+    }, 
+    "Tulane University": {
+        "cost": 46930, 
+        "location": [
+            29.9403477, 
+            -90.120727899999991
+        ], 
+        "rank": 52, 
+        "rate": 27.300000000000001, 
+        "size": 13486
+    }, 
+    "University at Albany\u2014\u200bSUNY": {
+        "cost": 18460, 
+        "location": [
+            42.652579299999999, 
+            -73.756231700000001
+        ], 
+        "rank": 128, 
+        "rate": 55.5, 
+        "size": 17316
+    }, 
+    "University at Buffalo\u2014\u200bSUNY": {
+        "cost": 18609, 
+        "location": [
+            42.886446799999987, 
+            -78.878368899999998
+        ], 
+        "rank": 109, 
+        "rate": 56.899999999999999, 
+        "size": 28952
+    }, 
+    "University of Alabama": {
+        "cost": 22950, 
+        "location": [
+            33.214444499999999, 
+            -87.547434899999999
+        ], 
+        "rank": 86, 
+        "rate": 53.100000000000001, 
+        "size": 33503
+    }, 
+    "University of Alabama\u2014\u200bBirmingham": {
+        "cost": 20394, 
+        "location": [
+            33.520660800000002, 
+            -86.802489999999992
+        ], 
+        "rank": 152, 
+        "rate": 73.400000000000006, 
+        "size": 17999
+    }, 
+    "University of Alabama\u2014\u200bHuntsville": {
+        "cost": 21506, 
+        "location": [
+            34.730368800000001, 
+            -86.586103699999995
+        ], 
+        "rank": 181, 
+        "rate": 77.700000000000003, 
+        "size": 7636
+    }, 
+    "University of Arizona": {
+        "cost": 27073, 
+        "location": [
+            33.452221700000003, 
+            -112.0662126
+        ], 
+        "rank": 119, 
+        "rate": 76.900000000000006, 
+        "size": 40223
+    }, 
+    "University of Arkansas": {
+        "cost": 19074, 
+        "location": [
+            36.0678324, 
+            -94.173655099999991
+        ], 
+        "rank": 128, 
+        "rate": 63.5, 
+        "size": 24537
+    }, 
+    "University of California\u2014Davis": {
+        "cost": 36774, 
+        "location": [
+            38.536855000000003, 
+            -121.748977
+        ], 
+        "rank": 39, 
+        "rate": 45.700000000000003, 
+        "size": 32354
+    }, 
+    "University of California\u2014\u200bBerkeley": {
+        "cost": 35742, 
+        "location": [
+            37.8715926, 
+            -122.272747
+        ], 
+        "rank": 20, 
+        "rate": 18, 
+        "size": 35899
+    }, 
+    "University of California\u2014\u200bIrvine": {
+        "cost": 37566, 
+        "location": [
+            33.6839473, 
+            -117.7946942
+        ], 
+        "rank": 49, 
+        "rate": 42.399999999999999, 
+        "size": 27479
+    }, 
+    "University of California\u2014\u200bLos Angeles": {
+        "cost": 35574, 
+        "location": [
+            34.052234200000001, 
+            -118.24368490000001
+        ], 
+        "rank": 23, 
+        "rate": 22, 
+        "size": 41341
+    }, 
+    "University of California\u2014\u200bRiverside": {
+        "cost": 35838, 
+        "location": [
+            33.953348699999999, 
+            -117.3961564
+        ], 
+        "rank": 112, 
+        "rate": 62.700000000000003, 
+        "size": 21005
+    }, 
+    "University of California\u2014\u200bSan Diego": {
+        "cost": 36112, 
+        "location": [
+            32.715329199999999, 
+            -117.1572551
+        ], 
+        "rank": 39, 
+        "rate": 37.799999999999997, 
+        "size": 28294
+    }, 
+    "University of California\u2014\u200bSanta Barbara": {
+        "cost": 36624, 
+        "location": [
+            34.420830500000001, 
+            -119.69819010000001
+        ], 
+        "rank": 41, 
+        "rate": 44, 
+        "size": 21927
+    }, 
+    "University of California\u2014\u200bSanta Cruz": {
+        "cost": 36294, 
+        "location": [
+            36.974117100000001, 
+            -122.03079630000001
+        ], 
+        "rank": 86, 
+        "rate": 60.899999999999999, 
+        "size": 17404
+    }, 
+    "University of Central Florida": {
+        "cost": 22415, 
+        "location": [
+            28.602427599999999, 
+            -81.200059899999999
+        ], 
+        "rank": 170, 
+        "rate": 46.200000000000003, 
+        "size": 59767
+    }, 
+    "University of Chicago": {
+        "cost": 46386, 
+        "location": [
+            41.879185, 
+            -87.6311769
+        ], 
+        "rank": 5, 
+        "rate": 13.199999999999999, 
+        "size": 12508
+    }, 
+    "University of Cincinnati": {
+        "cost": 25816, 
+        "location": [
+            39.132921899999999, 
+            -84.514950399999989
+        ], 
+        "rank": 135, 
+        "rate": 67.099999999999994, 
+        "size": 31798
+    }, 
+    "University of Colorado\u2014\u200bBoulder": {
+        "cost": 32008, 
+        "location": [
+            40.014985600000003, 
+            -105.27054560000001
+        ], 
+        "rank": 86, 
+        "rate": 83.599999999999994, 
+        "size": 31725
+    }, 
+    "University of Colorado\u2014\u200bDenver": {
+        "cost": 21006, 
+        "location": [
+            39.737566999999999, 
+            -104.98471790000001
+        ], 
+        "rank": 190, 
+        "rate": 75.900000000000006, 
+        "size": 22396
+    }, 
+    "University of Connecticut": {
+        "cost": 30970, 
+        "location": [
+            41.807741399999998, 
+            -72.253980499999997
+        ], 
+        "rank": 57, 
+        "rate": 44.700000000000003, 
+        "size": 25483
+    }, 
+    "University of Dayton": {
+        "cost": 35800, 
+        "location": [
+            39.740662399999998, 
+            -84.179242099999996
+        ], 
+        "rank": 112, 
+        "rate": 55.200000000000003, 
+        "size": 11159
+    }, 
+    "University of Delaware": {
+        "cost": 29932, 
+        "location": [
+            39.677950500000001, 
+            -75.750611300000003
+        ], 
+        "rank": 75, 
+        "rate": 56.600000000000001, 
+        "size": 21081
+    }, 
+    "University of Denver": {
+        "cost": 40707, 
+        "location": [
+            39.676617399999998, 
+            -104.96189649999999
+        ], 
+        "rank": 91, 
+        "rate": 67.599999999999994, 
+        "size": 11656
+    }, 
+    "University of Florida": {
+        "cost": 28541, 
+        "location": [
+            29.64526399999999, 
+            -82.346393999999989
+        ], 
+        "rank": 49, 
+        "rate": 44.100000000000001, 
+        "size": 49913
+    }, 
+    "University of Georgia": {
+        "cost": 28472, 
+        "location": [
+            33.948005299999998, 
+            -83.377322100000001
+        ], 
+        "rank": 60, 
+        "rate": 56.100000000000001, 
+        "size": 34519
+    }, 
+    "University of Hawaii\u2014Manoa": {
+        "cost": 27472, 
+        "location": [
+            21.2998136, 
+            -157.81761169999999
+        ], 
+        "rank": 158, 
+        "rate": 81.200000000000003, 
+        "size": 20426
+    }, 
+    "University of Houston": {
+        "cost": 20892, 
+        "location": [
+            29.719948899999999, 
+            -95.342233399999998
+        ], 
+        "rank": 190, 
+        "rate": 56.200000000000003, 
+        "size": 40747
+    }, 
+    "University of Idaho": {
+        "cost": 19600, 
+        "location": [
+            46.728812400000002, 
+            -117.0126084
+        ], 
+        "rank": 161, 
+        "rate": 65.700000000000003, 
+        "size": 12420
+    }, 
+    "University of Illinois\u2014\u200bChicago": {
+        "cost": 25796, 
+        "location": [
+            41.878113599999999, 
+            -87.629798199999996
+        ], 
+        "rank": 128, 
+        "rate": 63.899999999999999, 
+        "size": 27875
+    }, 
+    "University of Illinois\u2014\u200bUrbana-\u200bChampaign": {
+        "cost": 29640, 
+        "location": [
+            40.116420400000003, 
+            -88.2433829
+        ], 
+        "rank": 41, 
+        "rate": 63.299999999999997, 
+        "size": 44520
+    }, 
+    "University of Iowa": {
+        "cost": 26931, 
+        "location": [
+            41.6626963, 
+            -91.554899800000001
+        ], 
+        "rank": 73, 
+        "rate": 78.400000000000006, 
+        "size": 30119
+    }, 
+    "University of Kansas": {
+        "cost": 24873, 
+        "location": [
+            38.954423800000008, 
+            -95.251662999999994
+        ], 
+        "rank": 101, 
+        "rate": 92.299999999999997, 
+        "size": 27135
+    }, 
+    "University of Kentucky": {
+        "cost": 21192, 
+        "location": [
+            38.0306511, 
+            -84.503969699999999
+        ], 
+        "rank": 119, 
+        "rate": 67.299999999999997, 
+        "size": 28034
+    }, 
+    "University of La Verne": {
+        "cost": 35000, 
+        "location": [
+            34.100126299999999, 
+            -117.7701794
+        ], 
+        "rank": 161, 
+        "rate": 39, 
+        "size": 4973
+    }, 
+    "University of Louisville": {
+        "cost": 23638, 
+        "location": [
+            38.210103199999999, 
+            -85.759044299999999
+        ], 
+        "rank": 161, 
+        "rate": 76.299999999999997, 
+        "size": 21242
+    }, 
+    "University of Maine": {
+        "cost": 27454, 
+        "location": [
+            44.897731999999998, 
+            -68.668707599999991
+        ], 
+        "rank": 167, 
+        "rate": 81.099999999999994, 
+        "size": 10901
+    }, 
+    "University of Maryland\u2014\u200bBaltimore County": {
+        "cost": 21642, 
+        "location": [
+            39.464766500000003, 
+            -76.7336521
+        ], 
+        "rank": 158, 
+        "rate": 60.399999999999999, 
+        "size": 13637
+    }, 
+    "University of Maryland\u2014\u200bCollege Park": {
+        "cost": 28348, 
+        "location": [
+            38.989696700000003, 
+            -76.937759999999997
+        ], 
+        "rank": 62, 
+        "rate": 46.799999999999997, 
+        "size": 37197
+    }, 
+    "University of Massachusetts\u2014\u200bAmherst": {
+        "cost": 27974, 
+        "location": [
+            42.366667, 
+            -72.516666999999998
+        ], 
+        "rank": 91, 
+        "rate": 62.600000000000001, 
+        "size": 28236
+    }, 
+    "University of Massachusetts\u2014\u200bLowell": {
+        "cost": 19210, 
+        "location": [
+            42.633424699999999, 
+            -71.316171799999992
+        ], 
+        "rank": 158, 
+        "rate": 65.799999999999997, 
+        "size": 16294
+    }, 
+    "University of Miami": {
+        "cost": 42852, 
+        "location": [
+            25.721637399999999, 
+            -80.2792843
+        ], 
+        "rank": 47, 
+        "rate": 39.700000000000003, 
+        "size": 16172
+    }, 
+    "University of Michigan\u2014\u200bAnn Arbor": {
+        "cost": 40496, 
+        "location": [
+            42.2808256, 
+            -83.743037799999996
+        ], 
+        "rank": 28, 
+        "rate": 36.600000000000001, 
+        "size": 43426
+    }, 
+    "University of Minnesota\u2014Twin Cities": {
+        "cost": 19805, 
+        "location": [
+            44.973990000000001, 
+            -93.227728499999998
+        ], 
+        "rank": 69, 
+        "rate": 49.5, 
+        "size": 51853
+    }, 
+    "University of Mississippi": {
+        "cost": 17728, 
+        "location": [
+            34.364732400000001, 
+            -89.538443000000001
+        ], 
+        "rank": 150, 
+        "rate": 61.100000000000001, 
+        "size": 18794
+    }, 
+    "University of Missouri": {
+        "cost": 23764, 
+        "location": [
+            38.9403808, 
+            -92.327737500000012
+        ], 
+        "rank": 97, 
+        "rate": 81.5, 
+        "size": 34748
+    }, 
+    "University of Nebraska\u2014Lincoln": {
+        "cost": 20968, 
+        "location": [
+            40.820196600000003, 
+            -96.700476299999991
+        ], 
+        "rank": 101, 
+        "rate": 64.400000000000006, 
+        "size": 24207
+    }, 
+    "University of Nevada\u2014\u200bReno": {
+        "cost": 20064, 
+        "location": [
+            39.529632900000003, 
+            -119.8138027
+        ], 
+        "rank": 181, 
+        "rate": 83, 
+        "size": 18227
+    }, 
+    "University of New Hampshire": {
+        "cost": 29216, 
+        "location": [
+            43.138947999999999, 
+            -70.937025199999994
+        ], 
+        "rank": 97, 
+        "rate": 77.900000000000006, 
+        "size": 15301
+    }, 
+    "University of New Mexico": {
+        "cost": 11568, 
+        "location": [
+            35.084344100000003, 
+            -106.61975529999999
+        ], 
+        "rank": 181, 
+        "rate": 64.599999999999994, 
+        "size": 29033
+    }, 
+    "University of North Carolina\u2014\u200bChapel Hill": {
+        "cost": 30122, 
+        "location": [
+            35.913199599999999, 
+            -79.055844500000006
+        ], 
+        "rank": 30, 
+        "rate": 27.600000000000001, 
+        "size": 29278
+    }, 
+    "University of North Dakota": {
+        "cost": 17170, 
+        "location": [
+            47.922891, 
+            -97.076801399999994
+        ], 
+        "rank": 173, 
+        "rate": 73.700000000000003, 
+        "size": 15250
+    }, 
+    "University of Notre Dame": {
+        "cost": 44605, 
+        "location": [
+            41.705219300000003, 
+            -86.235306699999995
+        ], 
+        "rank": 18, 
+        "rate": 23.300000000000001, 
+        "size": 12126
+    }, 
+    "University of Oklahoma": {
+        "cost": 19530, 
+        "location": [
+            35.205893600000003, 
+            -97.445713699999999
+        ], 
+        "rank": 101, 
+        "rate": 79.099999999999994, 
+        "size": 31086
+    }, 
+    "University of Oregon": {
+        "cost": 29788, 
+        "location": [
+            44.044830300000001, 
+            -123.0726062
+        ], 
+        "rank": 109, 
+        "rate": 74.200000000000003, 
+        "size": 24518
+    }, 
+    "University of Pennsylvania": {
+        "cost": 45890, 
+        "location": [
+            39.952218799999997, 
+            -75.193213700000001
+        ], 
+        "rank": 7, 
+        "rate": 12.6, 
+        "size": 21339
+    }, 
+    "University of Pittsburgh": {
+        "cost": 27106, 
+        "location": [
+            40.444353300000003, 
+            -79.960835000000003
+        ], 
+        "rank": 62, 
+        "rate": 56.100000000000001, 
+        "size": 28769
+    }, 
+    "University of Rhode Island": {
+        "cost": 28016, 
+        "location": [
+            41.486375500000001, 
+            -71.531711799999997
+        ], 
+        "rank": 152, 
+        "rate": 76.900000000000006, 
+        "size": 16451
+    }, 
+    "University of Rochester": {
+        "cost": 45372, 
+        "location": [
+            43.1305531, 
+            -77.626003299999994
+        ], 
+        "rank": 32, 
+        "rate": 35.299999999999997, 
+        "size": 10510
+    }, 
+    "University of San Diego": {
+        "cost": 41392, 
+        "location": [
+            32.771533699999999, 
+            -117.1900103
+        ], 
+        "rank": 91, 
+        "rate": 42.600000000000001, 
+        "size": 8105
+    }, 
+    "University of San Francisco": {
+        "cost": 40294, 
+        "location": [
+            37.7757492, 
+            -122.4503856
+        ], 
+        "rank": 117, 
+        "rate": 69.200000000000003, 
+        "size": 10017
+    }, 
+    "University of South Carolina": {
+        "cost": 28528, 
+        "location": [
+            33.996111999999997, 
+            -81.027427599999996
+        ], 
+        "rank": 112, 
+        "rate": 60.600000000000001, 
+        "size": 31288
+    }, 
+    "University of South Dakota": {
+        "cost": 10104, 
+        "location": [
+            42.7851754, 
+            -96.925306800000001
+        ], 
+        "rank": 190, 
+        "rate": 88.599999999999994, 
+        "size": 10284
+    }, 
+    "University of South Florida": {
+        "cost": 17325, 
+        "location": [
+            28.058703099999999, 
+            -82.413853899999992
+        ], 
+        "rank": 170, 
+        "rate": 43.200000000000003, 
+        "size": 40111
+    }, 
+    "University of Southern California": {
+        "cost": 46298, 
+        "location": [
+            34.022351899999997, 
+            -118.285117
+        ], 
+        "rank": 23, 
+        "rate": 19.899999999999999, 
+        "size": 39958
+    }, 
+    "University of St. Thomas": {
+        "cost": 34013, 
+        "location": [
+            44.941921499999999, 
+            -93.189748999999992
+        ], 
+        "rank": 112, 
+        "rate": 86.700000000000003, 
+        "size": 10316
+    }, 
+    "University of Tennessee": {
+        "cost": 27874, 
+        "location": [
+            35.954401300000001, 
+            -83.929456399999992
+        ], 
+        "rank": 101, 
+        "rate": 67.299999999999997, 
+        "size": 29833
+    }, 
+    "University of Texas\u2014\u200bAustin": {
+        "cost": 33824, 
+        "location": [
+            30.267153, 
+            -97.743060799999995
+        ], 
+        "rank": 52, 
+        "rate": 46.799999999999997, 
+        "size": 52186
+    }, 
+    "University of Texas\u2014\u200bDallas": {
+        "cost": 30378, 
+        "location": [
+            32.780139900000002, 
+            -96.800451099999989
+        ], 
+        "rank": 142, 
+        "rate": 52, 
+        "size": 19727
+    }, 
+    "University of Tulsa": {
+        "cost": 33702, 
+        "location": [
+            36.150944000000003, 
+            -95.943636699999999
+        ], 
+        "rank": 86, 
+        "rate": 40.700000000000003, 
+        "size": 4326
+    }, 
+    "University of Utah": {
+        "cost": 24018, 
+        "location": [
+            40.764936800000001, 
+            -111.84210210000001
+        ], 
+        "rank": 121, 
+        "rate": 82.599999999999994, 
+        "size": 32388
+    }, 
+    "University of Vermont": {
+        "cost": 36646, 
+        "location": [
+            44.477852800000001, 
+            -73.196463699999995
+        ], 
+        "rank": 82, 
+        "rate": 76.700000000000003, 
+        "size": 13097
+    }, 
+    "University of Virginia": {
+        "cost": 39844, 
+        "location": [
+            38.033552899999997, 
+            -78.507977199999999
+        ], 
+        "rank": 23, 
+        "rate": 29.600000000000001, 
+        "size": 23907
+    }, 
+    "University of Washington": {
+        "cost": 29938, 
+        "location": [
+            47.655335099999988, 
+            -122.3035199
+        ], 
+        "rank": 52, 
+        "rate": 59.200000000000003, 
+        "size": 42568
+    }, 
+    "University of Wisconsin\u2014\u200bMadison": {
+        "cost": 26653, 
+        "location": [
+            43.073051700000001, 
+            -89.401230200000001
+        ], 
+        "rank": 41, 
+        "rate": 54.600000000000001, 
+        "size": 42820
+    }, 
+    "University of Wyoming": {
+        "cost": 14124, 
+        "location": [
+            41.313097200000001, 
+            -105.5796706
+        ], 
+        "rank": 161, 
+        "rate": 95.700000000000003, 
+        "size": 12903
+    }, 
+    "University of the Pacific": {
+        "cost": 39810, 
+        "location": [
+            37.980660499999999, 
+            -121.30760960000001
+        ], 
+        "rank": 112, 
+        "rate": 37.799999999999997, 
+        "size": 6652
+    }, 
+    "Utah State University": {
+        "cost": 17886, 
+        "location": [
+            41.745161000000003, 
+            -111.8097425
+        ], 
+        "rank": 190, 
+        "rate": 96.700000000000003, 
+        "size": 28786
+    }, 
+    "Vanderbilt University": {
+        "cost": 42978, 
+        "location": [
+            36.1443747, 
+            -86.802743699999994
+        ], 
+        "rank": 17, 
+        "rate": 14.199999999999999, 
+        "size": 12710
+    }, 
+    "Virginia Commonwealth University": {
+        "cost": 28861, 
+        "location": [
+            37.548987199999999, 
+            -77.453428599999995
+        ], 
+        "rank": 167, 
+        "rate": 60.200000000000003, 
+        "size": 31752
+    }, 
+    "Virginia Tech": {
+        "cost": 25320, 
+        "location": [
+            37.228384299999988, 
+            -80.42341669999999
+        ], 
+        "rank": 69, 
+        "rate": 70.400000000000006, 
+        "size": 31087
+    }, 
+    "Wake Forest University": {
+        "cost": 44742, 
+        "location": [
+            36.129842400000001, 
+            -80.281449600000002
+        ], 
+        "rank": 23, 
+        "rate": 34, 
+        "size": 7432
+    }, 
+    "Washington State University": {
+        "cost": 25889, 
+        "location": [
+            46.7319374, 
+            -117.1544219
+        ], 
+        "rank": 128, 
+        "rate": 76, 
+        "size": 27679
+    }, 
+    "Washington University in St. Louis": {
+        "cost": 44841, 
+        "location": [
+            38.648789499999999, 
+            -90.310796200000013
+        ], 
+        "rank": 14, 
+        "rate": 17.899999999999999, 
+        "size": 13952
+    }, 
+    "West Virginia University": {
+        "cost": 19632, 
+        "location": [
+            39.6361396, 
+            -79.955935799999992
+        ], 
+        "rank": 170, 
+        "rate": 85.099999999999994, 
+        "size": 29707
+    }, 
+    "Western Michigan University": {
+        "cost": 24109, 
+        "location": [
+            42.283177799999997, 
+            -85.615218599999992
+        ], 
+        "rank": 181, 
+        "rate": 83.299999999999997, 
+        "size": 24598
+    }, 
+    "Widener University": {
+        "cost": 38028, 
+        "location": [
+            39.861568900000009, 
+            -75.355263100000002
+        ], 
+        "rank": 181, 
+        "rate": 65.5, 
+        "size": 6238
+    }, 
+    "Worcester Polytechnic Institute": {
+        "cost": 42778, 
+        "location": [
+            42.273855599999997, 
+            -71.805975599999996
+        ], 
+        "rank": 62, 
+        "rate": 52.600000000000001, 
+        "size": 5957
+    }, 
+    "Yale University": {
+        "cost": 44000, 
+        "location": [
+            41.316324399999999, 
+            -72.922343099999992
+        ], 
+        "rank": 3, 
+        "rate": 7.0999999999999996, 
+        "size": 11906
+    }, 
+    "Yeshiva University": {
+        "cost": 37600, 
+        "location": [
+            40.850475699999997, 
+            -73.929273999999992
+        ], 
+        "rank": 47, 
+        "rate": 84, 
+        "size": 6753
+    }
+}

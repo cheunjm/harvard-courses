@@ -1,1 +1,1052 @@
-{"Hampden—Sydney College":{"rank":97,"cost":37352,"size":1080,"rate":55.6,"location":[37.24103900000001,-78.46098599999999]},"Claremont McKenna College":{"rank":9,"cost":45625,"size":1295,"rate":13.6,"location":[34.1011544,-117.7058138]},"Vassar College":{"rank":13,"cost":47890,"size":2406,"rate":22.8,"location":[41.686662,-73.894944]},"Swarthmore College":{"rank":3,"cost":44718,"size":1552,"rate":14.2,"location":[39.90652,-75.35199]},"Williams College":{"rank":1,"cost":46600,"size":2106,"rate":17,"location":[42.7134709,-73.2049942]},"Pomona College":{"rank":4,"cost":43580,"size":1607,"rate":13,"location":[34.097619,-117.7124122]},"Wellesley College":{"rank":7,"cost":43554,"size":2481,"rate":30.1,"location":[42.2935733,-71.30592779999999]},"Carleton College":{"rank":7,"cost":46167,"size":2055,"rate":25.6,"location":[44.461333,-93.1556063]},"Amherst College":{"rank":2,"cost":46574,"size":1817,"rate":13,"location":[42.3709104,-72.5170028]},"Hamilton College":{"rank":14,"cost":46080,"size":1884,"rate":27.2,"location":[43.0530933,-75.40891540000001]},"Union College":{"rank":41,"cost":46785,"size":2241,"rate":38.2,"location":[42.8177427,-73.9305222]},"United States Naval Academy":{"rank":12,"cost":0,"size":4536,"rate":6.8,"location":[38.98364830000001,-76.48233499999999]},"Bowdoin College":{"rank":4,"cost":45446,"size":1839,"rate":15.8,"location":[43.9067324,-69.96379329999999]},"Middlebury College":{"rank":4,"cost":45314,"size":2516,"rate":17.2,"location":[44.009114,-73.1788802]},"Davidson College":{"rank":9,"cost":42849,"size":1790,"rate":24.8,"location":[35.502229,-80.847465]},"Wesleyan University":{"rank":17,"cost":46944,"size":3262,"rate":20.9,"location":[41.5566104,-72.65690409999999]},"Macalester College":{"rank":24,"cost":45388,"size":2070,"rate":36.7,"location":[44.93913999999999,-93.1685031]},"Smith College":{"rank":20,"cost":43114,"size":3212,"rate":42.4,"location":[42.31809570000001,-72.6372341]},"Haverford College":{"rank":9,"cost":45426,"size":1205,"rate":22.9,"location":[40.0078604,-75.3062377]},"Pitzer College":{"rank":35,"cost":43402,"size":1084,"rate":15.7,"location":[34.1040806,-117.7043475]},"College of the Holy Cross":{"rank":25,"cost":44272,"size":2926,"rate":33.5,"location":[42.2378888,-71.80524640000002]},"Washington and Lee University":{"rank":14,"cost":44507,"size":2302,"rate":19.5,"location":[37.7915097,-79.44451389999999]},"Colorado College":{"rank":31,"cost":44222,"size":2026,"rate":23,"location":[38.8484298,-104.8228753]},"Colgate University":{"rank":20,"cost":46380,"size":2886,"rate":29.4,"location":[42.8173737,-75.5392442]},"Bates College":{"rank":22,"cost":45650,"size":1753,"rate":26.6,"location":[44.1055962,-70.2031861]},"University of Richmond":{"rank":25,"cost":45320,"size":3626,"rate":30.3,"location":[37.5739607,-77.53961369999999]},"Lafayette College":{"rank":36,"cost":43970,"size":2488,"rate":34.5,"location":[40.6998781,-75.2079449]},"Gustavus Adolphus College":{"rank":76,"cost":39060,"size":2524,"rate":63.4,"location":[44.3240246,-93.9706135]},"Berea College":{"rank":76,"cost":1070,"size":1658,"rate":31.8,"location":[37.5722323,-84.2898841]},"Connecticut College":{"rank":45,"cost":46085,"size":1933,"rate":35.9,"location":[41.3786877,-72.1045869]},"Trinity College":{"rank":36,"cost":47510,"size":2387,"rate":33.7,"location":[41.74707799999999,-72.690375]},"Colby College":{"rank":22,"cost":45760,"size":1863,"rate":29,"location":[44.5639334,-69.66209649999999]},"Harvey Mudd College":{"rank":16,"cost":46509,"size":783,"rate":19.2,"location":[34.1058662,-117.7104431]},"Bucknell University":{"rank":32,"cost":46902,"size":3618,"rate":27,"location":[40.95459,-76.8873024]},"Mount Holyoke College":{"rank":38,"cost":41456,"size":2344,"rate":42.1,"location":[42.2567291,-72.5757671]},"Bard College":{"rank":38,"cost":46370,"size":2322,"rate":35.2,"location":[42.0224313,-73.9065313]},"Oberlin College":{"rank":25,"cost":46870,"size":2944,"rate":31.3,"location":[41.2945302,-82.2209457]},"Barnard College":{"rank":32,"cost":44790,"size":2504,"rate":22.6,"location":[40.8093953,-73.96338399999999]},"Scripps College":{"rank":25,"cost":45564,"size":962,"rate":32.4,"location":[34.1033572,-117.7114587]},"Whitman College":{"rank":41,"cost":43500,"size":1539,"rate":48.6,"location":[46.0715857,-118.3298993]},"United States Military Academy":{"rank":17,"cost":0,"size":4592,"rate":9,"location":[41.3918372,-73.9625033]},"DePauw University":{"rank":54,"cost":40640,"size":2336,"rate":61.5,"location":[39.640397,-86.861622]},"Grinnell College":{"rank":17,"cost":43656,"size":1674,"rate":36.3,"location":[41.74922129999999,-92.719748]},"Beloit College":{"rank":59,"cost":41250,"size":1359,"rate":67.1,"location":[42.5030334,-89.030906]},"Bryn Mawr College":{"rank":30,"cost":43900,"size":1774,"rate":41.4,"location":[40.0266576,-75.31439019999999]},"United States Air Force Academy":{"rank":25,"cost":0,"size":4120,"rate":9.9,"location":[38.9983573,-104.8617533]},"Denison University":{"rank":50,"cost":43910,"size":2336,"rate":49.5,"location":[40.0740253,-82.52264249999999]},"Earlham College":{"rank":65,"cost":41450,"size":1211,"rate":74.9,"location":[39.823941,-84.913241]},"Kenyon College":{"rank":32,"cost":45640,"size":1667,"rate":36,"location":[40.3768328,-82.3965928]},"Wheaton College":{"rank":65,"cost":45074,"size":1616,"rate":64.3,"location":[41.8685135,-88.09960199999999]},"Illinois Wesleyan University":{"rank":65,"cost":39316,"size":2013,"rate":59.5,"location":[40.4909408,-88.9902736]},"Occidental College":{"rank":41,"cost":46270,"size":2178,"rate":39.4,"location":[34.126615,-118.212392]},"College of Wooster":{"rank":65,"cost":41680,"size":2080,"rate":58.1,"location":[40.8110565,-81.9335997]},"Rhodes College":{"rank":54,"cost":39794,"size":1927,"rate":54.6,"location":[35.15274770000001,-89.99262689999999]},"Transylvania University":{"rank":76,"cost":31560,"size":1074,"rate":84.9,"location":[38.0527604,-84.4936221]},"Franklin and Marshall College":{"rank":45,"cost":46285,"size":2365,"rate":39.3,"location":[40.04748,-76.31791299999999]},"Austin College":{"rank":82,"cost":33830,"size":1260,"rate":59.1,"location":[33.64626,-96.594854]},"Wofford College":{"rank":65,"cost":35515,"size":1588,"rate":62.7,"location":[34.9588759,-81.934516]},"Allegheny College":{"rank":82,"cost":39100,"size":2140,"rate":63.3,"location":[41.649349,-80.1449494]},"Soka University of America":{"rank":41,"cost":29092,"size":438,"rate":45.8,"location":[33.5549818,-117.7348611]},"St. Mary's College":{"rank":76,"cost":34600,"size":1469,"rate":84.8,"location":[37.841201,-122.108703]},"Sewanee—​University of the South":{"rank":38,"cost":35756,"size":1557,"rate":58.8,"location":[35.2031373,-85.9210899]},"St. John's University":{"rank":76,"cost":37167,"size":1983,"rate":74.8,"location":[40.7154084,-74.0126713]},"Centre College":{"rank":49,"cost":36000,"size":1344,"rate":69.6,"location":[41.832648,-71.3603129]},"Skidmore College":{"rank":45,"cost":45724,"size":2689,"rate":41.9,"location":[43.0961489,-73.7817705]},"Furman University":{"rank":52,"cost":43164,"size":2915,"rate":77.5,"location":[34.9245893,-82.43913669999999]},"Dickinson College":{"rank":45,"cost":46094,"size":2386,"rate":40.2,"location":[40.20255179999999,-77.1978826]},"Kalamazoo College":{"rank":61,"cost":37810,"size":1379,"rate":69,"location":[42.2903036,-85.6018965]},"Willamette University":{"rank":61,"cost":42305,"size":2933,"rate":60.4,"location":[44.9371219,-123.0318004]},"St. Olaf College":{"rank":52,"cost":40700,"size":3176,"rate":60.4,"location":[44.461154,-93.1836963]},"Lawrence University":{"rank":59,"cost":41226,"size":1525,"rate":76.2,"location":[44.2615753,-88.3979663]},"Wabash College":{"rank":57,"cost":35650,"size":906,"rate":67,"location":[40.0351229,-86.90709110000002]},"Spelman College":{"rank":65,"cost":24634,"size":2145,"rate":38,"location":[33.7449636,-84.41395759999999]},"Southwestern University":{"rank":65,"cost":35240,"size":1394,"rate":60.5,"location":[30.6368922,-97.664306]},"Virginia Military Institute":{"rank":65,"cost":35392,"size":1664,"rate":46.3,"location":[37.789819,-79.4352256]},"Muhlenberg College":{"rank":65,"cost":42755,"size":2422,"rate":45.7,"location":[40.5963928,-75.50846729999999]},"St. Lawrence University":{"rank":56,"cost":46040,"size":2488,"rate":48.2,"location":[44.5890632,-75.1621818]},"Gettysburg College":{"rank":50,"cost":45870,"size":2597,"rate":40.3,"location":[39.835958,-77.23723079999999]},"Thomas Aquinas College":{"rank":61,"cost":24500,"size":370,"rate":80.6,"location":[34.4293724,-119.0872049]},"University of Puget Sound":{"rank":76,"cost":41868,"size":2857,"rate":82.7,"location":[47.2620315,-122.4816819]},"Hobart and William Smith Colleges":{"rank":61,"cost":46165,"size":2300,"rate":53.1,"location":[42.859508,-76.985265]},"Reed College":{"rank":74,"cost":44460,"size":null,"rate":39.9,"location":[37.5503359,-122.004329]},"Westmont College":{"rank":94,"cost":38510,"size":1355,"rate":66,"location":[34.4485027,-119.6616697]},"Augustana College":{"rank":100,"cost":35835,"size":2551,"rate":68.8,"location":[41.5042419,-90.5512569]},"Knox College":{"rank":82,"cost":38952,"size":1430,"rate":77.6,"location":[40.9416833,-90.3713045]},"Ursinus College":{"rank":82,"cost":44530,"size":1680,"rate":69.8,"location":[40.1942068,-75.45802250000001]},"Hendrix College":{"rank":82,"cost":37816,"size":1388,"rate":83,"location":[35.1006849,-92.436529]},"Hope College":{"rank":100,"cost":28720,"size":3343,"rate":85.1,"location":[42.7873976,-86.09998759999999]},"Lewis & Clark College":{"rank":74,"cost":41928,"size":3703,"rate":64,"location":[46.6195461,-122.4554639]},"Washington and Jefferson College":{"rank":97,"cost":39710,"size":1429,"rate":40.8,"location":[40.1714316,-80.23993089999999]},"College of the Atlantic":{"rank":93,"cost":38952,"size":340,"rate":70.6,"location":[44.3941956,-68.2200148]},"Juniata College":{"rank":100,"cost":37170,"size":1565,"rate":66.4,"location":[40.4994634,-78.0166127]},"Albion College":{"rank":100,"cost":35866,"size":1382,"rate":70.2,"location":[42.2445426,-84.7461565]},"Hillsdale College":{"rank":82,"cost":22890,"size":1447,"rate":49,"location":[41.9313807,-84.63084230000001]},"Agnes Scott College":{"rank":89,"cost":34788,"size":885,"rate":62,"location":[33.7674176,-84.2943655]},"Bennington College":{"rank":100,"cost":45680,"size":826,"rate":63,"location":[42.9238904,-73.24155809999999]},"Calvin College":{"rank":100,"cost":28250,"size":4008,"rate":75.6,"location":[42.9298813,-85.5876529]},"Millsaps College":{"rank":82,"cost":32520,"size":915,"rate":54.8,"location":[32.3233805,-90.1787657]},"New College of Florida":{"rank":89,"cost":29812,"size":832,"rate":59.6,"location":[27.3857267,-82.5598486]},"College of St. Benedict":{"rank":94,"cost":37926,"size":2070,"rate":76.7,"location":[45.5603668,-94.322125]},"Luther College":{"rank":94,"cost":37450,"size":2473,"rate":70.2,"location":[43.311063,-91.8062533]},"St. Mary's College of Maryland":{"rank":89,"cost":28665,"size":1933,"rate":72,"location":[38.1874875,-76.42531629999999]},"Cornell College":{"rank":97,"cost":36430,"size":1180,"rate":52.9,"location":[41.92695459999999,-91.4253502]},"Ohio Wesleyan University":{"rank":100,"cost":40510,"size":1821,"rate":73.6,"location":[40.2959764,-83.0678456]},"St. Michael's College":{"rank":89,"cost":39015,"size":2410,"rate":78,"location":[8.239496599999999,124.250322]}}
+{
+    "Agnes Scott College": {
+        "cost": 34788, 
+        "location": [
+            33.767417600000002, 
+            -84.294365499999998
+        ], 
+        "rank": 89, 
+        "rate": 62, 
+        "size": 885
+    }, 
+    "Albion College": {
+        "cost": 35866, 
+        "location": [
+            42.244542600000003, 
+            -84.746156499999998
+        ], 
+        "rank": 100, 
+        "rate": 70.200000000000003, 
+        "size": 1382
+    }, 
+    "Allegheny College": {
+        "cost": 39100, 
+        "location": [
+            41.649349000000001, 
+            -80.144949400000002
+        ], 
+        "rank": 82, 
+        "rate": 63.299999999999997, 
+        "size": 2140
+    }, 
+    "Amherst College": {
+        "cost": 46574, 
+        "location": [
+            42.3709104, 
+            -72.5170028
+        ], 
+        "rank": 2, 
+        "rate": 13, 
+        "size": 1817
+    }, 
+    "Augustana College": {
+        "cost": 35835, 
+        "location": [
+            41.504241899999997, 
+            -90.551256899999998
+        ], 
+        "rank": 100, 
+        "rate": 68.799999999999997, 
+        "size": 2551
+    }, 
+    "Austin College": {
+        "cost": 33830, 
+        "location": [
+            33.646259999999998, 
+            -96.594853999999998
+        ], 
+        "rank": 82, 
+        "rate": 59.100000000000001, 
+        "size": 1260
+    }, 
+    "Bard College": {
+        "cost": 46370, 
+        "location": [
+            42.022431300000001, 
+            -73.906531299999997
+        ], 
+        "rank": 38, 
+        "rate": 35.200000000000003, 
+        "size": 2322
+    }, 
+    "Barnard College": {
+        "cost": 44790, 
+        "location": [
+            40.809395299999998, 
+            -73.963383999999991
+        ], 
+        "rank": 32, 
+        "rate": 22.600000000000001, 
+        "size": 2504
+    }, 
+    "Bates College": {
+        "cost": 45650, 
+        "location": [
+            44.105596200000001, 
+            -70.203186099999996
+        ], 
+        "rank": 22, 
+        "rate": 26.600000000000001, 
+        "size": 1753
+    }, 
+    "Beloit College": {
+        "cost": 41250, 
+        "location": [
+            42.5030334, 
+            -89.030906000000002
+        ], 
+        "rank": 59, 
+        "rate": 67.099999999999994, 
+        "size": 1359
+    }, 
+    "Bennington College": {
+        "cost": 45680, 
+        "location": [
+            42.923890399999998, 
+            -73.241558099999992
+        ], 
+        "rank": 100, 
+        "rate": 63, 
+        "size": 826
+    }, 
+    "Berea College": {
+        "cost": 1070, 
+        "location": [
+            37.572232300000003, 
+            -84.289884099999995
+        ], 
+        "rank": 76, 
+        "rate": 31.800000000000001, 
+        "size": 1658
+    }, 
+    "Bowdoin College": {
+        "cost": 45446, 
+        "location": [
+            43.906732400000003, 
+            -69.963793299999992
+        ], 
+        "rank": 4, 
+        "rate": 15.800000000000001, 
+        "size": 1839
+    }, 
+    "Bryn Mawr College": {
+        "cost": 43900, 
+        "location": [
+            40.0266576, 
+            -75.314390199999991
+        ], 
+        "rank": 30, 
+        "rate": 41.399999999999999, 
+        "size": 1774
+    }, 
+    "Bucknell University": {
+        "cost": 46902, 
+        "location": [
+            40.954590000000003, 
+            -76.887302399999996
+        ], 
+        "rank": 32, 
+        "rate": 27, 
+        "size": 3618
+    }, 
+    "Calvin College": {
+        "cost": 28250, 
+        "location": [
+            42.929881299999998, 
+            -85.587652899999995
+        ], 
+        "rank": 100, 
+        "rate": 75.599999999999994, 
+        "size": 4008
+    }, 
+    "Carleton College": {
+        "cost": 46167, 
+        "location": [
+            44.461333000000003, 
+            -93.155606300000002
+        ], 
+        "rank": 7, 
+        "rate": 25.600000000000001, 
+        "size": 2055
+    }, 
+    "Centre College": {
+        "cost": 36000, 
+        "location": [
+            41.832647999999999, 
+            -71.360312899999997
+        ], 
+        "rank": 49, 
+        "rate": 69.599999999999994, 
+        "size": 1344
+    }, 
+    "Claremont McKenna College": {
+        "cost": 45625, 
+        "location": [
+            34.101154399999999, 
+            -117.7058138
+        ], 
+        "rank": 9, 
+        "rate": 13.6, 
+        "size": 1295
+    }, 
+    "Colby College": {
+        "cost": 45760, 
+        "location": [
+            44.563933400000003, 
+            -69.66209649999999
+        ], 
+        "rank": 22, 
+        "rate": 29, 
+        "size": 1863
+    }, 
+    "Colgate University": {
+        "cost": 46380, 
+        "location": [
+            42.817373699999997, 
+            -75.539244199999999
+        ], 
+        "rank": 20, 
+        "rate": 29.399999999999999, 
+        "size": 2886
+    }, 
+    "College of St. Benedict": {
+        "cost": 37926, 
+        "location": [
+            45.560366799999997, 
+            -94.322125
+        ], 
+        "rank": 94, 
+        "rate": 76.700000000000003, 
+        "size": 2070
+    }, 
+    "College of Wooster": {
+        "cost": 41680, 
+        "location": [
+            40.811056499999999, 
+            -81.933599700000002
+        ], 
+        "rank": 65, 
+        "rate": 58.100000000000001, 
+        "size": 2080
+    }, 
+    "College of the Atlantic": {
+        "cost": 38952, 
+        "location": [
+            44.394195600000003, 
+            -68.220014800000001
+        ], 
+        "rank": 93, 
+        "rate": 70.599999999999994, 
+        "size": 340
+    }, 
+    "College of the Holy Cross": {
+        "cost": 44272, 
+        "location": [
+            42.2378888, 
+            -71.805246400000016
+        ], 
+        "rank": 25, 
+        "rate": 33.5, 
+        "size": 2926
+    }, 
+    "Colorado College": {
+        "cost": 44222, 
+        "location": [
+            38.848429799999998, 
+            -104.82287530000001
+        ], 
+        "rank": 31, 
+        "rate": 23, 
+        "size": 2026
+    }, 
+    "Connecticut College": {
+        "cost": 46085, 
+        "location": [
+            41.3786877, 
+            -72.104586900000001
+        ], 
+        "rank": 45, 
+        "rate": 35.899999999999999, 
+        "size": 1933
+    }, 
+    "Cornell College": {
+        "cost": 36430, 
+        "location": [
+            41.926954599999988, 
+            -91.425350199999997
+        ], 
+        "rank": 97, 
+        "rate": 52.899999999999999, 
+        "size": 1180
+    }, 
+    "Davidson College": {
+        "cost": 42849, 
+        "location": [
+            35.502229, 
+            -80.847465
+        ], 
+        "rank": 9, 
+        "rate": 24.800000000000001, 
+        "size": 1790
+    }, 
+    "DePauw University": {
+        "cost": 40640, 
+        "location": [
+            39.640397, 
+            -86.861621999999997
+        ], 
+        "rank": 54, 
+        "rate": 61.5, 
+        "size": 2336
+    }, 
+    "Denison University": {
+        "cost": 43910, 
+        "location": [
+            40.074025300000002, 
+            -82.522642499999989
+        ], 
+        "rank": 50, 
+        "rate": 49.5, 
+        "size": 2336
+    }, 
+    "Dickinson College": {
+        "cost": 46094, 
+        "location": [
+            40.202551799999988, 
+            -77.1978826
+        ], 
+        "rank": 45, 
+        "rate": 40.200000000000003, 
+        "size": 2386
+    }, 
+    "Earlham College": {
+        "cost": 41450, 
+        "location": [
+            39.823940999999998, 
+            -84.913240999999999
+        ], 
+        "rank": 65, 
+        "rate": 74.900000000000006, 
+        "size": 1211
+    }, 
+    "Franklin and Marshall College": {
+        "cost": 46285, 
+        "location": [
+            40.04748, 
+            -76.31791299999999
+        ], 
+        "rank": 45, 
+        "rate": 39.299999999999997, 
+        "size": 2365
+    }, 
+    "Furman University": {
+        "cost": 43164, 
+        "location": [
+            34.924589300000001, 
+            -82.439136699999992
+        ], 
+        "rank": 52, 
+        "rate": 77.5, 
+        "size": 2915
+    }, 
+    "Gettysburg College": {
+        "cost": 45870, 
+        "location": [
+            39.835957999999998, 
+            -77.237230799999992
+        ], 
+        "rank": 50, 
+        "rate": 40.299999999999997, 
+        "size": 2597
+    }, 
+    "Grinnell College": {
+        "cost": 43656, 
+        "location": [
+            41.749221299999988, 
+            -92.719747999999996
+        ], 
+        "rank": 17, 
+        "rate": 36.299999999999997, 
+        "size": 1674
+    }, 
+    "Gustavus Adolphus College": {
+        "cost": 39060, 
+        "location": [
+            44.324024600000001, 
+            -93.970613499999999
+        ], 
+        "rank": 76, 
+        "rate": 63.399999999999999, 
+        "size": 2524
+    }, 
+    "Hamilton College": {
+        "cost": 46080, 
+        "location": [
+            43.0530933, 
+            -75.408915400000012
+        ], 
+        "rank": 14, 
+        "rate": 27.199999999999999, 
+        "size": 1884
+    }, 
+    "Hampden\u2014Sydney College": {
+        "cost": 37352, 
+        "location": [
+            37.241039000000008, 
+            -78.460985999999991
+        ], 
+        "rank": 97, 
+        "rate": 55.600000000000001, 
+        "size": 1080
+    }, 
+    "Harvey Mudd College": {
+        "cost": 46509, 
+        "location": [
+            34.105866200000001, 
+            -117.71044310000001
+        ], 
+        "rank": 16, 
+        "rate": 19.199999999999999, 
+        "size": 783
+    }, 
+    "Haverford College": {
+        "cost": 45426, 
+        "location": [
+            40.007860399999998, 
+            -75.306237699999997
+        ], 
+        "rank": 9, 
+        "rate": 22.899999999999999, 
+        "size": 1205
+    }, 
+    "Hendrix College": {
+        "cost": 37816, 
+        "location": [
+            35.100684899999997, 
+            -92.436528999999993
+        ], 
+        "rank": 82, 
+        "rate": 83, 
+        "size": 1388
+    }, 
+    "Hillsdale College": {
+        "cost": 22890, 
+        "location": [
+            41.931380699999998, 
+            -84.630842300000012
+        ], 
+        "rank": 82, 
+        "rate": 49, 
+        "size": 1447
+    }, 
+    "Hobart and William Smith Colleges": {
+        "cost": 46165, 
+        "location": [
+            42.859507999999998, 
+            -76.985264999999998
+        ], 
+        "rank": 61, 
+        "rate": 53.100000000000001, 
+        "size": 2300
+    }, 
+    "Hope College": {
+        "cost": 28720, 
+        "location": [
+            42.787397599999998, 
+            -86.099987599999992
+        ], 
+        "rank": 100, 
+        "rate": 85.099999999999994, 
+        "size": 3343
+    }, 
+    "Illinois Wesleyan University": {
+        "cost": 39316, 
+        "location": [
+            40.490940799999997, 
+            -88.990273599999995
+        ], 
+        "rank": 65, 
+        "rate": 59.5, 
+        "size": 2013
+    }, 
+    "Juniata College": {
+        "cost": 37170, 
+        "location": [
+            40.499463400000003, 
+            -78.016612699999996
+        ], 
+        "rank": 100, 
+        "rate": 66.400000000000006, 
+        "size": 1565
+    }, 
+    "Kalamazoo College": {
+        "cost": 37810, 
+        "location": [
+            42.290303600000001, 
+            -85.601896499999995
+        ], 
+        "rank": 61, 
+        "rate": 69, 
+        "size": 1379
+    }, 
+    "Kenyon College": {
+        "cost": 45640, 
+        "location": [
+            40.376832800000003, 
+            -82.396592799999993
+        ], 
+        "rank": 32, 
+        "rate": 36, 
+        "size": 1667
+    }, 
+    "Knox College": {
+        "cost": 38952, 
+        "location": [
+            40.941683300000001, 
+            -90.371304499999994
+        ], 
+        "rank": 82, 
+        "rate": 77.599999999999994, 
+        "size": 1430
+    }, 
+    "Lafayette College": {
+        "cost": 43970, 
+        "location": [
+            40.699878099999999, 
+            -75.207944900000001
+        ], 
+        "rank": 36, 
+        "rate": 34.5, 
+        "size": 2488
+    }, 
+    "Lawrence University": {
+        "cost": 41226, 
+        "location": [
+            44.261575299999997, 
+            -88.397966299999993
+        ], 
+        "rank": 59, 
+        "rate": 76.200000000000003, 
+        "size": 1525
+    }, 
+    "Lewis & Clark College": {
+        "cost": 41928, 
+        "location": [
+            46.619546100000001, 
+            -122.4554639
+        ], 
+        "rank": 74, 
+        "rate": 64, 
+        "size": 3703
+    }, 
+    "Luther College": {
+        "cost": 37450, 
+        "location": [
+            43.311062999999997, 
+            -91.806253299999995
+        ], 
+        "rank": 94, 
+        "rate": 70.200000000000003, 
+        "size": 2473
+    }, 
+    "Macalester College": {
+        "cost": 45388, 
+        "location": [
+            44.939139999999988, 
+            -93.168503099999995
+        ], 
+        "rank": 24, 
+        "rate": 36.700000000000003, 
+        "size": 2070
+    }, 
+    "Middlebury College": {
+        "cost": 45314, 
+        "location": [
+            44.009113999999997, 
+            -73.178880199999995
+        ], 
+        "rank": 4, 
+        "rate": 17.199999999999999, 
+        "size": 2516
+    }, 
+    "Millsaps College": {
+        "cost": 32520, 
+        "location": [
+            32.323380499999999, 
+            -90.1787657
+        ], 
+        "rank": 82, 
+        "rate": 54.799999999999997, 
+        "size": 915
+    }, 
+    "Mount Holyoke College": {
+        "cost": 41456, 
+        "location": [
+            42.256729100000001, 
+            -72.575767099999993
+        ], 
+        "rank": 38, 
+        "rate": 42.100000000000001, 
+        "size": 2344
+    }, 
+    "Muhlenberg College": {
+        "cost": 42755, 
+        "location": [
+            40.596392799999997, 
+            -75.508467299999992
+        ], 
+        "rank": 65, 
+        "rate": 45.700000000000003, 
+        "size": 2422
+    }, 
+    "New College of Florida": {
+        "cost": 29812, 
+        "location": [
+            27.385726699999999, 
+            -82.559848599999995
+        ], 
+        "rank": 89, 
+        "rate": 59.600000000000001, 
+        "size": 832
+    }, 
+    "Oberlin College": {
+        "cost": 46870, 
+        "location": [
+            41.294530199999997, 
+            -82.220945700000001
+        ], 
+        "rank": 25, 
+        "rate": 31.300000000000001, 
+        "size": 2944
+    }, 
+    "Occidental College": {
+        "cost": 46270, 
+        "location": [
+            34.126615000000001, 
+            -118.21239199999999
+        ], 
+        "rank": 41, 
+        "rate": 39.399999999999999, 
+        "size": 2178
+    }, 
+    "Ohio Wesleyan University": {
+        "cost": 40510, 
+        "location": [
+            40.295976400000001, 
+            -83.067845599999998
+        ], 
+        "rank": 100, 
+        "rate": 73.599999999999994, 
+        "size": 1821
+    }, 
+    "Pitzer College": {
+        "cost": 43402, 
+        "location": [
+            34.104080600000003, 
+            -117.7043475
+        ], 
+        "rank": 35, 
+        "rate": 15.699999999999999, 
+        "size": 1084
+    }, 
+    "Pomona College": {
+        "cost": 43580, 
+        "location": [
+            34.097619000000002, 
+            -117.7124122
+        ], 
+        "rank": 4, 
+        "rate": 13, 
+        "size": 1607
+    }, 
+    "Reed College": {
+        "cost": 44460, 
+        "location": [
+            37.5503359, 
+            -122.004329
+        ], 
+        "rank": 74, 
+        "rate": 39.899999999999999, 
+        "size": null
+    }, 
+    "Rhodes College": {
+        "cost": 39794, 
+        "location": [
+            35.152747700000013, 
+            -89.992626899999991
+        ], 
+        "rank": 54, 
+        "rate": 54.600000000000001, 
+        "size": 1927
+    }, 
+    "Scripps College": {
+        "cost": 45564, 
+        "location": [
+            34.103357199999998, 
+            -117.71145869999999
+        ], 
+        "rank": 25, 
+        "rate": 32.399999999999999, 
+        "size": 962
+    }, 
+    "Sewanee\u2014\u200bUniversity of the South": {
+        "cost": 35756, 
+        "location": [
+            35.203137300000002, 
+            -85.921089899999998
+        ], 
+        "rank": 38, 
+        "rate": 58.799999999999997, 
+        "size": 1557
+    }, 
+    "Skidmore College": {
+        "cost": 45724, 
+        "location": [
+            43.096148900000003, 
+            -73.781770499999993
+        ], 
+        "rank": 45, 
+        "rate": 41.899999999999999, 
+        "size": 2689
+    }, 
+    "Smith College": {
+        "cost": 43114, 
+        "location": [
+            42.318095700000008, 
+            -72.637234100000001
+        ], 
+        "rank": 20, 
+        "rate": 42.399999999999999, 
+        "size": 3212
+    }, 
+    "Soka University of America": {
+        "cost": 29092, 
+        "location": [
+            33.5549818, 
+            -117.7348611
+        ], 
+        "rank": 41, 
+        "rate": 45.799999999999997, 
+        "size": 438
+    }, 
+    "Southwestern University": {
+        "cost": 35240, 
+        "location": [
+            30.636892199999998, 
+            -97.664305999999996
+        ], 
+        "rank": 65, 
+        "rate": 60.5, 
+        "size": 1394
+    }, 
+    "Spelman College": {
+        "cost": 24634, 
+        "location": [
+            33.744963599999998, 
+            -84.413957599999989
+        ], 
+        "rank": 65, 
+        "rate": 38, 
+        "size": 2145
+    }, 
+    "St. John's University": {
+        "cost": 37167, 
+        "location": [
+            40.715408400000001, 
+            -74.012671299999994
+        ], 
+        "rank": 76, 
+        "rate": 74.799999999999997, 
+        "size": 1983
+    }, 
+    "St. Lawrence University": {
+        "cost": 46040, 
+        "location": [
+            44.589063199999998, 
+            -75.162181799999999
+        ], 
+        "rank": 56, 
+        "rate": 48.200000000000003, 
+        "size": 2488
+    }, 
+    "St. Mary's College": {
+        "cost": 34600, 
+        "location": [
+            37.841200999999998, 
+            -122.10870300000001
+        ], 
+        "rank": 76, 
+        "rate": 84.799999999999997, 
+        "size": 1469
+    }, 
+    "St. Mary's College of Maryland": {
+        "cost": 28665, 
+        "location": [
+            38.187487500000003, 
+            -76.425316299999992
+        ], 
+        "rank": 89, 
+        "rate": 72, 
+        "size": 1933
+    }, 
+    "St. Michael's College": {
+        "cost": 39015, 
+        "location": [
+            8.2394965999999989, 
+            124.250322
+        ], 
+        "rank": 89, 
+        "rate": 78, 
+        "size": 2410
+    }, 
+    "St. Olaf College": {
+        "cost": 40700, 
+        "location": [
+            44.461154000000001, 
+            -93.183696299999994
+        ], 
+        "rank": 52, 
+        "rate": 60.399999999999999, 
+        "size": 3176
+    }, 
+    "Swarthmore College": {
+        "cost": 44718, 
+        "location": [
+            39.90652, 
+            -75.351990000000001
+        ], 
+        "rank": 3, 
+        "rate": 14.199999999999999, 
+        "size": 1552
+    }, 
+    "Thomas Aquinas College": {
+        "cost": 24500, 
+        "location": [
+            34.429372399999998, 
+            -119.0872049
+        ], 
+        "rank": 61, 
+        "rate": 80.599999999999994, 
+        "size": 370
+    }, 
+    "Transylvania University": {
+        "cost": 31560, 
+        "location": [
+            38.052760399999997, 
+            -84.493622099999996
+        ], 
+        "rank": 76, 
+        "rate": 84.900000000000006, 
+        "size": 1074
+    }, 
+    "Trinity College": {
+        "cost": 47510, 
+        "location": [
+            41.747077999999988, 
+            -72.690375000000003
+        ], 
+        "rank": 36, 
+        "rate": 33.700000000000003, 
+        "size": 2387
+    }, 
+    "Union College": {
+        "cost": 46785, 
+        "location": [
+            42.817742699999997, 
+            -73.930522199999999
+        ], 
+        "rank": 41, 
+        "rate": 38.200000000000003, 
+        "size": 2241
+    }, 
+    "United States Air Force Academy": {
+        "cost": 0, 
+        "location": [
+            38.998357300000002, 
+            -104.8617533
+        ], 
+        "rank": 25, 
+        "rate": 9.9000000000000004, 
+        "size": 4120
+    }, 
+    "United States Military Academy": {
+        "cost": 0, 
+        "location": [
+            41.391837199999998, 
+            -73.962503299999995
+        ], 
+        "rank": 17, 
+        "rate": 9, 
+        "size": 4592
+    }, 
+    "United States Naval Academy": {
+        "cost": 0, 
+        "location": [
+            38.983648300000013, 
+            -76.482334999999992
+        ], 
+        "rank": 12, 
+        "rate": 6.7999999999999998, 
+        "size": 4536
+    }, 
+    "University of Puget Sound": {
+        "cost": 41868, 
+        "location": [
+            47.262031499999999, 
+            -122.4816819
+        ], 
+        "rank": 76, 
+        "rate": 82.700000000000003, 
+        "size": 2857
+    }, 
+    "University of Richmond": {
+        "cost": 45320, 
+        "location": [
+            37.573960700000001, 
+            -77.53961369999999
+        ], 
+        "rank": 25, 
+        "rate": 30.300000000000001, 
+        "size": 3626
+    }, 
+    "Ursinus College": {
+        "cost": 44530, 
+        "location": [
+            40.194206800000003, 
+            -75.458022500000013
+        ], 
+        "rank": 82, 
+        "rate": 69.799999999999997, 
+        "size": 1680
+    }, 
+    "Vassar College": {
+        "cost": 47890, 
+        "location": [
+            41.686661999999998, 
+            -73.894943999999995
+        ], 
+        "rank": 13, 
+        "rate": 22.800000000000001, 
+        "size": 2406
+    }, 
+    "Virginia Military Institute": {
+        "cost": 35392, 
+        "location": [
+            37.789819000000001, 
+            -79.435225599999995
+        ], 
+        "rank": 65, 
+        "rate": 46.299999999999997, 
+        "size": 1664
+    }, 
+    "Wabash College": {
+        "cost": 35650, 
+        "location": [
+            40.035122899999998, 
+            -86.907091100000017
+        ], 
+        "rank": 57, 
+        "rate": 67, 
+        "size": 906
+    }, 
+    "Washington and Jefferson College": {
+        "cost": 39710, 
+        "location": [
+            40.171431599999998, 
+            -80.23993089999999
+        ], 
+        "rank": 97, 
+        "rate": 40.799999999999997, 
+        "size": 1429
+    }, 
+    "Washington and Lee University": {
+        "cost": 44507, 
+        "location": [
+            37.791509699999999, 
+            -79.44451389999999
+        ], 
+        "rank": 14, 
+        "rate": 19.5, 
+        "size": 2302
+    }, 
+    "Wellesley College": {
+        "cost": 43554, 
+        "location": [
+            42.293573299999998, 
+            -71.305927799999992
+        ], 
+        "rank": 7, 
+        "rate": 30.100000000000001, 
+        "size": 2481
+    }, 
+    "Wesleyan University": {
+        "cost": 46944, 
+        "location": [
+            41.556610399999997, 
+            -72.656904099999991
+        ], 
+        "rank": 17, 
+        "rate": 20.899999999999999, 
+        "size": 3262
+    }, 
+    "Westmont College": {
+        "cost": 38510, 
+        "location": [
+            34.448502699999999, 
+            -119.6616697
+        ], 
+        "rank": 94, 
+        "rate": 66, 
+        "size": 1355
+    }, 
+    "Wheaton College": {
+        "cost": 45074, 
+        "location": [
+            41.868513499999999, 
+            -88.09960199999999
+        ], 
+        "rank": 65, 
+        "rate": 64.299999999999997, 
+        "size": 1616
+    }, 
+    "Whitman College": {
+        "cost": 43500, 
+        "location": [
+            46.0715857, 
+            -118.32989929999999
+        ], 
+        "rank": 41, 
+        "rate": 48.600000000000001, 
+        "size": 1539
+    }, 
+    "Willamette University": {
+        "cost": 42305, 
+        "location": [
+            44.937121900000001, 
+            -123.03180039999999
+        ], 
+        "rank": 61, 
+        "rate": 60.399999999999999, 
+        "size": 2933
+    }, 
+    "Williams College": {
+        "cost": 46600, 
+        "location": [
+            42.713470899999997, 
+            -73.204994200000002
+        ], 
+        "rank": 1, 
+        "rate": 17, 
+        "size": 2106
+    }, 
+    "Wofford College": {
+        "cost": 35515, 
+        "location": [
+            34.958875900000002, 
+            -81.934516000000002
+        ], 
+        "rank": 65, 
+        "rate": 62.700000000000003, 
+        "size": 1588
+    }
+}
