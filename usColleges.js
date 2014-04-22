@@ -150,7 +150,10 @@ function createMap() {
                 var color = d3.scale.linear()
                 .domain(d3.extent(colordomainarray))
                 .interpolate(d3.interpolateRgb)
-                .range(['white', 'blue'])
+                .range(['white', 'blue']);
+
+                // create legend
+                colorlegend("#linearLegend", color, "linear", {title: "legend", linearBoxes: "9"});
 
                 // create station circles
                 g.selectAll("circles.points")
