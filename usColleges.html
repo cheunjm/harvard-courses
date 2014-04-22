@@ -9,6 +9,9 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <style type="text/css">
     * {
       font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -116,6 +119,28 @@
           <form>
             <input type="radio" name="nu" value="nu" checked>National Universities
             <input type="radio" name="nu" value="nlac">National Liberal Arts Colleges
+          </form>
+          <form>
+          <div id="option">
+              <input name="updateButton" 
+                           type="button" 
+                          value="Update" 
+                          onclick="updateData()" />
+          </div>
+          </form>
+          <form>
+          <p>
+            <label for="amount1">Enrollment:</label>
+            <input type="text" id="amount1" style="border:0; color:#f6931f; font-weight:bold;">
+          </p>
+          <div id="slider-range1"></div>
+          </form>
+          <form>
+          <p>
+            <label for="amount2">Tuition and Fees:</label>
+            <input type="text" id="amount2" style="border:0; color:#f6931f; font-weight:bold;">
+          </p>
+          <div id="slider-range2"></div>
           </form>
         </div>
       </td>

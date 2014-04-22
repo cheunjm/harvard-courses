@@ -1,7 +1,34 @@
 /**
  * Created by hen on 3/8/14.
  */
-
+$(function() {
+    $( "#slider-range1" ).slider({
+      range: true,
+      min: 0,
+      max: 20000,
+      values: [0, 20000],
+      step: 1000,
+      slide: function( event, ui ) {
+        $( "#amount1" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount1" ).val($( "#slider-range1" ).slider( "values", 0 ) +
+      " -" + $( "#slider-range1" ).slider( "values", 1 ) );
+  });
+$(function() {
+    $( "#slider-range2" ).slider({
+      range: true,
+      min: 5000,
+      max: 50000,
+      values: [ 5000, 50000 ],
+      step: 5000,
+      slide: function( event, ui ) {
+        $( "#amount2" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount2" ).val( "$" + $( "#slider-range2" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range2" ).slider( "values", 1 ) );
+  });
 var margin = {
     top: 50,
     right: 50,
@@ -563,3 +590,7 @@ function createPlot(data) {
 }
     
 loadColleges();
+
+function updateData() {
+  
+}
