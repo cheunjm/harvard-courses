@@ -100,19 +100,19 @@ var svg = canvas.append("g").attr({
 //         transform: "translate(" + margin.left + "," + margin.top + ")"
 //     });
 
-var jsonData, csvData;
+var original_jsonData, original_csvData;
 
 function loadColleges() {
     d3.json("../data/nu.json", function(error,data1){
-        jsonData = data1;
+        original_jsonData = data1;
         d3.csv("../data/nu.csv", function(error,data2) {
-          csvData = data2
-            createVis();
+          original_csvData = data2
+            createVis(original_jsonData,original_csvData);
         });
     });
 }
 
-function createVis() {
+function createVis(jsonData,csvData) {
             createMap(jsonData);
             createTable(csvData);
             createPlot(csvData);
