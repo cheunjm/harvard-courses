@@ -312,7 +312,7 @@ function createTable(data) {
         .data(data)
         .enter()
         .append("tr")
-        .attr("id", function(d){return d.name.toString().replace(/ /g,"").replace(/./g,"")})
+         .attr("id", function(d){return d.key.toString().replace(/ /g,"").replace(".","")})
         .style("background-color", function(d, i) { return zebraRows(d, i); })
         .on("mouseover", function(d, i) {
             d3.select(this)
