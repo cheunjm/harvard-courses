@@ -100,20 +100,25 @@ var svg = canvas.append("g").attr({
 //         transform: "translate(" + margin.left + "," + margin.top + ")"
 //     });
 
-var completeDataSet;
+var jsonData, csvData;
 
 function loadColleges() {
-    d3.json("../data/nu.json", function(error,data){
-        completeDataSet = data;
-        d3.csv("../data/nu.csv", function(error,data) {
-            createMap();
-            createTable(data);
-            createPlot(data);
+    d3.json("../data/nu.json", function(error,data1){
+        jsonData = data1;
+        d3.csv("../data/nu.csv", function(error,data2) {
+          csvData = data2
+            createVis();
         });
     });
 }
 
-function createMap() {
+function createVis() {
+            createMap(jsonData);
+            createTable(csvData);
+            createPlot(csvData);
+}
+
+function createMap(jsonD) {
     // initialize basic map
     d3.json("../data/us-named.json", function(error, data) {
             var projection = d3.geo.albersUsa()
@@ -146,7 +151,7 @@ function createMap() {
                 .attr("id", "state-borders")
                 .attr("d", path);
 
-                var mapData= d3.entries(completeDataSet);
+                var mapData= d3.entries(jsonD);
 
                 // tooltip
                  var tooltip = d3.select("body").append("div")
