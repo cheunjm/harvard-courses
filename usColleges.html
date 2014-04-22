@@ -71,6 +71,19 @@
         opacity: .3;
     }
 
+  .legend {
+    background-color: #fff;
+    width: 300px;
+    height: 60px;
+    margin: 10px;
+    position: absolute;
+    bottom: 0;
+  }
+
+    #linearLegend .colorlegend-labels {
+      font-size: 9px;
+      fill: #888;
+    }
     #states {
       fill: #aaa;
     }
@@ -88,6 +101,10 @@
 
     #mapVis, #tableVis, #plotVis, #detailVis {
       border: 1px solid black;
+    }
+
+    #mapVis {
+      position: relative;
     }
 
     #tableVis {
@@ -120,6 +137,7 @@
             <input type="radio" name="nu" value="nu" checked>National Universities
             <input type="radio" name="nu" value="nlac">National Liberal Arts Colleges
           </form>
+<<<<<<< HEAD
           <form>
           <div id="option">
               <input name="updateButton" 
@@ -142,6 +160,9 @@
           </p>
           <div id="slider-range2"></div>
           </form>
+=======
+          <div id="linearLegend" class="legend"></div>
+>>>>>>> FETCH_HEAD
         </div>
       </td>
       <td>
@@ -159,6 +180,7 @@
 
 
 <script src="usColleges.js"></script>
+<script src="colorlegend.js"></script>
 
 </body>
 </html>
