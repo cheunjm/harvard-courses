@@ -1,4 +1,5 @@
 /**
+ * plugin for slider
  * Created by hen on 3/8/14.
  */
 $(function() {
@@ -187,12 +188,16 @@ function createMap() {
                 .data(mapData)
                 .enter()
                 .append("circle")
+                .attr("id", function(d){return d.key.toString().replace(/ /g,"").replace(".","")})
                 .attr("r", function(d) { return scale(d.value.size); })
                 .attr("transform", function(d) {
                         return "translate(" + projection([d.value.location[1], d.value.location[0]]) + ")";
                     })
                 .style("stroke", "#000")
                 .style("fill", function(d) { return color(d.value.cost); })
+                    .on("click", function(d) {
+                      highlightVis(d.key);
+                    })
                     .on("mouseover", function(d) {
                       tooltip.transition()
                         .duration(100)
@@ -318,7 +323,7 @@ function createTable(data) {
             .style("cursor", "normal");
         })
         .on("click", function(d, i) {
-          highlightVis(d);
+          highlightVis(d.name);
 
             // // a row has been clicked
             // if (clicked) {
@@ -567,12 +572,16 @@ function createPlot(data) {
       svg.selectAll(".dot")
           .data(data)
         .enter().append("circle")
+          .attr("id", function(d){return d.name.toString().replace(/ /g,"").replace(".","")})
           .attr("class", "dot")
           .attr("r", 3.5)
           .attr("fill", function(d) { return color(d.cost); })
           .attr("cx", function(d) { return x(d.size); })
           .attr("cy", function(d) { return y(d.cost); })
           .style("stroke", "#000")
+          .on("click", function(d) {
+            highlightVis(d.name);
+          })
           .on("mouseover", function(d) {
             tooltip.transition()
                 .duration(100)
@@ -609,12 +618,23 @@ function createPlot(data) {
     
 loadColleges();
 
-function highlightVis(data){
+function highlightVis(name){
 
-  console.log("#"+data.name.toString().replace(/ /g,"").replace(".",""));
-  var heehee =d3.select("#"+data.name.toString().replace(/ /g,"").replace(".","")).style("font-weight", "bold");
-  // highlightSP(data);
+  // highlight tableVis row
+  d3.select("#tableVis").select("#"+name.toString().replace(/ /g,"").replace(".","")).style("font-weight", "bold");
+  // highlight mapVis circle
+  d3.select("#mapVis").select("#"+name.toString().replace(/ /g,"").replace(".","")).style("fill", "yellow");
+  // highlight plotVis dot
+  d3.select("#plotVis").select("#"+name.toString().replace(/ /g,"").replace(".","")).style("fill", "yellow");
 }
+
+function reset() { console.log("hi");
+  d3.selectAll("#tableVis table tr").style("font-weight", "normal");
+}
+
+$("#reset").click(function() {
+  reset();
+})
 
 // function highlightSP (data) {
 //   d3.select(#Yale)
