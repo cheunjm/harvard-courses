@@ -4,6 +4,7 @@
  */
 
 // slider for enrollment
+var colleges = new Array ();
 $(function() {
     $( "#slider-range1" ).slider({
       range: true,
@@ -675,15 +676,26 @@ $("#nlac").click(function() {
 })
 
 function updateData() {
-  var enroll_range = d3.select("#amount1")[0][0].value.replace(/ /g,"").split("-");
-  var tuition_range = d3.select("#amount2")[0][0].value.replace(/ /g,"").replace(/\$/g,"").split("-")
-  filterJson(initial_nu_json, 0,0)
+  var enroll_range = parseInt(d3.select("#amount1")[0][0].value.replace(/ /g,"").split("-"));
+  var tuition_range = parseInt(d3.select("#amount2")[0][0].value.replace(/ /g,"").replace(/\$/g,"").split("-"));
+  filterJson(current_json, enroll_range,tuition_range);
+  reset();
   // if(nuClicked){
   //   createVis(filterJson(initial_nu_json,enroll_range,tuition_range),filterCSV(initial_nu_csv,enroll_range,tuition_range))
   // }
 }
 
 function filterJson(jsonData,pop_range,cost_range){
-  var ids = Object.keys(jsonData)
-  console.log(ids);
+  var new_data = new Object();
+  console.log(pop_range)
+  console.log(cost_range)
+  colleges.forEach(function(college){
+    var cost = jsonData[college].cost;
+    var pop = jsonData[college].size;
+    if(pop >= parseInt(pop_range[0]) && pop <= parseInt(pop_range[1]) && cost >= parseInt(cost_range[0]) && cost <= parseInt(cost_range[1])){
+      new_data[college] = jsonData[college];
+    }
+  })
+  console.log(new_data);
+  current_json = new_data;
 }
