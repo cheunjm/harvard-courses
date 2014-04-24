@@ -645,6 +645,11 @@ $("#searchButton").click(function() {
   highlightVis(value);
 })
 
+$(function() {
+  var colleges = ["Harvard University"];
+  $("#search").autocomplete({source: colleges});
+})
+
 // function highlightSP (data) {
 //   d3.select(#Yale)
 // }
