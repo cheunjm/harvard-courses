@@ -4,8 +4,6 @@
  */
 
 // slider for enrollment
-
-var colleges = new Array();
 $(function() {
     $( "#slider-range1" ).slider({
       range: true,
@@ -20,7 +18,6 @@ $(function() {
     $( "#amount1" ).val($( "#slider-range1" ).slider( "values", 0 ) +
       " -" + $( "#slider-range1" ).slider( "values", 1 ) );
   });
-
 // slider for tuition
 $(function() {
     $( "#slider-range2" ).slider({
@@ -36,6 +33,7 @@ $(function() {
     $( "#amount2" ).val( "$" + $( "#slider-range2" ).slider( "values", 0 ) +
       " - $" + $( "#slider-range2" ).slider( "values", 1 ) );
   });
+
 var margin = {
     top: 50,
     right: 50,
@@ -84,8 +82,10 @@ function loadColleges() {
               initial_nlac_json = data3;
                 d3.csv("../data/nlac.csv", function(error,data4) {
                 initial_nlac_csv = data4;
-                colleges = Object.keys(initial_nu_json);
                 createVis(initial_nu_json,initial_nu_csv);
+                $(function() {
+                  $("#search").autocomplete({source: Object.keys(initial_nu_json)});
+                })
               });
            });
         });
@@ -639,11 +639,6 @@ $("#reset").click(function() {
 $("#searchButton").click(function() {
   value = $("#search").val();
   highlightVis(value);
-})
-
-$(function() {
-  var colleges = ["Harvard University"];
-  $("#search").autocomplete({source: colleges});
 })
 
 // function highlightSP (data) {
