@@ -10,7 +10,7 @@
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <style type="text/css">
     * {
@@ -131,7 +131,8 @@
       <td>
         <div id="mapVis">
           <form>
-            <input type="text" name="search" placeholder="Search" id="search">
+            <input type="text" name="search" placeholder="College Name" id="search">
+            <input type="button" value="Search" id="searchButton">
           </form>
           <form>
             <input type="radio" id="nu" name="nu" checked>National Universities
@@ -145,7 +146,7 @@
               <input name="updateButton" 
                            type="button" 
                           value="Update" 
-                          onclick="updateData()" />
+                          onclick="updateData();" />
           </div>
           </form>
           <form>

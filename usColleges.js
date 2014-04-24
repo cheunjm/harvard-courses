@@ -54,11 +54,6 @@ var mapVis = {
     h: 300
 };
 
-// var bbDetail = {
-//   width : 230,
-//   height: 536
-// }
-
 var tableVisDimensions = {
     width: 230,
     height: 441
@@ -69,41 +64,13 @@ var plotVisDimensions = {
     height: 200
 }
 
-// var detailVis = d3.select("#detailVis").append("svg").attr({
-//     width: bbDetail.width + margin.left + margin.right,
-//     height: bbDetail.height + margin.top + margin.bottom
-// })
+// var canvas = d3.select("#mapVis").append("svg").attr({
+//     width: width + margin.left + margin.right - 150,
+//     height: height + margin.top + margin.bottom
+//     });
 
-
-var canvas = d3.select("#mapVis").append("svg").attr({
-    width: width + margin.left + margin.right - 150,
-    height: height + margin.top + margin.bottom
-    });
-
-var svg = canvas.append("g").attr({
-        transform: "translate(" + (margin.left-80) + "," + margin.top + ")"
-    });
-
-// var tableVis = d3.select("#tableVis").append("svg").attr({
-//     width: tableVisDimensions.width + margin.left + margin.right,
-//     height: tableVisDimensions.height
-// });
-
-// var tableVisg = tableVis.append("g").attr({
-//     transform: "translate(" + margin.left + "," + margin.top + ")"
-// });
-
-// var plotVis = d3.select("#plotVis").append("svg").attr({ 
-//     width: plotVisDimensions.width + margin.left + margin.right,
-//     height: plotVisDimensions.height
-// });
-
-// var plotVisg = plotVis.append("g").attr({
-//     transform: "translate(" + margin.left + "," + margin.top + ")"
-// });
-
-// var focus = detailVis.append("g").attr({
-//         transform: "translate(" + margin.left + "," + margin.top + ")"
+// var svg = canvas.append("g").attr({
+//         transform: "translate(" + (margin.left-80) + "," + margin.top + ")"
 //     });
 
 var initial_nu_json, initial_nu_csv;
@@ -113,8 +80,13 @@ function loadColleges() {
     d3.json("../data/nu.json", function(error,data1){
         initial_nu_json = data1;
         d3.csv("../data/nu.csv", function(error,data2) {
+<<<<<<< HEAD
             initial_nu_csv = data2
             d3.json("../data/nlac.json", function(error,data3){
+=======
+            initial_nu_csv = data2;
+            d3.json("../data/nu.json", function(error,data3){
+>>>>>>> FETCH_HEAD
               initial_nlac_json = data3;
                 d3.csv("../data/nlac.csv", function(error,data4) {
                 initial_nlac_csv = data4;
@@ -127,12 +99,27 @@ function loadColleges() {
 }
 
 function createVis(jsonData,csvData) {
-            createMap(jsonData);
+
+  var canvas = d3.select("#mapVis").append("svg").attr({
+    width: width + margin.left + margin.right - 150,
+    height: height + margin.top + margin.bottom
+    });
+
+  var svg = canvas.append("g").attr({
+          transform: "translate(" + (margin.left-80) + "," + margin.top + ")"
+      });
+            createMap(jsonData, svg);
             createTable(csvData);
             createPlot(csvData);
 }
 
-function createMap(jsonD) {
+function destroyVis() {
+  d3.select("#tableVis table").remove();
+  d3.select("#plotVis svg").remove();
+  d3.select("#mapVis svg").remove();
+}
+
+function createMap(jsonD, svg) {
     // initialize basic map
     d3.json("../data/us-named.json", function(error, data) {
             var projection = d3.geo.albersUsa()
@@ -647,18 +634,20 @@ function highlightVis(name){
   d3.select("#plotVis").select("#"+name.toString().replace(/ /g,"").replace(".","")).style("fill", "yellow");
 }
 
-function reset() { console.log("hi");
+function reset() {
   d3.selectAll("#tableVis table tr").style("font-weight", "normal");
+  destroyVis();
+  destroyVis();
+  createVis(initial_nu_json, initial_nu_csv);
 }
 
 $("#reset").click(function() {
   reset();
 })
 
-// search functionality
-$(function() {
-  var colleges = ["Harvard University", "Yale University", "Cornell University", "Dartmouth College"];
-  $("#search").autocomplete({source: colleges});
+$("#searchButton").click(function() {
+  value = $("#search").val();
+  highlightVis(value);
 })
 
 // function highlightSP (data) {
