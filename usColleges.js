@@ -68,15 +68,9 @@ var plotVisDimensions = {
     width: width + margin.left + margin.right - 150,
     height: height + margin.top + margin.bottom
     });
-
-// var canvas = d3.select("#mapVis").append("svg").attr({
-//     width: width + margin.left + margin.right - 150,
-//     height: height + margin.top + margin.bottom
-//     });
-
-// var svg = canvas.append("g").attr({
-//         transform: "translate(" + (margin.left-80) + "," + margin.top + ")"
-//     });
+  var svg = canvas.append("g").attr({
+          transform: "translate(" + (margin.left-80) + "," + margin.top + ")"
+      });
 
 var initial_nu_json, initial_nu_csv;
 var initial_nlac_json, initial_nlac_csv;
@@ -99,23 +93,19 @@ function loadColleges() {
 }
 
 function createVis(jsonData,csvData) {
-
             createMap(jsonData);
             createTable(csvData);
             createPlot(csvData);
 }
 
 function destroyVis() {
-  d3.select("#tableVis table").transition().duration(500).remove();
+  d3.select("#tableVis table").remove();
   d3.select("#plotVis svg").remove();
-  d3.select("#mapVis").selectAll("circle").transition().duration(500).ease("linear").remove();
+  d3.select("#mapVis").selectAll("circle").remove();
 }
 
 function createMap(jsonD) {
 
-  var svg = canvas.append("g").attr({
-          transform: "translate(" + (margin.left-80) + "," + margin.top + ")"
-      });
     // initialize basic map
     d3.json("../data/us-named.json", function(error, data) {
             var projection = d3.geo.albersUsa()
@@ -234,7 +224,7 @@ function createMap(jsonD) {
                 .transition()
                 .duration(500)
                 .attr("r", function(d) { return scale(d.value.size); })
-                .attr("id", function(d){return d.key.toString().replace(/ /g,"").replace(".","")})
+                .attr("id", function(d){return d.key.toString().replace(/\W+/g,"")})
 
                 .style("stroke", "#000")
                 .style("fill", function(d) { return color(d.value.cost); });
@@ -320,7 +310,7 @@ function createTable(data) {
         .data(data)
         .enter()
         .append("tr")
-        .attr("id", function(d){return d.name.toString().replace(/ /g,"").replace(".","")})
+        .attr("id", function(d){return d.name.toString().replace(/\W+/g,"")})
         .style("background-color", function(d, i) { return zebraRows(d, i); })
         .on("mouseover", function(d, i) {
             d3.select(this)
@@ -580,7 +570,7 @@ function createPlot(data) {
       svg.selectAll(".dot")
           .data(data)
         .enter().append("circle")
-          .attr("id", function(d){return d.name.toString().replace(/ /g,"").replace(".","")})
+          .attr("id", function(d){return d.name.toString().replace(/\W+/g,"")})
           .attr("class", "dot")
           .attr("r", 3.5)
           .attr("fill", function(d) { return color(d.cost); })
@@ -629,16 +619,15 @@ loadColleges();
 function highlightVis(name){
 
   // highlight tableVis row
-  d3.select("#tableVis").select("#"+name.toString().replace(/ /g,"").replace(".","")).style("font-weight", "bold");
+  d3.select("#tableVis").select("#"+name.toString().replace(/\W+/g,"")).style("font-weight", "bold");
   // highlight mapVis circle
-  d3.select("#mapVis").select("#"+name.toString().replace(/ /g,"").replace(".","")).style("fill", "yellow");
+  d3.select("#mapVis").select("#"+name.toString().replace(/\W+/g,"")).style("fill", "yellow");
   // highlight plotVis dot
-  d3.select("#plotVis").select("#"+name.toString().replace(/ /g,"").replace(".","")).style("fill", "yellow");
+  d3.select("#plotVis").select("#"+name.toString().replace(/\W+/g,"")).style("fill", "yellow");
 }
 
 function reset() {
   d3.selectAll("#tableVis table tr").style("font-weight", "normal");
-  destroyVis();
   destroyVis();
   createVis(initial_nu_json, initial_nu_csv);
 }
