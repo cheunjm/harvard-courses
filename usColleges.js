@@ -102,6 +102,7 @@ function destroyVis() {
   d3.select("#tableVis table").remove();
   d3.select("#plotVis svg").remove();
   d3.select("#mapVis").selectAll("circle").remove();
+  d3.select("#linearLegend svg").remove();
 }
 
 function createMap(jsonD) {
