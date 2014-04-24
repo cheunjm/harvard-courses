@@ -80,13 +80,8 @@ function loadColleges() {
     d3.json("../data/nu.json", function(error,data1){
         initial_nu_json = data1;
         d3.csv("../data/nu.csv", function(error,data2) {
-<<<<<<< HEAD
             initial_nu_csv = data2
             d3.json("../data/nlac.json", function(error,data3){
-=======
-            initial_nu_csv = data2;
-            d3.json("../data/nu.json", function(error,data3){
->>>>>>> FETCH_HEAD
               initial_nlac_json = data3;
                 d3.csv("../data/nlac.csv", function(error,data4) {
                 initial_nlac_csv = data4;
