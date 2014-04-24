@@ -4,13 +4,15 @@
  */
 
 // slider for enrollment
+
+var colleges = new Array();
 $(function() {
     $( "#slider-range1" ).slider({
       range: true,
       min: 0,
-      max: 20000,
-      values: [0, 20000],
-      step: 1000,
+      max: 80000,
+      values: [0, 80000],
+      step: 5000,
       slide: function( event, ui ) {
         $( "#amount1" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
       }
@@ -23,9 +25,9 @@ $(function() {
 $(function() {
     $( "#slider-range2" ).slider({
       range: true,
-      min: 5000,
+      min: 0,
       max: 50000,
-      values: [ 5000, 50000 ],
+      values: [0, 50000 ],
       step: 5000,
       slide: function( event, ui ) {
         $( "#amount2" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
@@ -112,10 +114,11 @@ function loadColleges() {
         initial_nu_json = data1;
         d3.csv("../data/nu.csv", function(error,data2) {
             initial_nu_csv = data2
-            d3.json("../data/nu.json", function(error,data3){
+            d3.json("../data/nlac.json", function(error,data3){
               initial_nlac_json = data3;
-                d3.csv("../data/nu.csv", function(error,data4) {
+                d3.csv("../data/nlac.csv", function(error,data4) {
                 initial_nlac_csv = data4;
+                colleges = Object.keys(initial_nu_json);
                 createVis(initial_nu_json,initial_nu_csv);
               });
            });
@@ -672,5 +675,15 @@ $("#nlac").click(function() {
 })
 
 function updateData() {
-  console.log(nuClicked)
+  var enroll_range = d3.select("#amount1")[0][0].value.replace(/ /g,"").split("-");
+  var tuition_range = d3.select("#amount2")[0][0].value.replace(/ /g,"").replace(/\$/g,"").split("-")
+  filterJson(initial_nu_json, 0,0)
+  // if(nuClicked){
+  //   createVis(filterJson(initial_nu_json,enroll_range,tuition_range),filterCSV(initial_nu_csv,enroll_range,tuition_range))
+  // }
+}
+
+function filterJson(jsonData,pop_range,cost_range){
+  var ids = Object.keys(jsonData)
+  console.log(ids);
 }
