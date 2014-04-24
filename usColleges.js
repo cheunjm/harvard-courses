@@ -4,8 +4,6 @@
  */
 
 // slider for enrollment
-
-var colleges = new Array();
 $(function() {
     $( "#slider-range1" ).slider({
       range: true,
@@ -20,7 +18,6 @@ $(function() {
     $( "#amount1" ).val($( "#slider-range1" ).slider( "values", 0 ) +
       " -" + $( "#slider-range1" ).slider( "values", 1 ) );
   });
-
 // slider for tuition
 $(function() {
     $( "#slider-range2" ).slider({
@@ -36,6 +33,7 @@ $(function() {
     $( "#amount2" ).val( "$" + $( "#slider-range2" ).slider( "values", 0 ) +
       " - $" + $( "#slider-range2" ).slider( "values", 1 ) );
   });
+
 var margin = {
     top: 50,
     right: 50,
@@ -85,16 +83,22 @@ function loadColleges() {
               initial_nlac_json = data3;
                 d3.csv("../data/nlac.csv", function(error,data4) {
                 initial_nlac_csv = data4;
-                colleges = Object.keys(initial_nu_json);
                 current_json = initial_nu_json;
-                current_csv = initial_nu_csv
+                current_csv = initial_nu_csv;
+                colleges = Object.keys(current_json);
                 createVis(current_json,current_csv);
+                autocomp();
               });
            });
         });
     });
 }
 
+function autocomp() {
+  $(function() {
+    $("#search").autocomplete({source: colleges});
+  })
+}
 function createVis(jsonData,csvData) {
             createMap(jsonData);
             createTable(csvData);
@@ -105,6 +109,7 @@ function destroyVis() {
   d3.select("#tableVis table").remove();
   d3.select("#plotVis svg").remove();
   d3.select("#mapVis").selectAll("circle").remove();
+  d3.select("#linearLegend svg").remove();
 }
 
 function createMap(jsonD) {
@@ -632,6 +637,8 @@ function highlightVis(name){
 function reset() {
   d3.selectAll("#tableVis table tr").style("font-weight", "normal");
   destroyVis();
+  colleges = Object.keys(current_json);
+  autocomp();
   createVis(current_json, current_csv);
 }
 
