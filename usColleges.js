@@ -78,7 +78,7 @@ function loadColleges() {
     d3.json("../data/nu.json", function(error,data1){
         initial_nu_json = data1;
         d3.csv("../data/nu.csv", function(error,data2) {
-            initial_nu_csv = data2
+            initial_nu_csv = data2;
             d3.json("../data/nu.json", function(error,data3){
               initial_nlac_json = data3;
                 d3.csv("../data/nu.csv", function(error,data4) {
@@ -637,10 +637,9 @@ $("#reset").click(function() {
   reset();
 })
 
-// search functionality
-$(function() {
-  var colleges = ["Harvard University", "Yale University", "Cornell University", "Dartmouth College"];
-  $("#search").autocomplete({source: colleges});
+$("#searchButton").click(function() {
+  value = $("#search").val();
+  highlightVis(value);
 })
 
 // function highlightSP (data) {
