@@ -64,6 +64,11 @@ var plotVisDimensions = {
     height: 200
 }
 
+ var canvas = d3.select("#mapVis").append("svg").attr({
+    width: width + margin.left + margin.right - 150,
+    height: height + margin.top + margin.bottom
+    });
+
 // var canvas = d3.select("#mapVis").append("svg").attr({
 //     width: width + margin.left + margin.right - 150,
 //     height: height + margin.top + margin.bottom
@@ -95,26 +100,22 @@ function loadColleges() {
 
 function createVis(jsonData,csvData) {
 
-  var canvas = d3.select("#mapVis").append("svg").attr({
-    width: width + margin.left + margin.right - 150,
-    height: height + margin.top + margin.bottom
-    });
-
-  var svg = canvas.append("g").attr({
-          transform: "translate(" + (margin.left-80) + "," + margin.top + ")"
-      });
-            createMap(jsonData, svg);
+            createMap(jsonData);
             createTable(csvData);
             createPlot(csvData);
 }
 
 function destroyVis() {
-  d3.select("#tableVis table").remove();
+  d3.select("#tableVis table").transition().duration(500).remove();
   d3.select("#plotVis svg").remove();
-  d3.select("#mapVis svg").remove();
+  d3.select("#mapVis").selectAll("circle").transition().duration(500).ease("linear").remove();
 }
 
-function createMap(jsonD, svg) {
+function createMap(jsonD) {
+
+  var svg = canvas.append("g").attr({
+          transform: "translate(" + (margin.left-80) + "," + margin.top + ")"
+      });
     // initialize basic map
     d3.json("../data/us-named.json", function(error, data) {
             var projection = d3.geo.albersUsa()
@@ -189,14 +190,7 @@ function createMap(jsonD, svg) {
                 .data(mapData)
                 .enter()
                 .append("circle")
-                .attr("id", function(d){return d.key.toString().replace(/ /g,"").replace(".","")})
-                .attr("r", function(d) { return scale(d.value.size); })
-                .attr("transform", function(d) {
-                        return "translate(" + projection([d.value.location[1], d.value.location[0]]) + ")";
-                    })
-                .style("stroke", "#000")
-                .style("fill", function(d) { return color(d.value.cost); })
-                    .on("click", function(d) {
+                .on("click", function(d) {
                       highlightVis(d.key);
                     })
                     .on("mouseover", function(d) {
@@ -232,7 +226,20 @@ function createMap(jsonD, svg) {
                         d3.select(this)
                         .style("cursor", "normal");
 
-                    });
+                    })
+                .attr("transform", function(d) {
+                        return "translate(" + projection([d.value.location[1], d.value.location[0]]) + ")";
+                })
+                .attr("r",0)
+                .transition()
+                .duration(500)
+                .attr("r", function(d) { return scale(d.value.size); })
+                .attr("id", function(d){return d.key.toString().replace(/ /g,"").replace(".","")})
+
+                .style("stroke", "#000")
+                .style("fill", function(d) { return color(d.value.cost); });
+                    
+                    
 
         function clicked(d) {
           var x, y, k;
