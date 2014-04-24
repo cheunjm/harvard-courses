@@ -198,24 +198,24 @@ function createMap(jsonD, svg) {
                     })
                     .on("mouseover", function(d) {
                       tooltip.transition()
-                        .duration(100)
-                        .style("opacity", .9)
+                        .duration(200)
+                        .style("opacity", 1)
                         .style("position", "absolute")
                         .style("border", "1px solid gray")
-                        .style("background-color", "#ffffca")
+                        .style("background-color", "white")
                         .style("overflow", "hidden")
                         .style("z-index", "5");
 
                       tooltip.html(
-                        d.key + "<br />" +
+                        d.value.rank + ". " + d.key + "<br />" +
                         "Enrollment: "+ d.value.size + "<br />" +
-                        "Cost: $" + d.value.cost
+                        "Cost: $" + d.value.cost + "<br />" +
+                        "Rate: " + d.value.rate + "%"
                         )
-                      .style("left", (d3.event.pageX +4) + "px")
-                      .style("top", (d3.event.pageY - 40) + "px")
-                      .style("font-size", "10px")
-                      .style("font-weight", "bold")
-                      .style("padding", "2px");
+                      .style("left", (d3.event.pageX + 5) + "px")
+                      .style("top", (d3.event.pageY - 55) + "px")
+                      .style("font-size", "11px")
+                      .style("padding", "3px");
 
                       d3.select(this)
                       .style("cursor", "pointer");
@@ -223,7 +223,7 @@ function createMap(jsonD, svg) {
                     })
                     .on("mouseout", function(d) {
                       tooltip.transition()
-                        .duration(100)
+                        .duration(200)
                         .style("opacity", 0);
 
                         d3.select(this)
@@ -582,23 +582,23 @@ function createPlot(data) {
           })
           .on("mouseover", function(d) {
             tooltip.transition()
-                .duration(100)
-                .style("opacity", .9)
+                .duration(200)
+                .style("opacity", 1)
                 .style("position", "absolute")
                 .style("border", "1px solid gray")
-                .style("background-color", "#ffffca")
+                .style("background-color", "white")
                 .style("overflow", "hidden")
                 .style("z-index", "5");
 
             tooltip.html(
-                    d.name + "<br />" +
+                    d.rank+". "+d.name + "<br />" +
                     "Enrollment: "+ d.size + "<br />" +
-                    "Cost: $" + d.cost)
-              .style("left", (d3.event.pageX +4) + "px")
-              .style("top", (d3.event.pageY - 40) + "px")
-              .style("font-size", "10px")
-              .style("font-weight", "bold")
-              .style("padding", "2px");
+                    "Cost: $" + d.cost + "<br />" +
+                    "Rate: " + d.rate + "%")
+              .style("left", (d3.event.pageX + 5) + "px")
+              .style("top", (d3.event.pageY - 55) + "px")
+              .style("font-size", "11px")
+              .style("padding", "3px");
 
               d3.select(this)
               .style("cursor", "pointer");
@@ -606,7 +606,7 @@ function createPlot(data) {
             })
           .on("mouseout", function(d) {
                 tooltip.transition()
-                .duration(100)
+                .duration(200)
                 .style("opacity", 0);
 
                 d3.select(this)
