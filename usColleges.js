@@ -74,6 +74,7 @@ var plotVisDimensions = {
 
 var initial_nu_json, initial_nu_csv;
 var initial_nlac_json, initial_nlac_csv;
+var current_json, current_csv;
 
 function loadColleges() {
     d3.json("../data/nu.json", function(error,data1){
@@ -85,7 +86,9 @@ function loadColleges() {
                 d3.csv("../data/nlac.csv", function(error,data4) {
                 initial_nlac_csv = data4;
                 colleges = Object.keys(initial_nu_json);
-                createVis(initial_nu_json,initial_nu_csv);
+                current_json = initial_nu_json;
+                current_csv = initial_nu_csv
+                createVis(current_json,current_csv);
               });
            });
         });
@@ -629,7 +632,7 @@ function highlightVis(name){
 function reset() {
   d3.selectAll("#tableVis table tr").style("font-weight", "normal");
   destroyVis();
-  createVis(initial_nu_json, initial_nu_csv);
+  createVis(current_json, current_csv);
 }
 
 $("#reset").click(function() {
@@ -648,10 +651,20 @@ $("#searchButton").click(function() {
 var nuClicked = true;
 
 $("#nu").click(function() {
-  nuClicked = true;
+  if(!nuClicked){
+    current_json = initial_nu_json;
+    current_csv = initial_nu_csv;
+    nuClicked = true;
+    reset();
+  }
 })
 $("#nlac").click(function() {
-  nuClicked = false;
+    if(nuClicked){
+    current_json = initial_nlac_json;
+    current_csv = initial_nlac_csv;
+    nuClicked = false;
+    reset();
+  }
 })
 
 function updateData() {
