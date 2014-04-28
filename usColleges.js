@@ -678,7 +678,8 @@ $("#nlac").click(function() {
 function updateData() {
   var enroll_range = parseInt(d3.select("#amount1")[0][0].value.replace(/ /g,"").split("-"));
   var tuition_range = parseInt(d3.select("#amount2")[0][0].value.replace(/ /g,"").replace(/\$/g,"").split("-"));
-  filterJson(current_json, enroll_range,tuition_range);
+  if(nuClicked)
+  filterJson(initial_nu_json, enroll_range,tuition_range);
   reset();
   // if(nuClicked){
   //   createVis(filterJson(initial_nu_json,enroll_range,tuition_range),filterCSV(initial_nu_csv,enroll_range,tuition_range))
