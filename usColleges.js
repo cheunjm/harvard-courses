@@ -39,7 +39,7 @@ var plotVisDimensions = {
     height: height + margin.top + margin.bottom
     });
   var svg = canvas.append("g").attr({
-          transform: "translate(" + (margin.left-80) + "," + margin.top + ")"
+          transform: "translate(" + (margin.left-40) + "," + margin.top + ")"
       });
 
 var initial_nu_json, initial_nu_csv;
