@@ -85,6 +85,10 @@ function destroyVis() {
   d3.select("#linearLegend svg").remove();
 }
 
+
+// used http://jqueryui.com/slider/#range as a reference. 
+// author: ?, year: 2014, title: Slider, time accessed: 4/25 13:40, http://jqueryui.com/slider/#range 
+
 function createFilter(jsonD) {
   var max_cost = Math.ceil(d3.entries(jsonD)
     .sort(function(a, b) { return d3.descending(a.value.cost, b.value.cost); })[0].value.cost/5000)*5000;
@@ -342,41 +346,6 @@ function createTable(data) {
         })
         .on("click", function(d, i) {
           highlightVis(d.name);
-
-            // // a row has been clicked
-            // if (clicked) {
-            //     // clicked row that hasn't been already clicked
-            //     if (i !== clickedRow) {
-            //         // unhighlight prev row that had been clicked
-            //         clickedRow = i;
-            //         d3.selectAll("#tableVis table tr")
-            //         .style("font-weight", "normal");
-            //         // unhighlight corresponding point in mapVis and plotVis
-
-            //         // highlight new row that has been clicked
-            //         d3.select(this)
-            //         .style("font-weight", "bold");
-            //         // highlight corresponding point in mapVis and plotVis
-            //     }
-            //     // clicked row that has already been clicked
-            //     else {
-            //         clicked = false;
-            //         d3.select(this)
-            //         .style("font-weight", "normal");
-
-            //         // unhighlight corresponding point in mapVis and plotVis
-            //     }
-
-            // }
-            // // no row has been clicked yet
-            // else {
-            //     clicked = true;
-            //     clickedRow = i;
-            //     d3.select(this)
-            //     .style("font-weight", "bold");
-
-            //     // highlight corresponding point in mapVis and plotVis
-            // }
         });
 
         // create cells for each row
@@ -630,6 +599,8 @@ function createPlot(data) {
                 .style("cursor", "normal");
             });
 
+      // used https://gist.github.com/mbostock/4063663 as a reference. 
+      // author: Mike Bostock, year: 2014, title: Scatterplot Matrix Brushing, time accessed: 4/29 16:40, url: https://gist.github.com/mbostock/4063663
       var brush = d3.svg.brush()
       .x(x)
       .y(y)
@@ -722,9 +693,7 @@ $("#nlac").click(function() {
 
 function updateData() {
   var enroll_range = d3.select("#amount1")[0][0].value.replace(/ /g,"").split("-").map(returnInt);
-  console.log(enroll_range);
   var tuition_range = d3.select("#amount2")[0][0].value.replace(/ /g,"").replace(/\$/g,"").split("-").map(returnInt);
-  console.log(tuition_range);
   if(nuClicked){
     filterJson(initial_nu_json, enroll_range,tuition_range);
     filterCSV(initial_nu_csv,enroll_range,tuition_range);}
