@@ -635,6 +635,7 @@ function highlightVis(name){
   d3.select("#plotVis").select("#"+name.toString().replace(/\W+/g,"")).style("fill", "yellow");
 }
 
+// clears all vis and creates vis with new dataset
 function reset() {
   d3.selectAll("#tableVis table tr").style("font-weight", "normal");
   destroyVis();
@@ -676,27 +677,38 @@ $("#nlac").click(function() {
 })
 
 function updateData() {
-  var enroll_range = parseInt(d3.select("#amount1")[0][0].value.replace(/ /g,"").split("-"));
-  var tuition_range = parseInt(d3.select("#amount2")[0][0].value.replace(/ /g,"").replace(/\$/g,"").split("-"));
-  if(nuClicked)
-  filterJson(initial_nu_json, enroll_range,tuition_range);
+  var enroll_range = d3.select("#amount1")[0][0].value.replace(/ /g,"").split("-").map(returnInt);
+  console.log(enroll_range);
+  var tuition_range = d3.select("#amount2")[0][0].value.replace(/ /g,"").replace(/\$/g,"").split("-").map(returnInt);
+  console.log(tuition_range);
+  if(nuClicked){
+    filterJson(initial_nu_json, enroll_range,tuition_range);
+    filterCSV(initial_nu_csv,enroll_range,tuition_range);}
+  else{
+    filterJson(initial_nlac_json, enroll_range,tuition_range);
+    filterCSV(initial_nlac_csv,enroll_range,tuition_range);
+  }
   reset();
-  // if(nuClicked){
-  //   createVis(filterJson(initial_nu_json,enroll_range,tuition_range),filterCSV(initial_nu_csv,enroll_range,tuition_range))
-  // }
+  
 }
 
 function filterJson(jsonData,pop_range,cost_range){
   var new_data = new Object();
-  console.log(pop_range)
-  console.log(cost_range)
-  colleges.forEach(function(college){
+  Object.keys(jsonData).forEach(function(college){
     var cost = jsonData[college].cost;
     var pop = jsonData[college].size;
-    if(pop >= parseInt(pop_range[0]) && pop <= parseInt(pop_range[1]) && cost >= parseInt(cost_range[0]) && cost <= parseInt(cost_range[1])){
+    if(pop >= pop_range[0] && pop <= pop_range[1] && cost >= cost_range[0] && cost <= cost_range[1]){
       new_data[college] = jsonData[college];
     }
   })
-  console.log(new_data);
   current_json = new_data;
+}
+
+
+function filterCSV(csvData,pop_range,cost_range){
+  current_csv = csvData.filter(function(d){return d.size >= pop_range[0] && d.size <= pop_range[1] && d.cost >= cost_range[0] && d.cost <= cost_range[1]})
+}
+
+function returnInt(element){
+  return parseInt(element,10);
 }
