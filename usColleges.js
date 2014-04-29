@@ -629,6 +629,38 @@ function createPlot(data) {
                 d3.select(this)
                 .style("cursor", "normal");
             });
+
+      var brush = d3.svg.brush()
+      .x(x)
+      .y(y)
+      .on("brushstart", brushstart)
+      .on("brush", brushmove)
+      // .on("brushend", brushend);
+
+      var brushCell;
+ 
+      // Clear the previously-active brush, if any.
+      function brushstart(p) {
+        if (brushCell !== this) {
+          d3.select(brushCell).call(brush.clear());
+          brushCell = this;
+        }
+      }
+
+      svg.call(brush);
+
+    function brushmove(p) {
+    var e = brush.extent();
+    svg.selectAll("circle").classed("hidden", function(d) {
+      if(d.size >= e[0][0] && d.size <= e[1][0] && d.cost >= e[0][1] && d.cost <= e[1][1])
+      {
+        highlightVis(d.name);
+      }
+    });
+    }
+    function brushend() {
+    if (brush.empty()) svg.selectAll(".hidden").classed("hidden", false);
+     }
 }
     
 loadColleges();
