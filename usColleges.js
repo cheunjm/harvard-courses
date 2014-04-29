@@ -507,10 +507,7 @@ function createPlot(data) {
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
-    // var x = d3.scale.linear()
-    //     .range([0, 280]);
-
-    var x = d3.scale.pow().exponent(0.8).range([0, 280]); 
+    var x = d3.scale.linear().range([0, 280]); 
 
     var y = d3.scale.linear()
         .range([160, 0]);
