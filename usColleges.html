@@ -40,6 +40,9 @@
       display: inline;
     }
 
+    label {
+      font-size: 16px;
+    }
     .tick text {
         fill: black;
     }
@@ -80,10 +83,28 @@
     bottom: 0;
   }
 
+    #amount1, #amount2 {
+      border: 0;
+      color: black;
+      font-size: 14px;
+      font-weight: bold;
+
+    }
+
+    #amount1 {
+      width: 156px;
+    }
+
+    #filter {
+      border: solid black 1px;
+      margin-bottom: 2px;
+      padding: 0px 16px 12px 12px;
+    }
     #linearLegend .colorlegend-labels {
       font-size: 9px;
       fill: #888;
     }
+
     #states {
       fill: #aaa;
     }
@@ -141,35 +162,39 @@
           <form>
             <input type="button" value="Reset" id="reset">
           </form>
-          <form>
-          <div id="option">
-              <input name="updateButton" 
-                           type="button" 
-                          value="Update" 
-                          onclick="updateData();" />
-          </div>
-          </form>
-          <form>
-          <p>
-            <label for="amount1">Enrollment:</label>
-            <input type="text" id="amount1" style="border:0; color:#f6931f; font-weight:bold;">
-          </p>
-          <div id="slider-range1"></div>
-          </form>
-          <form>
-          <p>
-            <label for="amount2">Tuition and Fees:</label>
-            <input type="text" id="amount2" style="border:0; color:#f6931f; font-weight:bold;">
-          </p>
-          <div id="slider-range2"></div>
-          </form>
           <div id="linearLegend" class="legend"></div>
         </div>
       </td>
       <td>
           <table>
             <tr>
-              <td><div id="tableVis"></div></td>
+              <td>
+                <div id="filter">
+                  <form>
+                  <p>
+                    <label for="amount1">Enrollment:</label>
+                    <input type="text" id="amount1">
+                  <form>
+                  <span id="option">
+                      <input name="updateButton" 
+                                   type="button" 
+                                  value="Update" 
+                                  onclick="updateData();" />
+                  </span>
+                  </form>
+                  </p>
+                  <div id="slider-range1"></div>
+                  </form>
+                  <form>
+                  <p>
+                    <label for="amount2">Tuition and Fees:</label>
+                    <input type="text" id="amount2">
+                  </p>
+                  <div id="slider-range2"></div>
+                  </form>
+                </div>
+                <div id="tableVis"></div>
+            </td>
             </tr>
             <tr>
               <td><div id="plotVis"></div></td>

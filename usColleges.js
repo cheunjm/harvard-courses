@@ -43,7 +43,7 @@ var margin = {
 };
 
 var width = 1060 - margin.left - margin.right;
-var height = 650 - margin.bottom - margin.top;
+var height = 785 - margin.bottom - margin.top;
 
 var centered;
 var mapVis = {
