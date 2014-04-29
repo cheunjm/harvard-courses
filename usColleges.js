@@ -487,7 +487,7 @@ function createPlot(data) {
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
-    var x = d3.scale.linear().range([0, 280]); 
+    var x = d3.scale.linear().range([0, 250]); 
 
     var y = d3.scale.linear()
         .range([160, 0]);
@@ -528,7 +528,7 @@ function createPlot(data) {
           .call(xAxis)
         .append("text")
           .attr("class", "label")
-          .attr("x", 280)
+          .attr("x", 250)
           .attr("y", -6)
           .style("text-anchor", "end")
           .style("fill", "black")
