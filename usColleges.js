@@ -5,35 +5,6 @@
 
 // slider for enrollment
 var colleges = new Array ();
-$(function() {
-    $( "#slider-range1" ).slider({
-      range: true,
-      min: 0,
-      max: 80000,
-      values: [0, 80000],
-      step: 5000,
-      slide: function( event, ui ) {
-        $( "#amount1" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-      }
-    });
-    $( "#amount1" ).val($( "#slider-range1" ).slider( "values", 0 ) +
-      " -" + $( "#slider-range1" ).slider( "values", 1 ) );
-  });
-// slider for tuition
-$(function() {
-    $( "#slider-range2" ).slider({
-      range: true,
-      min: 0,
-      max: 50000,
-      values: [0, 50000 ],
-      step: 5000,
-      slide: function( event, ui ) {
-        $( "#amount2" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-      }
-    });
-    $( "#amount2" ).val( "$" + $( "#slider-range2" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range2" ).slider( "values", 1 ) );
-  });
 
 var margin = {
     top: 50,
@@ -88,6 +59,7 @@ function loadColleges() {
                 current_csv = initial_nu_csv;
                 colleges = Object.keys(current_json);
                 createVis(current_json,current_csv);
+                createFilter(current_json);
                 autocomp();
               });
            });
@@ -113,6 +85,45 @@ function destroyVis() {
   d3.select("#linearLegend svg").remove();
 }
 
+function createFilter(jsonD) {
+  var max_cost = Math.ceil(d3.entries(jsonD)
+    .sort(function(a, b) { return d3.descending(a.value.cost, b.value.cost); })[0].value.cost/5000)*5000;
+  var max_enrollment = Math.ceil(d3.entries(jsonD)
+    .sort(function(a, b) { return d3.descending(a.value.size, b.value.size); })[0].value.size/5000)*5000
+  $(function() {
+    $( "#slider-range1" ).slider({
+      range: true,
+      min: 0,
+      max: max_enrollment,
+      values: [0, max_enrollment],
+      step: max_enrollment/10,
+      slide: function( event, ui ) {
+        $( "#amount1" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount1" ).val($( "#slider-range1" ).slider( "values", 0 ) +
+      " -" + $( "#slider-range1" ).slider( "values", 1 ) );
+  });
+// slider for tuition
+$(function() {
+    $( "#slider-range2" ).slider({
+      range: true,
+      min: 0,
+      max: max_cost,
+      values: [0, max_cost],
+      step: max_cost/10,
+      slide: function( event, ui ) {
+        $( "#amount2" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount2" ).val( "$" + $( "#slider-range2" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range2" ).slider( "values", 1 ) );
+  });
+}
+
+function destroyFilter(){
+  d3.select("#filter").remove();
+}
 function createMap(jsonD) {
 
     // initialize basic map
@@ -665,6 +676,8 @@ $("#nu").click(function() {
     current_csv = initial_nu_csv;
     nuClicked = true;
     reset();
+
+    createFilter(current_json);
   }
 })
 $("#nlac").click(function() {
@@ -673,6 +686,8 @@ $("#nlac").click(function() {
     current_csv = initial_nlac_csv;
     nuClicked = false;
     reset();
+
+    createFilter(current_json);
   }
 })
 
