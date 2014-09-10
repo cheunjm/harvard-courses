@@ -163,7 +163,9 @@ class SearchAgent(Agent):
 
     # If you wrap your solution in the timing code provided, you'll know how long the pathfinding takes.
     starttime = time.time()
-    "*** YOUR CODE HERE ***"
+    # 
+    problem = self.searchType(state)
+    self.actions = self.searchFunction(problem)
     print 'Path found with total cost of %d in %.1f seconds' % (problem.getCostOfActions(self.actions), time.time() - starttime)
     
   def getAction(self, state):
@@ -173,8 +175,13 @@ class SearchAgent(Agent):
     
     state: a GameState object (pacman.py)
     """
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    if 'actionTracer' not in dir(self):
+      self.actionTracer = 0
+    i = self.actionTracer
+    self.actionTracer += 1
+    if i < len(self.actions):
+      return self.actions[i]
+    return Directions.STOP
       
 class TinyMazeSearchAgent(SearchAgent):
   """
