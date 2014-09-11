@@ -163,7 +163,7 @@ class SearchAgent(Agent):
 
     # If you wrap your solution in the timing code provided, you'll know how long the pathfinding takes.
     starttime = time.time()
-    # 
+    # create a new problem and use the path search function
     problem = self.searchType(state)
     self.actions = self.searchFunction(problem)
     print 'Path found with total cost of %d in %.1f seconds' % (problem.getCostOfActions(self.actions), time.time() - starttime)
