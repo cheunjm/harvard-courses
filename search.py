@@ -1,4 +1,5 @@
 import util
+from operator import itemgetter
 ## Abstract Search Classes
 
 class SearchProblem:
@@ -42,9 +43,12 @@ class SearchProblem:
      """
      util.raiseNotDefined()
            
-def genericTreeSearch(problem, frontier):
-  #initilaize frontier to initial state
-  frontier.push((problem.getStartState(), [], []))
+def genericTreeSearch(problem, frontier, ucs):
+  #initilaize frontier to initial state (state, actions, visited_states), total_cost)
+  if ucs:
+    frontier.push((problem.getStartState(), (), ()), 0)
+  else: 
+    frontier.push((problem.getStartState(), (), ()))
   #if frontier is empty, then return failure
   while not frontier.isEmpty(): 
     #node <- remove-first (frontier)
@@ -57,7 +61,10 @@ def genericTreeSearch(problem, frontier):
       for successor, action, stepCost in problem.getSuccessors(current_state):
         #add children into the frontier
         if not successor in visited_states:
-          frontier.push((successor, actions + [action], visited_states + [current_state]))
+          if ucs:
+            frontier.push((successor, actions + (action,), visited_states + (current_state,)), stepCost)
+          else:
+            frontier.push((successor, actions + (action,), visited_states + (current_state,)))
   return []
 
 def tinyMazeSearch(problem):
@@ -77,18 +84,18 @@ def depthFirstSearch(problem):
   """
   "*** YOUR CODE HERE ***"
   #LIFO
-  return genericTreeSearch(problem, util.Stack())
+  return genericTreeSearch(problem, util.Stack(), False)
 
 def breadthFirstSearch(problem):
   "Search the shallowest nodes in the search tree first. [p 74]"
   "*** YOUR CODE HERE ***"
   #frontier is FIFO
-  return genericTreeSearch(problem, util.Queue())
+  return genericTreeSearch(problem, util.Queue(), False)
       
 def uniformCostSearch(problem):
   "Search the node of least total cost first. "
   "*** YOUR CODE HERE ***"
-  util.raiseNotDefined()
+  return genericTreeSearch(problem, util.PriorityQueue(), True)
 
 def nullHeuristic(state):
   """
