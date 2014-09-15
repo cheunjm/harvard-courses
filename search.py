@@ -42,6 +42,23 @@ class SearchProblem:
      """
      util.raiseNotDefined()
            
+def genericTreeSearch(problem, frontier):
+  #initilaize frontier to initial state
+  frontier.push((problem.getStartState(), [], []))
+  #if frontier is empty, then return failure
+  while not frontier.isEmpty(): 
+    #node <- remove-first (frontier)
+    current_state, actions, visited_states = frontier.pop()
+    #If goal-test succeeds, then return solution
+    if problem.isGoalState(current_state):
+      return actions
+    else:
+      #expand(node) to get its children
+      for successor, action, stepCost in problem.getSuccessors(current_state):
+        #add children into the frontier
+        if not successor in visited_states:
+          frontier.push((successor, actions + [action], visited_states + [current_state]))
+  return []
 
 def tinyMazeSearch(problem):
   """Returns a sequence of moves that solves tinyMaze.  For any other
@@ -59,12 +76,14 @@ def depthFirstSearch(problem):
   the goal.  
   """
   "*** YOUR CODE HERE ***"
-  util.raiseNotDefined()
+  #LIFO
+  return genericTreeSearch(problem, util.Stack())
 
 def breadthFirstSearch(problem):
   "Search the shallowest nodes in the search tree first. [p 74]"
   "*** YOUR CODE HERE ***"
-  util.raiseNotDefined()
+  #frontier is FIFO
+  return genericTreeSearch(problem, util.Queue())
       
 def uniformCostSearch(problem):
   "Search the node of least total cost first. "
