@@ -43,9 +43,9 @@ class SearchProblem:
      """
      util.raiseNotDefined()
            
-def genericTreeSearch(problem, frontier, ucs):
+def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
   #initilaize frontier to initial state (state, actions, visited_states), total_cost)
-  if ucs:
+  if (algorithm == "ucs") or (algorithm == "aStar"):
     frontier.push((problem.getStartState(), (), ()), 0)
   else: 
     frontier.push((problem.getStartState(), (), ()))
@@ -61,8 +61,10 @@ def genericTreeSearch(problem, frontier, ucs):
       for successor, action, stepCost in problem.getSuccessors(current_state):
         #add children into the frontier
         if not successor in visited_states:
-          if ucs:
-            frontier.push((successor, actions + (action,), visited_states + (current_state,)), stepCost)
+          if algorithm == "ucs":
+            frontier.push((successor, actions + (action,), visited_states + (current_state,)), stepCost + problem.getCostOfActions(actions))
+          elif algorithm == "aStar":
+            frontier.push((successor, actions + (action,), visited_states + (current_state,)), stepCost + problem.getCostOfActions(actions) + heuristic(successor))
           else:
             frontier.push((successor, actions + (action,), visited_states + (current_state,)))
   return []
@@ -84,18 +86,18 @@ def depthFirstSearch(problem):
   """
   "*** YOUR CODE HERE ***"
   #LIFO
-  return genericTreeSearch(problem, util.Stack(), False)
+  return genericTreeSearch(problem, util.Stack(), "dfs")
 
 def breadthFirstSearch(problem):
   "Search the shallowest nodes in the search tree first. [p 74]"
   "*** YOUR CODE HERE ***"
   #frontier is FIFO
-  return genericTreeSearch(problem, util.Queue(), False)
+  return genericTreeSearch(problem, util.Queue(), "bfs")
       
 def uniformCostSearch(problem):
   "Search the node of least total cost first. "
   "*** YOUR CODE HERE ***"
-  return genericTreeSearch(problem, util.PriorityQueue(), True)
+  return genericTreeSearch(problem, util.PriorityQueue(), "ucs")
 
 def nullHeuristic(state):
   """
@@ -107,7 +109,7 @@ def nullHeuristic(state):
 def aStarSearch(problem, heuristic=nullHeuristic):
   "Search the node that has the lowest combined cost and heuristic first."
   "*** YOUR CODE HERE ***"
-  util.raiseNotDefined()
+  return genericTreeSearch(problem, util.PriorityQueue(), "aStar", heuristic)
     
 def greedySearch(problem, heuristic=nullHeuristic):
   "Search the node that has the lowest heuristic first."
