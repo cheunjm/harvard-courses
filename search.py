@@ -45,7 +45,7 @@ class SearchProblem:
            
 def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
   #initilaize frontier to initial state (state, actions, visited_states), total_cost)
-  if (algorithm == "ucs") or (algorithm == "aStar"):
+  if (algorithm == "ucs") or (algorithm == "aStar") or (algorithm == "Greedy"):
     frontier.push((problem.getStartState(), (), ()), 0)
   else: 
     frontier.push((problem.getStartState(), (), ()))
@@ -63,6 +63,8 @@ def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
         if not successor in visited_states:
           if algorithm == "ucs":
             frontier.push((successor, actions + (action,), visited_states + (current_state,)), stepCost + problem.getCostOfActions(actions))
+          elif algorithm == "Greedy":
+            frontier.push((successor, actions + (action,), visited_states + (current_state,)), heuristic(successor))
           elif algorithm == "aStar":
             frontier.push((successor, actions + (action,), visited_states + (current_state,)), stepCost + problem.getCostOfActions(actions) + heuristic(successor))
           else:
@@ -114,6 +116,5 @@ def aStarSearch(problem, heuristic=nullHeuristic):
 def greedySearch(problem, heuristic=nullHeuristic):
   "Search the node that has the lowest heuristic first."
   "*** YOUR CODE HERE ***"
-  util.raiseNotDefined()
-
+  return genericTreeSearch(problem, util.PriorityQueue(), "Greedy", heuristic)
 
