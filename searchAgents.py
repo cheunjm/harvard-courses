@@ -379,7 +379,28 @@ def foodHeuristic(state):
   this works, come to office hours.
   """
   "*** YOUR CODE HERE ***"
-  util.raiseNotDefined()
+  heur = 0
+  curr_pos, foodGrid = state
+  list_of_food = foodGrid.asList()
+  raise ValueError(list_of_food)
+  """
+  # finds box around all food left
+    # box corners
+    cornerFoodLocations = [botLeft, botRight, topLeft, topRight]
+    # get the distance of the longest diagonal
+    score += manhattanDistance(botLeft, topRight)
+    # get distance from current position to nearest corner and to nearest food using manhattan
+    nearestCorner = manhattanDistance(position, min(cornerFoodLocations, key=lambda c1: manhattanDistance(c1, position)))
+    nearestFood = min(foodLeft, key=lambda c1: manhattanDistance(c1, position))
+    # get the largest difference between closest food and current location
+    score += max(nearestCorner, manhattanDistance(position, nearestFood))
+
+    # pick the max between the nearest corner and the nearing food.
+    # we need to hit the corners to make sure we find all of the food.
+    if max(nearestCorner, manhattanDistance(position, nearestFood)) == manhattanDistance(position, nearestFood):
+      score += manhattanDistance(nearestFood, min(cornerFoodLocations, key=lambda c1: manhattanDistance(c1, nearestFood)))
+  """
+  
 
 class AStarFoodSearchAgent(SearchAgent):
   """
@@ -389,14 +410,19 @@ class AStarFoodSearchAgent(SearchAgent):
   """
 
   "*** YOUR CODE HERE ***"
+  def __init__(self, searchFunction=None, searchType=FoodSearchProblem):
+    self.searchFunction = lambda problem: search.aStarSearch(problem, foodHeuristic)
+    self.searchType = searchType
+
 
 class GreedyFoodSearchAgent(SearchAgent):
   """
   An agent that computes a path to eat all the dots using greedy search.
   """
   "*** YOUR CODE HERE ***"
-  
-  
+  def __init__(self, searchFunction=None, searchType=FoodSearchProblem):
+    self.searchFunction = lambda problem: search.greedySearch(problem, foodHeuristic)
+    self.searchType = searchType
 
 
 class TrivialAStarFoodSearchAgent(AStarFoodSearchAgent):

@@ -1,5 +1,6 @@
 import util
 from operator import itemgetter
+COST_MATTERS = ["ucs", "aStar", "Greedy"]
 ## Abstract Search Classes
 
 class SearchProblem:
@@ -44,31 +45,33 @@ class SearchProblem:
      util.raiseNotDefined()
            
 def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
-  #initilaize frontier to initial state (state, actions, visited_states), total_cost)
-  if (algorithm == "ucs") or (algorithm == "aStar") or (algorithm == "Greedy"):
+  # initilaize frontier to initial state (state, actions, visited_states), total_cost)
+  if algorithm in COST_MATTERS:
     frontier.push((problem.getStartState(), (), ()), 0)
+  # no need for total cost in DFS and BFS
   else: 
     frontier.push((problem.getStartState(), (), ()))
-  #if frontier is empty, then return failure
+  # if frontier is empty, then return failure
   while not frontier.isEmpty(): 
-    #node <- remove-first (frontier)
+    # node <- remove-first (frontier)
     current_state, actions, visited_states = frontier.pop()
-    #If goal-test succeeds, then return solution
+    # if goal-test succeeds, then return solution
     if problem.isGoalState(current_state):
       return actions
     else:
-      #expand(node) to get its children
+      # expand(node) to get its children
       for successor, action, stepCost in problem.getSuccessors(current_state):
-        #add children into the frontier
+        # add children into the frontier
         if not successor in visited_states:
+          updated_states = successor, actions + (action,), visited_states + (current_state,)
           if algorithm == "ucs":
-            frontier.push((successor, actions + (action,), visited_states + (current_state,)), stepCost + problem.getCostOfActions(actions))
+            frontier.push(updated_states, stepCost + problem.getCostOfActions(actions))
           elif algorithm == "Greedy":
-            frontier.push((successor, actions + (action,), visited_states + (current_state,)), heuristic(successor))
+            frontier.push(updated_states, heuristic(successor))
           elif algorithm == "aStar":
-            frontier.push((successor, actions + (action,), visited_states + (current_state,)), stepCost + problem.getCostOfActions(actions) + heuristic(successor))
+            frontier.push(updated_states, stepCost + problem.getCostOfActions(actions) + heuristic(successor))
           else:
-            frontier.push((successor, actions + (action,), visited_states + (current_state,)))
+            frontier.push(updated_states)
   return []
 
 def tinyMazeSearch(problem):
