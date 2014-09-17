@@ -382,24 +382,6 @@ def foodHeuristic(state):
   heur = 0
   curr_pos, foodGrid = state
   list_of_food = foodGrid.asList()
-  raise ValueError(list_of_food)
-  """
-  # finds box around all food left
-    # box corners
-    cornerFoodLocations = [botLeft, botRight, topLeft, topRight]
-    # get the distance of the longest diagonal
-    score += manhattanDistance(botLeft, topRight)
-    # get distance from current position to nearest corner and to nearest food using manhattan
-    nearestCorner = manhattanDistance(position, min(cornerFoodLocations, key=lambda c1: manhattanDistance(c1, position)))
-    nearestFood = min(foodLeft, key=lambda c1: manhattanDistance(c1, position))
-    # get the largest difference between closest food and current location
-    score += max(nearestCorner, manhattanDistance(position, nearestFood))
-
-    # pick the max between the nearest corner and the nearing food.
-    # we need to hit the corners to make sure we find all of the food.
-    if max(nearestCorner, manhattanDistance(position, nearestFood)) == manhattanDistance(position, nearestFood):
-      score += manhattanDistance(nearestFood, min(cornerFoodLocations, key=lambda c1: manhattanDistance(c1, nearestFood)))
-  """
   
 
 class AStarFoodSearchAgent(SearchAgent):
