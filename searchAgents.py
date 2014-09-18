@@ -5,6 +5,7 @@ when running pacman.py.  That is, to load your DepthFirstSearchAgent,
 just run the following command from the command line:
 
 > python pacman.py -p DepthFirstSearchAgent
+#h
 
 Please only change the parts of the file where you are asked; look
 for the lines that say
@@ -395,7 +396,7 @@ class AStarFoodSearchAgent(SearchAgent):
 
   "*** YOUR CODE HERE ***"
   def __init__(self, searchFunction=None, searchType=FoodSearchProblem):
-    problem = lambda x: PositionSearchProblem(x, getFoodHeuristic)
+    problem = lambda x: PositionSearchProblem(x, )
     SearchAgent.__init__(self, search.aStarSearch, problem)
     """
     self.searchFunction = lambda problem: search.aStarSearch(problem, foodHeuristic)
