@@ -24,6 +24,7 @@ from util import manhattanDistance
 import util
 import time
 import search
+from math import sqrt, log
 
 class GoWestAgent(Agent):
   """
@@ -384,9 +385,14 @@ def foodHeuristic(state):
   curr_pos, foodGrid = state
   for x_idx, rows in enumerate(foodGrid):
     for y_idx, is_food in enumerate(rows):
+      # if there is a food in a given location
       if is_food:
-        heur = max(heur, manhattanDistance(curr_pos, [x_idx, y_idx]))
+        # calculate the manhattan distance between current position and food
+        # while considering weight using square root
+        # analagous to adding misplaced tiles by their manhattan distance
+        heur += sqrt(manhattanDistance(curr_pos, [x_idx, y_idx]))
   return heur
+
 
 class AStarFoodSearchAgent(SearchAgent):
   """
