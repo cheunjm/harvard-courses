@@ -380,13 +380,7 @@ def foodHeuristic(state):
   this works, come to office hours.
   """
   "*** YOUR CODE HERE ***"
-  heur = 0
-  curr_pos, foodGrid = state
-  for x_idx, rows in enumerate(foodGrid):
-    for y_idx, is_food in enumerate(rows):
-      if is_food:
-        heur = max(heur, manhattanDistance(curr_pos, [x_idx, y_idx]))
-  return heur
+  
 
 class AStarFoodSearchAgent(SearchAgent):
   """

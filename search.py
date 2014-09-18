@@ -47,13 +47,13 @@ class SearchProblem:
            
 
 def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
-  # initilaize frontier to initial state (state, actions, visited_states), priority)
+  #keeps tracks of visited states and actions for each state
   visited_states = []
   actions = {}
   actions[problem.getStartState()] = []
+  #if cost matters, we also take priority in consideration
   if algorithm in COST_MATTERS:
     frontier.push(problem.getStartState(), 0)
-  # no need for total cost in DFS and BFS
   else: 
     frontier.push(problem.getStartState())
   # if frontier is empty, then return failure
@@ -96,7 +96,7 @@ def depthFirstSearch(problem):
   the goal.  
   """
   "*** YOUR CODE HERE ***"
-  #LIFO
+  #frontier is LIFO
   return genericTreeSearch(problem, util.Stack(), "dfs")
 
 def breadthFirstSearch(problem):
@@ -108,6 +108,7 @@ def breadthFirstSearch(problem):
 def uniformCostSearch(problem):
   "Search the node of least total cost first. "
   "*** YOUR CODE HERE ***"
+  #frontier is PriorityQueue
   return genericTreeSearch(problem, util.PriorityQueue(), "ucs")
 
 def nullHeuristic(state):
@@ -120,10 +121,12 @@ def nullHeuristic(state):
 def aStarSearch(problem, heuristic=nullHeuristic):
   "Search the node that has the lowest combined cost and heuristic first."
   "*** YOUR CODE HERE ***"
+  #frontier is PriorityQueue
   return genericTreeSearch(problem, util.PriorityQueue(), "aStar", heuristic)
     
 def greedySearch(problem, heuristic=nullHeuristic):
   "Search the node that has the lowest heuristic first."
   "*** YOUR CODE HERE ***"
+  #frontier is PriorityQueue
   return genericTreeSearch(problem, util.PriorityQueue(), "Greedy", heuristic)
 
