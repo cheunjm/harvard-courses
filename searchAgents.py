@@ -396,12 +396,8 @@ class AStarFoodSearchAgent(SearchAgent):
 
   "*** YOUR CODE HERE ***"
   def __init__(self, searchFunction=None, searchType=FoodSearchProblem):
-    problem = lambda x: PositionSearchProblem(x, )
-    SearchAgent.__init__(self, search.aStarSearch, problem)
-    """
     self.searchFunction = lambda problem: search.aStarSearch(problem, foodHeuristic)
     self.searchType = FoodSearchProblem
-    """
 
 class GreedyFoodSearchAgent(SearchAgent):
   """
