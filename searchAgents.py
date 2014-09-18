@@ -382,9 +382,10 @@ def foodHeuristic(state):
   "*** YOUR CODE HERE ***"
   heur = 0
   curr_pos, foodGrid = state
-  for w in range(foodGrid.width):
-    for h in range(foodGrid.height):
-      heur = max(heur, abs(w - curr_pos[0]) + abs(h - curr_pos[1]))
+  for x_idx, rows in enumerate(foodGrid):
+    for y_idx, is_food in enumerate(rows):
+      if is_food:
+        heur = max(heur, manhattanDistance(curr_pos, [x_idx, y_idx]))
   return heur
 
 class AStarFoodSearchAgent(SearchAgent):
