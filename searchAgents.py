@@ -409,7 +409,6 @@ class GreedyFoodSearchAgent(SearchAgent):
     self.searchFunction = lambda problem: search.greedySearch(problem, foodHeuristic)
     self.searchType = FoodSearchProblem
 
-
 class TrivialAStarFoodSearchAgent(AStarFoodSearchAgent):
   """
   An AStarFoodSearchAgent that uses the trivial heuristic instead of the one defined by getFoodHeuristic
