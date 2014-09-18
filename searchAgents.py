@@ -24,6 +24,7 @@ from util import manhattanDistance
 import util
 import time
 import search
+from math import sqrt, log
 
 class GoWestAgent(Agent):
   """
@@ -380,7 +381,19 @@ def foodHeuristic(state):
   this works, come to office hours.
   """
   "*** YOUR CODE HERE ***"
-  
+
+  heur = 0
+  curr_pos, foodGrid = state
+  for x_idx, rows in enumerate(foodGrid):
+    for y_idx, is_food in enumerate(rows):
+      # if there is a food in a given location
+      if is_food:
+        # calculate the manhattan distance between current position and food
+        # while considering weight using square root
+        # analagous to adding misplaced tiles by their manhattan distance
+        heur += sqrt(manhattanDistance(curr_pos, [x_idx, y_idx]))
+  return heur
+
 
 class AStarFoodSearchAgent(SearchAgent):
   """
@@ -402,7 +415,6 @@ class GreedyFoodSearchAgent(SearchAgent):
   def __init__(self, searchFunction=None, searchType=FoodSearchProblem):
     self.searchFunction = lambda problem: search.greedySearch(problem, foodHeuristic)
     self.searchType = FoodSearchProblem
-
 
 class TrivialAStarFoodSearchAgent(AStarFoodSearchAgent):
   """
