@@ -66,6 +66,7 @@ def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
           updated_states = successor, actions + (action,), visited_states + (current_state,)
           if algorithm == "ucs":
             frontier.push(updated_states, stepCost + problem.getCostOfActions(actions))
+            print(stepCost)
           elif algorithm == "Greedy":
             frontier.push(updated_states, heuristic(successor))
           elif algorithm == "aStar":
@@ -102,7 +103,7 @@ def breadthFirstSearch(problem):
 def uniformCostSearch(problem):
   "Search the node of least total cost first. "
   "*** YOUR CODE HERE ***"
-  return genericTreeSearch(problem, util.PriorityQueue(), "ucs")
+  return genericTreeSearch(problem, util.FasterPriorityQueue(), "ucs")
 
 def nullHeuristic(state):
   """
@@ -114,7 +115,7 @@ def nullHeuristic(state):
 def aStarSearch(problem, heuristic=nullHeuristic):
   "Search the node that has the lowest combined cost and heuristic first."
   "*** YOUR CODE HERE ***"
-  return genericTreeSearch(problem, util.PriorityQueue(), "aStar", heuristic)
+  return genericTreeSearch(problem, util.FasterPriorityQueue(), "aStar", heuristic)
     
 def greedySearch(problem, heuristic=nullHeuristic):
   "Search the node that has the lowest heuristic first."
