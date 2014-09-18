@@ -66,11 +66,13 @@ def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
           updated_states = successor, actions + (action,), visited_states + (current_state,)
           if algorithm == "ucs":
             frontier.push(updated_states, stepCost + problem.getCostOfActions(actions))
-            print(stepCost)
+            print(action)
           elif algorithm == "Greedy":
             frontier.push(updated_states, heuristic(successor))
           elif algorithm == "aStar":
-            frontier.push(updated_states, stepCost + problem.getCostOfActions(actions) + heuristic(successor))
+            tmp = stepCost + problem.getCostOfActions(actions)
+            raise ValueError(tmp)
+            frontier.push(updated_states,  + heuristic(successor))
           else:
             frontier.push(updated_states)
   return []
