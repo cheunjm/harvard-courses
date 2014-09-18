@@ -65,8 +65,8 @@ def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
         if not successor in visited_states:
           updated_states = successor, actions + (action,), visited_states + (current_state,)
           if algorithm == "ucs":
-            frontier.push(updated_states, problem.getCostOfActions(updated_states[1]))
-            print problem.getCostOfActions(actions)
+            frontier.push(updated_states, stepCost + problem.getCostOfActions(actions))
+            print(stepCost)
           elif algorithm == "Greedy":
             frontier.push(updated_states, heuristic(successor))
           elif algorithm == "aStar":
