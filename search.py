@@ -45,7 +45,7 @@ class SearchProblem:
      util.raiseNotDefined()
            
 def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
-  # initilaize frontier to initial state (state, actions, visited_states), total_cost)
+  # initilaize frontier to initial state (state, actions, visited_states), priority)
   if algorithm in COST_MATTERS:
     frontier.push((problem.getStartState(), (), ()), 0)
   # no need for total cost in DFS and BFS
