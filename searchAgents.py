@@ -381,8 +381,10 @@ def foodHeuristic(state):
   "*** YOUR CODE HERE ***"
   heur = 0
   curr_pos, foodGrid = state
-  list_of_food = foodGrid.asList()
-  
+  for w in range(foodGrid.width):
+    for h in range(foodGrid.height):
+      heur = max(heur, abs(w - curr_pos[0]) + abs(h - curr_pos[1]))
+  return heur
 
 class AStarFoodSearchAgent(SearchAgent):
   """
@@ -394,7 +396,7 @@ class AStarFoodSearchAgent(SearchAgent):
   "*** YOUR CODE HERE ***"
   def __init__(self, searchFunction=None, searchType=FoodSearchProblem):
     self.searchFunction = lambda problem: search.aStarSearch(problem, foodHeuristic)
-    self.searchType = searchType
+    self.searchType = FoodSearchProblem
 
 
 class GreedyFoodSearchAgent(SearchAgent):
@@ -404,7 +406,7 @@ class GreedyFoodSearchAgent(SearchAgent):
   "*** YOUR CODE HERE ***"
   def __init__(self, searchFunction=None, searchType=FoodSearchProblem):
     self.searchFunction = lambda problem: search.greedySearch(problem, foodHeuristic)
-    self.searchType = searchType
+    self.searchType = FoodSearchProblem
 
 
 class TrivialAStarFoodSearchAgent(AStarFoodSearchAgent):
