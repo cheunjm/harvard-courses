@@ -47,16 +47,16 @@ class SearchProblem:
 def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
   # initilaize frontier to initial state (state, actions, visited_states), priority)
   visited_states = []
-  actions = []
+  
   if algorithm in COST_MATTERS:
-    frontier.push(problem.getStartState(), 0)
+    frontier.push((problem.getStartState(), ()), 0)
   # no need for total cost in DFS and BFS
   else: 
-    frontier.push(problem.getStartState())
+    frontier.push((problem.getStartState(), ()))
   # if frontier is empty, then return failure
   while not frontier.isEmpty(): 
     # node <- remove-first (frontier)
-    current_state = frontier.pop()
+    current_state, actions = frontier.pop()
     visited_states.append(current_state)
     # if goal-test succeeds, then return solution
     if problem.isGoalState(current_state):
@@ -66,15 +66,15 @@ def genericTreeSearch(problem, frontier, algorithm, heuristic = None):
       for successor, action, stepCost in problem.getSuccessors(current_state):
         # add children into the frontier
         if not successor in visited_states:
-          actions.append(action)
+          updated_states = successor, actions + (action,)
           if algorithm == "ucs":
-            frontier.push(successor, stepCost + problem.getCostOfActions(actions))
+            frontier.push(updated_states, stepCost + problem.getCostOfActions(actions))
           elif algorithm == "Greedy":
-            frontier.push(successor, heuristic(successor))
+            frontier.push(updated_states, heuristic(successor))
           elif algorithm == "aStar":
-            frontier.push(successor, stepCost + problem.getCostOfActions(actions) + heuristic(successor))
+            frontier.push(updated_states, stepCost + problem.getCostOfActions(actions) + heuristic(successor))
           else:
-            frontier.push(successor)
+            frontier.push(updated_states)
   return []
 
 def tinyMazeSearch(problem):
