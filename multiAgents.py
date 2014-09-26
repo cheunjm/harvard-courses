@@ -140,17 +140,18 @@ class MinimaxAgent(MultiAgentSearchAgent):
     num_agents = gameState.getNumAgents()
 
     def minimaxDecision(state):
-      """returns action that maximizes minValue """
-      #base case: action = stop
-      max_value = -float("inf")
+      """returns action that maximizes minValue"""
+      # base case: action = stop
+      max_value = -float('inf')
       max_action = Directions.STOP
-      #get all possible actions
-      actions = state.getLegalActions(0)
+      # get all possible actions of pacman
+      actions = gameState.getLegalActions(0)
       actions.remove(Directions.STOP)
       for act in actions:
-        new_value = minValue(state.generateSuccessor(0, act), 1,self.depth)
+        # query min values of ghost decisions
+        new_value = minValue(gameState.generateSuccessor(0, act), 1, self.depth)
         if max_value < new_value:
-          max_value, max_action = new_value, act
+           max_value = max(max_value, new_value)
       print(max_value)
       return max_action
 
@@ -158,7 +159,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
       """returns util value"""
       if state.isWin() or state.isLose() or depth == 0:
         return self.evaluationFunction(state)
-      max_value = -float("inf")
+      max_value = -float('inf')
       actions = state.getLegalActions(index)
       actions.remove(Directions.STOP)
       for act in actions:
@@ -173,7 +174,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
       min_value = float('inf') 
       actions = state.getLegalActions(index)
       for act in actions:
-        if (index == state.getNumAgents() - 1):
+        if (index == num_agents - 1):
           new_value = maxValue(state.generateSuccessor(index, act), 0, depth-1)
         else:
           new_value = minValue(state.generateSuccessor(index, act), index + 1, depth)
