@@ -151,7 +151,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         # query min values of ghost decisions
         new_value = minValue(gameState.generateSuccessor(0, act), 1, self.depth)
         if max_value < new_value:
-           max_value = max(max_value, new_value)
+           max_value, max_action = new_value, act
       print(max_value)
       return max_action
 
@@ -174,7 +174,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
       min_value = float('inf') 
       actions = state.getLegalActions(index)
       for act in actions:
-        if (index == num_agents - 1):
+        if (index == state.getNumAgents() - 1):
           new_value = maxValue(state.generateSuccessor(index, act), 0, depth-1)
         else:
           new_value = minValue(state.generateSuccessor(index, act), index + 1, depth)
