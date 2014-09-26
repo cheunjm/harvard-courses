@@ -140,25 +140,29 @@ class MinimaxAgent(MultiAgentSearchAgent):
     num_agents = gameState.getNumAgents()
 
     def minimaxDecision(state):
-      """returns action that maximizes minValue """
-      #base case: action = stop
+      """returns action that maximizes minValue"""
+      # base case: action = stop
       max_value = float("-inf")
       max_action = Directions.STOP
-
-      #get all possible actions
-      actions = gameState.getLegalActions(0)
-      actions.remove(Directions.STOP)
+      # get all possible actions of pacman
+      actions = gameState.getLegalActions(0).remove(Directions.STOP)
       print(actions)
       for act in actions:
+        # query min values of ghost decisions
         new_value = minValue(gameState.generateSuccessor(0, act), index = 1)
         if max_value < new_value:
+          # update pacman's decision
           max_value, max_action = new_value, act
       return max_action
 
-    def maxValue(state,index):
-      """returns util value"""
+    def testTerminal(state):
+      """stops recursion and returns value given by evaluation function"""
       if gameState.isWin() or gameState.isLose() or self.depth == 0:
         return self.evaluationFunction(state)
+
+    def maxValue(state, index):
+      """returns util value"""
+      testTerminal(state)
       max_value = float("-inf")
       actions = gameState.getLegalActions(index)
       actions.remove(Directions.STOP)
@@ -170,8 +174,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
 
     def minValue(state, index):
       """returns util value"""
-      if gameState.isWin() or gameState.isLose() or self.depth == 0:
-        return self.evaluationFunction(state)
+      testTerminal(state)
       min_value = float('inf') 
       actions = gameState.getLegalActions(index)
       for act in actions:
