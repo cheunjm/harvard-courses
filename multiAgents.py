@@ -174,7 +174,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
       min_value = float('inf') 
       actions = state.getLegalActions(index)
       for act in actions:
-        if (index == state.getNumAgents() - 1):
+        if (index == num_agents - 1):
           new_value = maxValue(state.generateSuccessor(index, act), 0, depth-1)
         else:
           new_value = minValue(state.generateSuccessor(index, act), index + 1, depth)
@@ -192,7 +192,6 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
       Returns the minimax action using self.depth and self.evaluationFunction
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
 
 class ExpectimaxAgent(MultiAgentSearchAgent):
   """
