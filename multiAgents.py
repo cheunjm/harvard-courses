@@ -196,7 +196,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
     "*** YOUR CODE HERE ***"
     num_agents = gameState.getNumAgents()
 
-    def minimaxDecision(state):
+    def alphabetaDecision(state):
       """returns action that maximizes minValue"""
       alpha = -float('inf')
       beta = float('inf')
@@ -242,7 +242,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
       min_value = float('inf')
       actions = state.getLegalActions(index)
       for act in actions:
-        if (index == state.getNumAgents() - 1):
+        if (index == num_agents - 1):
           # pacman's turn
           new_value = maxValue(state.generateSuccessor(index, act), 0, depth - 1, alpha, beta)
         else:
@@ -255,7 +255,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         beta = min(min_value, beta)
       return min_value
     # return the result of minimax algorithm
-    return minimaxDecision(gameState)
+    return alphabetaDecision(gameState)
 
 class ExpectimaxAgent(MultiAgentSearchAgent):
   """
@@ -270,7 +270,51 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
       legal moves.
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    num_agents = gameState.getNumAgents()
+
+    def ExpectimaxDecision(state):
+      """returns action that maximizes minValue"""
+      # base case: action = stop
+      max_value, max_action = -float('inf'), Directions.STOP
+      # get all possible actions of pacman
+      actions = gameState.getLegalActions(0)
+      actions.remove(Directions.STOP)
+      for act in actions:
+        # query min values of ghost decisions
+        new_value = weightedValue(gameState.generateSuccessor(0, act), 1, self.depth)
+        if max_value < new_value:
+           max_value, max_action = new_value, act
+      return max_action
+
+    def maxValue(state, index, depth):
+      """returns util value"""
+      if state.isWin() or state.isLose() or depth == 0:
+        return self.evaluationFunction(state)
+      max_value = -float('inf')
+      actions = state.getLegalActions(index)
+      actions.remove(Directions.STOP)
+      for act in actions:
+        # take the maximum of min values
+        new_value = weightedValue(state.generateSuccessor(index, act), index + 1, depth)
+        max_value = max(max_value, new_value)
+      return max_value
+
+    def weightedValue(state, index, depth):
+      """returns util value"""
+      if state.isWin() or state.isLose() or depth == 0:
+        return self.evaluationFunction(state)
+      weighted_avg = 0
+      actions = state.getLegalActions(index)
+      for act in actions:
+        if (index == num_agents - 1):
+          # pacman's turn
+          weighted_avg += maxValue(state.generateSuccessor(index, act), 0, depth - 1)
+        else:
+          # ghost's turn
+          weighted_avg += weightedValue(state.generateSuccessor(index, act), index + 1, depth)
+      return weighted_avg
+    # return the result of minimax algorithm
+    return ExpectimaxDecision(gameState)
 
 def betterEvaluationFunction(currentGameState):
   """
