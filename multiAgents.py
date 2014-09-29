@@ -321,10 +321,29 @@ def betterEvaluationFunction(currentGameState):
     Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
     evaluation function (question 5).
 
-    DESCRIPTION: <write something here so we know what you did>
+    DESCRIPTION:
+
+    If scared ghosts exists (for all ghosts, check scaredTimer != 0):
+      scared_ghost_list.append(manhattanDistance(pacman, ghost) <= ghost.scaredTimer)
+      If scared_ghost_list != []:
+        new_target = min(scared_ghost_list)
+        score =
+        return score
+    If there is a capsule:
+      capsule_list.append(manhattanDistance(pacman, capsule))
+      new_target = min(capsule_list)
+      if manhattanDistance(pacman, ghost) < 3:
+        do standard_eval_func
+      score =
+      return score
+    Else (simple world of no scared ghosts or capsules):
+      do standard_eval_func
   """
   "*** YOUR CODE HERE ***"
-  util.raiseNotDefined()
+  raise ValueError(currentGameState.getFood().asList(), currentGameState.getCapsules())
+  successorGameState = currentGameState.generatePacmanSuccessor(action)
+
+
 
 # Abbreviation
 better = betterEvaluationFunction
