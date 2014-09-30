@@ -9,6 +9,7 @@
 from util import manhattanDistance
 from game import Directions
 import random, util
+from math import sqrt, log
 
 from game import Agent
 
@@ -317,7 +318,15 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
     return ExpectimaxDecision(gameState)
 
 def betterEvaluationFunction(currentGameState):
+  #higher score the better#
   """
+
+  1. Higher the score, the better
+  2. Further the food is, the worse
+  3. If there are ghosts that can be eaten, the futher the worse
+  4. If there are no ghosts to eat, the further the capsules are, the worse
+
+
     Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
     evaluation function (question 5).
 
@@ -340,10 +349,29 @@ def betterEvaluationFunction(currentGameState):
       do standard_eval_func
   """
   "*** YOUR CODE HERE ***"
-  raise ValueError(currentGameState.getFood().asList(), currentGameState.getCapsules())
-  successorGameState = currentGameState.generatePacmanSuccessor(action)
+  constant1 = 1
+  if currentGameState.isLose():
+    return float("-inf")
+  # base case #
+  score = scoreEvaluationFunction(currentGameState)
+  score -= constant1 * foodHeuristic(currentGameState)
 
+  return score
 
+def foodHeuristic(state):
+
+  heur = 0
+  foodGrid = state.getFood()
+  curr_pos = state.getPacmanPosition()
+  for x_idx, rows in enumerate(foodGrid):
+    for y_idx, is_food in enumerate(rows):
+      # if there is a food in a given location
+      if is_food:
+        # calculate the manhattan distance between current position and food
+        # while considering weight using square root
+        # analagous to adding misplaced tiles by their manhattan distance
+        heur += sqrt(manhattanDistance(curr_pos, [x_idx, y_idx]))
+  return heur
 
 # Abbreviation
 better = betterEvaluationFunction
