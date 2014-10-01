@@ -380,23 +380,31 @@ class ContestAgent(MultiAgentSearchAgent):
     """
     "*** YOUR CODE HERE ***"
     num_agents = gameState.getNumAgents()
-    # This is a simple minimax implementation that uses the better evaluation function
-    # Average score ranges from 500s to 1500 with an average win of 1~3/10
-    def minimaxDecision(state):
+
+    # This is a simple alphabeta implementation that uses the better evaluation function
+    # Average score is consistently 1000+
+    def alphabetaDecision(state):
       """returns action that maximizes minValue"""
+      alpha = -float('inf')
+      beta = float('inf')
       # base case: action = stop
       max_value, max_action = -float('inf'), Directions.STOP
       # get all possible actions of pacman
       actions = gameState.getLegalActions(0)
       actions.remove(Directions.STOP)
       for act in actions:
-        # query min values of ghost decisions
-        new_value = minValue(gameState.generateSuccessor(0, act), 1, self.depth)
+        # query min values of ghost decisions, now with alpha & beta
+        new_value = minValue(gameState.generateSuccessor(0, act), 1, self.depth, alpha, beta)
         if max_value < new_value:
-           max_value, max_action = new_value, act
+          max_value, max_action = new_value, act
+        # stop if lower limit beta isn't reached
+        if max_value >= beta:
+          return max_value
+        # update alpha
+        alpha = max(max_value, alpha)
       return max_action
 
-    def maxValue(state, index, depth):
+    def maxValue(state, index, depth, alpha, beta):
       """returns util value"""
       if state.isWin() or state.isLose() or depth == 0:
         return better(state)
@@ -405,24 +413,32 @@ class ContestAgent(MultiAgentSearchAgent):
       actions.remove(Directions.STOP)
       for act in actions:
         # take the maximum of min values
-        new_value = minValue(state.generateSuccessor(index, act), index + 1, depth)
+        new_value = minValue(state.generateSuccessor(index, act), index + 1, depth, alpha, beta)
         max_value = max(max_value, new_value)
+        if max_value >= beta:
+          return max_value
+        # update alpha
+        alpha = max(max_value, alpha)
       return max_value
 
-    def minValue(state, index, depth):
+    def minValue(state, index, depth, alpha, beta):
       """returns util value"""
       if state.isWin() or state.isLose() or depth == 0:
         return better(state)
-      min_value = float('inf') 
+      min_value = float('inf')
       actions = state.getLegalActions(index)
       for act in actions:
         if (index == num_agents - 1):
           # pacman's turn
-          new_value = maxValue(state.generateSuccessor(index, act), 0, depth - 1)
+          new_value = maxValue(state.generateSuccessor(index, act), 0, depth - 1, alpha, beta)
         else:
           # ghost's turn
-          new_value = minValue(state.generateSuccessor(index, act), index + 1, depth)
+          new_value = minValue(state.generateSuccessor(index, act), index + 1, depth, alpha, beta)
         min_value = min(min_value, new_value)
+        if min_value <= alpha:
+          return min_value
+        # update beta
+        beta = min(min_value, beta)
       return min_value
     # return the result of minimax algorithm
-    return minimaxDecision(gameState)
+    return alphabetaDecision(gameState)
