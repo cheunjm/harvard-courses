@@ -412,7 +412,7 @@ class ContestAgent(MultiAgentSearchAgent):
     "*** YOUR CODE HERE ***"
     num_agents = gameState.getNumAgents()
     # This is a simple alphabeta implementation that uses the better evaluation function
-    # Average score is consistently 1000+
+    # Average score is around 1000
 
     def terminalTest(state, depth):
       return state.isWin() or state.isLose() or depth == 0
