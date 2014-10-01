@@ -366,7 +366,7 @@ def betterEvaluationFunction(currentGameState):
   noTargetableGhost = True
   # Prevent pacman from dying
   if currentGameState.isLose():
-    return float("-inf")
+    return float('-inf')
   # 1. Base case: lower score for food that is far away
   score = scoreEvaluationFunction(currentGameState)
   score -= low_imp * foodHeuristic(currentGameState)
@@ -382,6 +382,7 @@ def betterEvaluationFunction(currentGameState):
     score -= high_imp * min(capDis)
   return score
 
+# Simple heuristic from Assignment1 
 def foodHeuristic(state):
   """A simple heuristic that evaluates distance between pacman and food"""
   heur = 0
