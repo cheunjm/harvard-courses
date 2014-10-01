@@ -363,8 +363,6 @@ def betterEvaluationFunction(currentGameState):
   # 2. Check if there are scared ghosts within reach
   for ghostState in ghostStates:
     distance = manhattanDistance(pacPosition, ghostState.getPosition())
-    # if distance < 2:
-    #   score -= 5
     if ghostState.scaredTimer > distance:
       noTargetableGhost = False
       score -= med_imp * distance
