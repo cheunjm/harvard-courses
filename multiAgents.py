@@ -350,12 +350,30 @@ def betterEvaluationFunction(currentGameState):
   """
   "*** YOUR CODE HERE ***"
   constant1 = 1
+  constant2 = 5
+  constant3 = 10000000
+  #make sure not to lose
   if currentGameState.isLose():
     return float("-inf")
+
   # base case #
   score = scoreEvaluationFunction(currentGameState)
   score -= constant1 * foodHeuristic(currentGameState)
+  pacPosition = currentGameState.getPacmanPosition()
+  ghostStates = currentGameState.getGhostStates()
+  noReachableScared = True
+  #for each ghost
+  for ghostState in ghostStates:
+    distance = manhattanDistance(pacPosition, ghostState.getPosition())
+    if ghostState.scaredTimer > distance:
+      noReachableScared = False
+      score -= constant2 * distance
 
+  #There are no scared Ghosts within range: get the closest capsule
+  capPositions = currentGameState.getCapsules()
+  capDis = [manhattanDistance(pacPosition, capPosition) for capPosition in capPositions]
+  if noReachableScared and capDis:
+    score -= constant3 * min(capDis)
   return score
 
 def foodHeuristic(state):
