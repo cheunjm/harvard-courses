@@ -6,6 +6,11 @@
 # John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
 # For more info, see http://inst.eecs.berkeley.edu/~cs188/sp09/pacman.html
 
+"""
+Written by Jaemin Cheun and Joon Yang
+
+"""
+
 from util import manhattanDistance
 from game import Directions
 import random, util
@@ -192,6 +197,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
       min_value = float('inf') 
       actions = state.getLegalActions(index)
       for act in actions:
+        # last ghost agent
         if (index == num_agents - 1):
           # pacman's turn
           new_value = maxValue(state.generateSuccessor(index, act), 0, depth - 1)
@@ -264,6 +270,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
       min_value = float('inf')
       actions = state.getLegalActions(index)
       for act in actions:
+        # last ghost agent
         if (index == num_agents - 1):
           # pacman's turn
           new_value = maxValue(state.generateSuccessor(index, act), 0, depth - 1, alpha, beta)
@@ -331,6 +338,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
       weighted_avg = 0
       actions = state.getLegalActions(index)
       for act in actions:
+        # last ghost agent
         if (index == num_agents - 1):
           # pacman's turn
           weighted_avg += maxValue(state.generateSuccessor(index, act), 0, depth - 1)
@@ -463,6 +471,7 @@ class ContestAgent(MultiAgentSearchAgent):
       min_value = float('inf')
       actions = state.getLegalActions(index)
       for act in actions:
+        # last ghost agent
         if (index == num_agents - 1):
           # pacman's turn
           new_value = maxValue(state.generateSuccessor(index, act), 0, depth - 1, alpha, beta)
