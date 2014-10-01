@@ -208,7 +208,6 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
           return max_value
         # update alpha
         alpha = max(max_value, alpha)
-      print(max_value)
       return max_action
 
     def maxValue(state, index, depth, alpha, beta):
@@ -310,76 +309,56 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
     return ExpectimaxDecision(gameState)
 
 def betterEvaluationFunction(currentGameState):
-  #higher score the better#
   """
+  Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
+  evaluation function (question 5).
+
+  DESCRIPTION:
+  We use the base case given by the standard evaluation function, but add some spice by
+  following the following protocols:
 
   1. Higher the score, the better
   2. Further the food is, the worse
-  3. If there are ghosts that can be eaten, the futher the worse
-  4. If there are no ghosts to eat, the further the capsules are, the worse
-
-
-    Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
-    evaluation function (question 5).
-
-    DESCRIPTION:
-
-    If scared ghosts exists (for all ghosts, check scaredTimer != 0):
-      scared_ghost_list.append(manhattanDistance(pacman, ghost) <= ghost.scaredTimer)
-      If scared_ghost_list != []:
-        new_target = min(scared_ghost_list)
-        score =
-        return score
-    If there is a capsule:
-      capsule_list.append(manhattanDistance(pacman, capsule))
-      new_target = min(capsule_list)
-      if manhattanDistance(pacman, ghost) < 3:
-        do standard_eval_func
-      score =
-      return score
-    Else (simple world of no scared ghosts or capsules):
-      do standard_eval_func
+  3. If there are ghosts that can be eaten, the closer the better
+  4. If there are no ghosts to eat, the closer the capsules the better
   """
   "*** YOUR CODE HERE ***"
-  constant1 = 1
-  constant2 = 5
-  constant3 = 10000000
-  #make sure not to lose
-  if currentGameState.isLose():
-    return float("-inf")
-
-  # base case #
-  score = scoreEvaluationFunction(currentGameState)
-  score -= constant1 * foodHeuristic(currentGameState)
+  # Constants that reflect importance of course of action
+  low_imp = 1
+  med_imp = 5
+  high_imp = 10000
+  # initialize pacman and ghost locations
   pacPosition = currentGameState.getPacmanPosition()
   ghostStates = currentGameState.getGhostStates()
-  noReachableScared = True
-  #for each ghost
+  capPositions = currentGameState.getCapsules()
+  # boolean for existence of viable scared ghost targets
+  noTargetableGhost = True
+  # Prevent pacman from dying
+  if currentGameState.isLose():
+    return float("-inf")
+  # 1. Base case: lower score for food that is far away
+  score = scoreEvaluationFunction(currentGameState)
+  score -= low_imp * foodHeuristic(currentGameState)
+  # 2. Check if there are scared ghosts within reach
   for ghostState in ghostStates:
     distance = manhattanDistance(pacPosition, ghostState.getPosition())
     if ghostState.scaredTimer > distance:
-      noReachableScared = False
-      score -= constant2 * distance
-
-  #There are no scared Ghosts within range: get the closest capsule
-  capPositions = currentGameState.getCapsules()
+      noTargetableGhost = False
+      score -= med_imp * distance
+  # 3. Get the closest capsule
   capDis = [manhattanDistance(pacPosition, capPosition) for capPosition in capPositions]
-  if noReachableScared and capDis:
-    score -= constant3 * min(capDis)
+  if noTargetableGhost and capDis:
+    score -= high_imp * min(capDis)
   return score
 
 def foodHeuristic(state):
-
+  """A simple heuristic that evaluates distance between pacman and food"""
   heur = 0
   foodGrid = state.getFood()
   curr_pos = state.getPacmanPosition()
   for x_idx, rows in enumerate(foodGrid):
     for y_idx, is_food in enumerate(rows):
-      # if there is a food in a given location
       if is_food:
-        # calculate the manhattan distance between current position and food
-        # while considering weight using square root
-        # analagous to adding misplaced tiles by their manhattan distance
         heur += sqrt(manhattanDistance(curr_pos, [x_idx, y_idx]))
   return heur
 
@@ -400,5 +379,50 @@ class ContestAgent(MultiAgentSearchAgent):
       just make a beeline straight towards Pacman (or away from him if they're scared!)
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    num_agents = gameState.getNumAgents()
+    # This is a simple minimax implementation that uses the better evaluation function
+    # Average score ranges from 500s to 1500 with an average win of 1~3/10
+    def minimaxDecision(state):
+      """returns action that maximizes minValue"""
+      # base case: action = stop
+      max_value, max_action = -float('inf'), Directions.STOP
+      # get all possible actions of pacman
+      actions = gameState.getLegalActions(0)
+      actions.remove(Directions.STOP)
+      for act in actions:
+        # query min values of ghost decisions
+        new_value = minValue(gameState.generateSuccessor(0, act), 1, self.depth)
+        if max_value < new_value:
+           max_value, max_action = new_value, act
+      return max_action
 
+    def maxValue(state, index, depth):
+      """returns util value"""
+      if state.isWin() or state.isLose() or depth == 0:
+        return better(state)
+      max_value = -float('inf')
+      actions = state.getLegalActions(index)
+      actions.remove(Directions.STOP)
+      for act in actions:
+        # take the maximum of min values
+        new_value = minValue(state.generateSuccessor(index, act), index + 1, depth)
+        max_value = max(max_value, new_value)
+      return max_value
+
+    def minValue(state, index, depth):
+      """returns util value"""
+      if state.isWin() or state.isLose() or depth == 0:
+        return better(state)
+      min_value = float('inf') 
+      actions = state.getLegalActions(index)
+      for act in actions:
+        if (index == num_agents - 1):
+          # pacman's turn
+          new_value = maxValue(state.generateSuccessor(index, act), 0, depth - 1)
+        else:
+          # ghost's turn
+          new_value = minValue(state.generateSuccessor(index, act), index + 1, depth)
+        min_value = min(min_value, new_value)
+      return min_value
+    # return the result of minimax algorithm
+    return minimaxDecision(gameState)
