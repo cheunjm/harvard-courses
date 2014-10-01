@@ -63,15 +63,36 @@ class ReflexAgent(Agent):
     """
     # Useful information you can extract from a GameState (pacman.py)
     successorGameState = currentGameState.generatePacmanSuccessor(action)
-    newPos = successorGameState.getPacmanPosition()
-    newFood = successorGameState.getFood()
-    newGhostStates = successorGameState.getGhostStates()
-    newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
+
     "*** YOUR CODE HERE ***"
+     # Constants that reflect importance of course of action
+    low_imp = 1
+    med_imp = 5
+    high_imp = 1000000
+    # initialize pacman and ghost locations
+    pacPosition = successorGameState.getPacmanPosition()
+    ghostStates = successorGameState.getGhostStates()
+    capPositions = successorGameState.getCapsules()
+    # boolean for existence of viable scared ghost targets
+    noTargetableGhost = True
+    # Prevent pacman from dying
     if successorGameState.isLose():
       return float("-inf")
+    # 1. Base case: lower score for food that is far away
     score = scoreEvaluationFunction(successorGameState)
-    score -= 0.5*foodHeuristic(successorGameState)
+    score -= low_imp * foodHeuristic(successorGameState)
+    # 2. Check if there are scared ghosts within reach
+    for ghostState in ghostStates:
+      distance = manhattanDistance(pacPosition, ghostState.getPosition())
+      if distance < 2:
+        return float("-inf")
+      if ghostState.scaredTimer > distance:
+        noTargetableGhost = False
+        score -= med_imp * distance
+    # 3. Get the closest capsule
+    capDis = [manhattanDistance(pacPosition, capPosition) for capPosition in capPositions]
+    if noTargetableGhost and capDis:
+      score -= high_imp * min(capDis)
     return score
 
 def scoreEvaluationFunction(currentGameState):
@@ -130,7 +151,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         Returns the total number of agents in the game
     """
     "*** YOUR CODE HERE ***"
-    num_agents = gameState.getNumAgents()
+    numAgents = gameState.getNumAgents()
 
     def minimaxDecision(state):
       """returns action that maximizes minValue"""
@@ -342,6 +363,8 @@ def betterEvaluationFunction(currentGameState):
   # 2. Check if there are scared ghosts within reach
   for ghostState in ghostStates:
     distance = manhattanDistance(pacPosition, ghostState.getPosition())
+    # if distance < 2:
+    #   score -= 5
     if ghostState.scaredTimer > distance:
       noTargetableGhost = False
       score -= med_imp * distance
