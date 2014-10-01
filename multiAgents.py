@@ -152,7 +152,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         Returns the total number of agents in the game
     """
     "*** YOUR CODE HERE ***"
-    numAgents = gameState.getNumAgents()
+    num_agents = gameState.getNumAgents()
 
     def terminalTest(state, depth):
       return state.isWin() or state.isLose() or depth == 0
@@ -169,6 +169,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         new_value = minValue(gameState.generateSuccessor(0, act), 1, self.depth)
         if max_value < new_value:
            max_value, max_action = new_value, act
+      # print(max_value)
       return max_action
 
     def maxValue(state, index, depth):
@@ -236,6 +237,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
           return max_value
         # update alpha
         alpha = max(max_value, alpha)
+      # print(max_value)
       return max_action
 
     def maxValue(state, index, depth, alpha, beta):
