@@ -84,6 +84,7 @@ class ReflexAgent(Agent):
     # 2. Check if there are scared ghosts within reach
     for ghostState in ghostStates:
       distance = manhattanDistance(pacPosition, ghostState.getPosition())
+      # make sure the pacman doesn't get too close to the ghost
       if distance < 2:
         return float("-inf")
       if ghostState.scaredTimer > distance:
@@ -153,6 +154,9 @@ class MinimaxAgent(MultiAgentSearchAgent):
     "*** YOUR CODE HERE ***"
     numAgents = gameState.getNumAgents()
 
+    def terminalTest(state, depth):
+      return state.isWin() or state.isLose() or depth == 0
+
     def minimaxDecision(state):
       """returns action that maximizes minValue"""
       # base case: action = stop
@@ -169,7 +173,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
 
     def maxValue(state, index, depth):
       """returns util value"""
-      if state.isWin() or state.isLose() or depth == 0:
+      if terminalTest(state,depth):
         return self.evaluationFunction(state)
       max_value = -float('inf')
       actions = state.getLegalActions(index)
@@ -182,7 +186,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
 
     def minValue(state, index, depth):
       """returns util value"""
-      if state.isWin() or state.isLose() or depth == 0:
+      if terminalTest(state,depth):
         return self.evaluationFunction(state)
       min_value = float('inf') 
       actions = state.getLegalActions(index)
@@ -210,6 +214,9 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
     "*** YOUR CODE HERE ***"
     num_agents = gameState.getNumAgents()
 
+    def terminalTest(state, depth):
+      return state.isWin() or state.isLose() or depth == 0
+
     def alphabetaDecision(state):
       """returns action that maximizes minValue"""
       alpha = -float('inf')
@@ -233,7 +240,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
 
     def maxValue(state, index, depth, alpha, beta):
       """returns util value"""
-      if state.isWin() or state.isLose() or depth == 0:
+      if terminalTest(state,depth):
         return self.evaluationFunction(state)
       max_value = -float('inf')
       actions = state.getLegalActions(index)
@@ -250,7 +257,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
 
     def minValue(state, index, depth, alpha, beta):
       """returns util value"""
-      if state.isWin() or state.isLose() or depth == 0:
+      if terminalTest(state,depth):
         return self.evaluationFunction(state)
       min_value = float('inf')
       actions = state.getLegalActions(index)
@@ -285,6 +292,9 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
     "*** YOUR CODE HERE ***"
     num_agents = gameState.getNumAgents()
 
+    def terminalTest(state, depth):
+      return state.isWin() or state.isLose() or depth == 0
+
     def ExpectimaxDecision(state):
       """returns action that maximizes minValue"""
       # base case: action = stop
@@ -301,7 +311,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
 
     def maxValue(state, index, depth):
       """returns util value"""
-      if state.isWin() or state.isLose() or depth == 0:
+      if terminalTest(state,depth):
         return self.evaluationFunction(state)
       max_value = -float('inf')
       actions = state.getLegalActions(index)
@@ -314,7 +324,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
 
     def weightedValue(state, index, depth):
       """returns util value"""
-      if state.isWin() or state.isLose() or depth == 0:
+      if terminalTest(state,depth):
         return self.evaluationFunction(state)
       weighted_avg = 0
       actions = state.getLegalActions(index)
@@ -403,6 +413,10 @@ class ContestAgent(MultiAgentSearchAgent):
     num_agents = gameState.getNumAgents()
     # This is a simple minimax implementation that uses the better evaluation function
     # Average score ranges from 500s to 1500 with an average win of 1~3/10
+
+    def terminalTest(state, depth):
+      return state.isWin() or state.isLose() or depth == 0
+
     def minimaxDecision(state):
       """returns action that maximizes minValue"""
       # base case: action = stop
@@ -419,7 +433,7 @@ class ContestAgent(MultiAgentSearchAgent):
 
     def maxValue(state, index, depth):
       """returns util value"""
-      if state.isWin() or state.isLose() or depth == 0:
+      if terminalTest(state,depth):
         return better(state)
       max_value = -float('inf')
       actions = state.getLegalActions(index)
@@ -432,7 +446,7 @@ class ContestAgent(MultiAgentSearchAgent):
 
     def minValue(state, index, depth):
       """returns util value"""
-      if state.isWin() or state.isLose() or depth == 0:
+      if terminalTest(state,depth):
         return better(state)
       min_value = float('inf') 
       actions = state.getLegalActions(index)
