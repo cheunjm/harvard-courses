@@ -416,9 +416,6 @@ class ContestAgent(MultiAgentSearchAgent):
     # This is a simple alphabeta implementation that uses the better evaluation function
     # Average score is around 1000
 
-    def terminalTest(state, depth):
-      return state.isWin() or state.isLose() or depth == 0
-
     def alphabetaDecision(state):
       """returns action that maximizes minValue"""
       alpha = -float('inf')
