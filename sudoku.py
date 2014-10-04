@@ -71,7 +71,14 @@ class Sudoku:
 
   def _getAllSuccessors(self):
     # PART 1 goes here.
-    raise NotImplementedError
+    # repeat until all squares are filled
+    while self._getEmptySquare() is not None:
+      emptysquare = self._getEmptySquare()
+      possible_vals = self._getPossibleValsFor(emptysquare)
+      for val in possible_vals:
+        self._fillEmptySquare(emptysquare, val)
+    return self.__str__()
+
 
   def _getSuccessorsWithForwardChecking(self):
     return [s for s in self._getAllSuccessors() if s._forwardCheck()]
