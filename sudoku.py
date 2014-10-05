@@ -20,14 +20,27 @@ class Sudoku:
           return (x, y)
     return None
 
+  # Returns all empty squares
+  def _getAllEmptySquares(self):
+    emptySquares = []
+    for x in xrange(0,9):
+      for y in xrange(0,9):
+        if not self.board[x][y]:
+          emptySquares.append((x, y))
+    return emptySquares
+
   def _getMostConstrainedEmptySquare(self):
     # Part 3 goes here.
-    raise NotImplementedError
+    emptySquares = self._getAllEmptySquares()
+    if not(emptySquares):
+      return None
+    PossibleVals = map(len,map(self._getPossibleValsFor, emptySquares))
+    return emptySquares[PossibleVals.index(min(PossibleVals))]
 
   # PART 3: Swap out the implementation after implementing part 3
   def _getEmptySquare(self):
-    return self._getFirstEmptySquare()
-    # return self._getMostConstrainedEmptySquare()
+    # return self._getFirstEmptySquare()
+    return self._getMostConstrainedEmptySquare()
 
   def _getRow(self, x):
     return list(self.board[x])
@@ -67,17 +80,22 @@ class Sudoku:
 
   def _forwardCheck(self):
     # PART 2 goes here.
-    raise NotImplementedError
+    for emptySquare in self._getAllEmptySquares():
+      if not(self._getPossibleValsFor(emptySquare)):
+        return False
+    return True
 
   def _getAllSuccessors(self):
     # PART 1 goes here.
     # repeat until all squares are filled
-    while self._getEmptySquare() is not None:
-      emptysquare = self._getEmptySquare()
-      possible_vals = self._getPossibleValsFor(emptysquare)
-      for val in possible_vals:
-        self._fillEmptySquare(emptysquare, val)
-    return self.__str__()
+    successors = []
+    emptySquare = self._getEmptySquare()
+    if emptySquare is not None:
+      possibleVals = self._getPossibleValsFor(emptySquare)
+      for val in possibleVals:
+        successor = self._fillEmptySquare(emptySquare, val)
+        successors.append(successor)
+    return successors
 
 
   def _getSuccessorsWithForwardChecking(self):
@@ -85,8 +103,8 @@ class Sudoku:
 
   # PART 2: Swap out the implementation after implementing part 2
   def getSuccessors(self):
-    return self._getAllSuccessors()
-    # return self._getSuccessorsWithForwardChecking()
+    # return self._getAllSuccessors()
+    return self._getSuccessorsWithForwardChecking()
 
   def isFinalState(self):
     return self._getFirstEmptySquare() == None
