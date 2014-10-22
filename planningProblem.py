@@ -28,11 +28,13 @@ class PlanningProblem():
    
     
   def getStartState(self):
-    "*** YOUR CODE HERE ***"   
+    "*** YOUR CODE HERE ***"
+    return self.initialState
     
     
   def isGoalState(self, state):
     "*** YOUR CODE HERE ***"
+    return bool(set(state) <= set(self.goal))
   
 
   def getSuccessors(self, state):
@@ -45,7 +47,16 @@ class PlanningProblem():
     Hint:  check out action.allPrecondsInList 
     """
     self._expanded += 1
-    "*** YOUR CODE HERE ***"       
+    "*** YOUR CODE HERE ***"
+    successors = []
+    # for all actions that have all its preconditions satisfied 
+    for action in [action for action in self.actions if bool(set(action.allPrecondsInList()) <= set(state))
+      #add positive effects
+      successor = state + [prop for prop in a.getAdd() if prop not in state]
+      #delete negative effects
+      successor = [prop for prop in successor if prop not in a.getDelete()]
+      successors.append((successor, action, 1))
+    return successors
 
   def getCostOfActions(self, actions):
     return len(actions)
@@ -80,7 +91,8 @@ def maxLevel(state, problem):
   If the goal is not reachable from the state your heuristic should return float('inf')  
   """
   "*** YOUR CODE HERE ***"
- 
+  prob = PlanningProblem(state, problem)
+
 
 def levelSum(state, problem):
   """
