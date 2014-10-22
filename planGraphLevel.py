@@ -8,6 +8,7 @@ from actionLayer import ActionLayer
 from util import Pair
 from proposition import Proposition
 from propositionLayer import PropositionLayer
+from itertools import combinations
 
 class PlanGraphLevel(object):
   """
@@ -57,9 +58,10 @@ class PlanGraphLevel(object):
     """ 
     allActions = PlanGraphLevel.actions
     "*** YOUR CODE HERE ***"
-    for a in allActions: 
-      if(#all(a.precond) in previousPropositionlayer) 
-      and #for all (p1,p2) in a.prcond, 
+    for action in allActions:
+      if set(action.getPre()) <= set(previousPropositionLayer.getPropositions()) and \
+       not bool(set(combinations(action.getPre(), 2)) & set(previousPropositionlayer.getMutexProps())):
+        self.actionLayer.addAction(action)
 
   def updateMutexActions(self, previousLayerMutexProposition):
     """
@@ -69,7 +71,9 @@ class PlanGraphLevel(object):
     """
     currentLayerActions = self.actionLayer.getActions()
     "*** YOUR CODE HERE ***"
-   
+    for a1, a2 in combinations(currentLayerActions, 2):
+      if a1 != a2 and mutexActions(a1, a2, previousLayerMutexProposition):
+        self.actionLayer.addMutexAction(a1, a2)
 
   def updatePropositionLayer(self):
     """
@@ -79,7 +83,9 @@ class PlanGraphLevel(object):
     """
     currentLayerActions = self.actionLayer.getActions()
     "*** YOUR CODE HERE ***"
-
+    for prop in PlanGraphLevel.props:
+      if any(action.isPosEffect(prop) for action in currentLayerActions):
+        self.propositionLayer.addProposition(prop)
 
   def updateMutexProposition(self):
     """
@@ -87,8 +93,10 @@ class PlanGraphLevel(object):
     """
     currentLayerPropositions = self.propositionLayer.getPropositions()
     currentLayerMutexActions =  self.actionLayer.getMutexActions()
-    "*** YOUR CODE HERE ***"   
-	
+    "*** YOUR CODE HERE ***"
+    for p1, p2 in combinations(currentLayerPropositions, 2):
+      if p1 != p2 and mutexPropositions(p1, p2, currentLayerMutexActions):
+        self.propositionLayer.addMutexProp(p1, p2)
 
   def expand(self, previousLayer):
     """
@@ -102,11 +110,11 @@ class PlanGraphLevel(object):
     previousLayerMutexProposition = previousPropositionLayer.getMutexProps()
 
     "*** YOUR CODE HERE ***"   
-    self.updateActionLayer(previousPropositionlayer)
+    self.updateActionLayer(previousPropositionLayer)
     self.updateMutexActions(previousLayerMutexProposition)
     self.updatePropositionLayer()
     self.updateMutexProposition()
-            
+    
   def expandWithoutMutex(self, previousLayer):
     """
     Questions 11 and 12
@@ -114,7 +122,6 @@ class PlanGraphLevel(object):
     """
     previousLayerProposition = previousLayer.getPropositionLayer()
     "*** YOUR CODE HERE ***"
-	
 		
 def mutexActions(a1, a2, mutexProps):
   """
@@ -130,7 +137,7 @@ def mutexActions(a1, a2, mutexProps):
       if Pair(p1,p2) in mutexProps:
         return True
   return False
-		
+
 def mutexPropositions(prop1, prop2, mutexActions):
   """
   complete code for deciding whether two propositions are mutex,
@@ -140,7 +147,7 @@ def mutexPropositions(prop1, prop2, mutexActions):
   "*** YOUR CODE HERE ***"
   for a1 in prop1.getProducers():
     for a2 in prop2.getProducers():
-      if Pair(a1, a2) no in mutexActions:
+      if Pair(a1, a2) not in mutexActions:
         return False
   return True
  
