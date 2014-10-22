@@ -50,12 +50,13 @@ class PlanningProblem():
     "*** YOUR CODE HERE ***"
     successors = []
     # for all actions that have all its preconditions satisfied 
-    for action in [action for action in self.actions if bool(set(action.allPrecondsInList()) <= set(state))
-      #add positive effects
-      successor = state + [prop for prop in a.getAdd() if prop not in state]
-      #delete negative effects
-      successor = [prop for prop in successor if prop not in a.getDelete()]
-      successors.append((successor, action, 1))
+    for action in self.actions:
+      if action.allPrecondsInList(state):
+        #add positive effects
+        successor = state + [prop for prop in action.getAdd() if prop not in state]
+        #delete negative effects
+        successor = [prop for prop in successor if prop not in action.getDelete()]
+        successors.append((successor, action, 1))
     return successors
 
   def getCostOfActions(self, actions):

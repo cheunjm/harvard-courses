@@ -189,8 +189,7 @@ class GraphPlan(object):
           self.independentActions.append(Pair(act1,act2)) 
 
   def isIndependent(self, a1, a2):
-    return Pair(a1,a2) in self.independentActions  
-  
+    return Pair(a1,a2) in self.independentActions
 	
   def noMutexActionInPlan(self, plan, act, actionLayer):
     """
@@ -238,4 +237,3 @@ if __name__ == '__main__':
     print "Plan found with %d actions in %.2f seconds" % (len([act for act in plan if not act.isNoOp()]), elapsed)
   else:
     print "Could not find a plan in %.2f seconds" %  elapsed
- 
