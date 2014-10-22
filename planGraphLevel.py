@@ -102,7 +102,10 @@ class PlanGraphLevel(object):
     previousLayerMutexProposition = previousPropositionLayer.getMutexProps()
 
     "*** YOUR CODE HERE ***"   
-
+    self.updateActionLayer(previousPropositionlayer)
+    self.updateMutexActions(previousLayerMutexProposition)
+    self.updatePropositionLayer()
+    self.updateMutexProposition()
             
   def expandWithoutMutex(self, previousLayer):
     """
