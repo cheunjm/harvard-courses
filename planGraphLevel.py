@@ -57,7 +57,9 @@ class PlanGraphLevel(object):
     """ 
     allActions = PlanGraphLevel.actions
     "*** YOUR CODE HERE ***"
-   
+    for a in allActions: 
+      if(#all(a.precond) in previousPropositionlayer) 
+      and #for all (p1,p2) in a.prcond, 
 
   def updateMutexActions(self, previousLayerMutexProposition):
     """
@@ -118,7 +120,13 @@ def mutexActions(a1, a2, mutexProps):
   Your updateMutexActions function should call this function
   """
   "*** YOUR CODE HERE ***"
-  
+  if Pair(a1,a2) not in PlanGraphLevel.independentActions:
+    return True
+  for p1 in a1.getPre():
+    for p2 in a2.getPre():
+      if Pair(p1,p2) in mutexProps:
+        return True
+  return False
 		
 def mutexPropositions(prop1, prop2, mutexActions):
   """
@@ -127,4 +135,9 @@ def mutexPropositions(prop1, prop2, mutexActions):
   Your updateMutexProposition function should call this function
   """
   "*** YOUR CODE HERE ***"
+  for a1 in prop1.getProducers():
+    for a2 in prop2.getProducers():
+      if Pair(a1, a2) no in mutexActions:
+        return False
+  return True
  
