@@ -210,11 +210,11 @@ def independentPair(a1, a2):
   "*** YOUR CODE HERE ***"
   
   # check independence by checking interference and inconsistency
-  for a_1 in a1.getAdd():
-    if a_1 in a2.getPre() or a_1 in a2.getAdd():
+  for p in a1.getDelete():
+    if p in a2.getPre() or p in a2.getAdd():
       return False
-  for a_2 in a2.getAdd():
-    if a_2 in a1.getPre() or a_2 in a1.getAdd():
+  for p in a2.getDelete():
+    if p in a1.getPre() or p in a1.getAdd():
       return False
   return True
 

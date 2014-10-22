@@ -17,7 +17,7 @@ class Action(object):
     """
     Constructor
     """
-    self.pre = pre  	 # list of the precondition propositions 
+    self.pre = pre  	 # list of the precondition propositions
     self.add = add 		 # list of the propositions that will be added after applying the action    
     self.delete = delete # list of the propositions that will be deleted after applying the action    
     self.name = name 	 # the name of the action as string

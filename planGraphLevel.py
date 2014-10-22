@@ -57,10 +57,12 @@ class PlanGraphLevel(object):
     allAction is the list of all the action (include noOp in the domain)
     """ 
     allActions = PlanGraphLevel.actions
+    previousProps = previousPropositionLayer.getPropositions()
+    previousMutexProps = previousPropositionLayer.getMutexProps()
     "*** YOUR CODE HERE ***"
     for action in allActions:
-      if set(action.getPre()) <= set(previousPropositionLayer.getPropositions()) and \
-       not bool(set(combinations(action.getPre(), 2)) & set(previousPropositionlayer.getMutexProps())):
+      if all(precond in previousProps for precond in action.getPre()) and \
+       all(pair not in previousMutexProps for pair in combinations(action.getPre(), 2)):
         self.actionLayer.addAction(action)
 
   def updateMutexActions(self, previousLayerMutexProposition):
@@ -73,7 +75,7 @@ class PlanGraphLevel(object):
     "*** YOUR CODE HERE ***"
     for a1, a2 in combinations(currentLayerActions, 2):
       if a1 != a2 and mutexActions(a1, a2, previousLayerMutexProposition):
-        self.actionLayer.addMutexAction(a1, a2)
+        self.actionLayer.addMutexActions(a1, a2)
 
   def updatePropositionLayer(self):
     """
