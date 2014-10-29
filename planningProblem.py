@@ -34,7 +34,7 @@ class PlanningProblem():
     
   def isGoalState(self, state):
     "*** YOUR CODE HERE ***"
-    return bool(set(state) <= set(self.goal))
+    return all(s in state for s in self.goal)
   
 
   def getSuccessors(self, state):
@@ -56,7 +56,8 @@ class PlanningProblem():
         successor = state + [prop for prop in action.getAdd() if prop not in state]
         #delete negative effects
         successor = [prop for prop in successor if prop not in action.getDelete()]
-        successors.append((successor, action, 1))
+        for s in successor:
+          successors.append((s, action, 1))
     return successors
 
   def getCostOfActions(self, actions):
