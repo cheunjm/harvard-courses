@@ -152,4 +152,3 @@ def mutexPropositions(prop1, prop2, mutexActions):
       if Pair(a1, a2) not in mutexActions:
         return False
   return True
- 
