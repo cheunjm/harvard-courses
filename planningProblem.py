@@ -56,8 +56,7 @@ class PlanningProblem():
         successor = state + [prop for prop in action.getAdd() if prop not in state]
         #delete negative effects
         successor = [prop for prop in successor if prop not in action.getDelete()]
-        for s in successor:
-          successors.append((s, action, 1))
+        successors.append((successor, action, 1))
     return successors
 
   def getCostOfActions(self, actions):
