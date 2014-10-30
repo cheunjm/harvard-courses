@@ -89,10 +89,24 @@ class PlanningProblem():
 def maxLevel(state, problem):
   """
   The heuristic value is the number of layers required to expand all goal propositions.
-  If the goal is not reachable from the state your heuristic should return float('inf')  
+  If the goal is not reachable from the state your heuristic should return float('inf')
+  For each state, expand the planning graph omitting the computation of mutex relations, 
+  until you reach a level that includes all goal propositions. 
   """
   "*** YOUR CODE HERE ***"
-  prob = PlanningProblem(state, problem)
+  levelidx = 0
+  levelList = []
+  p = PlanningProblem(state, problem)
+  initState = p.getStartState()
+  while not isFixed(state, heur):
+    if p.isGoalState(state):
+      return heur
+    else:
+      successors = p.getSuccessors(state)
+      for successor in successors:
+        maxLevel(succesor, problem)
+  return float('inf')
+
 
 
 def levelSum(state, problem):
@@ -101,7 +115,8 @@ def levelSum(state, problem):
   If the goal is not reachable from the state your heuristic should return float('inf')
   """
   "*** YOUR CODE HERE ***"
-  
+
+
   
 def isFixed(Graph, level):
   """
