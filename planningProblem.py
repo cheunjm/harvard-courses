@@ -94,20 +94,26 @@ def maxLevel(state, problem):
   until you reach a level that includes all goal propositions. 
   """
   "*** YOUR CODE HERE ***"
-  levelidx = 0
+  initialState = problem.getStartState()
+  level = 0
   levelList = []
-  p = PlanningProblem(state, problem)
-  initState = p.getStartState()
-  while not isFixed(state, heur):
-    if p.isGoalState(state):
-      return heur
+
+  propLayerInit = PropositionLayer()
+  for prop in initialState:
+      propLayerInit.addProposition(prop)
+  pglevelInit = PlanGraphLevel()
+  pglevelInit.setPropositionLayer(propLayerInit)
+  levelList.append(pglevelInit)
+
+  while not isFixed(levelList, level):
+    if problem.isGoalState(state):
+      return level
     else:
-      successors = p.getSuccessors(state)
-      for successor in successors:
-        maxLevel(succesor, problem)
+      level = level + 1
+      pglevelNext = PlanGraphLevel()
+      pglevelNext.expandWithoutMutex(levelList[level-1])
+      levelList.append(pglevelNext)
   return float('inf')
-
-
 
 def levelSum(state, problem):
   """
