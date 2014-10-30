@@ -51,11 +51,13 @@ class PlanningProblem():
     successors = []
     # for all actions that have all its preconditions satisfied 
     for action in self.actions:
+      #NoOp cannot be in an optimal plan
       if not action.isNoOp() and action.allPrecondsInList(state):
         #add positive effects
         successor = state + [prop for prop in action.getAdd() if prop not in state]
         #delete negative effects
         successor = [prop for prop in successor if prop not in action.getDelete()]
+        #the cost is one in this case: 1 action
         successors.append((successor, action, 1))
     return successors
 
@@ -97,6 +99,7 @@ def maxLevel(state, problem):
   level = 0
   levelList = []
 
+  #create first layer of graph with proposition layer consisting of that of the state
   propLayerInit = PropositionLayer()
   for prop in state:
       propLayerInit.addProposition(prop)
@@ -104,14 +107,17 @@ def maxLevel(state, problem):
   pglevelInit.setPropositionLayer(propLayerInit)
   levelList.append(pglevelInit)
 
+  #check if we are at goal state
   while problem.goalStateNotInPropLayer(levelList[level].getPropositionLayer().getPropositions()):
+    # check if stalled
     if isFixed(levelList, level):
       return float('inf')
+    # create a new plan graph level
     else:
       level += 1
-      pglevelNext = PlanGraphLevel()
-      pglevelNext.expandWithoutMutex(levelList[level-1])
-      levelList.append(pglevelNext)
+      pglevelNew = PlanGraphLevel()
+      pglevelNew.expandWithoutMutex(levelList[level-1])
+      levelList.append(pglevelNew)
   return level
 
 def levelSum(state, problem):
