@@ -44,7 +44,7 @@ class ValueIterationAgent(ValueEstimationAgent):
       Return the value of the state (computed in __init__).
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    return self.value[state]
 
 
   def getQValue(self, state, action):
