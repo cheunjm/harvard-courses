@@ -10,15 +10,23 @@ Generally, if it uses argparse, it belongs here.
 from __future__ import unicode_literals
 from __future__ import print_function
 
+import csv_controller
 import argparse
 
-def menu_file():
+def menu():
 	"""CSV File as Flashcard Base"""
-	print "[1]"
-	print "[2]"
-	print "[3]"
-	resp = raw_input("> ").lower()
-	if resp == ""
+	print("[1] Start Quiz")
+	print("[2] Add Quiz")
+	print("[3] Exit")
+	resp = raw_input(">> ")
+	if resp == "1":
+		csv_controller.reader().start()
+	if resp == "2":
+		csv_controller.writer().start()
+	if resp == "" or '3':
+		exit(0)
+	print("*"*100)
+
 
 def parse_args():
 	parser = argparse.ArgumentParser()
@@ -38,12 +46,12 @@ def parse_args():
 	load_ = args.load
 	use_ = args.use
 
-	make_ args.make
+	make_args.make
 
 	return(list_, add_, remove_, make_, load_, use_)
 
 def main():
-	data
+	menu()
 
-if __name__ = "__main__":
+if __name__ == "__main__":
 	main()
