@@ -35,7 +35,6 @@ class ExpectimaxAgent:
         return getReward(state)
       max_value = -float('inf')
       actions = state.getLegalActions(index)
-      actions.remove(Directions.STOP)
       for act in actions:
         # take the maximum of min values
         new_value = weightedValue(state.generateSuccessor(index, act), index + 1, depth)
