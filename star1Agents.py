@@ -1,6 +1,6 @@
 import progress
 
-class ExpectimaxAgent:
+class Star1Agent:
 
   def __init__(self, depth = '1'):
     self.index = 0 # Computer is agent 0
