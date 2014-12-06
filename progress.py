@@ -9,7 +9,7 @@ class ProgressState:
         """
         Returns the legal actions for the agent specified.
         """
-        if agentIndex == 0:  # Computer is asking
+        if agentIndex == "computer":  # Computer is asking
             #representing which question can be asked
             return range(len(self.progress))
         else: #Human is answering
@@ -17,7 +17,7 @@ class ProgressState:
 
 
     def generateSuccessor(self, agentIndex, action):
-        if agentIndex == 0: # Computer is asking    
+        if agentIndex == "computer": # Computer is asking    
             return ProgressState(self.progress, action) #remember which action is taken
         else: # Human is answering
             #work with the word that only matters

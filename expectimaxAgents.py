@@ -7,7 +7,7 @@ class ExpectimaxAgent:
     self.depth = int(depth)
 
 
-  def getAction(self, initialState):
+  def getPolicy(self, initialState):
     """
       Returns the expectimax action using self.depth
     """
@@ -22,22 +22,24 @@ class ExpectimaxAgent:
     def ExpectimaxDecision(state):
       """returns action that maximizes minValue"""
       # base case: action = None
-      max_value, max_action = -float('inf'), None
-      # get all possible actions of computer
-      actions = state.getLegalActions(0)
+      max_value, policy = -float('inf'), None
+      # get all possible actions of computer, i.e. all possible questions
+      actions = state.getLegalActions("computer")
       for act in actions:
-        new_value = playerMove(state.generateSuccessor(0, act), self.depth)
+        new_value = playerNode(state.generateSuccessor("computer", act), self.depth)
         if max_value < new_value:
-           max_value, max_action = new_value, act
-      return max_action
+           max_value, policy = new_value, act
+      return policy
 
     #player Move 
-    def chanceNode(state, depth):
-      if terminalTest: then return get Reward(state)      
+    def playerNode(state, depth):
+      if terminalTest(state,depth): 
+        return getReward(state)      
       QValue = getReward(state)
-      actions = state.getLegalActions(1) #human
+      actions = state.getLegalActions("human") #human
       for act in actions:
-        QValue = QValue + probability * value of the State
+        QValue = QValue + state.getProgress()[state.getWord()] * MaxValue(state.generateSuccessor("human", act), depth )
+        #probability of choosing that * value of the State
       return QValue
 
     #Computer Move
@@ -45,12 +47,12 @@ class ExpectimaxAgent:
       # base case: action = None
       max_value, max_action = -float('inf'), None
       # get all possible actions of computer
-      actions = state.getLegalActions(0)
+      actions = state.getLegalActions("computer")
       for act in actions:
-        new_value = playerMove(state.generateSuccessor(0, act), self.depth)
+        new_value = playerNode(state.generateSuccessor("computer", act), depth - 1)
         if max_value < new_value:
            max_value, max_action = new_value, act
       return max_value
 
-    # return the result of minimax algorithm
+    # return the result of expectimax algorithm
     return ExpectimaxDecision(initialState)
