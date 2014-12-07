@@ -22,10 +22,8 @@ class reader(object):
         self.txt = open(data_path, 'rU')
         self.reader = csv.reader(self.txt, delimiter=",")
         self.qna = self.load(data_path)
-        empty = self.is_empty()
-        if empty:
-            print "=" * 100
-            print "The .csv file in %s is empty!" % data_path
+        print "=" * 100
+        print("To Quit at any time, just type in \"quit\"")
         
     def ask(self, message):
         print "="*100
@@ -46,19 +44,12 @@ class reader(object):
                 continue
             self.ask("Question: %s" % question)
             attempt = raw_input(">> ")
+            if attempt == "quit":
+                break
             if attempt == answer:
                 print "Correct!"
             else:
                 print("The correct answer was: %s" % answer)
-
-    def is_empty(self):
-        """util for checking if file is empty"""
-        txt = self.txt.readlines()
-        empty = True
-        for line in txt:
-            if line:
-                empty = False
-        return empty
 
 class writer(object):
     """Appends questions and answers into the csv file."""
