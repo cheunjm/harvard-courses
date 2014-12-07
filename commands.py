@@ -12,6 +12,7 @@ from __future__ import print_function
 
 import csv_controller
 import argparse
+import os
 
 def menu():
 	"""CSV File as Flashcard Base"""
@@ -20,7 +21,12 @@ def menu():
 	print("[3] Exit")
 	resp = raw_input(">> ")
 	if resp == "1":
-		csv_controller.reader().start()
+		directory = os.listdir(os.path.join(os.getcwd(),"flashcards"))
+		for idx, fname in enumerate(directory):
+			print(str(idx+1) + " : " + fname)
+		print("Type in which flashcard you want to study:")
+		filename = directory[int(raw_input(">> ")) - 1]
+		csv_controller.reader(filename).start()
 	if resp == "2":
 		csv_controller.writer().start()
 	if resp == "" or '3':

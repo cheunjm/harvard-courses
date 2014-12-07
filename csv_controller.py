@@ -11,13 +11,13 @@ import csv
 import configure
 
 cwd = os.getcwd()
-data_path = os.path.join(configure.ROOT, "flashcards.csv")
+data_path = os.path.join(cwd, "flashcards.csv")
 
 class reader(object):
     """Reads off .csv file and quizzes user"""
     
-    def __init__(self):
-        open(data_path,'a')
+    def __init__(self, filename):
+        data_path = os.path.join(cwd, "flashcards/%s" %filename)
         self.txt = open(data_path, 'rU')
         self.reader = csv.reader(self.txt, delimiter=",")
         self.qna = self.load(data_path)
@@ -63,7 +63,6 @@ class writer(object):
     """Appends questions and answers into the csv file."""
     
     def __init__(self):
-        open(data_path,'a')
         #File IO object in either 'a' or 'w' mode.
         self.txt = open(data_path,'a')
         #KEY is a list of tuples with strings in them. Each tuple is a pair of question and answer.
@@ -71,6 +70,7 @@ class writer(object):
         #self.start() #Gets the ball rolling. write() is the function that actually writes information to ./data.csv
 
     def start(self):
+        print "To stop adding cards, type exit or end"
         writer = csv.writer(self.txt)
         for q in self.KEY: #group is a tuple of strings
             question = "%s," % q #string+comma
@@ -84,7 +84,7 @@ class writer(object):
         qna = {}
         print "="*72
         while True:
-            print "="*72
+            print "="*100
             question = raw_input("Question: ")
             if question == 'exit' or question == 'end':
                 break
