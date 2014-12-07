@@ -9,6 +9,7 @@ Deals with creating or reading .csv files to produce flashcards.
 import os
 import csv
 import configure
+from expectimaxAgents import ExpectimaxAgent
 
 cwd = os.getcwd()
 data_path = os.path.join(cwd, "flashcards.csv")
@@ -75,7 +76,8 @@ class writer(object):
         for q in self.KEY: #group is a tuple of strings
             question = "%s," % q #string+comma
             answers = self.KEY[q] #string
-            format = question + answers # String with comma separated values. First value is question.
+            progress = "0.5"
+            format = question + answers + progress# String with comma separated values. First value is question.
             format = format.split(",") #Split the format string at each comma into a list.
             writer.writerow(format)
         self.txt.close()
