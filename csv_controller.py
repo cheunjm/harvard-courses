@@ -11,86 +11,56 @@ import csv
 import configure
 
 cwd = os.getcwd()
-data_path = os.path.join(configure.ROOT,"flashcards.csv")
-
-#Creates a data.csv file in the current working directory if it does not already exist.
-
+data_path = os.path.join(configure.ROOT, "flashcards.csv")
 
 class reader(object):
-    """This class actually quizzes the user. It parses from data.csv which is created in the current working directory.
-    It runs itself, so you just need to call reader() and it will read the data file in the cwd and quiz the user on it.
-    """
+    """Reads off .csv file and quizzes user"""
     
     def __init__(self):
         open(data_path,'a')
-        self.txt = open(data_path, 'r')
+        self.txt = open(data_path, 'rU')
         self.reader = csv.reader(self.txt, delimiter=",")
-        self.QNA = self.load(data_path) #Parses the information in ./data.csv and stores it in a dict.
-        empty = self.check_for_empty_files()
+        self.qna = self.load(data_path)
+        empty = self.is_empty()
         if empty:
-            print "="*72
-            print "The data.csv file is empty!"
-        #self.start() #Gets the ball rolling.
+            print "=" * 100
+            print "The .csv file in %s is empty!" % data_path
         
-    def msg(self,message):
-        print "="*72
+    def ask(self, message):
+        print "="*100
         print message
-        
-    def load(self,path):
+
+    def load(self, path):
         """Loads a CSV file returns a dict of answers/questions"""
-        #Thanks to ath0 (http://www.reddit.com/user/ath0) who wrote this method from http://reddit.com/r/learnpython
-        
-        dataset = dict()
-        with open(path, 'r') as f:
-            for line in f.readlines():
-                split_line = line.split(',')
-                question = split_line[0]
-                answers = split_line[1:]
-                dataset[question] = answers
-        return dataset
-        
+        db = dict()
+        for line in self.reader:
+            db[line[0]] = line[1]
+        return db
+
     def start(self):
-        for q in self.QNA:
-            question = q
-            answers = self.QNA[q]
-            
-            if not question or not answers:
+        """Protocol for asking questions and verifying"""
+        for question in self.qna:
+            answer = self.qna[question]
+            if not question or not answer:
                 continue
-            
-            self.msg("Question:\t%s" % question)
-            attempt = raw_input("> ")
-            
-            for answer in answers:
-                if attempt == answer:
-                    correct = True
-                    break
-                else:
-                    correct = False
-            
-            if correct:
+            self.ask("Question: %s" % question)
+            attempt = raw_input(">> ")
+            if attempt == answer:
                 print "Correct!"
-            if not correct:
-                print "The correct answer was:"
-                if len(answers) > 1:
-                    print "\tany of the following:"
-                    
-                print "\t",' | '.join(answers)
-                
-        #print "="*72
-        
-    def check_for_empty_files(self):
+            else:
+                print("The correct answer was: %s" % answer)
+
+    def is_empty(self):
+        """util for checking if file is empty"""
         txt = self.txt.readlines()
         empty = True
         for line in txt:
             if line:
                 empty = False
         return empty
-                
-#--------------------------------------------------------------------------------------------------------------------------------
 
 class writer(object):
-    """This class appends sets of questions and answers into the data.csv file
-    in the current working directory. The reader() class above uses this file."""
+    """Appends questions and answers into the csv file."""
     
     def __init__(self):
         open(data_path,'a')
@@ -99,65 +69,28 @@ class writer(object):
         #KEY is a list of tuples with strings in them. Each tuple is a pair of question and answer.
         self.KEY = self.get_key() #Gets the questions and answers from the user and stores them in self.KEY for self.start()
         #self.start() #Gets the ball rolling. write() is the function that actually writes information to ./data.csv
-        
+
     def start(self):
         writer = csv.writer(self.txt)
         for q in self.KEY: #group is a tuple of strings
             question = "%s," % q #string+comma
             answers = self.KEY[q] #string
-            
-            format = question+answers # String with comma separated values. First value is question.
+            format = question + answers # String with comma separated values. First value is question.
             format = format.split(",") #Split the format string at each comma into a list.
-            
             writer.writerow(format)
-            self.txt.write("\n")
         self.txt.close()
 
-
     def get_key(self):
-    
         qna = {}
-        
         print "="*72
-        print "NOTE:\tSeparate multiple choice answers with commas."
-        
         while True:
             print "="*72
-            
-            question = raw_input("Question:\t ")
-            
+            question = raw_input("Question: ")
             if question == 'exit' or question == 'end':
                 break
-            
-            answer = raw_input("Answer/s:\t")
+            answer = raw_input("Answer: ")
             if answer == 'exit' or answer == 'end':
                 break
-                
-
             qna[question] = answer
-            
         print "\n"
         return qna
-        
-        
-    def get_mode(self):
-        print "1: Edit mode"
-        print "2: Over-write mode"
-        
-        mode = raw_input("> ")
-        
-        cwd = os.getcwd()
-        data_path = os.path.join(cwd, 'data.csv')
-        txt = open(data_path,'a')
-        if mode == '1' or mode == 'edit mode':
-            txt = open(data_path,'a')
-            mode = 'edit'
-        if mode == '2' or mode == 'over-write mode':
-            txt = open(data_path,'w')
-            mode = 'over-write'
-            
-        print "Opening %s in %s mode..." % (os.path.join(os.getcwd(), 'data.csv'), mode)
-
-        return txt
-        
-

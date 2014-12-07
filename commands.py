@@ -25,9 +25,9 @@ def menu():
 		csv_controller.writer().start()
 	if resp == "" or '3':
 		exit(0)
-	print("*"*100)
+	print("="*100)
 
-
+"""
 def parse_args():
 	parser = argparse.ArgumentParser()
 	parer.add_argument('-v', '--version', action='version', version='1.0')
@@ -49,9 +49,4 @@ def parse_args():
 	make_args.make
 
 	return(list_, add_, remove_, make_, load_, use_)
-
-def main():
-	menu()
-
-if __name__ == "__main__":
-	main()
+"""
