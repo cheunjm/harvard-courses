@@ -26,27 +26,3 @@ def menu():
 	if resp == "" or '3':
 		exit(0)
 	print("="*100)
-
-"""
-def parse_args():
-	parser = argparse.ArgumentParser()
-	parer.add_argument('-v', '--version', action='version', version='1.0')
-	parser.add_argument('-ls', '--list', dest='list')
-	parser.add_argument('-rm', '--remove', dest='remove')
-	parser.add_argument('-l', '--load', dest='load')
-	parser.add_argument('-u', '--use', dest='use')
-	parser.add_argument('-m', '--make', dest='make')
-	parser.add_argument('-a', '--add', dest='add')
-	
-	args = parser.parse_args()
-	
-	list_ = args.list
-	add_ = args.add
-	remove_ = args.remove
-	load_ = args.load
-	use_ = args.use
-
-	make_args.make
-
-	return(list_, add_, remove_, make_, load_, use_)
-"""
