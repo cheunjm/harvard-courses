@@ -34,6 +34,7 @@ class ExpectimaxAgent:
     #player Move 
     def playerNode(state, depth):
       if terminalTest(state,depth): 
+        print("dd")
         return getReward(state)      
       QValue = getReward(state)
       actions = state.getLegalActions("human") #human

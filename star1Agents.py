@@ -41,11 +41,13 @@ class Star1Agent:
         return getReward(state)      
       QValue = getReward(state)
       actions = state.getLegalActions("human") #human
-      if QValue + 2 < alpha:
+      if QValue + 0.5*depth < alpha:
+        print("y")
         return QValue
       for act in actions:
         QValue = QValue + state.getProgress()[state.getWord()] * MaxValue(state.generateSuccessor("human", act), depth)
-        if (QValue + (1 - state.getProgress()[state.getWord()])*2) < alpha:
+        if (QValue + (1 - state.getProgress()[state.getWord()])*0.5*depth) < alpha:
+          print("x")
           return QValue
         #probability of choosing that * value of the State
       Q.append(QValue)
