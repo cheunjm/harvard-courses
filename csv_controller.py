@@ -54,35 +54,31 @@ class reader(object):
 class writer(object):
     """Appends questions and answers into the csv file."""
     
-    def __init__(self):
-        #File IO object in either 'a' or 'w' mode.
+    def __init__(self, data_path):
         self.txt = open(data_path,'a')
-        #KEY is a list of tuples with strings in them. Each tuple is a pair of question and answer.
-        self.KEY = self.get_key() #Gets the questions and answers from the user and stores them in self.KEY for self.start()
-        #self.start() #Gets the ball rolling. write() is the function that actually writes information to ./data.csv
+        self.qna = self.get_qna()
 
     def start(self):
         print "To stop adding cards, type exit or end"
         writer = csv.writer(self.txt)
-        for q in self.KEY: #group is a tuple of strings
-            question = "%s," % q #string+comma
-            answers = self.KEY[q] #string
+        for q in self.KEY: # group is a tuple of strings
+            question = "%s," % q
+            answers = "%s," % self.KEY[q]
             progress = "0.5"
-            format = question + answers + progress# String with comma separated values. First value is question.
-            format = format.split(",") #Split the format string at each comma into a list.
-            writer.writerow(format)
+            row = (question + answers + progress).split(",")
+            writer.writerow(row)
         self.txt.close()
 
-    def get_key(self):
+    def get_qna(self):
         qna = {}
-        print "="*72
+        print "="*100
         while True:
             print "="*100
             question = raw_input("Question: ")
-            if question == 'exit' or question == 'end':
+            if question == "quit":
                 break
             answer = raw_input("Answer: ")
-            if answer == 'exit' or answer == 'end':
+            if answer == "quit":
                 break
             qna[question] = answer
         print "\n"

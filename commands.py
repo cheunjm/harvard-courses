@@ -28,7 +28,14 @@ def menu():
 		filename = directory[int(raw_input(">> ")) - 1]
 		csv_controller.reader(filename).start()
 	if resp == "2":
-		csv_controller.writer().start()
+		newcards = raw_input(print("What would you like to name your new flashcards?"))
+		directory = os.path.join(os.getcwd(), "flashcards/%s.csv" %newcards)
+		if os.path.exists():
+			print("Error: a deck with that name already exists!")
+			break
+		else:
+			os.makedirs(directory)
+			csv_controller.writer(directory).start()
 	if resp == "" or '3':
 		exit(0)
 	print("="*100)
