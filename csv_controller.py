@@ -59,17 +59,17 @@ class writer(object):
         self.qna = self.get_qna()
 
     def start(self):
-        print "To stop adding cards, type exit or end"
         writer = csv.writer(self.txt)
-        for q in self.KEY: # group is a tuple of strings
+        for q in self.qna: # group is a tuple of strings
             question = "%s," % q
-            answers = "%s," % self.KEY[q]
+            answers = "%s," % self.qna[q]
             progress = "0.5"
             row = (question + answers + progress).split(",")
             writer.writerow(row)
         self.txt.close()
 
     def get_qna(self):
+        print("To stop adding cards, type quit")
         qna = {}
         print "="*100
         while True:
