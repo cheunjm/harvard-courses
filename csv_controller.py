@@ -9,6 +9,7 @@ Deals with creating or reading .csv files to produce flashcards.
 import os
 import csv
 import configure
+from expectimaxAgents import ExpectimaxAgent
 
 cwd = os.getcwd()
 data_path = os.path.join(configure.ROOT, "flashcards.csv")
