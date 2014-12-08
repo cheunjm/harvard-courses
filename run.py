@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+"""
+© Copyright 2014. Joon Yang & Jaemin Cheun. All rights reserved.
+
+"""
 from expectimaxAgents import ExpectimaxAgent
 from star1Agents import Star1Agent
 from progress import ProgressState

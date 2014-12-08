@@ -28,7 +28,7 @@ def menu():
 					print(str(idx) + " : " + fname)
 			print("Type in which flashcard you want to study:")
 			filename = directory[int(raw_input(">> "))]
-			csv_controller.reader(filename).start()
+			csv_controller.Reader(filename).start()
 		except ValueError:
 			exit(0)
 	if resp == "2":
@@ -41,7 +41,7 @@ def menu():
 				print("Error: a deck with that name already exists!")
 				exit(0)
 			else:
-				csv_controller.writer(directory).start()
+				csv_controller.Writer(directory).start()
 		except TypeError:
 			exit(0)
 	if resp == "" or '3':

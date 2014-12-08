@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+"""
+© Copyright 2014. Joon Yang & Jaemin Cheun. All rights reserved.
+
+"""
 import progress
 
 class ExpectimaxAgent:
@@ -6,13 +12,12 @@ class ExpectimaxAgent:
     self.index = 0 # Computer is agent 0
     self.depth = int(depth)
 
-
   def getPolicy(self, initialState):
     """
       Returns the expectimax action using self.depth
     """
 
-    #decide later
+    # decide later
     def getReward(state):
       return (1 - state.getProgress()[state.getWord()])/2
 

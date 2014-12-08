@@ -1,7 +1,12 @@
+# -*- coding: utf-8 -*-
 
+"""
+© Copyright 2014. Joon Yang & Jaemin Cheun. All rights reserved.
+
+"""
 class ProgressState:
    
-    def __init__(self, progress, word = None):
+    def __init__(self, progress, word=None):
         self.progress = progress
         self.word = word
 
@@ -32,4 +37,3 @@ class ProgressState:
 
     def getWord(self):
         return self.word
-
