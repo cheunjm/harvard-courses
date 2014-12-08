@@ -28,7 +28,9 @@ def menu():
 					print(str(idx) + " : " + fname)
 			print("Type in which flashcard you want to study:")
 			filename = directory[int(raw_input(">> "))]
-			csv_controller.Reader(filename).start()
+			print("Tell us how long do you want to study?: (__ min)")
+			timer = float(raw_input(">> ")) * 60 
+			csv_controller.Reader(filename, timer).start()
 		except ValueError:
 			exit(0)
 	if resp == "2":

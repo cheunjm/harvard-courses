@@ -10,6 +10,7 @@ from expectimaxAgents import ExpectimaxAgent
 from star1Agents import Star1Agent
 from progress import ProgressState
 
+from time import time
 import os
 import csv
 import configure
@@ -22,10 +23,11 @@ data_path = os.path.join(cwd, "flashcards.csv")
 class Reader(object):
     """Reads off .csv file and quizzes user"""
     
-    def __init__(self, filename):
+    def __init__(self, filename, timer):
         data_path = os.path.join(cwd, "flashcards/%s" % filename)
         self.txt = open(data_path, 'rU')
         self.progress = []
+        self.timer = timer
         self.reader = csv.reader(self.txt, delimiter=",")
         self.qna = self.load(data_path)
         print "=" * 100
@@ -39,34 +41,36 @@ class Reader(object):
         """Loads a CSV file returns a dict of answers/questions"""
         self.db = {}
         for line in self.reader:
-            self.db[line[0]] = line[1]
+            self.db[line[0]] = [line[1], float(line[2])]
         return self.db
 
     def start(self):
         """Protocol for asking questions and verifying"""
 
         def run_random():
-            opt1 = random.choice(self.db.keys())
-            opt2 = random.choice(self.db.keys())
+            opt1 = random.choice(self.db.values())[0]
+            opt2 = random.choice(self.db.values())[0]
             return opt1, opt2
 
-        for question in self.qna:
-            answer = self.qna[question]
-            db[line[0]] = [line[1], float(line[2])]
-        return db
+        def update_csv():
+            with open(data_path, 'w') as txt:
+                for q in self.qna:
+                    new_row = "{0},{1},{2}".format(q, self.qna[q][0], self.qna[q][1]).split(",")
+                    print(new_row)
+                    csv.writer(txt).writerow(new_row)
 
-    def start(self):
-        """Protocol for asking questions and verifying"""
-        while True:
-            agent = Star1Agent(depth = '2')
+        init_time = time()
+        new_time = 0
+        while new_time - init_time < self.timer:
+            agent = Star1Agent(depth = '1')
             dict_copy = copy.deepcopy(self.qna)
             question = agent.getPolicy(ProgressState(dict_copy))
-            print(question)
             answer = self.qna[question][0]
             print(self.qna)
             if not question or not answer:
                 continue
             self.ask("Question: %s" % question)
+            # assuring mutex options
             opt1, opt2 = run_random()
             while opt1 == answer or opt2 == answer:
                 opt1, opt2 = run_random()
@@ -77,6 +81,7 @@ class Reader(object):
             # the other (wrong) answer choices
             opt1_idx = (ans_idx + 1) % 3
             opt2_idx = (ans_idx + 2) % 3
+            # mechanism for mixing order of options
             options = [1, 2, 3]
             options[ans_idx] = answer
             options[opt1_idx] = opt1
@@ -88,13 +93,14 @@ class Reader(object):
             if attempt == "quit" or "":
                 break
             if options[int(attempt) - 1] == answer:
-                self.qna = ProgressState(self.qna,question).generateSuccessor("human",1).getProgress()
+                self.qna = ProgressState(self.qna,question).generateSuccessor("human", 1).getProgress()
                 print "Correct!"
-            if attempt == "quit":
-                break
             else:
-                self.qna = ProgressState(self.qna,question).generateSuccessor("human",0).getProgress()
+                self.qna = ProgressState(self.qna,question).generateSuccessor("human", 0).getProgress()
                 print("The correct answer was: %s" % answer)
+            new_time = time()
+        # update csv file
+        update_csv()
 
 class Writer(object):
     """Appends questions and answers into the csv file."""

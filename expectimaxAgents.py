@@ -4,22 +4,20 @@
 © Copyright 2014. Joon Yang & Jaemin Cheun. All rights reserved.
 
 """
+
 import progress
 
 class ExpectimaxAgent:
 
-  def __init__(self, depth = '1'):
+  def __init__(self, depth='2'):
     self.index = 0 # Computer is agent 0
     self.depth = int(depth)
 
   def getPolicy(self, initialState):
-    """
-      Returns the expectimax action using self.depth
-    """
+    """Returns the expectimax action using self.depth"""
 
-    # decide later
     def getReward(state):
-      return (1 - state.getProbability())/2
+      return (1 - state.getProbability())/2 # decide later
 
     def terminalTest(state, depth):
       return depth == 0
@@ -36,21 +34,21 @@ class ExpectimaxAgent:
            max_value, policy = new_value, act
       return policy
 
-    #player Moves
+    # Player Moves
     def playerNode(state, depth):
-      if terminalTest(state,depth): 
+      if terminalTest(state, depth): 
         return getReward(state)    
       QValue = getReward(state)
-      actions = state.getLegalActions("human") #human
+      actions = state.getLegalActions("human")
       for act in actions:
         if act == 0:
           QValue = QValue + (1 - state.getProbability()) * MaxValue(state.generateSuccessor("human", act), depth)
         else:
           QValue = QValue + state.getProbability() * MaxValue(state.generateSuccessor("human", act), depth)
-        #probability of choosing that * value of the State
+        # probability of choosing that * value of the State
       return QValue
 
-    #Computer Move
+    # Computer Moves
     def MaxValue(state, depth):
       # base case: action = None
       max_value = -float('inf')
