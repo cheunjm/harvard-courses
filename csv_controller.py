@@ -9,7 +9,10 @@ Deals with creating or reading .csv files to produce flashcards.
 import os
 import csv
 import configure
+import copy
 from expectimaxAgents import ExpectimaxAgent
+from star1Agents import Star1Agent
+from progress import ProgressState
 
 cwd = os.getcwd()
 data_path = os.path.join(cwd, "flashcards.csv")
@@ -34,25 +37,30 @@ class reader(object):
         """Loads a CSV file returns a dict of answers/questions"""
         db = dict()
         for line in self.reader:
-            db[line[0]] = line[1], line[2]
+            db[line[0]] = [line[1], float(line[2])]
         return db
 
     def start(self):
         """Protocol for asking questions and verifying"""
-        agent = ExpectimaxAgent(depth = '2')
-        agent.getPolicy()
-
-        for question in self.qna:
-            answer = self.qna[question]
+        while(1):
+            agent = Star1Agent(depth = '2')
+            dict_copy = copy.deepcopy(self.qna)
+            question = agent.getPolicy(ProgressState(dict_copy))
+            print(question)
+            answer = self.qna[question][0]
+            print(self.qna)
             if not question or not answer:
                 continue
             self.ask("Question: %s" % question)
             attempt = raw_input(">> ")
+            print("________")
             if attempt == "quit":
                 break
             if attempt == answer:
+                self.qna = ProgressState(self.qna,question).generateSuccessor("human",1).getProgress()
                 print "Correct!"
             else:
+                self.qna = ProgressState(self.qna,question).generateSuccessor("human",0).getProgress()
                 print("The correct answer was: %s" % answer)
 
 class writer(object):

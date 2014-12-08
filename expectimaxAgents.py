@@ -14,7 +14,7 @@ class ExpectimaxAgent:
 
     #decide later
     def getReward(state):
-      return (1 - state.getProgress()[state.getWord()])/2
+      return (1 - state.getProbability())/2
 
     def terminalTest(state, depth):
       return depth == 0
@@ -39,9 +39,9 @@ class ExpectimaxAgent:
       actions = state.getLegalActions("human") #human
       for act in actions:
         if act == 0:
-          QValue = QValue + (1 - state.getProgress()[state.getWord()]) * MaxValue(state.generateSuccessor("human", act), depth)
+          QValue = QValue + (1 - state.getProbability()) * MaxValue(state.generateSuccessor("human", act), depth)
         else:
-          QValue = QValue + state.getProgress()[state.getWord()] * MaxValue(state.generateSuccessor("human", act), depth)
+          QValue = QValue + state.getProbability() * MaxValue(state.generateSuccessor("human", act), depth)
         #probability of choosing that * value of the State
       return QValue
 
