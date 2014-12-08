@@ -31,28 +31,30 @@ class ExpectimaxAgent:
            max_value, policy = new_value, act
       return policy
 
-    #player Move 
+    #player Moves
     def playerNode(state, depth):
       if terminalTest(state,depth): 
-        print("dd")
-        return getReward(state)      
+        return getReward(state)    
       QValue = getReward(state)
       actions = state.getLegalActions("human") #human
       for act in actions:
-        QValue = QValue + state.getProgress()[state.getWord()] * MaxValue(state.generateSuccessor("human", act), depth )
+        if act == 0:
+          QValue = QValue + (1 - state.getProgress()[state.getWord()]) * MaxValue(state.generateSuccessor("human", act), depth)
+        else:
+          QValue = QValue + state.getProgress()[state.getWord()] * MaxValue(state.generateSuccessor("human", act), depth)
         #probability of choosing that * value of the State
       return QValue
 
     #Computer Move
     def MaxValue(state, depth):
       # base case: action = None
-      max_value, max_action = -float('inf'), None
+      max_value = -float('inf')
       # get all possible actions of computer
       actions = state.getLegalActions("computer")
       for act in actions:
         new_value = playerNode(state.generateSuccessor("computer", act), depth - 1)
         if max_value < new_value:
-           max_value, max_action = new_value, act
+           max_value = new_value
       return max_value
 
     # return the result of expectimax algorithm

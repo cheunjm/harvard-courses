@@ -32,7 +32,6 @@ class Star1Agent:
            max_value, policy = new_value, act
         #stop?
         alpha = max(max_value, alpha)
-      print(max(Q))
       return policy
 
     #player Move 
@@ -42,12 +41,13 @@ class Star1Agent:
       QValue = getReward(state)
       actions = state.getLegalActions("human") #human
       if QValue + 0.5*depth < alpha:
-        print("y")
         return QValue
       for act in actions:
-        QValue = QValue + state.getProgress()[state.getWord()] * MaxValue(state.generateSuccessor("human", act), depth)
+        if act == 0:
+          QValue = QValue + (1 - state.getProgress()[state.getWord()]) * MaxValue(state.generateSuccessor("human", act), depth)
+        else:
+          QValue = QValue + state.getProgress()[state.getWord()] * MaxValue(state.generateSuccessor("human", act), depth)
         if (QValue + (1 - state.getProgress()[state.getWord()])*0.5*depth) < alpha:
-          print("x")
           return QValue
         #probability of choosing that * value of the State
       Q.append(QValue)

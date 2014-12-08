@@ -20,6 +20,7 @@ class reader(object):
     def __init__(self, filename):
         data_path = os.path.join(cwd, "flashcards/%s" %filename)
         self.txt = open(data_path, 'rU')
+        self.progress = []
         self.reader = csv.reader(self.txt, delimiter=",")
         self.qna = self.load(data_path)
         print "=" * 100
@@ -33,11 +34,14 @@ class reader(object):
         """Loads a CSV file returns a dict of answers/questions"""
         db = dict()
         for line in self.reader:
-            db[line[0]] = line[1]
+            db[line[0]] = line[1], line[2]
         return db
 
     def start(self):
         """Protocol for asking questions and verifying"""
+        agent = ExpectimaxAgent(depth = '2')
+        agent.getPolicy()
+
         for question in self.qna:
             answer = self.qna[question]
             if not question or not answer:
