@@ -27,7 +27,7 @@ class Star1Agent:
       # get all possible actions of computer, i.e. all possible questions
       actions = state.getLegalActions("computer")
       for act in actions:
-        new_value = playerNode(state.generateSuccessor("computer", act), self.depth, alpha)
+        new_value = playerNode(state.generateSuccessor("computer", act), self.depth - 1, alpha)
         if max_value < new_value:
            max_value, policy = new_value, act
         #stop?

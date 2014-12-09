@@ -56,13 +56,12 @@ class Reader(object):
             with open(data_path, 'w') as txt:
                 for q in self.qna:
                     new_row = "{0},{1},{2}".format(q, self.qna[q][0], self.qna[q][1]).split(",")
-                    print(new_row)
                     csv.writer(txt).writerow(new_row)
 
         init_time = time()
         new_time = 0
         while new_time - init_time < self.timer:
-            agent = Star1Agent(depth = '1')
+            agent = Star1Agent(depth = '3')
             dict_copy = copy.deepcopy(self.qna)
             question = agent.getPolicy(ProgressState(dict_copy))
             answer = self.qna[question][0]
@@ -70,6 +69,7 @@ class Reader(object):
             if not question or not answer:
                 continue
             self.ask("Question: %s" % question)
+            answer_start = time()
             # assuring mutex options
             opt1, opt2 = run_random()
             while opt1 == answer or opt2 == answer:
@@ -90,17 +90,21 @@ class Reader(object):
             for x, option in enumerate(options):
                 print("[{0}]: {1}".format(x + 1, option)) 
             attempt = raw_input(">> ")
+            answer_end = time()
+            time_taken = answer_end - answer_start
             if attempt == "quit" or "":
                 break
             if options[int(attempt) - 1] == answer:
-                self.qna = ProgressState(self.qna,question).generateSuccessor("human", 1).getProgress()
+                self.qna = ProgressState(self.qna,question).generateSuccessor("human", 1,time_taken).getProgress()
                 print "Correct!"
             else:
-                self.qna = ProgressState(self.qna,question).generateSuccessor("human", 0).getProgress()
+                self.qna = ProgressState(self.qna,question).generateSuccessor("human", 0,time_taken).getProgress()
                 print("The correct answer was: %s" % answer)
             new_time = time()
-        # update csv file
-        update_csv()
+            # update csv file
+            update_csv()
+        
+        
 
 class Writer(object):
     """Appends questions and answers into the csv file."""

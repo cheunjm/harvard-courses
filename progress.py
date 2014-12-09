@@ -33,16 +33,25 @@ class ProgressState:
         else: # Human is answering
             return [0,1]
 
-    def generateSuccessor(self, agentIndex, action):
+    def generateSuccessor(self, agentIndex, action, time = 0):
         if agentIndex == "computer": # Computer is asking    
             return ProgressState(self.progress, action) #remember which action is taken
         else: # Human is answering
             # work with the word that only matters
+            penalty = 0
+            if (time <5):
+                penalty = time * -0.05
+            elif (time >= 5):
+                penalty = -0.3
             progress_copy = copy.deepcopy(self.progress)
             if action == 0: # if the user got the question wrong
-                progress_copy[self.word][1] = progress_copy[self.word][1]/2
+                progress_copy[self.word][1] = progress_copy[self.word][1]/2 + penalty
+                if(progress_copy[self.word][1] < 0):
+                    progress_copy[self.word][1]= 0
             if action == 1: # if the user got the question right
-                progress_copy[self.word][1] = progress_copy[self.word][1] + (1 - progress_copy[self.word][1])/2
+                progress_copy[self.word][1] = progress_copy[self.word][1] + (1 - progress_copy[self.word][1])/2 + penalty
+                if(progress_copy[self.word][1] < 0):
+                    progress_copy[self.word][1]= 0
             return ProgressState(progress_copy)
 
 
