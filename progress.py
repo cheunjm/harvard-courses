@@ -39,7 +39,7 @@ class ProgressState:
                     progress_copy[self.word][1] = 0.05
 
             if action == 0: # if the user got the question wrong
-                progress_copy[self.word][1] = log(progress_copy[self.word][1])/5 + penalty
+                progress_copy[self.word][1] += log(progress_copy[self.word][1])/5 + penalty
                 floor_value()
             if action == 1: # if the user got the question right
                 progress_copy[self.word][1] = progress_copy[self.word][1] + (1 - progress_copy[self.word][1])/2 + penalty

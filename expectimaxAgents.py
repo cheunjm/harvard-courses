@@ -42,9 +42,9 @@ class ExpectimaxAgent:
       actions = state.getLegalActions("human")
       for act in actions:
         if act == 0:
-          QValue = QValue + (1 - state.getProbability()) * MaxValue(state.generateSuccessor("human", act), depth)
+          QValue += (1 - state.getProbability()) * MaxValue(state.generateSuccessor("human", act), depth)
         else:
-          QValue = QValue + state.getProbability() * MaxValue(state.generateSuccessor("human", act), depth)
+          QValue += state.getProbability() * MaxValue(state.generateSuccessor("human", act), depth)
         # probability of choosing that * value of the State
       return QValue
 
