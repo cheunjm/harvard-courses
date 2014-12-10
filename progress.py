@@ -52,3 +52,11 @@ class ProgressState:
 
     def getProbability(self):
         return self.progress[self.word][1]
+
+    def getSum(self):
+        progress = self.progress
+        sumProgress = 0
+        for key in self.progress.keys():
+            sumProgress = self.progress[key][1] + sumProgress
+        return sumProgres
+
