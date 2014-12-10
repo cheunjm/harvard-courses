@@ -39,21 +39,23 @@ class ProgressState:
         else: # Human is answering
             # work with the word that only matters
             penalty = 0
-            if (time <5):
-                penalty = time * -0.05
-            elif (time >= 5):
-                penalty = -0.3
+            if time < 5:
+                penalty = time * - 0.05
+            elif time >= 5:
+                penalty = - 0.3
             progress_copy = copy.deepcopy(self.progress)
+
+            def floor_value():
+                if progress_copy[self.word][1] < 0:
+                    progress_copy[self.word][1] = 0
+
             if action == 0: # if the user got the question wrong
                 progress_copy[self.word][1] = progress_copy[self.word][1]/2 + penalty
-                if(progress_copy[self.word][1] < 0):
-                    progress_copy[self.word][1]= 0
+                floor_value()
             if action == 1: # if the user got the question right
                 progress_copy[self.word][1] = progress_copy[self.word][1] + (1 - progress_copy[self.word][1])/2 + penalty
-                if(progress_copy[self.word][1] < 0):
-                    progress_copy[self.word][1]= 0
+                floor_value()
             return ProgressState(progress_copy)
-
 
     def getProgress(self):
         return self.progress

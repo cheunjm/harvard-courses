@@ -17,13 +17,12 @@ import configure
 import random
 import copy
 
-cwd = os.getcwd()
 
 class Reader(object):
     """Reads off .csv file and quizzes user"""
     
     def __init__(self, filename, timer):
-        self.data_path = os.path.join(cwd, "flashcards/%s" % filename)
+        self.data_path = os.path.join(os.getcwd(), "flashcards/%s" % filename)
         self.txt = open(self.data_path, 'rU')
         self.progress = []
         self.timer = timer
@@ -33,7 +32,7 @@ class Reader(object):
         print("To Quit at any time, just type in \"quit\" or press Enter")
         
     def ask(self, message):
-        print "="*100
+        print "=" * 100
         print message
 
     def load(self, path):
@@ -47,11 +46,13 @@ class Reader(object):
         """Protocol for asking questions and verifying"""
 
         def run_random():
+            """Util for generating random multiple choice options"""
             opt1 = random.choice(self.db.values())[0]
             opt2 = random.choice(self.db.values())[0]
             return opt1, opt2
 
         def update_csv():
+            """Update csv file with new understanding levels"""
             with open(self.data_path, 'w') as txt:
                 writer = csv.writer(txt, delimiter=',')
                 data = []
@@ -59,15 +60,38 @@ class Reader(object):
                     data.append([q, self.qna[q][0], self.qna[q][1]])
                 writer.writerows(data)
 
-        init_time = time()
-        new_time = 0
+        def prune_likes(orig_dict):
+            """
+            Before using expectimax on every single Q&A, prune by first traversing
+            the list of words and grouping ones that have similar levels of understanding
+            and choose one from each group at random to pass onto the algorithm
+            """
+            # new output dict
+            new_dict = {}
+            # utility to code in random choice from list (dict is troubling here)
+            temp_list = []
+            # keep note of which knowledge_level 'class' we've seen 
+            pseu_memoizer = []
+            for e in orig_dict.items():
+                temp_list.append([e[0], e[1][0], e[1][1]])
+            print(temp_list)
+            random.shuffle(temp_list)
+            for item in temp_list:
+                knowledge_level = round(float(item[2]), 2) # yields the rounded values
+                if knowledge_level not in pseu_memoizer:
+                    pseu_memoizer.append(knowledge_level)
+                    new_dict[item[0]] = [item[1], item[2]]
+            return new_dict
+
         try:
+            init_time = time()
+            new_time = 0
             while new_time - init_time < self.timer:
-                agent = Star1Agent(depth = '2')
+                agent = Star1Agent(depth = '3')
                 dict_copy = copy.deepcopy(self.qna)
-                question = agent.getPolicy(ProgressState(dict_copy))
+                pruned_copy = prune_likes(dict_copy)
+                question = agent.getPolicy(ProgressState(pruned_copy))
                 answer = self.qna[question][0]
-                print(self.qna)
                 if not question or not answer:
                     continue
                 self.ask("Question: %s" % question)
@@ -106,8 +130,7 @@ class Reader(object):
         finally:
             # update csv file
             update_csv()
-        
-        
+
 
 class Writer(object):
     """Appends questions and answers into the csv file."""
