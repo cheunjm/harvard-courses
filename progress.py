@@ -47,7 +47,7 @@ class ProgressState:
 
             def floor_value():
                 if progress_copy[self.word][1] < 0:
-                    progress_copy[self.word][1] = 0
+                    progress_copy[self.word][1] = 0.05
 
             if action == 0: # if the user got the question wrong
                 progress_copy[self.word][1] = progress_copy[self.word][1]/2 + penalty
