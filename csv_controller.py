@@ -105,13 +105,13 @@ class Reader(object):
                 print "pruned length {} / {}".format(len(pruned_copy), len(dict_copy))
                 # choose the horizon based on how many nodes we're looking at
                 if 30 <= len(pruned_copy):
-                    agent = Star1Agent(depth = '2')
+                    agent = ExpectimaxAgent(depth = '2')
                 elif 20 <= len(pruned_copy) < 30:
-                    agent = Star1Agent(depth = '3')
+                    agent = ExpectimaxAgent(depth = '3')
                 elif 10 <= len(pruned_copy) < 20:
-                    agent = Star1Agent(depth = '4')
+                    agent = ExpectimaxAgent(depth = '4')
                 elif len(pruned_copy) < 10:
-                    agent = Star1Agent(depth = '5')
+                    agent = ExpectimaxAgent(depth = '5')
                 question = agent.getPolicy(ProgressState(pruned_copy))
                 answer = self.qna[question][0]
                 if not question or not answer:
