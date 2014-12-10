@@ -29,7 +29,7 @@ class Star1Agent:
       for act in actions:
         new_value = playerNode(state.generateSuccessor("computer", act), self.depth - 1, alpha)
         if max_value < new_value:
-           max_value, policy = new_value, act
+          max_value, policy = new_value, act
         #stop?
         alpha = max(max_value, alpha)
       return policy
