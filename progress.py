@@ -18,7 +18,7 @@ class ProgressState:
         return self.word
 
     def getProbability(self):
-        return int(self.progress[self.word][1])
+        return float(self.progress[self.word][1])
 
     def getLegalActions(self, agentIndex):
         """
@@ -43,7 +43,7 @@ class ProgressState:
             progress_copy = copy.deepcopy(self.progress)
 
             def floor_value():
-                if progress_copy[self.word][1] < 0:
+                if progress_copy[self.word][1] < 0.05:
                     progress_copy[self.word][1] = 0.05
 
             if action == 0: # if the user got the question wrong
