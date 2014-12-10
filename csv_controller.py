@@ -100,6 +100,7 @@ class Reader(object):
             new_time = 0
             while new_time - init_time < self.timer:
                 dict_copy = copy.deepcopy(self.qna)
+                print(dict_copy)
                 pruned_copy = prune_likes(dict_copy)
                 print "pruned length {} / {}".format(len(pruned_copy), len(dict_copy))
                 # choose the horizon based on how many nodes we're looking at

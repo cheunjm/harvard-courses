@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-
-import copy
-
 """
 © Copyright 2014. Joon Yang & Jaemin Cheun. All rights reserved.
 
