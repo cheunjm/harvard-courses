@@ -27,7 +27,7 @@ class Reader(object):
         self.progress = []
         self.timer = timer
         self.reader = csv.reader(self.txt, delimiter=",")
-        self.qna = self.load(self.data_path)
+        self.qna, self.prev_knwdge = self.load(self.data_path)
         print "=" * 100
         print("To Quit at any time, just type in \"quit\" or press Enter")
         
@@ -38,9 +38,13 @@ class Reader(object):
     def load(self, path):
         """Loads a CSV file returns a dict of answers/questions"""
         self.db = {}
+        total = 0 # previous overall understanding level
+        entries = 0
         for line in self.reader:
+            entries += 1
+            total += float(line[2]) * 100
             self.db[line[0]] = [line[1], float(line[2])]
-        return self.db
+        return self.db, round(total / entries, 2)
 
     def start(self):
         """Protocol for asking questions and verifying"""
@@ -56,9 +60,12 @@ class Reader(object):
             with open(self.data_path, 'w') as txt:
                 writer = csv.writer(txt, delimiter=',')
                 data = []
+                total = 0 # new overall understanding level
                 for q in self.qna:
+                    total += float(self.qna[q][1]) * 100
                     data.append([q, self.qna[q][0], self.qna[q][1]])
                 writer.writerows(data)
+            return round(total / len(data), 2)
 
         def prune_likes(orig_dict):
             """
@@ -74,7 +81,6 @@ class Reader(object):
             pseu_memoizer = []
             for e in orig_dict.items():
                 temp_list.append([e[0], e[1][0], e[1][1]])
-            print(temp_list)
             random.shuffle(temp_list)
             for item in temp_list:
                 knowledge_level = round(float(item[2]), 2) # yields the rounded values
@@ -87,9 +93,11 @@ class Reader(object):
             init_time = time()
             new_time = 0
             while new_time - init_time < self.timer:
-                agent = Star1Agent(depth = '3')
+                agent = Star1Agent(depth = '2')
                 dict_copy = copy.deepcopy(self.qna)
                 pruned_copy = prune_likes(dict_copy)
+                print(len(dict_copy))
+                print(len(pruned_copy))
                 question = agent.getPolicy(ProgressState(pruned_copy))
                 answer = self.qna[question][0]
                 if not question or not answer:
@@ -129,7 +137,9 @@ class Reader(object):
                 new_time = time()
         finally:
             # update csv file
-            update_csv()
+            new_knwdge = update_csv()
+            # tells the user improvement since last time
+            print "IMPROVEMENT: {} points".format(round((new_knwdge - self.prev_knwdge) / self.prev_knwdge * 1000), 2)
 
 
 class Writer(object):

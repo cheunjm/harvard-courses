@@ -17,7 +17,7 @@ class ExpectimaxAgent:
     """Returns the expectimax action using self.depth"""
 
     def getReward(state):
-      return (1 - state.getProbability())/2 # decide later
+      return (1 - state.getProbability()) / 2 # decide later
 
     def terminalTest(state, depth):
       return depth == 0
