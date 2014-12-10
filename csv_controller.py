@@ -18,18 +18,17 @@ import random
 import copy
 
 cwd = os.getcwd()
-data_path = os.path.join(cwd, "flashcards.csv")
 
 class Reader(object):
     """Reads off .csv file and quizzes user"""
     
     def __init__(self, filename, timer):
-        data_path = os.path.join(cwd, "flashcards/%s" % filename)
-        self.txt = open(data_path, 'rU')
+        self.data_path = os.path.join(cwd, "flashcards/%s" % filename)
+        self.txt = open(self.data_path, 'rU')
         self.progress = []
         self.timer = timer
         self.reader = csv.reader(self.txt, delimiter=",")
-        self.qna = self.load(data_path)
+        self.qna = self.load(self.data_path)
         print "=" * 100
         print("To Quit at any time, just type in \"quit\" or press Enter")
         
@@ -53,54 +52,58 @@ class Reader(object):
             return opt1, opt2
 
         def update_csv():
-            with open(data_path, 'w') as txt:
+            with open(self.data_path, 'w') as txt:
+                writer = csv.writer(txt, delimiter=',')
+                data = []
                 for q in self.qna:
-                    new_row = "{0},{1},{2}".format(q, self.qna[q][0], self.qna[q][1]).split(",")
-                    csv.writer(txt).writerow(new_row)
+                    data.append([q, self.qna[q][0], self.qna[q][1]])
+                writer.writerows(data)
 
         init_time = time()
         new_time = 0
-        while new_time - init_time < self.timer:
-            agent = Star1Agent(depth = '3')
-            dict_copy = copy.deepcopy(self.qna)
-            question = agent.getPolicy(ProgressState(dict_copy))
-            answer = self.qna[question][0]
-            print(self.qna)
-            if not question or not answer:
-                continue
-            self.ask("Question: %s" % question)
-            answer_start = time()
-            # assuring mutex options
-            opt1, opt2 = run_random()
-            while opt1 == answer or opt2 == answer:
+        try:
+            while new_time - init_time < self.timer:
+                agent = Star1Agent(depth = '2')
+                dict_copy = copy.deepcopy(self.qna)
+                question = agent.getPolicy(ProgressState(dict_copy))
+                answer = self.qna[question][0]
+                print(self.qna)
+                if not question or not answer:
+                    continue
+                self.ask("Question: %s" % question)
+                answer_start = time()
+                # assuring mutex options
                 opt1, opt2 = run_random()
-                while opt1 == opt2:
+                while opt1 == answer or opt2 == answer:
                     opt1, opt2 = run_random()
-            # answer choice is from 1~3
-            ans_idx = random.randrange(3)
-            # the other (wrong) answer choices
-            opt1_idx = (ans_idx + 1) % 3
-            opt2_idx = (ans_idx + 2) % 3
-            # mechanism for mixing order of options
-            options = [1, 2, 3]
-            options[ans_idx] = answer
-            options[opt1_idx] = opt1
-            options[opt2_idx] = opt2
-            options.sort()
-            for x, option in enumerate(options):
-                print("[{0}]: {1}".format(x + 1, option)) 
-            attempt = raw_input(">> ")
-            answer_end = time()
-            time_taken = answer_end - answer_start
-            if attempt == "quit" or "":
-                break
-            if options[int(attempt) - 1] == answer:
-                self.qna = ProgressState(self.qna,question).generateSuccessor("human", 1,time_taken).getProgress()
-                print "Correct!"
-            else:
-                self.qna = ProgressState(self.qna,question).generateSuccessor("human", 0,time_taken).getProgress()
-                print("The correct answer was: %s" % answer)
-            new_time = time()
+                    while opt1 == opt2:
+                        opt1, opt2 = run_random()
+                # answer choice is from 1~3
+                ans_idx = random.randrange(3)
+                # the other (wrong) answer choices
+                opt1_idx = (ans_idx + 1) % 3
+                opt2_idx = (ans_idx + 2) % 3
+                # mechanism for mixing order of options
+                options = [1, 2, 3]
+                options[ans_idx] = answer
+                options[opt1_idx] = opt1
+                options[opt2_idx] = opt2
+                options.sort()
+                for x, option in enumerate(options):
+                    print("[{0}]: {1}".format(x + 1, option)) 
+                attempt = raw_input(">> ")
+                answer_end = time()
+                time_taken = answer_end - answer_start
+                if attempt == "quit" or "":
+                    break
+                if options[int(attempt) - 1] == answer:
+                    self.qna = ProgressState(self.qna,question).generateSuccessor("human", 1, time_taken).getProgress()
+                    print "Correct!"
+                else:
+                    self.qna = ProgressState(self.qna,question).generateSuccessor("human", 0, time_taken).getProgress()
+                    print("The correct answer was: %s" % answer)
+                new_time = time()
+        finally:
             # update csv file
             update_csv()
         
