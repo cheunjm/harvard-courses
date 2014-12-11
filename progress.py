@@ -60,4 +60,3 @@ class ProgressState:
         for key in self.progress.keys():
             sumProgress = self.progress[key][1] + sumProgress
         return sumProgress
-

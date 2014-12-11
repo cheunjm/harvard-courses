@@ -8,7 +8,7 @@ from expectimaxAgents import ExpectimaxAgent
 from star1Agents import Star1Agent
 from progress import ProgressState
 
-d = '5'
+d = '6'
 agent = ExpectimaxAgent(depth = d)
 initial = ProgressState({"Joon":["Yang",0.9],"Gene":["Chang",0.7], "Jaemin":["Cheun",0.3], "Andrew" : ["Cho",0.35]})
 print agent.getPolicy(initial)
