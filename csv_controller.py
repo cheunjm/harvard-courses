@@ -98,20 +98,24 @@ class Reader(object):
         try:
             init_time = time()
             new_time = 0
+            last_q = ''
             while new_time - init_time < self.timer:
                 dict_copy = copy.deepcopy(self.qna)
                 print(dict_copy)
                 pruned_copy = prune_likes(dict_copy)
+                # don't ask the same question twice in a row
+                if last_q in pruned_copy:
+                    del pruned_copy[last_q]
                 print "pruned length {} / {}".format(len(pruned_copy), len(dict_copy))
                 # choose the horizon based on how many nodes we're looking at
                 if 30 <= len(pruned_copy):
-                    agent = ExpectimaxAgent(depth = '2')
+                    agent = ExpectimaxAgent(depth = '1')
                 elif 20 <= len(pruned_copy) < 30:
-                    agent = ExpectimaxAgent(depth = '3')
+                    agent = ExpectimaxAgent(depth = '2')
                 elif 10 <= len(pruned_copy) < 20:
-                    agent = ExpectimaxAgent(depth = '4')
+                    agent = ExpectimaxAgent(depth = '3')
                 elif len(pruned_copy) < 10:
-                    agent = ExpectimaxAgent(depth = '5')
+                    agent = ExpectimaxAgent(depth = '4')
                 question = agent.getPolicy(ProgressState(pruned_copy))
                 answer = self.qna[question][0]
                 if not question or not answer:
@@ -148,6 +152,9 @@ class Reader(object):
                 else:
                     self.qna = ProgressState(self.qna,question).generateSuccessor("human", 0, time_taken).getProgress()
                     print("The correct answer was: %s" % answer)
+                # record this card so we don't immediately ask the same question
+                last_q = question
+                # to check elapsed time
                 new_time = time()
         finally:
             # update csv file

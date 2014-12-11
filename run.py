@@ -10,7 +10,7 @@ from progress import ProgressState
 
 d = '5'
 agent = ExpectimaxAgent(depth = d)
-initial = ProgressState({"Joon":["Yang",0.8],"Gene":["Chang",0.7], "Jaemin":["Cheun",0.6], "Andrew" : ["Cho",0.62]})
+initial = ProgressState({"Joon":["Yang",0.8],"Gene":["Chang",0.7], "Jaemin":["Cheun",0.75], "Andrew" : ["Cho",0.65]})
 print agent.getPolicy(initial)
 
 initial2 = ProgressState({"Joon":["Yang",0.8],"Gene":["Chang",0.7], "Jaemin":["Cheun",0.6], "Andrew" : ["Cho",0.62]})
