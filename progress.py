@@ -34,15 +34,18 @@ class ProgressState:
                 penalty = - 0.3
             progress_copy = copy.deepcopy(self.progress)
 
-            def floor_value():
+            def limit_value():
                 if progress_copy[self.word][1] < 0.05:
                     progress_copy[self.word][1] = 0.05
+                elif progress_copy[self.word][1] > 0.95:
+                    progress_copy[self.word][1] = 0.95
             var = progress_copy[self.word][1]
             if action == 0: # if the user got the question wrong
                 progress_copy[self.word][1] += log(var)/(11*(1-var)) - var/(11*(1-var)) + penalty
-                floor_value()
+                limit_value()
             if action == 1: # if the user got the question right
                 progress_copy[self.word][1] += (1 - var)/2.5 + penalty
+                limit_value()
             return ProgressState(progress_copy)
 
     def getProgress(self):
@@ -55,8 +58,8 @@ class ProgressState:
         return self.progress[self.word][1]
 
     def getSum(self):
-        progress = self.progress
         sumProgress = 0
         for key in self.progress.keys():
             sumProgress = self.progress[key][1] + sumProgress
+        print(sumProgress)
         return sumProgress
