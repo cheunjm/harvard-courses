@@ -48,6 +48,7 @@ class Star1Agent:
         return QValue
       QValue += (1 - state.getProbability()) * MaxValue(state.generateSuccessor("human", 0), depth)
       if (QValue + (state.getProbability()) * depth) < alpha:
+        print("c")
         return QValue 
         #probability of choosing that * value of the State
       return QValue
