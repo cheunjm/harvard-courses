@@ -42,19 +42,13 @@ class Star1Agent:
       QValue = getReward(state)
       actions = state.getLegalActions("human") #human
       if QValue + depth < alpha:
-        print("a")
         return QValue
-      for act in actions:
-        if act == 0:
-          QValue += (1 - state.getProbability()) * MaxValue(state.generateSuccessor("human", act), depth)
-          if (QValue + (state.getProbability()) * depth) < alpha:
-            print("b")
-            return QValue
-        else:
-          QValue += state.getProbability() * MaxValue(state.generateSuccessor("human", act), depth)
-          if (QValue + (1- state.getProbability()) * depth) < alpha:
-            print("c")
-            return QValue
+      QValue += state.getProbability() * MaxValue(state.generateSuccessor("human", 1), depth)
+      if (QValue + (1- state.getProbability()) * depth) < alpha:
+        return QValue
+      QValue += (1 - state.getProbability()) * MaxValue(state.generateSuccessor("human", 0), depth)
+      if (QValue + (state.getProbability()) * depth) < alpha:
+        return QValue 
         #probability of choosing that * value of the State
       return QValue
 
@@ -62,13 +56,13 @@ class Star1Agent:
     def MaxValue(state, depth):
       # base case: action = None
       alpha = -float('inf')
-      max_value, max_action = -float('inf'), None
+      max_value = -float('inf')
       # get all possible actions of computer
       actions = state.getLegalActions("computer")
       for act in actions:
         new_value = playerNode(state.generateSuccessor("computer", act), depth - 1,alpha)
         if max_value < new_value:
-           max_value, max_action = new_value, act
+           max_value = new_value 
         alpha = max(max_value, alpha)
       return max_value
 
