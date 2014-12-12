@@ -17,7 +17,7 @@ class ExpectimaxAgent:
     """Returns the expectimax action using self.depth"""
 
     def getReward(state):
-      return state.getSum() # decide later
+      return state.getAverage() # decide later
 
     def terminalTest(state, depth):
       return depth == 0
@@ -29,7 +29,7 @@ class ExpectimaxAgent:
       # get all possible actions of computer, i.e. all possible questions
       actions = state.getLegalActions("computer")
       for act in actions:
-        new_value = playerNode(state.generateSuccessor("computer", act), self.depth)
+        new_value = playerNode(state.generateSuccessor("computer", act), self.depth - 1)
         if max_value < new_value:
           max_value, policy = new_value, act
       return policy

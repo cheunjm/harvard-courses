@@ -39,14 +39,26 @@ class ProgressState:
                     progress_copy[self.word][1] = 0.05
                 elif progress_copy[self.word][1] > 0.95:
                     progress_copy[self.word][1] = 0.95
+
+            def deteriorate(word):
+                words = self.progress.keys()
+                words.remove(word)
+                for w in words:
+                    progress_copy[word][1] = progress_copy[word][1] * 0.9
+
             var = progress_copy[self.word][1]
             if action == 0: # if the user got the question wrong
                 progress_copy[self.word][1] += log(var)/(11*(1-var)) - var/(11*(1-var)) + penalty
                 limit_value()
+                deteriorate(self.word)
             if action == 1: # if the user got the question right
                 progress_copy[self.word][1] += (1 - var)/2.5 + penalty
                 limit_value()
+                deteriorate(self.word)
             return ProgressState(progress_copy)
+
+    def getnumberWords(self):
+        return len(list(self.progress.keys()))
 
     def getProgress(self):
         return self.progress
@@ -57,9 +69,9 @@ class ProgressState:
     def getProbability(self):
         return self.progress[self.word][1]
 
-    def getSum(self):
+    def getAverage(self):
         sumProgress = 0
         for key in self.progress.keys():
             sumProgress = self.progress[key][1] + sumProgress
-        print(sumProgress)
-        return sumProgress
+        return sumProgress/len(list(self.progress.keys()))
+

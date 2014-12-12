@@ -11,10 +11,10 @@ class Star1Agent:
     """
       Returns the expectimax action using self.depth
     """
-    Q = []
+ 
     #decide later
     def getReward(state):
-      return (1 - state.getProbability())/2
+      return state.getAverage()
 
     def terminalTest(state, depth):
       return depth == 0
@@ -36,21 +36,26 @@ class Star1Agent:
 
     #player Move 
     def playerNode(state, depth, alpha):
+      numberWords = state.getnumberWords()
       if terminalTest(state,depth): 
         return getReward(state)      
       QValue = getReward(state)
       actions = state.getLegalActions("human") #human
-      if QValue + 0.5*depth < alpha:
+      if QValue + depth < alpha:
+        print("a")
         return QValue
       for act in actions:
         if act == 0:
           QValue += (1 - state.getProbability()) * MaxValue(state.generateSuccessor("human", act), depth)
+          if (QValue + (state.getProbability()) * depth) < alpha:
+            print("b")
+            return QValue
         else:
           QValue += state.getProbability() * MaxValue(state.generateSuccessor("human", act), depth)
-        if (QValue + (1 - state.getProbability()) * 0.5 * depth) < alpha:
-          return QValue
+          if (QValue + (1- state.getProbability()) * depth) < alpha:
+            print("c")
+            return QValue
         #probability of choosing that * value of the State
-      Q.append(QValue)
       return QValue
 
     #Computer Move
