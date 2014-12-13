@@ -3,6 +3,8 @@
 """
 © Copyright 2014. Joon Yang & Jaemin Cheun. All rights reserved.
 
+Finds an optimal policy using expectimax search
+
 """
 
 import progress
