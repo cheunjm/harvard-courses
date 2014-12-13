@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
+
 """
 © Copyright 2014. Joon Yang & Jaemin Cheun. All rights reserved.
-
 Significantly cuts down the computation by not evaluating a QValue 
 when we discover that it is worse than a previously examined Q value
 
