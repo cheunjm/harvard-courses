@@ -46,10 +46,10 @@ class ProgressState:
             middle = pow(e, inner)
             outer = pow(middle, 8)
             if action == 0: # if the user got the question wrong
-                progress_copy[self.word][1] -= (outer * -log(var))/3
+                progress_copy[self.word][1] -= (outer * -log(var))/2
                 limit_value()
             if action == 1: # if the user got the question right
-                progress_copy[self.word][1] += (outer * -log(var))/3 + penalty
+                progress_copy[self.word][1] += (outer * -log(var))/2 + penalty
                 limit_value()
             return ProgressState(progress_copy)
 

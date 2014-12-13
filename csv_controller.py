@@ -73,7 +73,7 @@ class Reader(object):
                 writer.writerows(data)
             return round(total / len(data), 2)
 
-        def prune_likes(orig_dict):
+        def random_classifier(orig_dict):
             """
             Before using expectimax on every single Q&A, prune by first traversing
             the list of words and grouping ones that have similar levels of understanding
@@ -101,12 +101,12 @@ class Reader(object):
             last_q = ''
             while new_time - init_time < self.timer:
                 dict_copy = copy.deepcopy(self.qna)
-                print(dict_copy)
-                pruned_copy = prune_likes(dict_copy)
+                pruned_copy = random_classifier(dict_copy)
                 # don't ask the same question twice in a row
                 if last_q in pruned_copy:
                     del pruned_copy[last_q]
-                print "pruned length {} / {}".format(len(pruned_copy), len(dict_copy))
+                # print func here to check how many pruned after random classifier
+                # print "pruned length {} / {}".format(len(pruned_copy), len(dict_copy)) 
                 # choose the horizon based on how many nodes we're looking at
                 if 30 <= len(pruned_copy):
                     agent = Star1Agent(depth = '1')
