@@ -29,7 +29,7 @@ class ProgressState:
         else: # Human is answering
             # work with the word that only matters
             penalty = 0
-            if 2 <time < 5:
+            if 2 < time < 5:
                 penalty = time * - 0.03
             elif time >= 5:
                 penalty = - 0.3
