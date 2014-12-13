@@ -5,6 +5,7 @@
 """
 import copy
 from math import log
+from cmath import e
 
 class ProgressState:
    
@@ -41,13 +42,14 @@ class ProgressState:
                     progress_copy[self.word][1] = 0.95
 
             var = progress_copy[self.word][1]
-
+            inner = - pow((var - 0.55), 2)
+            middle = pow(e, inner)
+            outer = pow(middle, 8)
             if action == 0: # if the user got the question wrong
-            #log(var)/(11*(1-var)) - var/(11*(1-var))
-                progress_copy[self.word][1] += log(var)/(11*(1-var)) - var/(11*(1-var)) + penalty
+                progress_copy[self.word][1] -= (outer * -log(var))/3
                 limit_value()
             if action == 1: # if the user got the question right
-                progress_copy[self.word][1] += (1 - var)/2.5 + penalty
+                progress_copy[self.word][1] += (outer * -log(var))/3 + penalty
                 limit_value()
             return ProgressState(progress_copy)
 
