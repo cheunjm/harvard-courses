@@ -10,7 +10,7 @@ from progress import ProgressState
 
 from time import time
 
-d = '3'
+d = '4'
 
 t_1 = time()
 agent = ExpectimaxAgent(depth = d)
