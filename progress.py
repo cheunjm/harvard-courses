@@ -2,6 +2,8 @@
 """
 © Copyright 2014. Joon Yang & Jaemin Cheun. All rights reserved.
 
+Defines the class ProgressState
+
 """
 import copy
 from math import log
