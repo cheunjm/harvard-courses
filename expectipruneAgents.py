@@ -1,6 +1,6 @@
 import progress
 
-class Star1Agent:
+class ExpectipruneAgent:
  
   def __init__(self, depth = '1'):
     self.index = 0 # Computer is agent 0
@@ -18,7 +18,7 @@ class Star1Agent:
     def terminalTest(state, depth):
       return depth == 0
 
-    def Star1Decision(state):
+    def ExpectipruneDecision(state):
       """returns action that maximizes minValue"""
       # base case: action = None
       max_value, policy = -float('inf'), None
@@ -28,7 +28,6 @@ class Star1Agent:
         new_value = playerNode(state.generateSuccessor("computer", act), self.depth - 1, max_value)
         if max_value < new_value:
           max_value, policy = new_value, act
-        #stop?
       return policy
 
     #player Move 
@@ -58,4 +57,4 @@ class Star1Agent:
       return max_value
 
     # return the result of expectimax algorithm
-    return Star1Decision(initialState)
+    return ExpectipruneDecision(initialState)
