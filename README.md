@@ -1,6 +1,9 @@
 # CS207 Course Repository
 
-Fall 2018
+This is the Fall 2018 CS207 course repo.
+
+Please consult the course website [https://iacs-cs-207.github.io/cs207-F18/](https://iacs-cs-207.github.io/cs207-F18/) for specific course details
+including the syllabus, course policies, course schedule, and additional resources.
 
 ## Course Workflow
 
