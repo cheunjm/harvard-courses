@@ -1,6 +1,6 @@
 # Homework
 
-* There will be 6 homework assignments this semester
+* There will be 7 homework assignments this semester
 * Assignments will be released on Thursdays after lecture
 * Homework is due at **11:59 PM** two weeks after it is assigned
 * Your private GitHub repo should contain a `homework` directory with subdirectories for each assignment
@@ -17,7 +17,7 @@
 ## Late policy
 
 * Two points will be deducted per day for late homework. 
-* Homework will not be accepted after Sunday.
+* Homework will not be accepted later than two days after the due date.
 
 Please contact me as soon as possible in the case of an unforeseen emergency or illness so we can figure out an approprate plan of action on a case by
 case basis.
