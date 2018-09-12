@@ -1,4 +1,4 @@
-# CS207 Course Repository
+# CS207 Course Repository for Jaemin Cheun
 
 This is the Fall 2018 CS207 course repo.
 
