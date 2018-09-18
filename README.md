@@ -19,6 +19,8 @@ The `GitHub` usernames for the teaching staff are:
 * bkleyn
 * shiyunqiu
 * lee709
+* brafetto
+* yiqixie94
 
 When you arrive at each class, you should pull from the base course repo. Make sure you push all changes to your repo before each deadline. We
 will be able to see if you’ve submitted your work on time or not.
