@@ -25,8 +25,10 @@ class BankAccount():
   def withdraw(self, amount):
     """ Withdraws specified amount from the account
     """
+    if amount < 0:
+      print("ERROR: Cannot withdraw negative amount")
     # If there is not enough balance, print error
-    if self.balance < amount:
+    elif self.balance < amount:
       print("ERROR: You have not enough balance")
     else:
       self.balance = self.balance - amount
@@ -34,7 +36,10 @@ class BankAccount():
   def deposit(self, amount):
     """ Desposits specified amount to the account
     """
-    self.balance = self.balance + amount
+    if amount < 0:
+      print("ERROR: Cannot deposit negative amount")
+    else:
+      self.balance = self.balance + amount
 
   def __str__(self):
     """ Returns an informative string of the account owner and the type of account
