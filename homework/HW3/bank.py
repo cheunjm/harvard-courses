@@ -151,7 +151,6 @@ class SessionInfo():
       accountType = AccountType(3 - option)
       if self.transactionType.name == "CREATE":
         self.bankUser.addAccount(accountType)
-        print(f"{accountType.name} Account has been created")
         self.__reset_session()
       elif self.transactionType.name == "BALANCE":
         self.bankUser.getBalance(accountType)
