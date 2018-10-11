@@ -1,0 +1,1122 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{HW2}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Homework 2}\label{homework-2}
+
+\subsection{Due Thursday, September 20th 2018 at 11:59
+PM.}\label{due-thursday-september-20th-2018-at-1159-pm.}
+
+\subsubsection{Be sure to push the final version of your notebook to
+your GitHub repo. Follow the instructions on the course
+website.}\label{be-sure-to-push-the-final-version-of-your-notebook-to-your-github-repo.-follow-the-instructions-on-the-course-website.}
+
+\subsubsection{Topics}\label{topics}
+
+\paragraph{\texorpdfstring{Section \ref{part_1}: Get Familiar with
+\texttt{git}}{: Get Familiar with git}}\label{part-1-get-familiar-with-git}
+
+\begin{itemize}
+\tightlist
+\item
+  Section \ref{p1}. Git and recovering from a mistake
+\item
+  Section \ref{p2}. Git and checking out a single file
+\end{itemize}
+
+\paragraph{\texorpdfstring{Section \ref{part_2}: Python
+Basics}{: Python Basics}}\label{part-2-python-basics}
+
+\begin{itemize}
+\tightlist
+\item
+  Section \ref{p3}. Count and plot
+\item
+  Section \ref{p4}. Average area of the circles (part 1)
+\end{itemize}
+
+\paragraph{\texorpdfstring{Section \ref{part_3}: Closure and
+Decorators}{: Closure and Decorators}}\label{part-3-closure-and-decorators}
+
+\begin{itemize}
+\tightlist
+\item
+  Section \ref{p5}. Simple bank account withdraw system
+\item
+  Section \ref{p6}. Average area of the circles (part 2)
+\item
+  Section \ref{p7}. Positivity
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+ \#\# Part 1 {[}10 pts{]}: Get Familiar with GitHub \textbf{Note:} Start
+this problem after Lecture 3.
+
+ \#\#\# Problem 1 {[}5 pts{]}: \texttt{Git} and recovering from a
+mistake Here's the scenario for this problem. In Lecture, you created a
+branch in your \texttt{playground} repo called \texttt{mybranch1}. You
+worked on \texttt{mybranch1} and created a file called
+\texttt{books.md}, but you never merged that file into your
+\texttt{master} branch. In fact, we'll operate under the assumption that
+you really \emph{don't} want to merge \texttt{books.md} into
+\texttt{master} yet. However, being human, you are bound to make
+mistakes. In this problem, you will clone \texttt{playground} and forget
+to switch to \texttt{mybranch1}. You will accidentally pull
+\texttt{books.md} into \texttt{master}. Then, you will recover from this
+mistake by reverting \texttt{master} to an earlier state; one that
+doesn't have \texttt{books.md}.
+
+You will do this problem in the \texttt{Jupyter} notebook so we can see
+your output. Once again, you will work with your \texttt{playground}
+repository (created and explored in Lectures 2 and 3).
+
+\textbf{NOTE:} At the beginning of each \texttt{Jupyter} notebook cell,
+you MUST type \texttt{\%\%bash}. If you don't do that then you will not
+be able to work with the necessary bash commands.
+
+Follow the following steps for this problem:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  First cell:
+\item
+  Type \texttt{cd\ /tmp} to enter the temporary directory
+\item
+  \texttt{git\ clone\ \textless{}url\ to\ your\ playground\ repo\textgreater{}}
+  \textbf{Note:} If you want to re-clone the repo (after you already
+  cloned it), make sure you delete the old repo using
+  \texttt{rm\ -r\ /tmp/playground}.
+\item
+  Second cell:
+\item
+  Go into your local \texttt{playground} directory
+  (\texttt{cd\ /tmp/playground})
+\item
+  Type \texttt{git\ pull\ origin\ mybranch1}
+\item
+  \texttt{ls} Uh oh! \texttt{books.md} is now in your \texttt{master}
+  branch!
+\item
+  Third cell:
+\item
+  Go into your local \texttt{playground} directory
+  (\texttt{cd\ /tmp/playground})
+\item
+  Type \texttt{git\ status} Your local \texttt{master} branch is now
+  ahead of the remote \texttt{master}!
+\item
+  Fourth cell:
+\item
+  Go into your local \texttt{playground} directory
+  (\texttt{cd\ /tmp/playground})
+\item
+  Type \texttt{git\ reset\ -\/-hard\ origin/master}
+\item
+  \texttt{ls} \texttt{books.md} is gone!
+\item
+  Fifth cell:
+\item
+  Go into your local \texttt{playground} directory
+  (\texttt{cd\ /tmp/playground})
+\item
+  Type \texttt{git\ status} Everything is back to normal.
+\end{enumerate}
+
+The whole point of this problem was to show you how to get your local
+repo back to an earlier state. In this exercise, you accidentally merged
+something to \texttt{master} that you didn't want. Rather than starting
+to delete things all over the place, you can simply reset your
+\texttt{HEAD} to a previous commit.
+
+\textbf{IMPORTANT!} This is a proper \texttt{git} workflow. DO NOT start
+deleting, rebasing, or re-cloning everything. Take one step at a time,
+think about the decisions you're making, and execute deliberately. It
+will take a little practice in the beginning, but time spent now will
+translate to lots of time saved later.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PYZpc{}\PYZpc{}bash
+        \PY{n+nb}{cd} /tmp
+        rm \PYZhy{}rf playground \PY{c+c1}{\PYZsh{}remove if it exists}
+        git clone https://github.com/cheunjm/playground.git
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Cloning into 'playground'{\ldots}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PYZpc{}\PYZpc{}bash
+        \PY{n+nb}{cd} /tmp/playground
+        git pull origin mybranch1
+        ls
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Merge made by the 'recursive' strategy.
+ books.md | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 books.md
+README.md
+books.md
+feature.txt
+messages.md
+world.md
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+From https://github.com/cheunjm/playground
+ * branch            mybranch1  -> FETCH\_HEAD
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PYZpc{}\PYZpc{}bash
+        \PY{n+nb}{cd} /tmp/playground
+        git status
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+nothing to commit, working tree clean
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PYZpc{}\PYZpc{}bash
+        \PY{n+nb}{cd} /tmp/playground
+        git reset \PYZhy{}\PYZhy{}hard origin/master
+        ls
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+HEAD is now at 4c4e6ea George finished his books!
+README.md
+feature.txt
+messages.md
+world.md
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PYZpc{}\PYZpc{}bash
+        \PY{n+nb}{cd} /tmp/playground
+        git status
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working tree clean
+
+    \end{Verbatim}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+ \#\#\# Problem 2 {[}5 pts{]}: \texttt{Git} and checking out a single
+file Sometimes you don't want to merge an entire branch from the
+upstream but just one file from it. There is a direct use case for such
+a situation. Suppose I've made an error in this homework (or a lecture)
+and want to correct it. I fix the mistake in the upstream repo. In the
+meantime you have edited some other files and you really don't want to
+manually ignore my older copies of those files. Rather, you want to fix
+just one file from this new branch. This is how you do it.
+
+As usual, be sure to type in \texttt{\%\%bash} before you write any
+\texttt{bash} commands in a cell.
+
+\textbf{Note:} The steps below assume that you have already cloned the
+\texttt{playground} repo in this notebook.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  First cell:
+\item
+  Go into the \texttt{playground} repo and fetch the changes from the
+  master branch of the \texttt{course} remote.
+\item
+  Second cell:
+\item
+  \texttt{git\ checkout\ course/master\ -\/-\ README.md}. The
+  \texttt{-\/-} means that \texttt{README.md} is a file (as opposed to a
+  \texttt{branch}).
+\item
+  \texttt{cat\ README.md}. This just looks at the updated file.
+\item
+  Third cell:
+\item
+  \texttt{git\ status}
+\item
+  Commit the changes to your local repo with an appropriate commit
+  message.
+\item
+  \texttt{git\ status}
+\item
+  Push the changes to your remote repo.
+\end{enumerate}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PYZpc{}\PYZpc{}bash
+        \PY{n+nb}{cd} /tmp/playground
+        git remote add course https://github.com/IACS\PYZhy{}CS\PYZhy{}207/playground.git
+        git fetch course
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+From https://github.com/IACS-CS-207/playground
+ * [new branch]      master     -> course/master
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PYZpc{}\PYZpc{}bash
+        \PY{n+nb}{cd} /tmp/playground
+        git checkout course/master \PYZhy{}\PYZhy{} README.md
+        cat README.md
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\# Playground Repo
+
+Fall 2018 message.
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PYZpc{}\PYZpc{}bash
+         \PY{n+nb}{cd} /tmp/playground
+         git status
+         git commit \PYZhy{}m \PY{l+s+s2}{\PYZdq{}Update README\PYZdq{}}
+         git push
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>{\ldots}" to unstage)
+
+	modified:   README.md
+
+[master f374b23] Update README
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+To https://github.com/cheunjm/playground.git
+   4c4e6ea..f374b23  master -> master
+
+    \end{Verbatim}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+ \#\# Part 2 {[}20 pts{]}: Python Basics \#\#\# Problem 3 {[}10 pts{]}:
+Count and Plot In this problem, you will make a bar plot of the computer
+languages that students who take CS207 know. The file
+\texttt{languages.txt} contains all the languages that students listed
+as their primary language in the course survey from a previous iteration
+of the course.
+
+Do the following: * Load the language strings from the file into a list.
+* Use the \texttt{Counter} method from the \texttt{collections} library
+to count the number of occurrences of each element of the list.
+\textbf{Print out your answer to the screen.} * Create a bar plot to
+display the frequency of each language. Be sure to label the x-axis! +
+Remember, to create plots in the notebook you must put the line
+\texttt{\%matplotlib\ inline} at the beginning of your notebook. You may
+also want to check out \texttt{\%matplotlib\ notebook}. + Be sure to
+import matplotlib: \texttt{import\ matplotlib.pyplot\ as\ plt}. + To
+generate the bar plot write \texttt{plt.bar(x\_coords,\ freqs)}. You
+need to define \texttt{x\_coords} and \texttt{freqs}. + \textbf{Hint:}
+You may want to use the \texttt{numpy} \texttt{arange} function to
+create \texttt{x\_coords}. Remember, \texttt{x\_coords} is the x-axis
+and it should have points for each distinct language. + \textbf{Hint:}
+To get \texttt{freqs}, you may want to use the \texttt{values()} method
+on your result from step 3. That is,
+\texttt{freqs\ =\ result\_from\_3.values()}. + \textbf{Hint:} To label
+the x-axis you should use \texttt{plt.xticks(x\_coords,\ labels)} where
+labels can be accessed through the \texttt{keys()} method on your result
+from step 3.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}149}]:} \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k}{import} \PY{n}{Counter}
+          \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+          \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+          
+          \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{languages.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+              \PY{c+c1}{\PYZsh{} Load the language strings from the file into a list}
+              \PY{n}{lines} \PY{o}{=} \PY{n}{f}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{splitlines}\PY{p}{(}\PY{p}{)}
+              
+              \PY{c+c1}{\PYZsh{} Count the number occurrences of each element of the list}
+              \PY{n}{freqs} \PY{o}{=} \PY{n}{Counter}\PY{p}{(}\PY{n}{lines}\PY{p}{)}
+              \PY{n+nb}{print}\PY{p}{(}\PY{n}{freqs}\PY{p}{)}
+              
+              \PY{c+c1}{\PYZsh{} Createa bar plot to display the frequency of each language}
+              \PY{n}{labels}\PY{p}{,} \PY{n}{values} \PY{o}{=} \PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{Counter}\PY{p}{(}\PY{n}{lines}\PY{p}{)}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+              \PY{n}{x\PYZus{}coords} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{labels}\PY{p}{)}\PY{p}{)}
+          
+              \PY{n}{plt}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n}{x\PYZus{}coords}\PY{p}{,} \PY{n}{values}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{x\PYZus{}coords}\PY{p}{,} \PY{n}{labels}\PY{p}{)}
+              \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Counter(\{'Python': 25, 'Java': 7, 'C++': 6, 'Other': 2, 'SQL': 2, 'C': 1, 'C\#': 1, 'VB': 1\})
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_12_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+ \#\#\# Problem 4 {[}10 pts{]}: Average Area of the Circles (Part 1) The
+file \texttt{circles.txt} contains measurements of circle radii. Your
+task is to write a script that reports the average area of the circles.
+You will \textbf{not} use the \texttt{numpy} \texttt{mean} function.
+Here are the requirements: 1. Open \texttt{circles.txt}, read in the
+data, and convert the data to floats. Store in a list. 2. Write a
+function that computes the area of a circle. The argument should be a
+single \texttt{float}. 3. Write a function, called \texttt{myave}, that
+computes the average of the areas of the circles. - At the very least,
+\texttt{myave} should accept the list of radii as one argument and the
+circle function that you wrote in step 2 as another argument. -
+\textbf{Note:} There are other ways of doing this task, but I want you
+to do it this way. 4. Print out the result.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}150}]:} \PY{n}{data} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{circles.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+              \PY{c+c1}{\PYZsh{} Convert the data to floats and store in a list}
+              \PY{n}{data} \PY{o}{=} \PY{p}{[}\PY{n+nb}{float}\PY{p}{(}\PY{n}{item}\PY{p}{)} \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{f}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{splitlines}\PY{p}{(}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}151}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+          \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k}{import} \PY{n}{Counter}
+          \PY{k+kn}{import} \PY{n+nn}{math}
+          
+          \PY{c+c1}{\PYZsh{} Write a function that ocmputes the area of a circle}
+          \PY{k}{def} \PY{n+nf}{circle\PYZus{}area}\PY{p}{(}\PY{n}{radius}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n}{math}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{n}{radius} \PY{o}{*} \PY{n}{radius}
+          
+          \PY{c+c1}{\PYZsh{} Write a function that computes the average of the areas of the circle}
+          \PY{k}{def} \PY{n+nf}{myave}\PY{p}{(}\PY{n}{radii}\PY{p}{,} \PY{n}{f}\PY{p}{)}\PY{p}{:}
+              \PY{n}{areas} \PY{o}{=} \PY{p}{[}\PY{n}{f}\PY{p}{(}\PY{n}{radius}\PY{p}{)} \PY{k}{for} \PY{n}{radius} \PY{o+ow}{in} \PY{n}{radii}\PY{p}{]}
+              \PY{k}{return} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{areas}\PY{p}{)} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{areas}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n+nb}{print}\PY{p}{(}\PY{n}{myave}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{circle\PYZus{}area}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+3.1958990970819956
+
+    \end{Verbatim}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+ \#\# Part 3 {[}30 pts{]}: Closures and Decorators \#\#\# Problem 5
+{[}10 pts{]}: Simple Bank Account Withdraw System The goal of this
+problem is to write a simple bank account withdraw system. The problem
+is based off of a problem in \emph{Structure and Interpretation of
+Computer Programs}.
+
+\textbf{Instructions:} Do each part in a different cell block and
+clearly label each part.
+
+    \textbf{a).} Write a closure to make withdraws from a bank account. The
+outer function should be accept the initial balance as an argument (I'll
+refer to this argument as \texttt{balance} in this problem statement,
+but you can call it whatever you want). The inner function should accept
+the withdraw amount as an argument and return the new balance.
+
+\textbf{NOTE 1:} For this part, do not try to reassign \texttt{balance}
+in the inner function. Just see what happens when you return a new
+balance. You can store the new balance in a new name (call it
+\texttt{new\_bal} if you want) or just return the new balance directly.
+
+\textbf{NOTE 2:} You should check for basic exceptions (e.g. attempting
+to withdraw more than the current balance).
+
+Once you write your functions, demo them in your notebook as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wd }\OperatorTok{=}\NormalTok{ make_withdraw(init_balance)}
+\NormalTok{wd(withdraw_amount)}
+\NormalTok{wd(new_withdraw_amount)}
+\end{Highlighting}
+\end{Shaded}
+
+You should observe that this does not behave correctly. \textbf{Explain
+why not.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}142}]:} \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{} part a}
+          \PY{k}{def} \PY{n+nf}{make\PYZus{}withdraw}\PY{p}{(}\PY{n}{balance}\PY{p}{)}\PY{p}{:}
+              \PY{k}{def} \PY{n+nf}{update\PYZus{}balance}\PY{p}{(}\PY{n}{withdraw\PYZus{}amount}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{new\PYZus{}balance} \PY{o}{=} \PY{n}{balance} \PY{o}{\PYZhy{}} \PY{n}{withdraw\PYZus{}amount}
+                  \PY{k}{if} \PY{n}{new\PYZus{}balance} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                      \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{You have not enough balance}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                      \PY{k}{return}
+                  \PY{k}{return} \PY{n}{new\PYZus{}balance}
+              \PY{k}{return} \PY{n}{update\PYZus{}balance}
+          
+          \PY{c+c1}{\PYZsh{} Initialize variables}
+          \PY{n}{init\PYZus{}balance} \PY{o}{=} \PY{l+m+mi}{1000}
+          \PY{n}{withdraw\PYZus{}amount} \PY{o}{=} \PY{l+m+mi}{100}
+          \PY{n}{new\PYZus{}withdraw\PYZus{}amount} \PY{o}{=} \PY{l+m+mi}{200}
+          
+          \PY{c+c1}{\PYZsh{} Demo functions}
+          \PY{n}{wd} \PY{o}{=} \PY{n}{make\PYZus{}withdraw}\PY{p}{(}\PY{n}{init\PYZus{}balance}\PY{p}{)}
+          \PY{n}{wd}\PY{p}{(}\PY{n}{withdraw\PYZus{}amount}\PY{p}{)}
+          \PY{n}{wd}\PY{p}{(}\PY{n}{new\PYZus{}withdraw\PYZus{}amount}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}142}]:} 800
+\end{Verbatim}
+            
+    We want the new balance after withdrawing 200 to be 1000 - 100 - 200 =
+700, but as we can see, the new balance is 800. This is because
+everytime update\_balance is called, balance is equal to 1000, the
+init\_balance.
+
+    \textbf{b).} You can fix things up by updating \texttt{balance} within
+the inner function. But this won't work. Try it out and explain why it
+doesn't work. Try to use the language that we used in lecture.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Hint:}
+  \href{https://docs.python.org/3/reference/executionmodel.html}{Python
+  Execution Model}.
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}143}]:} \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{} part b}
+          \PY{k}{def} \PY{n+nf}{make\PYZus{}withdraw}\PY{p}{(}\PY{n}{balance}\PY{p}{)}\PY{p}{:}
+              \PY{k}{def} \PY{n+nf}{update\PYZus{}balance}\PY{p}{(}\PY{n}{withdraw\PYZus{}amount}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{balance} \PY{o}{=} \PY{n}{balance} \PY{o}{\PYZhy{}} \PY{n}{withdraw\PYZus{}amount}
+                  \PY{k}{if} \PY{n}{balance} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                      \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{You have not enough balance}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                      \PY{k}{return}
+                  \PY{k}{return} \PY{n}{balance}
+              \PY{k}{return} \PY{n}{update\PYZus{}balance}
+          
+          \PY{c+c1}{\PYZsh{} Initialize variables}
+          \PY{n}{init\PYZus{}balance} \PY{o}{=} \PY{l+m+mi}{1000}
+          \PY{n}{withdraw\PYZus{}amount} \PY{o}{=} \PY{l+m+mi}{100}
+          \PY{n}{new\PYZus{}withdraw\PYZus{}amount} \PY{o}{=} \PY{l+m+mi}{200}
+          
+          \PY{c+c1}{\PYZsh{} Demo functions}
+          \PY{n}{wd} \PY{o}{=} \PY{n}{make\PYZus{}withdraw}\PY{p}{(}\PY{n}{init\PYZus{}balance}\PY{p}{)}
+          \PY{n}{wd}\PY{p}{(}\PY{n}{withdraw\PYZus{}amount}\PY{p}{)}
+          \PY{n}{wd}\PY{p}{(}\PY{n}{new\PYZus{}withdraw\PYZus{}amount}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        UnboundLocalError                         Traceback (most recent call last)
+
+        <ipython-input-143-8ecc8cc27173> in <module>()
+         16 \# Demo functions
+         17 wd = make\_withdraw(init\_balance)
+    ---> 18 wd(withdraw\_amount)
+         19 wd(new\_withdraw\_amount)
+
+
+        <ipython-input-143-8ecc8cc27173> in update\_balance(withdraw\_amount)
+          2 def make\_withdraw(balance):
+          3     def update\_balance(withdraw\_amount):
+    ----> 4         balance = balance - withdraw\_amount
+          5         if balance < 0:
+          6             print("You have not enough balance")
+
+
+        UnboundLocalError: local variable 'balance' referenced before assignment
+
+    \end{Verbatim}
+
+    As we can see, \texttt{balance} cannot be updated within the inner
+function. As mentioned in the lecture, it is because as soon as
+\texttt{balance} is captured by the inner function, it cannot be
+changed: "we have lost direct access to its manipulation." This is
+called encapsulation.
+
+    \textbf{c).} Now make just one small change to your code from Part b.
+Declare \texttt{balance} as a nonlocal variable using the
+\texttt{nonlocal} keyword. That is, before you get to the inner
+function, say \texttt{nonlocal\ balance}. Here's some information on the
+\texttt{nonlocal} statement:
+\href{https://docs.python.org/3/reference/simple_stmts.html\#nonlocal}{\texttt{nonlocal}}.
+
+Now test things out like you did in Part a. It should be behaving
+correctly now.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}144}]:} \PY{c+c1}{\PYZsh{}\PYZsh{}\PYZsh{} part c}
+          \PY{k}{def} \PY{n+nf}{make\PYZus{}withdraw}\PY{p}{(}\PY{n}{balance}\PY{p}{)}\PY{p}{:}
+              \PY{k}{def} \PY{n+nf}{update\PYZus{}balance}\PY{p}{(}\PY{n}{withdraw\PYZus{}amount}\PY{p}{)}\PY{p}{:}
+                  \PY{c+c1}{\PYZsh{} Declare balance as a nonlocal variable}
+                  \PY{k}{nonlocal} \PY{n}{balance}
+                  \PY{k}{if} \PY{n}{balance} \PY{o}{\PYZlt{}} \PY{n}{withdraw\PYZus{}amount}\PY{p}{:}
+                      \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{You have not enough balance}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                      \PY{k}{return}
+                  \PY{n}{balance} \PY{o}{=} \PY{n}{balance} \PY{o}{\PYZhy{}} \PY{n}{withdraw\PYZus{}amount}
+                  \PY{k}{return} \PY{n}{balance}
+              \PY{k}{return} \PY{n}{update\PYZus{}balance}
+          
+          \PY{c+c1}{\PYZsh{} Initialize variables}
+          \PY{n}{init\PYZus{}balance} \PY{o}{=} \PY{l+m+mi}{1000}
+          \PY{n}{withdraw\PYZus{}amount} \PY{o}{=} \PY{l+m+mi}{100}
+          \PY{n}{new\PYZus{}withdraw\PYZus{}amount} \PY{o}{=} \PY{l+m+mi}{200}
+          
+          \PY{c+c1}{\PYZsh{} Demo functions}
+          \PY{n}{wd} \PY{o}{=} \PY{n}{make\PYZus{}withdraw}\PY{p}{(}\PY{n}{init\PYZus{}balance}\PY{p}{)}
+          \PY{n}{wd}\PY{p}{(}\PY{n}{withdraw\PYZus{}amount}\PY{p}{)}
+          \PY{n}{wd}\PY{p}{(}\PY{n}{new\PYZus{}withdraw\PYZus{}amount}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}144}]:} 700
+\end{Verbatim}
+            
+    \textbf{d).} Finally, visualize your code with
+\href{http://pythontutor.com/}{Python Tutor} and embed your
+visualization in your notebook. Pay attention to the variable
+\texttt{balance}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}145}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{core}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{display}\PY{p}{,} \PY{n}{HTML}
+          
+          \PY{n}{display}\PY{p}{(}\PY{n}{HTML}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}iframe width=}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{800}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{ height=}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{500}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{ frameborder=}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{0}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{ src=}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{http://pythontutor.com/iframe\PYZhy{}embed.html\PYZsh{}code=}\PY{l+s+si}{\PYZpc{}23\PYZpc{}}\PY{l+s+s1}{23}\PY{l+s+si}{\PYZpc{}23\PYZpc{}}\PY{l+s+s1}{20part}\PY{l+s+si}{\PYZpc{}20c}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0Adef}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20make\PYZus{}withdraw}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{28balance}\PY{l+s+si}{\PYZpc{}29\PYZpc{}}\PY{l+s+s1}{3A}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20def}\PY{l+s+si}{\PYZpc{}20u}\PY{l+s+s1}{pdate\PYZus{}balance}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{28withdraw\PYZus{}amount}\PY{l+s+si}{\PYZpc{}29\PYZpc{}}\PY{l+s+s1}{3A}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}23\PYZpc{}}\PY{l+s+s1}{20Declare}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20balance}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20as}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20a}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20nonlocal}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20variable}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20nonlocal}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20balance}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20if}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20balance}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{3C}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20withdraw\PYZus{}amount}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{3A}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20print}\PY{l+s+si}{\PYZpc{}28\PYZpc{}}\PY{l+s+s1}{22You}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20have}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20not}\PY{l+s+si}{\PYZpc{}20e}\PY{l+s+s1}{nough}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20balance}\PY{l+s+si}{\PYZpc{}22\PYZpc{}}\PY{l+s+s1}{29}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20return}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20balance}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{3D}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20balance}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20withdraw\PYZus{}amount}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20return}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20balance}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{20return}\PY{l+s+si}{\PYZpc{}20u}\PY{l+s+s1}{pdate\PYZus{}balance}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}23\PYZpc{}}\PY{l+s+s1}{20Initialize}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20variables}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0Ainit\PYZus{}balance}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{3D}\PY{l+s+si}{\PYZpc{}201000\PYZpc{}}\PY{l+s+s1}{0Awithdraw\PYZus{}amount}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{3D}\PY{l+s+si}{\PYZpc{}20100\PYZpc{}}\PY{l+s+s1}{0Anew\PYZus{}withdraw\PYZus{}amount}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{3D}\PY{l+s+si}{\PYZpc{}20200\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0A}\PY{l+s+si}{\PYZpc{}23\PYZpc{}}\PY{l+s+s1}{20Demo}\PY{l+s+si}{\PYZpc{}20f}\PY{l+s+s1}{unctions}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{0Awd}\PY{l+s+si}{\PYZpc{}20\PYZpc{}}\PY{l+s+s1}{3D}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{20make\PYZus{}withdraw}\PY{l+s+si}{\PYZpc{}28i}\PY{l+s+s1}{nit\PYZus{}balance}\PY{l+s+si}{\PYZpc{}29\PYZpc{}}\PY{l+s+s1}{0Awd}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{28withdraw\PYZus{}amount}\PY{l+s+si}{\PYZpc{}29\PYZpc{}}\PY{l+s+s1}{0Awd}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{28new\PYZus{}withdraw\PYZus{}amount}\PY{l+s+si}{\PYZpc{}29\PYZpc{}}\PY{l+s+s1}{0A\PYZam{}codeDivHeight=400\PYZam{}codeDivWidth=350\PYZam{}cumulative=false\PYZam{}curInstr=0\PYZam{}heapPrimitives=nevernest\PYZam{}origin=opt\PYZhy{}frontend.js\PYZam{}py=3\PYZam{}rawInputLstJSON=}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{5B}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{5D\PYZam{}textReferences=false}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{\PYZgt{} \PYZlt{}/iframe\PYZgt{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+ \#\#\# Problem 6 {[}10 pts{]}: Average Area of the Circles (part 2)
+Let's return to the data from Problem 4.
+
+Write two functions: 1. The first function should return the average
+circle radius (you can re-use the one you already wrote if you'd like,
+but you might need to update it slightly for this problem). 2. The
+second function should just use \texttt{numpy} to compute the average.
+
+Write a decorator to time the evaluation of each function. You can use
+the timing decorator from lecture.
+
+\paragraph{Notes and Hints}\label{notes-and-hints}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Be fair!
+\item
+  To be as fair as possible, do the following:
+\item
+  Create an \texttt{areas} list/array \emph{outside} of your averaging
+  functions. This means that you should do a loop over the radii you
+  read in from \texttt{circles.txt}, compute the area from each point,
+  and store that area in an array. Do you know why this is more fair? If
+  not, think about it make sure you understand. Also, do not use
+  \texttt{append}. Instead, preallocate space for your \texttt{area}
+  list/array.
+\item
+  Your \texttt{my\_ave} function should accept your areas data as a
+  list. Remember, to allocate a list you should do \texttt{{[}0.0{]}*N}:
+  if you use such a construct your list will be filled in with \(N\)
+  zeros.
+\item
+  Your \texttt{np\_ave} function should accept your areas data as a
+  \texttt{numpy} array. To allocate a \texttt{numpy} array do
+  \texttt{areas\_np\ =\ np.zeros(len(radii))}.
+\item
+  Now both functions are using the best data types possible for their
+  tasks.
+\end{enumerate}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}155}]:} \PY{k+kn}{from} \PY{n+nn}{collections} \PY{k}{import} \PY{n}{Counter}
+          \PY{k+kn}{import} \PY{n+nn}{math}
+          
+          \PY{n}{radii} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+          \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{circles.txt}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{r}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+              \PY{c+c1}{\PYZsh{} Convert the data to floats and store in a list}
+              \PY{n}{radii} \PY{o}{=} \PY{p}{[}\PY{n+nb}{float}\PY{p}{(}\PY{n}{item}\PY{p}{)} \PY{k}{for} \PY{n}{item} \PY{o+ow}{in} \PY{n}{f}\PY{o}{.}\PY{n}{read}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{splitlines}\PY{p}{(}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}156}]:} \PY{c+c1}{\PYZsh{} Timer function from lecture 4}
+          \PY{k+kn}{import} \PY{n+nn}{time}
+          \PY{k}{def} \PY{n+nf}{timer}\PY{p}{(}\PY{n}{f}\PY{p}{)}\PY{p}{:}
+              \PY{k}{def} \PY{n+nf}{inner}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{t0} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+                  \PY{n}{output} \PY{o}{=} \PY{n}{f}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
+                  \PY{n}{elapsed} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{t0}
+                  \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Time Elapsed}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{elapsed}\PY{p}{)}
+                  \PY{k}{return} \PY{n}{output}
+              \PY{k}{return} \PY{n}{inner}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}167}]:} \PY{c+c1}{\PYZsh{} function that computes the area of a circle}
+          \PY{k}{def} \PY{n+nf}{circle\PYZus{}area}\PY{p}{(}\PY{n}{radius}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n}{math}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{n}{radius} \PY{o}{*} \PY{n}{radius}
+          
+          \PY{n}{areas} \PY{o}{=} \PY{p}{[}\PY{l+m+mf}{0.0}\PY{p}{]} \PY{o}{*} \PY{n+nb}{len}\PY{p}{(}\PY{n}{radii}\PY{p}{)}
+          \PY{n}{areas} \PY{o}{=} \PY{p}{[}\PY{n}{circle\PYZus{}area}\PY{p}{(}\PY{n}{radius}\PY{p}{)} \PY{k}{for} \PY{n}{radius} \PY{o+ow}{in} \PY{n}{radii}\PY{p}{]}
+          
+          \PY{n}{areas\PYZus{}np} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{radii}\PY{p}{)}\PY{p}{)}
+          \PY{n}{areas\PYZus{}np} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{areas}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}186}]:} \PY{n+nd}{@timer}
+          \PY{k}{def} \PY{n+nf}{myave}\PY{p}{(}\PY{n}{areas}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{areas}\PY{p}{)} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{areas}\PY{p}{)}\PY{p}{)}
+          
+          \PY{n+nd}{@timer}
+          \PY{k}{def} \PY{n+nf}{npave}\PY{p}{(}\PY{n}{areas}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{areas}\PY{p}{)}
+          
+          \PY{n}{myave}\PY{p}{(}\PY{n}{areas}\PY{p}{)}
+          \PY{n}{npave}\PY{p}{(}\PY{n}{areas\PYZus{}np}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Time Elapsed 8.106231689453125e-06
+Time Elapsed 6.723403930664062e-05
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}186}]:} 3.195899097081994
+\end{Verbatim}
+            
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+ \#\#\# Problem 7 {[}10 pts{]}: Positivity Write a decorator to check if
+a quantity returned from a function is positive. An exception should be
+raised if the quantity is not positive.
+
+Write three functions and decorate them with your decorator: 1. A
+function that returns the discriminant \(\displaystyle d = b^{2} - 4ac\)
+2. A function that computes the absolute value (you must write this
+yourself...do not use built-ins) 3. A function of your own choosing.
+
+Show that your decorator behaves correctly. That is, for each function,
+show two cases (where applicable): 1. A case where positivity is not
+violated 2. A case where positivity is violated
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}231}]:} \PY{c+c1}{\PYZsh{} Decorator to check if a quntity returned from a function is positive}
+          \PY{k}{def} \PY{n+nf}{check\PYZus{}positivity}\PY{p}{(}\PY{n}{f}\PY{p}{)}\PY{p}{:}
+              \PY{k}{def} \PY{n+nf}{inner}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+                  \PY{n}{output} \PY{o}{=} \PY{n}{f}\PY{p}{(}\PY{o}{*}\PY{n}{args}\PY{p}{)}
+                  \PY{k}{if} \PY{n}{output} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                      \PY{k}{raise} \PY{n+ne}{ValueError}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Output is not positive}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                  \PY{k}{return} \PY{n}{output}
+              \PY{k}{return} \PY{n}{inner}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}232}]:} \PY{c+c1}{\PYZsh{} A function that returns the discriminant}
+          \PY{n+nd}{@check\PYZus{}positivity}
+          \PY{k}{def} \PY{n+nf}{calc\PYZus{}discriminant}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{c}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n}{b} \PY{o}{*} \PY{n}{b} \PY{o}{\PYZhy{}} \PY{l+m+mi}{4} \PY{o}{*} \PY{n}{a} \PY{o}{*} \PY{n}{c}
+          
+          \PY{c+c1}{\PYZsh{} A function that computes the absolute value}
+          \PY{n+nd}{@check\PYZus{}positivity}
+          \PY{k}{def} \PY{n+nf}{calc\PYZus{}absolute}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{:}
+              \PY{k}{if} \PY{n}{a} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
+                  \PY{k}{return} \PY{n}{a}
+              \PY{k}{else}\PY{p}{:}
+                  \PY{k}{return} \PY{o}{\PYZhy{}}\PY{n}{a}
+          
+          \PY{c+c1}{\PYZsh{} A function that computes the sum of two values}
+          \PY{n+nd}{@check\PYZus{}positivity}
+          \PY{k}{def} \PY{n+nf}{calc\PYZus{}sum}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{)}\PY{p}{:}
+              \PY{k}{return} \PY{n}{a} \PY{o}{+} \PY{n}{b}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}257}]:} \PY{k+kn}{import} \PY{n+nn}{unittest}
+          
+          \PY{k}{class} \PY{n+nc}{Test}\PY{p}{(}\PY{n}{unittest}\PY{o}{.}\PY{n}{TestCase}\PY{p}{)}\PY{p}{:}
+          
+              \PY{c+c1}{\PYZsh{} Test cases where functions will not raise exceptions}
+              \PY{k}{def} \PY{n+nf}{test\PYZus{}success}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                  \PY{c+c1}{\PYZsh{} Test discriminant}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertEqual}\PY{p}{(}\PY{n}{calc\PYZus{}discriminant}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertEqual}\PY{p}{(}\PY{n}{calc\PYZus{}discriminant}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertEqual}\PY{p}{(}\PY{n}{calc\PYZus{}discriminant}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}
+                  
+                  \PY{c+c1}{\PYZsh{} Test absolute value}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertEqual}\PY{p}{(}\PY{n}{calc\PYZus{}absolute}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertEqual}\PY{p}{(}\PY{n}{calc\PYZus{}absolute}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertEqual}\PY{p}{(}\PY{n}{calc\PYZus{}absolute}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+                  
+                  \PY{c+c1}{\PYZsh{} Test sum}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertEqual}\PY{p}{(}\PY{n}{calc\PYZus{}sum}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertEqual}\PY{p}{(}\PY{n}{calc\PYZus{}sum}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertEqual}\PY{p}{(}\PY{n}{calc\PYZus{}sum}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+          
+              \PY{c+c1}{\PYZsh{} Test cases where functions will raise exceptions}
+              \PY{k}{def} \PY{n+nf}{test\PYZus{}error}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                  \PY{c+c1}{\PYZsh{} Test discriminant}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertRaises}\PY{p}{(}\PY{n+ne}{ValueError}\PY{p}{,} \PY{n}{calc\PYZus{}discriminant}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertRaises}\PY{p}{(}\PY{n+ne}{ValueError}\PY{p}{,} \PY{n}{calc\PYZus{}discriminant}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertRaises}\PY{p}{(}\PY{n+ne}{ValueError}\PY{p}{,} \PY{n}{calc\PYZus{}discriminant}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+                  
+                  \PY{c+c1}{\PYZsh{} Test sum}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertRaises}\PY{p}{(}\PY{n+ne}{ValueError}\PY{p}{,} \PY{n}{calc\PYZus{}sum}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertRaises}\PY{p}{(}\PY{n+ne}{ValueError}\PY{p}{,} \PY{n}{calc\PYZus{}sum}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+                  \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{assertRaises}\PY{p}{(}\PY{n+ne}{ValueError}\PY{p}{,} \PY{n}{calc\PYZus{}sum}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}258}]:} \PY{k}{if} \PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZus{}\PYZus{}main\PYZus{}\PYZus{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+              \PY{n}{unittest}\PY{o}{.}\PY{n}{main}\PY{p}{(}\PY{n}{argv}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{first\PYZhy{}arg\PYZhy{}is\PYZhy{}ignored}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{exit}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+OK
+
+    \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
