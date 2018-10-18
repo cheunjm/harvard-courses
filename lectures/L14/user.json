@@ -1,0 +1,13 @@
+{
+    "users": [
+       {
+        "name": "Jaemin Cheun",
+        "age": 25
+    },{
+        "name": "David Sondak",
+        "age": 30
+    },{
+        "name": "Rachel Moon",
+        "age": 24
+    }]
+}
