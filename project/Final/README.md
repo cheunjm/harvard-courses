@@ -26,7 +26,7 @@ Here are the main requirements for the final project:
 
 ### Working Forward Mode Implementation
 You must have a working forward mode implementation.  Your library should be able to be used on real
-functions of one more more variable.
+functions of more than one variable.
 
 #### Minimum Package Requirements
 * The software should be available for download from your GitHub organization.  
