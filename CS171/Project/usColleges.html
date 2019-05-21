@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+
+
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<style type="text/css">
+    * {
+      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+    svg {
+        background-color: white;
+    }
+
+    rect {
+        background-color: white;
+    }
+
+    g {
+        fill: white;
+    }
+/*
+    #tableVis table tbody tr:hover {
+      background-color: lightsteelblue;
+    }*/
+
+    td {
+      padding: 0px;
+    }
+
+    form {
+      display: inline;
+    }
+
+    label {
+      font-size: 16px;
+    }
+    .tick text {
+        fill: black;
+    }
+
+    .country{
+        /*fill: #dffaff;*/
+        stroke:  steelblue;
+    }
+
+    text {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        /*font-weight: lighter;*/
+    }
+
+    .axis text {
+        font: 10px sans-serif;
+    }
+
+    .axis line,
+    .axis path {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .brush .extent{
+        fill:gray;
+        opacity: .3;
+    }
+
+  .legend {
+    background-color: #fff;
+    width: 300px;
+    height: 60px;
+    margin: 10px;
+    position: absolute;
+    bottom: 0;
+  }
+
+    #amount1, #amount2 {
+      border: 0;
+      color: black;
+      font-size: 14px;
+      font-weight: bold;
+
+    }
+
+    #amount1 {
+      width: 156px;
+    }
+
+    #filter {
+      border: solid black 1px;
+      margin-bottom: 2px;
+      padding: 0px 16px 12px 12px;
+    }
+    #linearLegend .colorlegend-labels {
+      font-size: 9px;
+      fill: #888;
+    }
+
+    #states {
+      fill: #aaa;
+    }
+    #states .active {
+      fill: orange;
+    }
+    #state-borders {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 1.5px;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      pointer-events: none;
+    }
+
+    #mapVis, #tableVis, #plotVis, #detailVis {
+      border: 1px solid black;
+    }
+
+    #mapVis {
+      position: relative;
+    }
+
+    #tableVis {
+      width: 334px;
+      height: 445px;
+      overflow: scroll;
+    }
+
+    #tableVis table {
+      width: 98%;
+      height: 98%;
+      padding-left: 5px;
+    }
+
+    .extent {
+  fill: #000;
+  fill-opacity: .125;
+  stroke: #fff;
+}
+</style>
+
+
+</style>
+
+
+<h2>U.S. Colleges by Enrollment and Tuition</h2>
+<table>
+    <tr>
+      <td>
+        <div id="mapVis">
+          <form>
+            <input type="text" name="search" placeholder="College Name" id="search">
+            <input type="button" value="Search" id="searchButton">
+          </form>
+          <form>
+            <input type="radio" id="nu" name="nu" checked>National Universities
+            <input type="radio" id="nlac" name="nu">National Liberal Arts Colleges
+          </form>
+          <form>
+            <input type="button" value="Reset" id="reset">
+          </form>
+          <div id="linearLegend" class="legend"></div>
+        </div>
+      </td>
+      <td>
+          <table>
+            <tr>
+              <td>
+                <div id="filter">
+                  <form>
+                  <p>
+                    <label for="amount1">Enrollment:</label>
+                    <input type="text" id="amount1">
+                  <form>
+                  <span id="option">
+                      <input name="updateButton" 
+                                   type="button" 
+                                  value="Update" 
+                                  onclick="updateData();" />
+                  </span>
+                  </form>
+                  </p>
+                  <div id="slider-range1"></div>
+                  </form>
+                  <form>
+                  <p>
+                    <label for="amount2">Tuition and Fees:</label>
+                    <input type="text" id="amount2">
+                  </p>
+                  <div id="slider-range2"></div>
+                  </form>
+                </div>
+                <div id="tableVis"></div>
+            </td>
+            </tr>
+            <tr>
+              <td><div id="plotVis"></div></td>
+            </tr>
+          </table>
+      </td>
+    </tr>
+</table>
+
+
+<script src="usColleges.js"></script>
+<script src="colorlegend.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <script src="../libs/jquery-1.10.1.js"></script>
+    <script src="../libs/jquery.xdomainajax.js"></script>
+    <script src="../libs/d3.v3.min.js"></script>
+    <script src="../libs/FileSaver.js"></script>
+</head>
+<body>
+
+<script>
+    var convertToInt;
+    var output = new Array();
+    var csv = new Array();
+
+    $.ajax({
+        url: "http://www.forbes.com/top-colleges/list/#page:1_sort:0_direction:asc_search:_filter:All%20states",
+        type: 'GET',
+        cache: false,
+        success: function(data) {
+            var DataSet = new Object;
+            var root,allData, body, table;
+            root = $("<div></div>")
+            root.html(data.responseText)
+            var list = root.find("#thelist")
+            var rows = list.find("table tbody tr")
+            var count = 99;
+            csv.push("name,rank,cost,size")
+
+            $.each(rows, function(index,value) {
+              var string = "";
+              var name = "";
+              var rank;
+              var cost;
+              var size;
+              var location = new Array();
+              var tds = $(value).find("td")
+              $.each(tds, function(index, td){
+                if (index == 0){
+                  rank = convertToInt($(td).find("p").text());
+                }
+                if (index == 1){
+                  name = $(td).find("h3 a").text();
+                }
+                if (index == 3){
+                  cost = convertToInt($(td).find("p").text().substring(1));
+                  if(isNaN(cost))
+                    {cost = 0;}
+                }
+                if (index == 4){
+                  size = convertToInt($(td).find("p").text());
+                }
+              })
+              string = "" + name + "," + rank + "," + cost + "," + size;
+              csv.push(string);
+
+              $.ajax({
+                url:"https://maps.googleapis.com/maps/api/geocode/json?address="+name+"&sensor=false&key=AIzaSyDtnTEh_vBIIgNkCb9Lu4UHQ_1gT0Y4QZs",
+                type: "POST",
+                success:function(res){
+                    console.log(name);
+                    console.log(res);
+                    location[0] = res.results[0].geometry.location.lat;
+                    location[1] = res.results[0].geometry.location.lng;
+                    console.log(location);
+                    DataSet[name] = {"rank": rank,"cost": cost, "size": size, "location": location}
+                    console.log(count);
+                    if (!--count) {
+                      csv_saveToFile(csv,"college.csv")
+                      saveToFile(DataSet,"college.json")}
+                }
+            });              
+            })
+
+        },
+        error: function() {
+            return console.log("error");
+        }
+    });
+
+    convertToInt = function(s) {
+        return parseInt(s.replace(/,/g, ""), 10);
+    };
+	
+    /* takes an array of strings
+       and writes them line by line into a file given by filename
+     */
+    var saveToFile = function(object, filename){
+        var blob, blobText;
+        blobText = [JSON.stringify(object)];
+        blob = new Blob(blobText, {
+            type: "text/plain;charset=utf-8"
+        });
+        saveAs(blob, filename);
+    }
+
+    var csv_saveToFile = function(arrayOfLines, fileName) {
+       /* adds linebreaks at the end*/
+       var blob, blobText;
+       blobText = arrayOfLines.map(function(d) {
+         if (d.endsWith("\n")) {
+           return d;
+         } else {
+           return d + "\n";
+         }
+       });
+       blob = new Blob(blobText, {
+         type: "text/plain;charset=utf-8"
+       });
+       return saveAs(blob, fileName);
+     };
+
+     String.prototype.endsWith = function(suffix) {
+       return this.indexOf(suffix, this.length - suffix.length) !== -1;
+     };
+  
+
+
+
+</script>
+
+
+</body>
+</html>
