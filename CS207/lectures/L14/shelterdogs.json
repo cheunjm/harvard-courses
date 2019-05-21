@@ -1,0 +1,17 @@
+{
+    "dogShelter": "MSPCA-Angell",
+    "dogs": [
+        {
+            "name": "Cloe",
+            "age": 3,
+            "breed": "Border Collie",
+            "attendPlaygroup": "Yes"
+        },
+        {
+            "name": "Karl",
+            "age": 7,
+            "breed": "Beagle",
+            "attendPlaygroup": "Yes"
+        }
+    ]
+}

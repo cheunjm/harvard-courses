@@ -1,0 +1,6 @@
+shelterDogs:
+- {age: 3, attendPlaygroup: 'Yes', breed: Border Collie, name: Cloe}
+- {age: 7, attendPlaygroup: 'Yes', breed: Beagle, name: Karl}
+shelterStaff:
+- {Job: dogWalker, age: 100, name: Bob}
+- {Job: PlaygroupLeader, age: 47, name: Sally}

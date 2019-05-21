@@ -1,0 +1,5 @@
+[
+  "test_norm.py::test_norm_result",
+  "test_norm.py::test_norm_types",
+  "test_norm.py::test_norm_dimension_mismatch"
+]
